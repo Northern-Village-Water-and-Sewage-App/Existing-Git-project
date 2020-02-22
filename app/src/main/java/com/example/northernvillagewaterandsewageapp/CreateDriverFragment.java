@@ -11,10 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class CreateUserFragment extends DialogFragment {
+public class CreateDriverFragment extends DialogFragment {
 
     protected EditText UsernameEditText;
-    protected EditText HouseNumberEditText;
     protected EditText PinEditText;
     protected Button RandomPinButton;
     protected Button AddUserButton;
@@ -31,7 +30,6 @@ public class CreateUserFragment extends DialogFragment {
 
         //connects the edit texts to the Java file
         UsernameEditText = view.findViewById(R.id.driverNameEditText);
-        HouseNumberEditText = view.findViewById(R.id.housNumEditText);
         PinEditText = view.findViewById(R.id.driverPinEditText);
         //connects the buttons to the Java file
         RandomPinButton = view.findViewById(R.id.pinButton);
