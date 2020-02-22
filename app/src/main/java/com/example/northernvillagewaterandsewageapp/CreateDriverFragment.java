@@ -26,7 +26,7 @@ public class CreateDriverFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_create_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_driver, container, false);
 
         //connects the edit texts to the Java file
         UsernameEditText = view.findViewById(R.id.driverNameEditText);
