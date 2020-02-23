@@ -57,7 +57,7 @@
         android:text="Random Pin" />
 
     <Button
-        android:id="@+id/addUserButton"
+        android:id="@+id/addDriverButton"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -67,7 +67,7 @@
         android:text="ADD" />
 
     <Button
-        android:id="@+id/removeUserButton"
+        android:id="@+id/removeDriverButton"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -77,7 +77,7 @@
         android:text="Remove" />
 
     <Button
-        android:id="@+id/cancelAddUserButton"
+        android:id="@+id/cancelManualDemandButton"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Northern VIllage Water and Sewage App</string>
+    
+    <string-array name="demandTypes">
+        <item>Water</item>
+        <item>Sewage</item>
+        <item>Water and Sewage</item>
+    </string-array>
+    <string-array name="timeEstimate">
+        <item>None</item>
+        <item>On the way</item>
+        <item>Before Break</item>
+        <item>Today</item>
+        <item>Tomorrow</item>
+    </string-array>
+
+
 </resources>
