@@ -4,5 +4,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    />
+
+    <Spinner
+        android:id="@+id/complaintTypeDriverReportSpinner"
+        android:layout_width="201dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="88dp"
+        android:entries="@array/complaintTypes" />
+
+    <EditText
+        android:id="@+id/complaintDriverReportEditText"
+        android:layout_width="336dp"
+        android:layout_height="394dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="153dp"
+        android:ems="10"
+        android:hint="Complaint"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="2000"
+        android:maxLines= "8"  />
+
+    <Button
+        android:id="@+id/confirmDriverReportButton"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="100dp"
+        android:text="Confirm" />
+
+    <Button
+        android:id="@+id/cancelDriverReportButton"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="100dp"
+        android:text="Cancel" />
+
+        />
 </RelativeLayout>
