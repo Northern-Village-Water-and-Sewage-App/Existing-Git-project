@@ -25,4 +25,10 @@
         <item>Malfunctioning Lights</item>
         <item>No need for call</item>
     </string-array>
+    <string-array name="companies">
+        <item>KHMB</item>
+        <item>KSB</item>
+        <item>KRG</item>
+        <item>Makivik</item>
+    </string-array>
 </resources>
