@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Northern VIllage Water and Sewage App</string>
-    
+    <string name="enter">Enter</string>
+    <string name="pin">PIN</string>
+    <string name="user_name">User Name</string>
+    <string name="add_service">Add Service</string>
+    <string name="analytics">Analytics</string>
+    <string name="disable_resident">Disable Resident</string>
+    <string name="get_reports">Get Reports</string>
+    <string name="get_delivery">Get Delivery</string>
+
     <string-array name="demandTypes">
         <item>Water</item>
         <item>Sewage</item>

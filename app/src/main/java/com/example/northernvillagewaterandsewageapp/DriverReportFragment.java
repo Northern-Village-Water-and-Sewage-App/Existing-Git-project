@@ -28,11 +28,11 @@ public class DriverReportFragment extends DialogFragment {
 
         //connects the XML file to the Java
         Complaint = view.findViewById(R.id.complaintDriverReportEditText);
-        CancelDriverReport = view.findViewById(R.id.cancelDriverReportButton);
-        ConfirmDriverReport = view.findViewById(R.id.confirmDriverReportButton);
+        CancelDriverReport = view.findViewById(R.id.cancelGetReportsButton);
+        ConfirmDriverReport = view.findViewById(R.id.ReportsByCompanyButton);
 
         //gets the drop down menu to work
-        Spinner complaintTypeSpinner = view.findViewById(R.id.complaintTypeDriverReportSpinner);
+        Spinner complaintTypeSpinner = view.findViewById(R.id.companyReportSpinner);
         complaintTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -61,6 +61,6 @@ public class DriverReportFragment extends DialogFragment {
             }
         });
 
-       return view;
+        return view;
     }
 }
