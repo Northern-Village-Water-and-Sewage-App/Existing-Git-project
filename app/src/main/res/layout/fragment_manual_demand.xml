@@ -51,15 +51,4 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"/>
 
-    <Spinner
-        android:id="@+id/timeEstimateSpinner"
-        android:layout_width="201dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="347dp"
-        android:entries="@array/timeEstimate"
-        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

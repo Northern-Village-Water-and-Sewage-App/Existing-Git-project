@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class CreateUserFragment extends DialogFragment {
+public class CreateResidentFragment extends DialogFragment {
 
     protected EditText UsernameEditText;
     protected EditText HouseNumberEditText;
@@ -27,7 +27,7 @@ public class CreateUserFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_create_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_resident, container, false);
 
         //connects the edit texts to the Java file
         UsernameEditText = view.findViewById(R.id.driverNameEditText);

@@ -15,7 +15,7 @@ import androidx.fragment.app.DialogFragment;
 
 public class GetReportFragment extends DialogFragment {
 
-    protected EditText EmailAdressEditText;
+    protected EditText EmailAddressEditText;
     protected Integer Company;
     protected Button GetAllReportsButton;
     protected Button GetCompanyReportsButton;
@@ -28,7 +28,7 @@ public class GetReportFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_get_report, container, false);
 
         //connects the XML file to the Java
-        EmailAdressEditText = view.findViewById(R.id.emailAddressReportEditText);
+        EmailAddressEditText = view.findViewById(R.id.emailAddressReportEditText);
         GetAllReportsButton = view.findViewById(R.id.allReportsButton);
         GetCompanyReportsButton = view.findViewById(R.id.ReportsByCompanyButton);
         CancelGetReportButton = view.findViewById(R.id.cancelGetReportsButton);

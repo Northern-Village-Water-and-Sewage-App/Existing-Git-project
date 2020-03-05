@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,7 +17,6 @@ public class ManualDemandFragment extends DialogFragment {
 
 
     protected Integer demandType =-1;
-    protected Integer timeEstimate =0;
     protected EditText HouseNumber;
     protected Button CancelButton;
     protected Button EnterButton;
@@ -39,7 +37,6 @@ public class ManualDemandFragment extends DialogFragment {
 
         //Gets the drop down menu
         Spinner demandTypeSpinner = view.findViewById(R.id.demandTypeSpinner);
-        Spinner timeEstimateSpinner = view.findViewById(R.id.timeEstimateSpinner);
 
 
         //Finds what item is selected from the drop down menu for the demand type
@@ -55,18 +52,6 @@ public class ManualDemandFragment extends DialogFragment {
             }
         });
 
-        //Finds what item is selected from the drop down menu for the demand type
-        timeEstimateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                timeEstimate = position;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         //dismisses the activity if the cancel button is pressed
         CancelButton.setOnClickListener(new View.OnClickListener() {
