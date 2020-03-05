@@ -82,7 +82,7 @@ public class ManagerActivity extends AppCompatActivity {
     // Function to add a new resident or driver in the database
     protected void addResident_Driver()
     {
-        CreateUserFragment createUser = new CreateUserFragment();
+        CreateResidentFragment createUser = new CreateResidentFragment();
         createUser.show(getSupportFragmentManager(), "Dialog");
     }
     // Function to remove an existing resident or driver from the database
