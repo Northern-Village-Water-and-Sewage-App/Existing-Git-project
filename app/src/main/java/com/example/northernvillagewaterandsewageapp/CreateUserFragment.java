@@ -35,9 +35,9 @@ public class CreateUserFragment extends DialogFragment {
         PinEditText = view.findViewById(R.id.driverPinEditText);
         //connects the buttons to the Java file
         RandomPinButton = view.findViewById(R.id.pinButton);
-        AddUserButton = view.findViewById(R.id.addDriverButton);
-        CancelAddUserButton = view.findViewById(R.id.cancelAddDriverButton);
-        RemoveUserButton = view.findViewById(R.id.removeDriverButton);
+        AddUserButton = view.findViewById(R.id.addUserButton);
+        CancelAddUserButton = view.findViewById(R.id.cancelAddUserButton);
+        RemoveUserButton = view.findViewById(R.id.removeUserButton);
 
         //Makes buttons do something on click
         RandomPinButton.setOnClickListener(new View.OnClickListener() {

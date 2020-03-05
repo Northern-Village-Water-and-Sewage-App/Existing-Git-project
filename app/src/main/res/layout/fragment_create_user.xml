@@ -14,7 +14,7 @@
         android:layout_marginStart="96dp"
         android:layout_marginTop="148dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:textAlignment="center" />
 
@@ -28,7 +28,7 @@
         android:layout_marginStart="96dp"
         android:layout_marginTop="245dp"
         android:ems="10"
-        android:hint="House Number"
+        android:hint="@string/house_number"
         android:inputType="textPersonName"
         android:textAlignment="center" />
 
@@ -42,7 +42,7 @@
         android:layout_marginStart="97dp"
         android:layout_marginTop="361dp"
         android:ems="10"
-        android:hint="PIN"
+        android:hint="@string/pin"
         android:inputType="number"
         android:textAlignment="center" />
 
@@ -54,35 +54,35 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="50dp"
         android:layout_marginBottom="202dp"
-        android:text="Random Pin" />
+        android:text="@string/random_pin" />
 
     <Button
-        android:id="@+id/addDriverButton"
+        android:id="@+id/addUserButton"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="202dp"
-        android:text="ADD" />
+        android:layout_marginBottom="201dp"
+        android:text="@string/add" />
 
     <Button
-        android:id="@+id/removeDriverButton"
+        android:id="@+id/removeUserButton"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="100dp"
-        android:text="Remove" />
+        android:text="@string/remove" />
 
     <Button
-        android:id="@+id/cancelManualDemandButton"
+        android:id="@+id/cancelAddUserButton"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="50dp"
         android:layout_marginBottom="100dp"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 </RelativeLayout>

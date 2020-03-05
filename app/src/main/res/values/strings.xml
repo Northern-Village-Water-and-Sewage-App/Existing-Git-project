@@ -8,6 +8,16 @@
     <string name="disable_resident">Disable Resident</string>
     <string name="get_reports">Get Reports</string>
     <string name="get_delivery">Get Delivery</string>
+    <string name="username">Username</string>
+    <string name="house_number">House Number</string>
+    <string name="random_pin">Random Pin</string>
+    <string name="add">ADD</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
+    <string name="user_id">User ID</string>
+    <string name="disable_time">Disable time</string>
+    <string name="confirm">Confirm</string>
+    <string name="textview">TextView</string>
 
     <string-array name="demandTypes">
         <item>Water</item>

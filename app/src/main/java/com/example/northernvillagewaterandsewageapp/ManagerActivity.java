@@ -31,6 +31,11 @@ public class ManagerActivity extends AppCompatActivity {
         addServiceButton = findViewById(R.id.manualserviceButton);
         disableResidentButton = findViewById(R.id.disableresidentButton);
 
+        setUpManagerUI();
+    }
+
+    protected void setUpManagerUI()
+    {
         // Adding a new resident or driver
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +54,7 @@ public class ManagerActivity extends AppCompatActivity {
             }
         });
 
+        // Accessing the manager analytics
         analyticsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,8 +63,17 @@ public class ManagerActivity extends AppCompatActivity {
             }
         });
 
-    }
+        // Gets the manager reports
+        getReportsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                getReports();
+            }
+        });
+
+    }
+    // Function that shows the manager analytics when its button is clicked
     protected void goToAnalytics()
     {
         Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ResidentAnalyticsActivity.class);
@@ -67,11 +82,20 @@ public class ManagerActivity extends AppCompatActivity {
     // Function to add a new resident or driver in the database
     protected void addResident_Driver()
     {
-
+        CreateUserFragment createUser = new CreateUserFragment();
+        createUser.show(getSupportFragmentManager(), "Dialog");
     }
     // Function to remove an existing resident or driver from the database
     protected void removeResident_Driver()
     {
+        DisableUserFragment disableUserFragment = new DisableUserFragment();
+        disableUserFragment.show(getSupportFragmentManager(), "Dialog");
+    }
 
+    // Function to get manager reports
+    protected void getReports()
+    {
+        GetReportFragment getReportFragment = new GetReportFragment();
+        getReportFragment.show(getSupportFragmentManager(), "Dialog");
     }
 }
