@@ -39,5 +39,23 @@ public class ResidentActivity extends AppCompatActivity {
         Intent resAnalyticsIntent = new Intent(ResidentActivity.this, ResidentAnalyticsActivity.class);
         startActivity(resAnalyticsIntent);
     }
+
+    //back navigation working, 3 next functions
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+        goToLogin();
+    }
+    //GoTo Login
+    protected void goToLogin(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
 

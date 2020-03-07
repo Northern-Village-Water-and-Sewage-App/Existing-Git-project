@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -72,6 +73,10 @@ public class ManagerActivity extends AppCompatActivity {
             }
         });
 
+        //shows back button
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
     // Function that shows the manager analytics when its button is clicked
     protected void goToAnalytics()
@@ -98,4 +103,23 @@ public class ManagerActivity extends AppCompatActivity {
         GetReportFragment getReportFragment = new GetReportFragment();
         getReportFragment.show(getSupportFragmentManager(), "Dialog");
     }
+
+    //back navigation working, 3 next functions
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+        goToLogin();
+    }
+    //GoTo Login
+    protected void goToLogin(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 }

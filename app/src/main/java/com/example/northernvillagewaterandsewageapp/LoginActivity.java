@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -14,6 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     protected EditText userName;
     protected EditText userPin;
     protected Button enterButton;
+    protected Integer userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +26,30 @@ public class LoginActivity extends AppCompatActivity {
         userPin = findViewById(R.id.PinText);
         enterButton = findViewById(R.id.EnterButton);
 
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         enterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToManagerActivity();
+
+                //for testing, gets the usertype from the username edittext instead of the database
+                userType = Integer.parseInt(userName.getText().toString());
+
+                //Toast toast = Toast.makeText(getApplicationContext(), String.valueOf(userType), Toast.LENGTH_SHORT);
+                //toast.show();
+
+                //depending on usertype goes to different activities
+                if (userType == 1){goToManagerActivity();}
+                else if (userType == 2){goToResidentActivity();}
+                else if (userType == 3){goToDriverActivity();}
             }
         });
-
     }
 
     public void goToManagerActivity()
@@ -45,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void goToDriverActivity()
     {
+
         Intent driverIntent = new Intent(LoginActivity.this, DriverActivity.class);
         startActivity(driverIntent);
     }
