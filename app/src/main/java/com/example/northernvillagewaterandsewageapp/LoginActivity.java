@@ -38,11 +38,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //for testing, gets the usertype from the username edittext instead of the database
-                userType = Integer.parseInt(userName.getText().toString());
+                //Pseudo code, send username to database, get back pin and usertype, if pin matches use the database usertype to goto next activity                     //NEED CODE HERE
 
-                //Toast toast = Toast.makeText(getApplicationContext(), String.valueOf(userType), Toast.LENGTH_SHORT);
-                //toast.show();
+                //for testing, gets the usertype from the username edittext instead of the database                                                                     //FOR TESTING, TO BE REMOVED
+                userType = Integer.parseInt(userName.getText().toString());
 
                 //depending on usertype goes to different activities
                 if (userType == 1){goToManagerActivity();}
