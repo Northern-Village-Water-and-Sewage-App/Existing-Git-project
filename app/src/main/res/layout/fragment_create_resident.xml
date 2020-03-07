@@ -11,7 +11,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
@@ -24,7 +24,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="245dp"
+        android:layout_marginTop="150dp"
         android:ems="10"
         android:hint="@string/house_number"
         android:inputType="textPersonName"
@@ -37,7 +37,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="250dp"
         android:ems="10"
         android:hint="@string/pin"
         android:inputType="number"
@@ -50,7 +50,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="330dp"
         android:text="@string/random_pin" />
 
     <Button
@@ -60,18 +60,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="330dp"
         android:text="@string/add" />
-
-    <Button
-        android:id="@+id/removeUserButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="500dp"
-        android:text="@string/remove" />
 
     <Button
         android:id="@+id/cancelAddUserButton"
@@ -80,6 +70,18 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="400dp"
         android:text="@string/cancel" />
+
+    <Button
+        android:id="@+id/removeUserButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="400dp"
+        android:text="@string/remove" />
+
+
 </RelativeLayout>

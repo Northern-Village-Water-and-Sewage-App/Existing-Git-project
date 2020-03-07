@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/manualserviceButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginStart="67dp"
         android:layout_marginEnd="19dp"
         android:text="@string/add_service"
@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/analyticsButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginStart="67dp"
         android:layout_marginEnd="19dp"
         android:text="@string/analytics"
@@ -31,7 +31,7 @@
     <Button
         android:id="@+id/messageButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginBottom="20dp"
         android:text="Add Message"
         app:layout_constraintBottom_toTopOf="@+id/disableResidentButton"
@@ -42,7 +42,7 @@
     <Button
         android:id="@+id/addResidentButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginStart="67dp"
         android:layout_marginEnd="19dp"
         android:text="Add Resident"
@@ -53,7 +53,7 @@
     <Button
         android:id="@+id/getReportButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginEnd="85dp"
         android:layout_marginBottom="24dp"
         android:text="@string/get_reports"
@@ -65,10 +65,10 @@
     <Button
         android:id="@+id/disableResidentButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginEnd="85dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/get_reports"
+        android:text="@string/disable_resident"
         app:layout_constraintBottom_toTopOf="@+id/getReportButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/analyticsButton"
@@ -77,7 +77,7 @@
     <Button
         android:id="@+id/addDriverButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginEnd="85dp"
         android:layout_marginBottom="64dp"
         android:text="Add Driver"
