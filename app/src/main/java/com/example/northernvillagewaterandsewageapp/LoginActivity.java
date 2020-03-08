@@ -42,11 +42,33 @@ public class LoginActivity extends AppCompatActivity {
 
                 //for testing, gets the user type from the username edit text instead of the database                                                                     //FOR TESTING, TO BE REMOVED
                 String userInput = userName.getText().toString().trim();
+                int pinInput = Integer.parseInt(userPin.getText().toString());
+
+                Toast toast = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_LONG);
 
                 //depending on user type goes to different activities
-                if (userInput.equals("Henry")) {goToManagerActivity();}
-                else if (userInput.equals("Meghan")) {goToResidentActivity();}
-                else if (userInput.equals("William")) {goToDriverActivity();}
+                if (!userInput.equals("Matt") || (pinInput != 111))
+                {
+                    toast.show();
+                }
+                else{
+                    goToManagerActivity();
+                }
+                if (!userInput.equals("Red") || (pinInput != 222))
+                {
+                       toast.show();
+                }
+                else{
+                    goToResidentActivity();
+                }
+                if (!userInput.equals("Dean") || (pinInput != 333))
+                {
+                        toast.show();
+                }
+                else {
+                    goToDriverActivity();
+                }
+
             }
         });
     }
