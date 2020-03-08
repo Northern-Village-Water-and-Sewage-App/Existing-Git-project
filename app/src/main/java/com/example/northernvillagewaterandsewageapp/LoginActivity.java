@@ -15,7 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     protected EditText userName;
     protected EditText userPin;
     protected Button enterButton;
-    protected Integer userType;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +38,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Pseudo code, send username to database, get back pin and usertype, if pin matches use the database usertype to goto next activity                     //NEED CODE HERE
+                //Pseudo code: send username to database, get back pin and user type, if pin matches use the database user type to goto next activity                     //NEED CODE HERE
 
-                //for testing, gets the usertype from the username edittext instead of the database                                                                     //FOR TESTING, TO BE REMOVED
-                userType = Integer.parseInt(userName.getText().toString());
+                //for testing, gets the user type from the username edit text instead of the database                                                                     //FOR TESTING, TO BE REMOVED
+                String userInput = userName.getText().toString().trim();
 
-                //depending on usertype goes to different activities
-                if (userType == 1){goToManagerActivity();}
-                else if (userType == 2){goToResidentActivity();}
-                else if (userType == 3){goToDriverActivity();}
+                //depending on user type goes to different activities
+                if (userInput.equals("Henry")) {goToManagerActivity();}
+                else if (userInput.equals("Meghan")) {goToResidentActivity();}
+                else if (userInput.equals("William")) {goToDriverActivity();}
             }
         });
     }
@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void goToDriverActivity()
     {
-
         Intent driverIntent = new Intent(LoginActivity.this, DriverActivity.class);
         startActivity(driverIntent);
     }

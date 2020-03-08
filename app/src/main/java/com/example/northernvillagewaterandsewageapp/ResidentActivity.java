@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 public class ResidentActivity extends AppCompatActivity {
 
     protected Button deliveryButton;
     protected Button analyticsButton;
+    protected ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +23,36 @@ public class ResidentActivity extends AppCompatActivity {
         deliveryButton = findViewById(R.id.manualDeliveryButton);
         analyticsButton = findViewById(R.id.analyticsButton);
 
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setProgress(70);
+
+
+        setUpResidentUI();
+
     }
 
+    protected void setUpResidentUI()
+    {
+        deliveryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getManualDelivery();
+            }
+        });
+
+        analyticsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAnalytics();
+            }
+        });
+    }
+
+    protected void getManualDelivery()
+    {
+        ManualDemandFragment manualDemandFragment = new ManualDemandFragment();
+        manualDemandFragment.show(getSupportFragmentManager(), "Dialog");
+    }
     protected void displayCurrentWater()
     {
 

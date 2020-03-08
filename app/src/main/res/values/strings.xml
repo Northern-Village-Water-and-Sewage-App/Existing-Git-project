@@ -18,6 +18,10 @@
     <string name="disable_time">Disable time</string>
     <string name="confirm">Confirm</string>
     <string name="textview">TextView</string>
+    <string name="add_message">Add Message</string>
+    <string name="add_resident">Add Resident</string>
+    <string name="add_driver">Add Driver</string>
+    <string name="user_type">User Type</string>
 
     <string-array name="demandTypes">
         <item>Water</item>

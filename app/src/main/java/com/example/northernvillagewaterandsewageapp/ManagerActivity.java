@@ -119,10 +119,11 @@ public class ManagerActivity extends AppCompatActivity {
     protected void loadListView(){
         ArrayList<String> worklistListText = new ArrayList<>();
 
-        //makes a list item                                                                                     //Fix here to make the list view correct
-        for(int i =0; i <5; i++){
+        //makes a list item                                                               //Fix here to make the list view correct
+        for(int i = 0; i < 5; i++)
+        {
             String temp = "";
-            temp+= "House Number: " + i*49+8 + "\n";
+            temp+= "House Number: " + i * 49 + 8 + "\n";
             temp+= "Service: " + "Water" + "\n";
             temp+= "Time Estimate: " + "None" + "\n";
 
@@ -187,6 +188,7 @@ public class ManagerActivity extends AppCompatActivity {
         finish();
         goToLogin();
     }
+
     //GoTo Login
     protected void goToLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
