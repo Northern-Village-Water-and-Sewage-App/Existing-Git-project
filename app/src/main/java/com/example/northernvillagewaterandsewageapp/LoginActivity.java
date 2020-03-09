@@ -15,7 +15,10 @@ public class LoginActivity extends AppCompatActivity {
     protected EditText userName;
     protected EditText userPin;
     protected Button enterButton;
-
+    Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
+    Toast toastEmpty = Toast.makeText(getApplicationContext(), "One of the fields is empty!", Toast.LENGTH_SHORT);
+    String userInput = userName.getText().toString().trim();
+    String PIN_input = userPin.getText().toString().trim();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +28,6 @@ public class LoginActivity extends AppCompatActivity {
         userName = findViewById(R.id.UserNameText);
         userPin = findViewById(R.id.PinText);
         enterButton = findViewById(R.id.EnterButton);
-
-
 
     }
 
@@ -38,41 +39,78 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Pseudo code: send username to database, get back pin and user type, if pin matches use the database user type to goto next activity                     //NEED CODE HERE
+                //Pseudo code: send username to database, get back pin and user type. If pin matches, it uses the database user type to go to next activity                     //NEED CODE HERE
 
                 //for testing, gets the user type from the username edit text instead of the database                                                                     //FOR TESTING, TO BE REMOVED
-                String userInput = userName.getText().toString().trim();
-                int pinInput = Integer.parseInt(userPin.getText().toString());
-
-                Toast toast = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_LONG);
-
-                //depending on user type goes to different activities
-                if (!userInput.equals("Matt") || (pinInput != 111))
+                if (validateInput_Manager())
                 {
-                    toast.show();
-                }
-                else{
                     goToManagerActivity();
                 }
-                if (!userInput.equals("Red") || (pinInput != 222))
+                else if (validateInput_Resident())
                 {
-                       toast.show();
-                }
-                else{
                     goToResidentActivity();
                 }
-                if (!userInput.equals("Dean") || (pinInput != 333))
+                else if (validateInput_Driver())
                 {
-                        toast.show();
-                }
-                else {
                     goToDriverActivity();
                 }
-
             }
         });
     }
+    // Checks for valid manager name and pin input
+    public boolean validateInput_Manager()
+    {
+        if (userInput.isEmpty() || PIN_input.isEmpty()) {
+            toastEmpty.show();
+            return false;
+        }
+        int Pin = Integer.parseInt(userPin.getText().toString());
+        if (userInput.equals("Matt") && (Pin == 111)){
+            userName.setError(null); userPin.setError(null);
+            return true;
+        }
+        else {
+            toastInvalid.show();
+            return false;
+        }
 
+    }
+    // Checks for valid resident name and pin input
+    public boolean validateInput_Resident()
+    {
+        if (userInput.isEmpty() || PIN_input.isEmpty()) {
+            toastEmpty.show();
+            return false;
+        }
+        int Pin = Integer.parseInt(userPin.getText().toString());
+        if (userInput.equals("Red") && (Pin == 222)){
+            userName.setError(null); userPin.setError(null);
+            return true;
+        }
+        else {
+            toastInvalid.show();
+            return false;
+        }
+
+    }
+    // Checks for valid driver name and pin input
+    public boolean validateInput_Driver()
+    {
+        if (userInput.isEmpty() || PIN_input.isEmpty()) {
+            toastEmpty.show();
+            return false;
+        }
+        int Pin = Integer.parseInt(userPin.getText().toString());
+        if (userInput.equals("Dean") && (Pin == 333)){
+            userName.setError(null); userPin.setError(null);
+            return true;
+        }
+        else {
+            toastInvalid.show();
+            return false;
+        }
+
+    }
     public void goToManagerActivity()
     {
         Intent managerIntent = new Intent(LoginActivity.this, ManagerActivity.class);
