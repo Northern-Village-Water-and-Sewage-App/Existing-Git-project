@@ -15,6 +15,7 @@ public class DriverActivity extends AppCompatActivity {
 
     protected ListView driverWorklistListView;
     protected Button addServiceButton;
+    protected Button driverReportButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class DriverActivity extends AppCompatActivity {
 
         driverWorklistListView = findViewById(R.id.DriverWorklistListView);
         addServiceButton = findViewById(R.id.manualserviceButton);
+        driverReportButton = findViewById(R.id.driverMakeReportButton);
 
         setUpDriverUI();
 
@@ -36,6 +38,12 @@ public class DriverActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 manualDemand();
+            }
+        });
+        driverReportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openReportFragment();
             }
         });
     }
@@ -64,6 +72,12 @@ public class DriverActivity extends AppCompatActivity {
         driverWorklistListView.setAdapter(arrayAdapter);
     }
 
+    //Open report fragment
+    protected void openReportFragment(){
+        DriverReportFragment driverReportFragment = new DriverReportFragment();
+        driverReportFragment.show(getSupportFragmentManager(), "Dialog");
+    }
+
 
     //back navigation working, 3 next functions
     @Override
@@ -82,4 +96,5 @@ public class DriverActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
 }
