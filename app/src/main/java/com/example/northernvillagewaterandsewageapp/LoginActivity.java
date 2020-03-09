@@ -15,10 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     protected EditText userName;
     protected EditText userPin;
     protected Button enterButton;
-    Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
-    Toast toastEmpty = Toast.makeText(getApplicationContext(), "One of the fields is empty!", Toast.LENGTH_SHORT);
-    String userInput = userName.getText().toString().trim();
-    String PIN_input = userPin.getText().toString().trim();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +57,11 @@ public class LoginActivity extends AppCompatActivity {
     // Checks for valid manager name and pin input
     public boolean validateInput_Manager()
     {
+        Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
+        Toast toastEmpty = Toast.makeText(getApplicationContext(), "One of the fields is empty!", Toast.LENGTH_SHORT);
+        String userInput = userName.getText().toString().trim();
+        String PIN_input = userPin.getText().toString().trim();
+
         if (userInput.isEmpty() || PIN_input.isEmpty()) {
             toastEmpty.show();
             return false;
@@ -78,6 +80,11 @@ public class LoginActivity extends AppCompatActivity {
     // Checks for valid resident name and pin input
     public boolean validateInput_Resident()
     {
+        Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
+        Toast toastEmpty = Toast.makeText(getApplicationContext(), "One of the fields is empty!", Toast.LENGTH_SHORT);
+        String userInput = userName.getText().toString().trim();
+        String PIN_input = userPin.getText().toString().trim();
+
         if (userInput.isEmpty() || PIN_input.isEmpty()) {
             toastEmpty.show();
             return false;
@@ -96,6 +103,11 @@ public class LoginActivity extends AppCompatActivity {
     // Checks for valid driver name and pin input
     public boolean validateInput_Driver()
     {
+        Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
+        Toast toastEmpty = Toast.makeText(getApplicationContext(), "One of the fields is empty!", Toast.LENGTH_SHORT);
+        String userInput = userName.getText().toString().trim();
+        String PIN_input = userPin.getText().toString().trim();
+
         if (userInput.isEmpty() || PIN_input.isEmpty()) {
             toastEmpty.show();
             return false;
