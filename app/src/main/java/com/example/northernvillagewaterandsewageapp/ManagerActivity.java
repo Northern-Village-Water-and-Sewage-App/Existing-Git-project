@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -16,30 +18,14 @@ import java.util.ArrayList;
 
 public class ManagerActivity extends AppCompatActivity {
 
-    protected Button analyticsButton;
-    protected Button getReportsButton;
     protected Button addServiceButton;
-    protected Button disableResidentButton;
-    protected Button addResidentButton;
-    protected Button addDriverButton;
-    protected Button messageButton;
     protected ListView worklistListView;
-
+    protected Integer HiddenOption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
-
-        analyticsButton = findViewById(R.id.analyticsButton);
-        addResidentButton = findViewById(R.id.addResidentButton);
-        addDriverButton = findViewById(R.id.addDriverButton);
-        getReportsButton = findViewById(R.id.getReportButton);
-        addServiceButton = findViewById(R.id.manualserviceButton);
-        disableResidentButton = findViewById(R.id.disableResidentButton);
-        messageButton = findViewById(R.id.messageButton);
-        worklistListView = findViewById(R.id.WorklistListView);
-
 
         setUpManagerUI();
 
@@ -48,55 +34,30 @@ public class ManagerActivity extends AppCompatActivity {
 
     protected void setUpManagerUI()
     {
-        // Adding a new resident
-        addResidentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        addServiceButton = findViewById(R.id.manualserviceButton);
+        worklistListView = findViewById(R.id.WorklistListView);
 
-                addResident();
+        //a drop down menu to hide less used features
+        Spinner hiddenOptionsSpinner = findViewById(R.id.managerHiddenOptionsSpinner);
+        hiddenOptionsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //gets the selection of the drop down menu
+                HiddenOption = position;
+
+                //uses the selectrion to open up the right fragment
+                if (HiddenOption == 1){addResident();}
+                else if (HiddenOption == 2){addDriver();}
+                else if (HiddenOption == 3){disableUser();}
+                else if (HiddenOption == 4){getReports();}
+                else if (HiddenOption == 5){putMessage();}
+                else if (HiddenOption == 6){goToAnalytics();}
+
             }
-        });
 
-        // Removing an existing resident or driver
-        disableResidentButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
-                disableResident();
-            }
-        });
-
-        // Accessing the manager analytics
-        analyticsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                goToAnalytics();
-            }
-        });
-
-        // Gets the manager reports
-        getReportsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                getReports();
-            }
-        });
-
-        //Adding a new driver
-        addDriverButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addDriver();
-            }
-        });
-
-        //set the message
-        messageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                putMessage();
             }
         });
 
@@ -146,7 +107,7 @@ public class ManagerActivity extends AppCompatActivity {
         createUser.show(getSupportFragmentManager(), "Dialog");
     }
     // Function to disable an existing resident from the database
-    protected void disableResident()
+    protected void disableUser()
     {
         DisableUserFragment disableUserFragment = new DisableUserFragment();
         disableUserFragment.show(getSupportFragmentManager(), "Dialog");
@@ -167,7 +128,8 @@ public class ManagerActivity extends AppCompatActivity {
 
     // Function to make the messaging system work
     protected void putMessage(){
-
+        MessageFragment messageFragment = new MessageFragment();
+        messageFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
     // Function to make manual demand work

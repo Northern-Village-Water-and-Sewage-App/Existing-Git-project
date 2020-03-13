@@ -53,4 +53,13 @@
         <item>KRG</item>
         <item>Makivik</item>
     </string-array>
+    <string-array name="ManagerHiddenOptions">
+        <item>Other features</item>
+        <item>Add Resident</item>
+        <item>Add Driver</item>
+        <item>Disable Resident</item>
+        <item>Get Reports</item>
+        <item>Set Message</item>
+        <item>Analytics</item>
+    </string-array>
 </resources>
