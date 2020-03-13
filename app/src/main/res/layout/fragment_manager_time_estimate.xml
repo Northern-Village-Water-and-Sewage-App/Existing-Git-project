@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/noneManagerTimeEstimateButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="50dp"
+        android:text="None" />
+
+    <Button
+        android:id="@+id/onTheWayManagerTimeEstimateButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="120dp"
+        android:text="On the Way" />
+
+    <Button
+        android:id="@+id/beforeBreakManagerTimeEstimateButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="190dp"
+        android:text="Before Break" />
+
+    <Button
+        android:id="@+id/todayManagerTimeEstimateButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="260dp"
+        android:text="Today" />
+
+    <Button
+        android:id="@+id/tomorrowManagerTimeEstimateButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="330dp"
+        android:text="Tomorrow" />
+
+    <Button
+        android:id="@+id/ignoreManagerTimeEstimateButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="400dp"
+        android:text="Ignore" />
+
+    <Button
+        android:id="@+id/deleteManagerTimeEstimateButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="470dp"
+        android:text="Delete" />
+
+    <Button
+        android:id="@+id/cancelManagerTimeEstimateButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="540dp"
+        android:layout_marginBottom="50dp"
+        android:text="Cancel" />
+</RelativeLayout>

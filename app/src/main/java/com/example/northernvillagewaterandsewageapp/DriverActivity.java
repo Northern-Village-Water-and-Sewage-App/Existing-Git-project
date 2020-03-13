@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -70,6 +71,16 @@ public class DriverActivity extends AppCompatActivity {
         }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, worklistListText);
         driverWorklistListView.setAdapter(arrayAdapter);
+
+        //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
+        driverWorklistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //need to pass other stuff here to make this work                                                                                                            ************************
+                DriverTimeEstimateFragment driverTimeEstimateFragment = new DriverTimeEstimateFragment();
+               driverTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
+            }
+        });
     }
 
     //Open report fragment

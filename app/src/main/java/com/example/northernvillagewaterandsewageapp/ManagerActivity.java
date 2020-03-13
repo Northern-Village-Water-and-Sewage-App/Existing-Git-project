@@ -92,6 +92,16 @@ public class ManagerActivity extends AppCompatActivity {
         }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, worklistListText);
         worklistListView.setAdapter(arrayAdapter);
+
+        //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
+        worklistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               //need to pass other stuff here to make this work                                                                                                            ************************
+                ManagerTimeEstimateFragment managerTimeEstimateFragment = new ManagerTimeEstimateFragment();
+               managerTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
+            }
+        });
     }
 
     // Function that shows the manager analytics when its button is clicked
