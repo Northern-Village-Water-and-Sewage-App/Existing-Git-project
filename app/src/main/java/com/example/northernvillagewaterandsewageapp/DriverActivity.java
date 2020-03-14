@@ -10,6 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.northernvillagewaterandsewageapp.Fragments.DriverReportFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.DriverTimeEstimateFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
+
 import java.util.ArrayList;
 
 public class DriverActivity extends AppCompatActivity {

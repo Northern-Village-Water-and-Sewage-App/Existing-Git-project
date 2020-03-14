@@ -12,7 +12,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.northernvillagewaterandsewageapp.Fragments.CreateDriverFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.CreateResidentFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.DisableUserFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
 
 import java.util.ArrayList;
 

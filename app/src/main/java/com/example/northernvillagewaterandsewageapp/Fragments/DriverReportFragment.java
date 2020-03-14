@@ -1,4 +1,4 @@
-package com.example.northernvillagewaterandsewageapp;
+package com.example.northernvillagewaterandsewageapp.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,8 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.northernvillagewaterandsewageapp.R;
 
 public class DriverReportFragment extends DialogFragment {
 

@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
+
 public class ResidentActivity extends AppCompatActivity {
 
     protected Button deliveryButton;
