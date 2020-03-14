@@ -5,12 +5,14 @@ public class User {
     String userName;
     Integer PIN;
     Integer userType;
+    Integer HouseNum;
 
     //constructor
-    public User(String userName, Integer PIN, Integer userType) {
+    public User(String userName, Integer PIN, Integer userType, Integer houseNum) {
         this.userName = userName;
         this.PIN = PIN;
         this.userType = userType;
+        HouseNum = houseNum;
     }
 
     public String getUserName() {
@@ -35,5 +37,13 @@ public class User {
 
     public void setUserType(Integer userType) {
         this.userType = userType;
+    }
+
+    public Integer getHouseNum() {
+        return HouseNum;
+    }
+
+    public void setHouseNum(Integer houseNum) {
+        HouseNum = houseNum;
     }
 }

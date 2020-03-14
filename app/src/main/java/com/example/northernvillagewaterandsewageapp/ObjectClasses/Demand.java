@@ -3,15 +3,15 @@ package com.example.northernvillagewaterandsewageapp.ObjectClasses;
 public class Demand {
 
     String DemandType;
-    Integer HouseNum;
     Integer TimeOfDemand;
+    User HouseNum;
 
     //constructor
 
-    public Demand(String demandType, Integer houseNum, Integer timeOfDemand) {
+    public Demand(String demandType, Integer timeOfDemand, User houseNum) {
         DemandType = demandType;
-        HouseNum = houseNum;
         TimeOfDemand = timeOfDemand;
+        HouseNum = houseNum;
     }
 
     public String getDemandType() {
@@ -22,19 +22,19 @@ public class Demand {
         DemandType = demandType;
     }
 
-    public Integer getHouseNum() {
-        return HouseNum;
-    }
-
-    public void setHouseNum(Integer houseNum) {
-        HouseNum = houseNum;
-    }
-
     public Integer getTimeOfDemand() {
         return TimeOfDemand;
     }
 
     public void setTimeOfDemand(Integer timeOfDemand) {
         TimeOfDemand = timeOfDemand;
+    }
+
+    public User getHouseNum() {
+        return HouseNum;
+    }
+
+    public void setHouseNum(User houseNum) {
+        HouseNum = houseNum;
     }
 }
