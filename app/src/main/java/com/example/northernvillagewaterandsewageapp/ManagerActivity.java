@@ -51,7 +51,7 @@ public class ManagerActivity extends AppCompatActivity {
                 //gets the selection of the drop down menu
                 HiddenOption = position;
 
-                //uses the selectrion to open up the right fragment
+                //uses the selection to open up the right fragment
                 if (HiddenOption == 1){addResident();}
                 else if (HiddenOption == 2){addDriver();}
                 else if (HiddenOption == 3){disableUser();}
