@@ -7,6 +7,7 @@ import androidx.room.Insert;
 
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.Complaint;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.Demand;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.DisableUser;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
 
@@ -77,11 +78,13 @@ public class DBHelper {
     }*/
 
     //Managers can disable residents
-    /*public void disableResident(String username, Time disableTime){
-        Set ignore user for username;
-        setIgnoreTime for username;
+    public void disableResident(String username, int disableTime, int timeDuration){
+        DisableUser disableUser = null;
+        disableUser.setUserName(username);
+        disableUser.setDisableTime(disableTime);
+        disableUser.setTimeDuration(timeDuration);
         return;
-    }*/
+    }
 
     //Managers can get the reports drivers made
     /*public void getReports(int company){
