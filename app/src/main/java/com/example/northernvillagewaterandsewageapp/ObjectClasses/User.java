@@ -8,10 +8,10 @@ public class User {
     Integer HouseNum;
 
     //constructor
-    public User(String userName, Integer PIN, Integer userType, Integer houseNum) {
-        this.userName = userName;
-        this.PIN = PIN;
-        this.userType = userType;
+    public User(String Name, Integer pin, Integer usertype, Integer houseNum) {
+        userName = Name;
+        PIN = pin;
+        userType = usertype;
         HouseNum = houseNum;
     }
 

@@ -118,11 +118,11 @@ public class LoginActivity extends AppCompatActivity {
         int Pin = Integer.parseInt(userPin.getText().toString());
         if (!usernameInput.equals("Red") || !(Pin == 222)){
             toastInvalid.show();
-            return true;
+            return false;
         }
         else {
             userName.setError(null); userPin.setError(null);
-            return false;
+            return true;
         }
 
     }

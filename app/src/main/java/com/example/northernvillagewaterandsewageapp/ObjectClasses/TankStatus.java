@@ -1,39 +1,43 @@
 package com.example.northernvillagewaterandsewageapp.ObjectClasses;
 
+import java.util.Random;
+
 public class TankStatus {
 
-    Integer WaterHeight;
-    Integer WaterAlarm;
-    Integer SewageAlarm;
+    int WaterHeight;
+    int WaterAlarm;
+    int SewageAlarm;
 
     //constructor
-    public TankStatus(Integer waterHeight, Integer waterAlarm, Integer sewageAlarm) {
-        WaterHeight = waterHeight;
-        WaterAlarm = waterAlarm;
-        SewageAlarm = sewageAlarm;
+    public TankStatus() {
+        int random = new Random().nextInt(101);
+
+        WaterHeight = random;
+        WaterAlarm = 20;
+        SewageAlarm = 15;
     }
 
-    public Integer getWaterHeight() {
+    public int getWaterHeight() {
         return WaterHeight;
     }
 
-    public void setWaterHeight(Integer waterHeight) {
+    public void setWaterHeight(int waterHeight) {
         WaterHeight = waterHeight;
     }
 
-    public Integer getWaterAlarm() {
+    public int getWaterAlarm() {
         return WaterAlarm;
     }
 
-    public void setWaterAlarm(Integer waterAlarm) {
+    public void setWaterAlarm(int waterAlarm) {
         WaterAlarm = waterAlarm;
     }
 
-    public Integer getSewageAlarm() {
+    public int getSewageAlarm() {
         return SewageAlarm;
     }
 
-    public void setSewageAlarm(Integer sewageAlarm) {
+    public void setSewageAlarm(int sewageAlarm) {
         SewageAlarm = sewageAlarm;
     }
 }

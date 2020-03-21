@@ -19,7 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TestText = findViewById(R.id.textTextView);
+        TestText = findViewById(R.id.testTextView);
     }
 
     //back navigation working, 3 next functions

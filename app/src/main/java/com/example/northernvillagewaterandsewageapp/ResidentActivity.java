@@ -14,13 +14,15 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
+
+import java.util.Random;
 
 public class ResidentActivity extends AppCompatActivity {
 
     protected Button deliveryButton;
     protected Button analyticsButton;
     protected ProgressBar progressBar;
-    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class ResidentActivity extends AppCompatActivity {
         analyticsButton = findViewById(R.id.analyticsButton);
 
         progressBar = findViewById(R.id.progressBar);
-        progressBar.setProgress(70);
+        progressBar.setProgress(50);
 
         setUpResidentUI();
 
@@ -48,6 +50,8 @@ public class ResidentActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int newWaterHeight = new TankStatus().getWaterHeight();
+
         switch (item.getItemId()) {
             case R.id.subitem1:
                 goToLogin();
@@ -55,9 +59,21 @@ public class ResidentActivity extends AppCompatActivity {
             case R.id.subitem2:
                 goToSettingsActivity();
                 return true;
+            case R.id.subitem3:
+                //updateInfo();
+                progressBar.setProgress(newWaterHeight);
+                return true;
             default:
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //Gets updated tank info
+    protected void updateInfo()
+    {
+        //tankStatus.getSewageAlarm();
+        //tankStatus.getWaterAlarm();
+        //tankStatus.getWaterHeight();
     }
 
     protected void setUpResidentUI()
@@ -84,11 +100,11 @@ public class ResidentActivity extends AppCompatActivity {
     }
     protected void displayCurrentWater()
     {
-
+        //dbHelper.GetTankInfo();
     }
     protected void displayCurrentSewage()
     {
-
+        //tankStatus.getSewageAlarm();
     }
     protected void getTimeDeliveryEstimate()
     {
