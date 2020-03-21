@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,6 +39,29 @@ public class ManagerActivity extends AppCompatActivity {
         setUpManagerUI();
 
         loadListView();
+    }
+
+    // Logout and settings menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.subitem1:
+                goToLogin();
+                return true;
+            case R.id.subitem2:
+                goToSettingsActivity();
+                return true;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected void setUpManagerUI()
@@ -170,6 +196,12 @@ public class ManagerActivity extends AppCompatActivity {
     //GoTo Login
     protected void goToLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    // Goes to settings activity
+    private void goToSettingsActivity() {
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 

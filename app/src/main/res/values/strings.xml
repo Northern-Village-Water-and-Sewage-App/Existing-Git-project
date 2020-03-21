@@ -22,6 +22,9 @@
     <string name="add_resident">Add Resident</string>
     <string name="add_driver">Add Driver</string>
     <string name="user_type">User Type</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="user_settings">User Settings</string>
 
     <string-array name="demandTypes">
         <item>Water</item>
@@ -62,4 +65,21 @@
         <item>Set Message</item>
         <item>Analytics</item>
     </string-array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="login">Login</string>
 </resources>

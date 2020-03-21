@@ -9,16 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManagerAnalyticsActivity"
-            android:parentActivityName=".ManagerActivity"/>
-        <activity android:name=".ResidentAnalyticsActivity"
-            android:parentActivityName=".ResidentActivity"/>
-        <activity android:name=".DriverActivity"
-            android:parentActivityName=".LoginActivity"/>
-        <activity android:name=".ManagerActivity"
-            android:parentActivityName=".LoginActivity"/>
-        <activity android:name=".ResidentActivity"
-            android:parentActivityName=".LoginActivity"/>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <activity
+            android:name=".ManagerAnalyticsActivity"
+            android:parentActivityName=".ManagerActivity" />
+        <activity
+            android:name=".ResidentAnalyticsActivity"
+            android:parentActivityName=".ResidentActivity" />
+        <activity
+            android:name=".DriverActivity"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".ManagerActivity"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".ResidentActivity"
+            android:parentActivityName=".LoginActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

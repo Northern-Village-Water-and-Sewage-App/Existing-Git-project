@@ -3,7 +3,10 @@ package com.example.northernvillagewaterandsewageapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +17,11 @@ public class LoginActivity extends AppCompatActivity {
 
     protected EditText userName;
     protected EditText userPin;
-    protected Button enterButton;
-
+    protected Button loginButton;
+    SharedPreferences sharedPreferences;
+    static final String myPreference = "myPrefKey";
+    static final String Name = "nameKey";
+    static final String Pin = "pinKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +30,44 @@ public class LoginActivity extends AppCompatActivity {
 
         userName = findViewById(R.id.UserNameText);
         userPin = findViewById(R.id.PinText);
-        enterButton = findViewById(R.id.EnterButton);
+        loginButton = findViewById(R.id.LoginButton);
+
+        userName.addTextChangedListener(loginTextWatcher);
+        userPin.addTextChangedListener(loginTextWatcher);
 
     }
+
+    public void save(View v)
+    {
+        String usernameInput = userName.getText().toString().trim();
+        String pinInput = userPin.getText().toString();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Name, usernameInput);
+        editor.putString(Pin, pinInput);
+        editor.commit();
+    }
+
+    // Makes the login button clickable only when both fields are full
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String usernameInput = userName.getText().toString().trim();
+            String pinInput = userPin.getText().toString();
+            loginButton.setEnabled(!usernameInput.isEmpty() && !pinInput.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) { }
+    };
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        enterButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -54,20 +89,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     // Checks for valid manager name and pin input
     public boolean validateInput_Manager()
     {
         Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
-        Toast toastEmpty = Toast.makeText(getApplicationContext(), "One of the fields is empty!", Toast.LENGTH_SHORT);
-        String userInput = userName.getText().toString().trim();
-        String PIN_input = userPin.getText().toString().trim();
+        String usernameInput = userName.getText().toString().trim();
+        String pinInput = userPin.getText().toString();
 
-        if (userInput.isEmpty() || PIN_input.isEmpty()) {
-            toastEmpty.show();
-            return false;
-        }
         int Pin = Integer.parseInt(userPin.getText().toString());
-        if (userInput.equals("Matt") && (Pin == 111)){
+        if (usernameInput.equals("Matt") && (Pin == 111)){
             userName.setError(null); userPin.setError(null);
             return true;
         }
@@ -81,21 +112,16 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validateInput_Resident()
     {
         Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
-        Toast toastEmpty = Toast.makeText(getApplicationContext(), "One of the fields is empty!", Toast.LENGTH_SHORT);
-        String userInput = userName.getText().toString().trim();
-        String PIN_input = userPin.getText().toString().trim();
+        String usernameInput = userName.getText().toString().trim();
+        String pinInput = userPin.getText().toString();
 
-        if (userInput.isEmpty() || PIN_input.isEmpty()) {
-            toastEmpty.show();
-            return false;
-        }
         int Pin = Integer.parseInt(userPin.getText().toString());
-        if (userInput.equals("Red") && (Pin == 222)){
-            userName.setError(null); userPin.setError(null);
+        if (!usernameInput.equals("Red") || !(Pin == 222)){
+            toastInvalid.show();
             return true;
         }
         else {
-            toastInvalid.show();
+            userName.setError(null); userPin.setError(null);
             return false;
         }
 
@@ -104,16 +130,11 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validateInput_Driver()
     {
         Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
-        Toast toastEmpty = Toast.makeText(getApplicationContext(), "One of the fields is empty!", Toast.LENGTH_SHORT);
-        String userInput = userName.getText().toString().trim();
-        String PIN_input = userPin.getText().toString().trim();
+        String usernameInput = userName.getText().toString().trim();
+        String pinInput = userPin.getText().toString();
 
-        if (userInput.isEmpty() || PIN_input.isEmpty()) {
-            toastEmpty.show();
-            return false;
-        }
         int Pin = Integer.parseInt(userPin.getText().toString());
-        if (userInput.equals("Dean") && (Pin == 333)){
+        if (usernameInput.equals("Dean") && (Pin == 333)){
             userName.setError(null); userPin.setError(null);
             return true;
         }
