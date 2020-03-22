@@ -3,7 +3,9 @@ package com.example.northernvillagewaterandsewageapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,11 +27,13 @@ import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
 
 import java.util.ArrayList;
 
+
 public class ManagerActivity extends AppCompatActivity {
 
     protected Button addServiceButton;
     protected ListView worklistListView;
     protected Integer HiddenOption;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

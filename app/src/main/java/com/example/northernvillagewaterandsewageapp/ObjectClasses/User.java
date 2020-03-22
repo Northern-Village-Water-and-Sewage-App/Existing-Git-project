@@ -1,18 +1,28 @@
 package com.example.northernvillagewaterandsewageapp.ObjectClasses;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import static com.example.northernvillagewaterandsewageapp.LoginActivity.Name;
+import static com.example.northernvillagewaterandsewageapp.LoginActivity.userInfo;
+import com.example.northernvillagewaterandsewageapp.R;
+
 public class User {
 
     String userName;
-    Integer PIN;
-    Integer userType;
-    Integer HouseNum;
+    int PIN;
+    int userType;
+    int HouseNum;
 
     //constructor
-    public User(String Name, Integer pin, Integer usertype, Integer houseNum) {
-        userName = Name;
-        PIN = pin;
-        userType = usertype;
-        HouseNum = houseNum;
+    public User() {
+        //SharedPreferences sharedPreferences = getSharedPreferences(userInfo, Context.MODE_PRIVATE);
+        //String name = sharedPreferences.getString(Name, "");
+
+        userName = "name";
+        PIN = 111;
+        userType = 1;
+        HouseNum = 12;
     }
 
     public String getUserName() {
@@ -23,27 +33,27 @@ public class User {
         this.userName = userName;
     }
 
-    public Integer getPIN() {
+    public int getPIN() {
         return PIN;
     }
 
-    public void setPIN(Integer PIN) {
+    public void setPIN(int PIN) {
         this.PIN = PIN;
     }
 
-    public Integer getUserType() {
+    public int getUserType() {
         return userType;
     }
 
-    public void setUserType(Integer userType) {
+    public void setUserType(int userType) {
         this.userType = userType;
     }
 
-    public Integer getHouseNum() {
+    public int getHouseNum() {
         return HouseNum;
     }
 
-    public void setHouseNum(Integer houseNum) {
+    public void setHouseNum(int houseNum) {
         HouseNum = houseNum;
     }
 }

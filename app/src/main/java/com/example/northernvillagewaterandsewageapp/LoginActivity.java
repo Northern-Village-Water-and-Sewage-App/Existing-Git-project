@@ -2,6 +2,7 @@ package com.example.northernvillagewaterandsewageapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,10 +19,10 @@ public class LoginActivity extends AppCompatActivity {
     protected EditText userName;
     protected EditText userPin;
     protected Button loginButton;
-    SharedPreferences sharedPreferences;
-    static final String myPreference = "myPrefKey";
-    static final String Name = "nameKey";
-    static final String Pin = "pinKey";
+
+    public static final String userInfo = "infoKey";
+    public static final String Name = "nameKey";
+    public static final String Pin = "pinKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +38,16 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void save(View v)
+    public void saveInfo(View v)
     {
+        SharedPreferences sharedPreferences = getSharedPreferences(userInfo, Context.MODE_PRIVATE);
         String usernameInput = userName.getText().toString().trim();
         String pinInput = userPin.getText().toString();
+
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Name, usernameInput);
         editor.putString(Pin, pinInput);
-        editor.commit();
+        editor.apply();
     }
 
     // Makes the login button clickable only when both fields are full
@@ -86,6 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     goToDriverActivity();
                 }
+
+                saveInfo(v);
             }
         });
     }
