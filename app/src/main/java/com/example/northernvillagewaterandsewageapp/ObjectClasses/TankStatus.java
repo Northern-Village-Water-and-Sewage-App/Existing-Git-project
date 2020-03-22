@@ -10,11 +10,12 @@ public class TankStatus {
 
     //constructor
     public TankStatus() {
-        int random = new Random().nextInt(101);
+        int randomWater = new Random().nextInt(101);
+        int randomSewage = new Random().nextInt(3);
 
-        WaterHeight = random;
-        WaterAlarm = 20;
-        SewageAlarm = 15;
+        WaterHeight = randomWater;
+        WaterAlarm = randomWater;
+        SewageAlarm = randomSewage;
     }
 
     public int getWaterHeight() {

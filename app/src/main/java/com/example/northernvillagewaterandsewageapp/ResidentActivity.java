@@ -4,6 +4,8 @@ package com.example.northernvillagewaterandsewageapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -22,6 +24,8 @@ public class ResidentActivity extends AppCompatActivity {
 
     protected Button deliveryButton;
     protected Button analyticsButton;
+    protected Button waterAlarm;
+    protected Button sewageAlarm;
     protected ProgressBar progressBar;
 
     @Override
@@ -29,11 +33,15 @@ public class ResidentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident);
 
+        int waterLevel = new TankStatus().getWaterHeight();
+
         deliveryButton = findViewById(R.id.manualDeliveryButton);
         analyticsButton = findViewById(R.id.analyticsButton);
+        waterAlarm = findViewById(R.id.waterAlarm);
+        sewageAlarm = findViewById(R.id.sewageAlarm);
 
         progressBar = findViewById(R.id.progressBar);
-        progressBar.setProgress(50);
+        progressBar.setProgress(waterLevel);
 
         setUpResidentUI();
 
@@ -50,8 +58,6 @@ public class ResidentActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        int newWaterHeight = new TankStatus().getWaterHeight();
-
         switch (item.getItemId()) {
             case R.id.subitem1:
                 goToLogin();
@@ -60,20 +66,55 @@ public class ResidentActivity extends AppCompatActivity {
                 goToSettingsActivity();
                 return true;
             case R.id.subitem3:
-                //updateInfo();
-                progressBar.setProgress(newWaterHeight);
+                updateInfo();
                 return true;
             default:
         }
         return super.onOptionsItemSelected(item);
     }
 
-    //Gets updated tank info
+    //Gets updated tank info with their respective color indications
     protected void updateInfo()
     {
-        //tankStatus.getSewageAlarm();
-        //tankStatus.getWaterAlarm();
-        //tankStatus.getWaterHeight();
+        int newWaterHeight = new TankStatus().getWaterHeight();
+        int newWaterAlarm = new TankStatus().getWaterAlarm();
+        int newSewageAlarm = new TankStatus().getSewageAlarm();
+        progressBar.setProgress(newWaterHeight);
+
+        // Color-wise indication for water level
+        if ((0 <= newWaterHeight && newWaterHeight <= 30)) {
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
+        }
+        else if ((30 < newWaterHeight && newWaterHeight <= 65)) {
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(255, 165, 0)));  // Medium water level
+        }
+        else {
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
+        }
+
+        // Color-wise indication for water alarm
+        if ((0 <= newWaterAlarm && newWaterAlarm <= 30)) {
+            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
+        }
+        else if ((30 < newWaterAlarm && newWaterAlarm <= 65)) {
+            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,165,0	)));  // Medium water level
+        }
+        else {
+            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
+        }
+
+        // Color-wise indication for sewage alarm
+        switch (newSewageAlarm) {
+            case (0):
+                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Low sewage
+                break;
+            case (1):
+                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,165,0	)));  // Medium sewage
+                break;
+            case (2):
+                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // High sewage
+                break;
+        }
     }
 
     protected void setUpResidentUI()
