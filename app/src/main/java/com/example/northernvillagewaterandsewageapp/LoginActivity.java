@@ -8,21 +8,37 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
 
     protected EditText userName;
     protected EditText userPin;
+    protected String pinCheck = "123";
+    protected String userType;
     protected Button loginButton;
 
     public static final String userInfo = "infoKey";
     public static final String Name = "nameKey";
     public static final String Pin = "pinKey";
+
+    private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +52,11 @@ public class LoginActivity extends AppCompatActivity {
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);
 
+        mQueue = Volley.newRequestQueue(this);
+
     }
 
-    public void saveInfo(View v)
-    {
+    public void saveInfo(View v) {
         SharedPreferences sharedPreferences = getSharedPreferences(userInfo, Context.MODE_PRIVATE);
         String usernameInput = userName.getText().toString().trim();
         String pinInput = userPin.getText().toString();
@@ -53,7 +70,8 @@ public class LoginActivity extends AppCompatActivity {
     // Makes the login button clickable only when both fields are full
     private TextWatcher loginTextWatcher = new TextWatcher() {
         @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -63,7 +81,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         @Override
-        public void afterTextChanged(Editable s) { }
+        public void afterTextChanged(Editable s) {
+        }
     };
 
     @Override
@@ -73,94 +92,61 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Pseudo code: send username to database, get back pin and user type. If pin matches, it uses the database user type to go to next activity                     //NEED CODE HERE
-
-                //for testing, gets the user type from the username edit text instead of the database                                                                     //FOR TESTING, TO BE REMOVED
-                if (validateInput_Manager())
-                {
-                    goToManagerActivity();
-                }
-                else if (validateInput_Resident())
-                {
-                    goToResidentActivity();
-                }
-                else if (validateInput_Driver())
-                {
-                    goToDriverActivity();
-                }
-
-                saveInfo(v);
+                setUserPinFromUsername(userName.getText().toString().trim());
             }
         });
     }
 
-    // Checks for valid manager name and pin input
-    public boolean validateInput_Manager()
-    {
-        Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
-        String usernameInput = userName.getText().toString().trim();
-        String pinInput = userPin.getText().toString();
+    private void setUserPinFromUsername(String username) {
+        String url = "http://13.59.214.194:5000/get_user/{username}".replace("{username}", username);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    JSONObject user = response.getJSONObject(0);
+                    pinCheck = user.getString("pin");
+                    userType = user.getString("user_type");
 
-        int Pin = Integer.parseInt(userPin.getText().toString());
-        if (usernameInput.equals("Matt") && (Pin == 111)){
-            userName.setError(null); userPin.setError(null);
-            return true;
-        }
-        else {
-            toastInvalid.show();
-            return false;
-        }
-
+                    String pinInput = userPin.getText().toString();
+                    if (pinCheck.equals(pinInput)) {
+                        switch (userType) {
+                            case "manager":
+                                goToManagerActivity();
+                                break;
+                            case "resident":
+                                goToResidentActivity();
+                                break;
+                            case "driver":
+                                goToDriverActivity();
+                                break;
+                        }
+                    } else
+                        Toast.makeText(LoginActivity.this, "Incorrect Username/Password", Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+        mQueue.add(request);
     }
-    // Checks for valid resident name and pin input
-    public boolean validateInput_Resident()
-    {
-        Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
-        String usernameInput = userName.getText().toString().trim();
-        String pinInput = userPin.getText().toString();
 
-        int Pin = Integer.parseInt(userPin.getText().toString());
-        if (!usernameInput.equals("Red") || !(Pin == 222)){
-            toastInvalid.show();
-            return false;
-        }
-        else {
-            userName.setError(null); userPin.setError(null);
-            return true;
-        }
-
-    }
-    // Checks for valid driver name and pin input
-    public boolean validateInput_Driver()
-    {
-        Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
-        String usernameInput = userName.getText().toString().trim();
-        String pinInput = userPin.getText().toString();
-
-        int Pin = Integer.parseInt(userPin.getText().toString());
-        if (usernameInput.equals("Dean") && (Pin == 333)){
-            userName.setError(null); userPin.setError(null);
-            return true;
-        }
-        else {
-            toastInvalid.show();
-            return false;
-        }
-
-    }
-    public void goToManagerActivity()
-    {
+    public void goToManagerActivity() {
         Intent managerIntent = new Intent(LoginActivity.this, ManagerActivity.class);
         startActivity(managerIntent);
     }
-    public void goToResidentActivity()
-    {
+
+    public void goToResidentActivity() {
         Intent residentIntent = new Intent(LoginActivity.this, ResidentActivity.class);
         startActivity(residentIntent);
     }
-    public void goToDriverActivity()
-    {
+
+    public void goToDriverActivity() {
         Intent driverIntent = new Intent(LoginActivity.this, DriverActivity.class);
         startActivity(driverIntent);
     }
