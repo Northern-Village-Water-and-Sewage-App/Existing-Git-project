@@ -28,7 +28,8 @@
         android:ems="10"
         android:hint="@string/house_number"
         android:inputType="textPersonName"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:maxLength="8" />
 
     <EditText
         android:id="@+id/driverPinEditText"
@@ -41,7 +42,8 @@
         android:ems="10"
         android:hint="@string/pin"
         android:inputType="number"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:maxLength="3"/>
 
     <Button
         android:id="@+id/pinButton"

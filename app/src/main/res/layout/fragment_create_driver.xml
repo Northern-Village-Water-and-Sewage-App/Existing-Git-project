@@ -28,7 +28,8 @@
         android:ems="10"
         android:hint="PIN"
         android:inputType="number"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:maxLength="3"/>
 
     <Button
         android:id="@+id/pinButton"
