@@ -6,12 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.northernvillagewaterandsewageapp.DBHelper;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
 import com.example.northernvillagewaterandsewageapp.R;
+
+import java.util.Random;
 
 public class CreateDriverFragment extends DialogFragment {
 
@@ -43,13 +48,32 @@ public class CreateDriverFragment extends DialogFragment {
         RandomPinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                                                                                                                                                                    //******
+                Random random = new Random();
+                int randomInt = random.nextInt(99999);
+                PinEditText.setText(Integer.toString(randomInt));
             }
         });
         AddUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {                                                                                                                           //******
-
+            public void onClick(View v) {
+                //gets the parameters for the new user
+                String username = UsernameEditText.getText().toString();
+                if (PinEditText.getText().toString() !="" && username != "") {
+                    Integer pin = Integer.parseInt(PinEditText.getText().toString());
+                    //adds a user by using the db helper
+                    DBHelper dbhelper = new DBHelper(getActivity());
+                    dbhelper.addUser(new User(username, pin, 2));
+                    //Note that it worked
+                    Toast toast = Toast.makeText(getActivity(), "User added", Toast.LENGTH_SHORT);
+                    toast.show();
+                    //dismiss the fragment if this went through
+                    getDialog().dismiss();
+                }
+                //There is a bug here, it goes to the login page                                                        **************************************
+                else{
+                    Toast toast = Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
         CancelAddUserButton.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +85,16 @@ public class CreateDriverFragment extends DialogFragment {
         RemoveUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                                                                                                                                                                    //*******
+                //gets the parameters for the new user
+                String username = UsernameEditText.getText().toString();
+                //removes user by using dbhelper
+                DBHelper dbhelper = new DBHelper(getActivity());
+                dbhelper.removeUser(username);
+                //Note that it worked
+                Toast toast = Toast.makeText(getActivity(), "User removed", Toast.LENGTH_SHORT);
+                toast.show();
+                //dismiss the fragment if this went through
+                getDialog().dismiss();
             }
         });
 

@@ -3,6 +3,7 @@ package com.example.northernvillagewaterandsewageapp;
 import android.provider.ContactsContract;
 import android.util.Log;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.room.Insert;
 
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.Complaint;
@@ -22,7 +23,7 @@ public class DBHelper {
     private static final String TAG = "DBhelper";
 
     //Constructor
-    public DBHelper() {
+    public DBHelper(FragmentActivity activity) {
         Log.d(TAG, "dbHelper constructor.");
 
     }
@@ -67,18 +68,19 @@ public class DBHelper {
     }*/
 
     //Managers add residents and drivers
-    /*public void addUser(User newUser){
-        Insert newUser.userName into usersList table;
-        Insert newUser.userType into usersList table;
-        Insert newUser.PIN into usersList table;
+    public void addUser(User newUser){
+        //Insert newUser.userName into usersList table;
+        //Insert newUser.userType into usersList table;
+        //Insert newUser.PIN into usersList table;
+        //Insert newUser.HouseNum into userListTable; //the drivers and managers won't have a house number, not sure if this will be a bug
         return;
-    }*/
+    }
 
     //Managers remove driver or resident
-    /*public void removeUser(String username){
+    public void removeUser(String username){
         //Remove user from the table using username;
         return;
-    }*/
+    }
 
     //Managers can disable residents
     public void disableResident(String username, int disableTime, int timeDuration){
