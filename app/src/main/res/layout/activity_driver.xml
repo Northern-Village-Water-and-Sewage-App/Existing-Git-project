@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DriverActivity">
+    tools:context=".DriverActivity"
+    android:background="@drawable/gradient_background">
+    <!--android:background="@drawable/gradient_background"-->
 
 
     <ListView
@@ -19,10 +21,13 @@
 
     <Button
         android:id="@+id/driverMakeReportButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="76dp"
-        android:text="Report"
+        android:text="@string/report"
+        android:background="@drawable/round_corner_buttons"
+        android:backgroundTint="#20265C"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.182"
@@ -30,10 +35,13 @@
 
     <Button
         android:id="@+id/manualserviceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="76dp"
         android:text="@string/add_service"
+        android:background="@drawable/round_corner_buttons"
+        android:backgroundTint="#20265C"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.81"

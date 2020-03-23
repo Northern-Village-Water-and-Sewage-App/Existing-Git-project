@@ -1,25 +1,33 @@
 package com.example.northernvillagewaterandsewageapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.FragmentTransaction;
+
+import android.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.widget.TextView;
+
+import com.example.northernvillagewaterandsewageapp.Fragments.SettingsFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    protected TextView TestText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new SettingsFragment())
+                .commit();
+
         //shows back button
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TestText = findViewById(R.id.testTextView);
     }
 
     //back navigation working, 3 next functions

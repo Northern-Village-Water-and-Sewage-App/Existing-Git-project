@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        android:entries="@array/Languages"
+        android:entryValues="@array/Languages"
+        android:title="Language"
+        android:key="switch"
+        android:summary="Change app language"
+        android:drawableStart="@drawable/ic_action_language2_icon"/>
+
+
+</PreferenceScreen>

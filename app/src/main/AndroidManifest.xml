@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"></activity>
+
         <activity
             android:name=".ManagerAnalyticsActivity"
             android:parentActivityName=".ManagerActivity" />
@@ -18,20 +18,27 @@
             android:parentActivityName=".ResidentActivity" />
         <activity
             android:name=".DriverActivity"
+            android:label="Driver"
             android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".ManagerActivity"
+            android:label="Manager"
             android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".ResidentActivity"
+            android:label="Resident"
             android:parentActivityName=".LoginActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SettingsActivity"
+            android:label="Settings" />
+
     </application>
 
 </manifest>

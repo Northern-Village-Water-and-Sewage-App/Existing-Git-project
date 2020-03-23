@@ -65,6 +65,11 @@
         <item>Set Message</item>
         <item>Analytics</item>
     </string-array>
+    <string-array name="Languages">
+        <item>English (United Sates)</item>
+        <item>French (Canada)</item>
+        <item>Inuktitut</item>
+    </string-array>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
@@ -84,4 +89,6 @@
     <string name="login">Login</string>
     <string name="testtextview">TestTextView</string>
     <string name="refresh">Refresh</string>
+    <string name="report">Report</string>
+
 </resources>
