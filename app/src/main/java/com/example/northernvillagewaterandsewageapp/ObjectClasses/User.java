@@ -1,36 +1,43 @@
 package com.example.northernvillagewaterandsewageapp.ObjectClasses;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import static com.example.northernvillagewaterandsewageapp.LoginActivity.Name;
-import static com.example.northernvillagewaterandsewageapp.LoginActivity.userInfo;
-import com.example.northernvillagewaterandsewageapp.R;
-
 public class User {
 
-    String userName;
+    String UserName;
     int PIN;
-    int userType;
-    int HouseNum;
+    //0: manager, 1: resident, 2: driver
+    int Usertype;
+    String HouseNum;
 
     //constructor
     public User() {
         //SharedPreferences sharedPreferences = getSharedPreferences(userInfo, Context.MODE_PRIVATE);
         //String name = sharedPreferences.getString(Name, "");
 
-        userName = "name";
+        UserName = "name";
         PIN = 111;
-        userType = 1;
-        HouseNum = 12;
+        Usertype = 1;
+        HouseNum = "12";
+    }
+
+    public User (String username, int pin, int userType, String houseNum){
+        UserName = username;
+        PIN = pin;
+        Usertype = userType;
+        HouseNum = houseNum;
+    }
+
+    public User (String username, int pin, int userType){
+        UserName = username;
+        PIN = pin;
+        Usertype = userType;
     }
 
     public String getUserName() {
-        return userName;
+        return UserName;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.UserName = userName;
     }
 
     public int getPIN() {
@@ -41,19 +48,19 @@ public class User {
         this.PIN = PIN;
     }
 
-    public int getUserType() {
-        return userType;
+    public int getUsertype() {
+        return Usertype;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setUsertype(int usertype) {
+        this.Usertype = usertype;
     }
 
-    public int getHouseNum() {
+    public String getHouseNum() {
         return HouseNum;
     }
 
-    public void setHouseNum(int houseNum) {
+    public void setHouseNum(String houseNum) {
         HouseNum = houseNum;
     }
 }
