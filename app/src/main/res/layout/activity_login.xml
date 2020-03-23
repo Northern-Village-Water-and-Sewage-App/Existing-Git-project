@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@drawable/gradient_background">
+    tools:context=".LoginActivity">
+    <!--android:background="@drawable/gradient_background"-->
 
 
     <EditText
@@ -44,12 +44,12 @@
         android:layout_width="168dp"
         android:layout_height="53dp"
         android:layout_marginBottom="148dp"
-        android:background="@drawable/round_corner_buttons"
-        android:backgroundTint="#20265C"
         android:text="@string/login"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+    <!--         android:background="@drawable/round_corner_buttons"
+    android:backgroundTint="#20265C" -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

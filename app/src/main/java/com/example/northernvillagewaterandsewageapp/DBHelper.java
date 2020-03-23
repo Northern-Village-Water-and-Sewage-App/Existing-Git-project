@@ -27,6 +27,9 @@ public class DBHelper {
         Log.d(TAG, "dbHelper constructor.");
 
     }
+    public DBHelper() {
+        Log.d(TAG, "dbHelper constructor with out parameters");
+    }
 
     //For login Activity
     public int returnUserType(String username, int userPin){

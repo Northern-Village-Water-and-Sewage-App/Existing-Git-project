@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DriverActivity"
-    android:background="@drawable/gradient_background">
+    tools:context=".DriverActivity" >
     <!--android:background="@drawable/gradient_background"-->
 
 
@@ -19,32 +18,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--         android:background="@drawable/round_corner_buttons"
+        android:backgroundTint="#20265C" -->
+
     <Button
         android:id="@+id/driverMakeReportButton"
-        android:layout_width="108dp"
-        android:layout_height="45dp"
+        android:layout_width="137dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="76dp"
         android:text="@string/report"
-        android:background="@drawable/round_corner_buttons"
-        android:backgroundTint="#20265C"
-        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.182"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/manualserviceButton"
-        android:layout_width="105dp"
-        android:layout_height="47dp"
+        android:layout_width="122dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="76dp"
         android:text="@string/add_service"
-        android:background="@drawable/round_corner_buttons"
-        android:backgroundTint="#20265C"
-        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent" />
+    <!--         android:background="@drawable/round_corner_buttons"
+    android:backgroundTint="#20265C" -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
