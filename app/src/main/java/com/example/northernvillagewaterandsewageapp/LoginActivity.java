@@ -13,16 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
+
 public class LoginActivity extends AppCompatActivity {
 
 
     protected EditText userName;
     protected EditText userPin;
     protected Button loginButton;
+    private int pinInput;
 
-    public static final String userInfo = "infoKey";
-    public static final String Name = "nameKey";
-    public static final String Pin = "pinKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +38,17 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    // Saves login info
     public void saveInfo(View v)
     {
-        SharedPreferences sharedPreferences = getSharedPreferences(userInfo, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
+
         String usernameInput = userName.getText().toString().trim();
-        String pinInput = userPin.getText().toString();
+        //String pinInput = userPin.getText().toString();
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(Name, usernameInput);
-        editor.putString(Pin, pinInput);
+        editor.putString(getString(R.string.user_name), usernameInput);
+        editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
         editor.apply();
     }
 
@@ -76,21 +78,26 @@ public class LoginActivity extends AppCompatActivity {
 
                 //Pseudo code: send username to database, get back pin and user type. If pin matches, it uses the database user type to go to next activity                     //NEED CODE HERE
 
+                saveInfo(v);
+                String username = userName.getText().toString().trim();
+                int pin = Integer.parseInt(userPin.getText().toString());
+                int userType = new DBHelper().returnUserType(username, pin);
                 //for testing, gets the user type from the username edit text instead of the database                                                                     //FOR TESTING, TO BE REMOVED
-                if (validateInput_Manager())
-                {
+
+                if (userType == 0) {
                     goToManagerActivity();
                 }
-                else if (validateInput_Resident())
-                {
+                else if (userType == 1) {
                     goToResidentActivity();
                 }
-                else if (validateInput_Driver())
-                {
+                else if (userType == 2) {
                     goToDriverActivity();
                 }
+                else {
+                    Toast toastInvalid = Toast.makeText(getApplicationContext(), "User does not exist!", Toast.LENGTH_SHORT);
+                    toastInvalid.show();
+                }
 
-                saveInfo(v);
             }
         });
     }
@@ -103,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         String pinInput = userPin.getText().toString();
 
         int Pin = Integer.parseInt(userPin.getText().toString());
+
         if (usernameInput.equals("Matt") && (Pin == 111)){
             userName.setError(null); userPin.setError(null);
             return true;
@@ -121,13 +129,14 @@ public class LoginActivity extends AppCompatActivity {
         String pinInput = userPin.getText().toString();
 
         int Pin = Integer.parseInt(userPin.getText().toString());
-        if (!usernameInput.equals("Red") || !(Pin == 222)){
-            toastInvalid.show();
-            return false;
-        }
-        else {
+
+        if (usernameInput.equals("Red") && (Pin == 222)){
             userName.setError(null); userPin.setError(null);
             return true;
+        }
+        else {
+            toastInvalid.show();
+            return false;
         }
 
     }
@@ -139,6 +148,7 @@ public class LoginActivity extends AppCompatActivity {
         String pinInput = userPin.getText().toString();
 
         int Pin = Integer.parseInt(userPin.getText().toString());
+
         if (usernameInput.equals("Dean") && (Pin == 333)){
             userName.setError(null); userPin.setError(null);
             return true;

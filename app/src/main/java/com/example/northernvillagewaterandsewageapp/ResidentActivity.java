@@ -33,16 +33,14 @@ public class ResidentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident);
 
-        int waterLevel = new TankStatus().getWaterHeight();
 
         deliveryButton = findViewById(R.id.manualDeliveryButton);
         analyticsButton = findViewById(R.id.analyticsButton);
         waterAlarm = findViewById(R.id.waterAlarm);
         sewageAlarm = findViewById(R.id.sewageAlarm);
-
         progressBar = findViewById(R.id.progressBar);
-        progressBar.setProgress(waterLevel);
 
+        updateInfo();
         setUpResidentUI();
 
     }
@@ -77,23 +75,26 @@ public class ResidentActivity extends AppCompatActivity {
     protected void updateInfo()
     {
         int newWaterHeight = new TankStatus().getWaterHeight();
-        int newWaterAlarm = new TankStatus().getWaterAlarm();
+        //int newWaterAlarm = new TankStatus().getWaterAlarm();
         int newSewageAlarm = new TankStatus().getSewageAlarm();
         progressBar.setProgress(newWaterHeight);
 
         // Color-wise indication for water level
         if ((0 <= newWaterHeight && newWaterHeight <= 30)) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
+            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
         }
         else if ((30 < newWaterHeight && newWaterHeight <= 65)) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(255, 165, 0)));  // Medium water level
+            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,165,0	)));
         }
         else {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
+            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
         }
 
         // Color-wise indication for water alarm
-        if ((0 <= newWaterAlarm && newWaterAlarm <= 30)) {
+        /*if ((0 <= newWaterAlarm && newWaterAlarm <= 30)) {
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
         }
         else if ((30 < newWaterAlarm && newWaterAlarm <= 65)) {
@@ -101,7 +102,7 @@ public class ResidentActivity extends AppCompatActivity {
         }
         else {
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
-        }
+        }*/
 
         // Color-wise indication for sewage alarm
         switch (newSewageAlarm) {
