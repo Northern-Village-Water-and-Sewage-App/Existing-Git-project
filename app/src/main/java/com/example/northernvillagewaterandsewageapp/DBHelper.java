@@ -27,13 +27,19 @@ public class DBHelper {
         Log.d(TAG, "dbHelper constructor.");
 
     }
+    public DBHelper() {
+        Log.d(TAG, "dbHelper constructor with out parameters");
+    }
 
     //For login Activity
-    /*public void GetUser(String Username){
-        Integer Pin = from database using username;
-        Integer UserType = from database using username;
-        return new User(Username, Pin, UserType);
-    }*/
+    public int returnUserType(String username, int userPin){
+
+        User user = new User(username, userPin);
+        user.setUserName(username); user.setPIN(userPin);
+        int userType = user.getUserType();
+
+        return userType;
+    }
 
     //For resident Activity
     /*public void GetTankInfo(settings.TankId){

@@ -55,7 +55,7 @@ public class CreateResidentFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 Random random = new Random();
-                int randomInt = random.nextInt(99999);
+                int randomInt = random.nextInt(999);
                 PinEditText.setText(Integer.toString(randomInt));
             }
         });

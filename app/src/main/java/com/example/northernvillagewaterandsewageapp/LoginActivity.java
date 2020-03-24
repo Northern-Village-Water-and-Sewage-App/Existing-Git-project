@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,10 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     protected String pinCheck = "123";
     protected String userType;
     protected Button loginButton;
+    private int pinInput;
 
-    public static final String userInfo = "infoKey";
-    public static final String Name = "nameKey";
-    public static final String Pin = "pinKey";
 
     private RequestQueue mQueue;
 
@@ -56,14 +55,16 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void saveInfo(View v) {
-        SharedPreferences sharedPreferences = getSharedPreferences(userInfo, Context.MODE_PRIVATE);
+    // Saves login info
+    public void saveInfo(View v)
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
         String usernameInput = userName.getText().toString().trim();
-        String pinInput = userPin.getText().toString();
+        //String pinInput = userPin.getText().toString();
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(Name, usernameInput);
-        editor.putString(Pin, pinInput);
+        editor.putString(getString(R.string.user_name), usernameInput);
+        editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
         editor.apply();
     }
 
@@ -92,10 +93,12 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 setUserPinFromUsername(userName.getText().toString().trim());
             }
         });
     }
+
 
     private void setUserPinFromUsername(String username) {
         String url = "http://13.59.214.194:5000/get_user/{username}".replace("{username}", username);
@@ -135,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
         mQueue.add(request);
     }
+
 
     public void goToManagerActivity() {
         Intent managerIntent = new Intent(LoginActivity.this, ManagerActivity.class);

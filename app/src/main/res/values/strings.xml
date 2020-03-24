@@ -90,5 +90,7 @@
     <string name="testtextview">TestTextView</string>
     <string name="refresh">Refresh</string>
     <string name="report">Report</string>
+    <string name="userInfo" />
+    <string name="user_pin" />
 
 </resources>
