@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.DBHelper;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
 import com.example.northernvillagewaterandsewageapp.R;
@@ -28,7 +30,7 @@ public class CreateResidentFragment extends DialogFragment {
     protected Button CancelAddUserButton;
     protected Button RemoveUserButton;
 
-
+    private RequestQueue mQueue;
 
     @Nullable
     @Override
@@ -46,6 +48,8 @@ public class CreateResidentFragment extends DialogFragment {
         CancelAddUserButton = view.findViewById(R.id.cancelAddUserButton);
         RemoveUserButton = view.findViewById(R.id.removeUserButton);
 
+        mQueue = Volley.newRequestQueue(getActivity());
+
         //Makes buttons do something on click
         RandomPinButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +59,7 @@ public class CreateResidentFragment extends DialogFragment {
                 PinEditText.setText(Integer.toString(randomInt));
             }
         });
+
         AddUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,15 +74,13 @@ public class CreateResidentFragment extends DialogFragment {
                     DBHelper dbhelper = new DBHelper(getActivity());
                     dbhelper.addUser(new User(username, pin, 1, houseNum));
                     //Note that it worked
-                    Toast toast = Toast.makeText(getActivity(), "User added", Toast.LENGTH_SHORT);
-                    toast.show();
+                    Toast.makeText(getActivity(), "User added", Toast.LENGTH_SHORT).show();
                     //dismiss the fragment if this went through
                     getDialog().dismiss();
                 }
                 //There is a bug here, it goes to the login page                                                        **************************************
                 else{
-                    Toast toast = Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT);
-                    toast.show();
+                    Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -97,17 +100,11 @@ public class CreateResidentFragment extends DialogFragment {
                 DBHelper dbhelper = new DBHelper(getActivity());
                 dbhelper.removeUser(username);
                 //Note that it worked
-                Toast toast = Toast.makeText(getActivity(), "User removed", Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(getActivity(), "User removed", Toast.LENGTH_SHORT).show();
                 //dismiss the fragment if this went through
                 getDialog().dismiss();
             }
         });
-
-
-
-
-
        return view;
     }
 }

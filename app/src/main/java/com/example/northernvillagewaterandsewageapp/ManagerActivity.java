@@ -66,6 +66,7 @@ public class ManagerActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.settings_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -81,8 +82,7 @@ public class ManagerActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void setUpManagerUI()
-    {
+    protected void setUpManagerUI() {
         addServiceButton = findViewById(R.id.manualserviceButton);
         worklistListView = findViewById(R.id.WorklistListView);
 
@@ -95,12 +95,19 @@ public class ManagerActivity extends AppCompatActivity {
                 HiddenOption = position;
 
                 //uses the selection to open up the right fragment
-                if (HiddenOption == 1){addResident();}
-                else if (HiddenOption == 2){addDriver();}
-                else if (HiddenOption == 3){disableUser();}
-                else if (HiddenOption == 4){getReports();}
-                else if (HiddenOption == 5){putMessage();}
-                else if (HiddenOption == 6){goToAnalytics();}
+                if (HiddenOption == 1) {
+                    addResident();
+                } else if (HiddenOption == 2) {
+                    addDriver();
+                } else if (HiddenOption == 3) {
+                    disableUser();
+                } else if (HiddenOption == 4) {
+                    getReports();
+                } else if (HiddenOption == 5) {
+                    putMessage();
+                } else if (HiddenOption == 6) {
+                    goToAnalytics();
+                }
 
             }
 
@@ -133,7 +140,7 @@ public class ManagerActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     JSONObject e;
-                    for (int pos = 0; pos < response.length(); pos ++ ){
+                    for (int pos = 0; pos < response.length(); pos++) {
                         String temp = "";
                         e = response.getJSONObject(pos);
                         temp += "Time Stamp: " + e.getString("timestamp") + "\n";
@@ -142,7 +149,6 @@ public class ManagerActivity extends AppCompatActivity {
                         temp += "Tank Type: " + e.getString("tank_type") + "\n";
                         temp += "Time Estimate: " + e.getString("estimate") + "\n";
                         worklistListText.add(temp);
-
                     }
                     arrayAdapter.addAll(worklistListText);
                     worklistListView.setAdapter(arrayAdapter);
@@ -171,45 +177,40 @@ public class ManagerActivity extends AppCompatActivity {
     }
 
     // Function that shows the manager analytics when its button is clicked
-    protected void goToAnalytics()
-    {
+    protected void goToAnalytics() {
         Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ResidentAnalyticsActivity.class);
         startActivity(manAnalyticsIntent);
     }
     // Function to add a new resident in the database
-    protected void addResident()
-    {
+    protected void addResident() {
         CreateResidentFragment createUser = new CreateResidentFragment();
         createUser.show(getSupportFragmentManager(), "Dialog");
     }
     // Function to disable an existing resident from the database
-    protected void disableUser()
-    {
+    protected void disableUser() {
         DisableUserFragment disableUserFragment = new DisableUserFragment();
         disableUserFragment.show(getSupportFragmentManager(), "Dialog");
     }
     // Function to add or remove a driver from the database
-    protected void addDriver()
-    {
+    protected void addDriver() {
         CreateDriverFragment addDriverFragment = new CreateDriverFragment();
         addDriverFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
     // Function to get manager reports
-    protected void getReports()
-    {
+    protected void getReports() {
         GetReportFragment getReportFragment = new GetReportFragment();
         getReportFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
     // Function to make the messaging system work
-    protected void putMessage(){
+    protected void putMessage() {
         MessageFragment messageFragment = new MessageFragment();
         messageFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
     // Function to make manual demand work
-    protected void manualDemand(){
+    protected void manualDemand() {
         ManualDemandFragment manualDemandFragment = new ManualDemandFragment();
         manualDemandFragment.show(getSupportFragmentManager(), "Dialog");
     }
@@ -220,15 +221,16 @@ public class ManagerActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         finish();
         goToLogin();
     }
 
     //GoTo Login
-    protected void goToLogin(){
+    protected void goToLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
