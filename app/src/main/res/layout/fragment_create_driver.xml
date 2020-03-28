@@ -10,8 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="100dp"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
@@ -23,13 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="149dp"
+        android:layout_marginEnd="99dp"
         android:ems="10"
         android:hint="@string/pin"
         android:inputType="number"
-        android:textAlignment="center"
-        android:maxLength="3"/>
+        android:maxLength="3"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/pinButton"
@@ -45,10 +49,12 @@
         android:id="@+id/addDriverButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="171dp"
         android:layout_marginTop="250dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/pinButton"
         android:text="@string/add" />
 
     <Button
@@ -69,5 +75,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="320dp"
+        android:layout_marginEnd="171dp"
+        android:layout_toStartOf="@+id/removeDriverButton"
         android:text="@string/cancel" />
 </RelativeLayout>

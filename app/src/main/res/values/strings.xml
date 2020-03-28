@@ -18,6 +18,8 @@
     <string name="settings">Settings</string>
     <string name="logout">Logout</string>
     <string name="user_settings">User Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="complaint">Complaint</string>
 
     <string-array name="demandTypes">
         <item>Water</item>
