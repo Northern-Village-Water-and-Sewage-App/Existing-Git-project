@@ -73,10 +73,9 @@ public class CreateDriverFragment extends DialogFragment {
             public void onClick(View v) {
                 //gets the parameters for the new user
                 String username = UsernameEditText.getText().toString();
-                if (PinEditText.getText().toString() != "" && username != "") {
-                    Integer pin = Integer.parseInt(PinEditText.getText().toString());
+                if (!PinEditText.getText().toString().equals("") && !username.equals("")) {
                     //adds a user by using the db helper
-                    String url = "http://13.59.214.194:5000/add_user/{username}/3/{userpin}".replace("{username}", username).replace("{userpin}", PinEditText.getText().toString());
+                    String url = "http://13.59.214.194:5000/add_driver/{username}/{userpin}".replace("{username}", username).replace("{userpin}", PinEditText.getText().toString());
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {}
@@ -95,9 +94,8 @@ public class CreateDriverFragment extends DialogFragment {
                     getDialog().dismiss();
                 }
                 //There is a bug here, it goes to the login page                                                        **************************************
-                else {
+                else
                     Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT).show();
-                }
             }
         });
         CancelAddUserButton.setOnClickListener(new View.OnClickListener() {
