@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ManagerActivity">
-    <!--android:background="@drawable/gradient_background"-->
 
     <Button
         android:id="@+id/manualserviceButton"
@@ -17,8 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/managerHiddenOptionsSpinner" />
-    <!--         android:background="@drawable/round_corner_buttons"
-        android:backgroundTint="#20265C" -->
 
     <ListView
         android:id="@+id/WorklistListView"
@@ -32,10 +29,11 @@
 
     <Spinner
         android:id="@+id/managerHiddenOptionsSpinner"
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:entries="@array/ManagerHiddenOptions"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/manualserviceButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
