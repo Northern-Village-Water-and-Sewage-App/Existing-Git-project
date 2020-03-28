@@ -21,9 +21,10 @@
         android:id="@+id/WorklistListView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/managerHiddenOptionsSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,12 +32,25 @@
         android:id="@+id/managerHiddenOptionsSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:entries="@array/ManagerHiddenOptions"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/manualserviceButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WorklistListView" />
+
+    <TextView
+        android:id="@+id/workLst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Work List"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/WorklistListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

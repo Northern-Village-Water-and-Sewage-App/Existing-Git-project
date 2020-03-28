@@ -147,8 +147,8 @@ public class ManagerActivity extends AppCompatActivity {
                         temp += "Resident: " + e.getString("username") + "\n";
                         temp += "House Number: " + e.getString("house_number") + "\n";
                         temp += "Tank Type: " + e.getString("tank_type") + "\n";
-                        temp += "Time Estimate: " + e.getString("estimate") + "\n";
-                        worklistListText.add(temp);
+                        temp += "Time Estimate: " + e.getString("estimate");
+                        worklistListText.add("\n" + temp + "\n");
                     }
                     arrayAdapter.addAll(worklistListText);
                     worklistListView.setAdapter(arrayAdapter);
