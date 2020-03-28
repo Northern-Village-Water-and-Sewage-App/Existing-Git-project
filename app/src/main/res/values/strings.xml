@@ -20,6 +20,10 @@
     <string name="user_settings">User Settings</string>
     <string name="cancel">Cancel</string>
     <string name="complaint">Complaint</string>
+    <string name="tank_status_ok">Status: OK</string>
+    <string name="tank_status_warning">Status: Warning</string>
+    <string name="tank_status_critical">Status: Critical</string>
+    <string name="resident_activity_title_text">Tank Information</string>
 
     <string-array name="demandTypes">
         <item>Water</item>

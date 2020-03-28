@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
@@ -27,6 +28,8 @@ public class ResidentActivity extends AppCompatActivity {
     protected Button waterAlarm;
     protected Button sewageAlarm;
     protected ProgressBar progressBar;
+    protected TextView waterStatus;
+    protected TextView sewageStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class ResidentActivity extends AppCompatActivity {
         waterAlarm = findViewById(R.id.waterAlarm);
         sewageAlarm = findViewById(R.id.sewageAlarm);
         progressBar = findViewById(R.id.progressBar);
+        waterStatus = findViewById(R.id.txtViewStatusWater);
+        sewageStatus = findViewById(R.id.txtViewStatusSewage);
 
         updateInfo();
         setUpResidentUI();
@@ -83,14 +88,17 @@ public class ResidentActivity extends AppCompatActivity {
         if ((0 <= newWaterHeight && newWaterHeight <= 30)) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+            waterStatus.setText(R.string.tank_status_critical);
         }
         else if ((30 < newWaterHeight && newWaterHeight <= 65)) {
-            progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(255, 165, 0)));  // Medium water level
-            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,165,0	)));
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium water level
+            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,204,0	)));
+            waterStatus.setText(R.string.tank_status_warning);
         }
         else {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            waterStatus.setText(R.string.tank_status_ok);
         }
 
         // Color-wise indication for water alarm
@@ -108,12 +116,15 @@ public class ResidentActivity extends AppCompatActivity {
         switch (newSewageAlarm) {
             case (0):
                 sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Low sewage
+                sewageStatus.setText(R.string.tank_status_ok);
                 break;
             case (1):
-                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,165,0	)));  // Medium sewage
+                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,204,0	)));  // Medium sewage
+                sewageStatus.setText(R.string.tank_status_warning);
                 break;
             case (2):
                 sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // High sewage
+                sewageStatus.setText(R.string.tank_status_critical);
                 break;
         }
     }
