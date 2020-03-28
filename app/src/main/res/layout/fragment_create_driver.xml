@@ -13,7 +13,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:textAlignment="center" />
 
@@ -26,7 +26,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="150dp"
         android:ems="10"
-        android:hint="PIN"
+        android:hint="@string/pin"
         android:inputType="number"
         android:textAlignment="center"
         android:maxLength="3"/>
@@ -39,7 +39,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="250dp"
-        android:text="Random Pin" />
+        android:text="@string/random_pin" />
 
     <Button
         android:id="@+id/addDriverButton"
@@ -49,7 +49,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="250dp"
-        android:text="ADD" />
+        android:text="@string/add" />
 
     <Button
         android:id="@+id/removeDriverButton"
@@ -59,7 +59,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="320dp"
-        android:text="Remove" />
+        android:text="@string/remove" />
 
     <Button
         android:id="@+id/cancelAddDriverButton"
@@ -69,5 +69,5 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="320dp"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 </RelativeLayout>

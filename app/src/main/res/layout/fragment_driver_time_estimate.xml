@@ -13,7 +13,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="50dp"
-        android:text="None" />
+        android:text="@string/none" />
 
     <Button
         android:id="@+id/onTheWayDriverTimeEstimateButton"
@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="120dp"
-        android:text="On the Way" />
+        android:text="@string/on_the_way" />
 
     <Button
         android:id="@+id/beforeBreakDriverTimeEstimateButton"
@@ -33,7 +33,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="190dp"
-        android:text="Before Break" />
+        android:text="@string/before_break" />
 
     <Button
         android:id="@+id/todayDriverTimeEstimateButton"
@@ -43,7 +43,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="260dp"
-        android:text="Today" />
+        android:text="@string/today" />
 
     <Button
         android:id="@+id/tomorrowDriverTimeEstimateButton"
@@ -53,7 +53,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="330dp"
-        android:text="Tomorrow" />
+        android:text="@string/tomorrow" />
 
     <Button
         android:id="@+id/ignoreDriverTimeEstimateButton"
@@ -63,7 +63,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="400dp"
-        android:text="Ignore" />
+        android:text="@string/ignore" />
 
     <Button
         android:id="@+id/cancelDriverTimeEstimateButton"
@@ -74,5 +74,5 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="470dp"
         android:layout_marginBottom="50dp"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 </RelativeLayout>

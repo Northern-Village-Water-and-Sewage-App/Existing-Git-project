@@ -14,7 +14,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="Email address"
+        android:hint="@string/email_address"
         android:inputType="textEmailAddress" />
 
     <Button
@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="100dp"
         android:layout_marginTop="120dp"
-        android:text="Get all reports" />
+        android:text="@string/get_all_reports" />
 
     <Spinner
         android:id="@+id/companyReportSpinner"
@@ -45,7 +45,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="260dp"
-        android:text="Reports by company" />
+        android:text="@string/reports_by_company" />
 
 
 
@@ -57,7 +57,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="260dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:layout_centerInParent="true" />
 
 
