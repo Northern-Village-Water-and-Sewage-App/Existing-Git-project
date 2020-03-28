@@ -53,6 +53,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="330dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorLightText"
         android:text="@string/random_pin" />
 
     <Button
@@ -63,6 +65,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="330dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorLightText"
         android:text="@string/add" />
 
     <Button
@@ -73,6 +77,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="400dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorLightText"
         android:text="@string/cancel" />
 
     <Button
@@ -83,6 +89,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="400dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorLightText"
         android:text="@string/remove" />
 
 
