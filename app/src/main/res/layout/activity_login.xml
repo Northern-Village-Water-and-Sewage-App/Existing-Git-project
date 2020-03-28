@@ -48,6 +48,8 @@
         android:layout_marginTop="28dp"
         android:text="@string/login"
         android:textSize="15sp"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/PinText"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/PinText"
