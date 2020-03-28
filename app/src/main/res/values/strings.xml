@@ -107,5 +107,6 @@
     <string name="confirm">Confirm</string>
     <string name="message">Message</string>
     <string name="enter">Enter</string>
+    <string name="tank_number">Tank Number</string>
 
 </resources>

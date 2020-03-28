@@ -23,13 +23,13 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintVertical_bias="0.314" />
 
     <EditText
         android:id="@+id/PinText"
         android:layout_width="230dp"
         android:layout_height="60dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:autofillHints=""
         android:drawableStart="@drawable/ic_action_lock_icon"
         android:ems="10"
@@ -38,20 +38,20 @@
         android:maxLength="3"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/UserNameText"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/UserNameText"
         app:layout_constraintTop_toBottomOf="@+id/UserNameText" />
 
     <Button
         android:id="@+id/LoginButton"
-        android:layout_width="171dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/login"
-        android:textSize="15sp"
+        android:layout_width="206dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="68dp"
         android:background="@color/colorPrimary"
+        android:text="@string/login"
         android:textColor="@color/colorLightText"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/PinText"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/PinText"
         app:layout_constraintTop_toBottomOf="@+id/PinText" />
     <!--         android:background="@drawable/round_corner_buttons"

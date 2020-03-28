@@ -11,7 +11,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
@@ -24,12 +24,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="130dp"
         android:ems="10"
         android:hint="@string/house_number"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:maxLength="8" />
+        android:inputType="number"
+        android:maxLength="4"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/driverPinEditText"
@@ -38,12 +38,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="320dp"
         android:ems="10"
         android:hint="@string/pin"
         android:inputType="number"
-        android:textAlignment="center"
-        android:maxLength="3"/>
+        android:maxLength="3"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/pinButton"
@@ -52,22 +52,22 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="400dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorLightText"
-        android:text="@string/random_pin" />
+        android:text="@string/random_pin"
+        android:textColor="@color/colorLightText" />
 
     <Button
         android:id="@+id/addUserButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="330dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorLightText"
-        android:text="@string/add" />
+        android:text="@string/add"
+        android:textColor="@color/colorLightText" />
 
     <Button
         android:id="@+id/cancelAddUserButton"
@@ -76,22 +76,34 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="470dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorLightText"
-        android:text="@string/cancel" />
+        android:text="@string/cancel"
+        android:textColor="@color/colorLightText" />
 
     <Button
         android:id="@+id/removeUserButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="470dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="400dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorLightText"
-        android:text="@string/remove" />
+        android:text="@string/remove"
+        android:textColor="@color/colorLightText" />
+
+    <EditText
+        android:id="@+id/tankNumEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="230dp"
+        android:ems="10"
+        android:hint="@string/tank_number"
+        android:inputType="number"
+        android:maxLength="4"
+        android:textAlignment="center" />
 
 
 </RelativeLayout>
