@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Northern VIllage Water and Sewage App</string>
+    <string name="pin">ᐃᑎᒍᑎᒃ</string>
+    <string name="user_name">ᐊᑎᖕᖑᖅ</string>
+    <string name="add_service">ᐱᑦᔪᓰᓂᕐᒥᑦ ᐃᓚᓗᒍ</string>
+    <string name="disable_resident">ᑕᕝᕙᓂᒥᐅᖅ ᐱᔪᓐᓇᓯᐊᖕᖏᑐᖅ</string>
+    <string name="get_reports">ᑐᓴᕐᑎᓯᐅᑎᓂᒃ ᐱᔪᒪᓂᖅ</string>
+    <string name="get_delivery">ᑐᑦᓯᒐᕐᓂᖅ</string>
+    <string name="username">ᐊᑎᖕᖑᖅ</string>
+    <string name="user_id">ᐊᑎᖕᖑᖅ</string>
+    <string name="disable_time">ᐃᑲᐅᕐᓂᓂᑦ ᑲᒪᑯᑕᐃᕈᑦᔨᓂᖅ</string>
+    <string name="add_message">ᑐᓴᕐᑎᓯᐅᑎᒥᑦ ᐊᐅᓚᑎᑦᓯᓂᖅ</string>
+    <string name="add_resident">ᑕᕝᕙᓂᒥᐅᒥᑦ ᐃᓓᒍᑎᒃ</string>
+    <string name="add_driver">ᐊᖁᑦᑎᒥᑦ ᐃᓓᒍᑎᒃ</string>
+    <string name="analytics">ᓱᕐᖁᐃᓯᐅᑎᑦ</string>
+    <string name="cancel">ᖁᔭᓇᕐᓂᑦ</string>
+    <string name="settings">settings_inu</string>
+    <string name="user_type">usertype_inu</string>
+    <string name="logout">log out_inu</string>
+    <string name="user_settings">user settings_inu</string>
+    <string name="complaint">ᖁᔭᓇᕐᓂᑦ</string>
+    <string name="textview">textview_inu</string>
+    <string name="resident_activity_title_text">Tank Information_inu</string>
+    <string name="tank_status_warning">Status: critical_inu</string>
+    <string name="tank_status_critical">Status: warning_inu</string>
+    <string name="tank_status_ok">Status: ok_inu</string>
+
+    <string-array name="demandTypes">
+        <item>ᐃᒪᖅ</item>
+        <item>ᖁᕐᕕᖃᐅᑎᒃ</item>
+        <item>ᐃᒣᖅᑖᖅ ᖁᕐᕕᓂᑯᐃᑦ</item>
+    </string-array>
+    <string-array name="timeEstimate">
+        <item>ᓇᒻᒪᓂᖃᖕᖏᑐᑦ</item>
+        <item>ᙯᓕᕐᑐᖅ</item>
+        <item>ᕿᑲᑲᓐᓇᖏᓐᓂᑎᓂ</item>
+        <item>ᐅᓪᓗᒥ</item>
+        <item>ᖃᐅᑉᐸᑦ</item>
+    </string-array>
+    <string-array name="times">
+        <item>ᐃᑲᐅᓃᑦ</item>
+        <item>ᐅᓪᓗᐃᑦ</item>
+        <item>ᐱᓇᓱᐊᒍᓰᑦ</item>
+        <item>ᑕᕐᖀᑦ</item>
+    </string-array>
+    <string-array name="complaintTypes">
+        <item>ᐅᖃᒍᑎᖃᕐᓂᖅ</item>
+        <item>ᐃᑯᒪᒃ ᓱᒃᑯᓯᒪᔪᖅ</item>
+        <item>ᐃᑯᒪᒃ ᐱᐅᓯᖅᓱᖏᑦᑐᖅ</item>
+        <item>ᓯᕙᓂᒋᐊᑐᖕᖏᑐᖅ</item>
+    </string-array>
+    <string-array name="companies">
+        <item>KHMB</item>
+        <item>KSB</item>
+        <item>KRG</item>
+        <item>Makivik</item>
+    </string-array>
+    <string-array name="ManagerHiddenOptions">
+        <item>ᐊᓯᖏᑦ ᓱᓇᓗᑳᑦ</item>
+        <item>ᑕᕝᕙᓂᒥᐅᒥᑦ ᐃᓓᒍᑎᒃ</item>
+        <item>ᐊᖁᑦᑎᒥᑦ ᐃᓓᒍᑎᒃ</item>
+        <item>ᑕᕝᕙᓂᒥᐅᖅ ᐱᔪᓐᓇᓯᐊᖕᖏᑐᖅ</item>
+        <item>ᑐᓴᕐᑎᓯᐅᑎᓂᒃ ᐱᔪᒪᓂᖅ</item>
+        <item>ᑐᓴᕐᑎᓯᐅᑎᒥᑦ ᐊᐅᓚᑎᑦᓯᓂᖅ</item>
+        <item>ᓱᕐᖁᐃᓯᐅᑎᑦ</item>
+    </string-array>
+    <string-array name="Languages">
+        <item>English (Canada)</item>
+        <item>French (Canada)</item>
+        <item>Inuktitut</item>
+    </string-array>
+    <string name="title_activity_settings">Settings_inu</string>
+
+    <string name="login">ᐃᑎᕆᖅᓂᖅ</string>
+    <string name="refresh">Refresh_inu</string>
+    <string name="report">ᑐᓴᕐᑎᓯᐅᑎᒃ</string>
+    <string name="userInfo" />
+    <string name="user_pin" />
+    <string name="random_pin">ᐃᑎᕈᑎᓕᐅᕐᓂᖅ</string>
+    <string name="add">ᐃᓓᒍᒪᓂᖅ</string>
+    <string name="remove">ᐱᕐᓯᓂᖅ</string>
+    <string name="get_all_reports">ᑐᓴᕐᑎᓯᐅᑎᓕᒫᓂᒃ ᐱᔪᒪᓂᖅ</string>
+    <string name="reports_by_company">ᑎᒥᐅᔪᑉ ᑐᓴᕐᑎᓯᐅᑎᖏᑦ</string>
+    <string name="none">ᓇᒻᒪᓂᖃᖕᖏᑐᑦ</string>
+    <string name="on_the_way">ᙯᓕᕐᑐᖅ</string>
+    <string name="before_break">ᕿᑲᑲᓐᓇᖏᓐᓂᑎᓂ</string>
+    <string name="today">ᐅᓪᓗᒥ</string>
+    <string name="tomorrow">ᖃᐅᑉᐸᑦ</string>
+    <string name="ignore">ᑲᒪᒋᔭᑦᓴᐅᖏᑦᑐᖅ</string>
+    <string name="delete">ᓄᖑᑎᕆᐅᑎᒃ</string>
+    <string name="house_number">ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ</string>
+    <string name="confirm">Confirm_inu</string>
+    <string name="message">ᑐᓴᕐᑎᓯᐅᑎᒃ</string>
+    <string name="enter">ᑲᑕᒃ</string>
+    <string name="tank_number">Tank Number_inu</string>
+    <string name="email_address">ᖃᐅᑕᐅᔭᒃᑯᑦ ᓯᓚᑎ</string>
+    <string name="work_list">Work List</string>
+    <string name="delivery_list">Delivery List</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="inuktitut">Inuktitut</string>
+
+</resources>

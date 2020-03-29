@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Northern VIllage Water and Sewage App</string>
+    <string name="pin">Nip</string>
+    <string name="user_name">Nom D\'utilisateur</string>
+    <string name="add_service">Demand Service</string>
+    <string name="disable_resident">Désactiver Résident</string>
+    <string name="get_reports">Obtenez des Rapports</string>
+    <string name="get_delivery">Demand Service</string>
+    <string name="username">Nom D\'utilisateur</string>
+    <string name="user_id">Nom D\'utilisateur</string>
+    <string name="disable_time">Temps du désactiver</string>
+    <string name="add_message">Mis un message</string>
+    <string name="add_resident">Ajouter un Résident</string>
+    <string name="add_driver">Adjouter Chauffeur</string>
+    <string name="user_type">Type d\'utilisateur</string>
+    <string name="analytics">Analyses</string>
+    <string name="settings">Paramètres</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="user_settings">Paramètres utilisateur</string>
+    <string name="cancel">Annuler</string>
+    <string name="complaint">Plainte</string>
+    <string name="tank_status_ok">Statut: OK</string>
+    <string name="tank_status_warning">Statut: AVERTISSEMENT!</string>
+    <string name="tank_status_critical">Statut: Critique</string>
+    <string name="textview">textview_fr</string>
+    <string name="resident_activity_title_text">Informations sur le réservoir</string>
+
+    <string-array name="demandTypes">
+        <item>Eau</item>
+        <item>Égouts</item>
+        <item>Eau et Égouts</item>
+    </string-array>
+    <string-array name="timeEstimate">
+        <item>Aucune</item>
+        <item>En Route</item>
+        <item>Avant la Pause</item>
+        <item>Aujourd hui</item>
+        <item>Demain</item>
+    </string-array>
+    <string-array name="times">
+        <item>Heures</item>
+        <item>Jours</item>
+        <item>Semaines</item>
+        <item>Mois</item>
+    </string-array>
+    <string-array name="complaintTypes">
+        <item>Plainte</item>
+        <item>Lumières Cassées</item>
+        <item>Lumières Défectueuses</item>
+        <item>Pas besoin de appeler</item>
+    </string-array>
+    <string-array name="companies">
+        <item>KHMB</item>
+        <item>KSB</item>
+        <item>KRG</item>
+        <item>Makivik</item>
+    </string-array>
+    <string-array name="ManagerHiddenOptions">
+        <item>Autre Options</item>
+        <item>Ajouter un Résident</item>
+        <item>Adjouter Chauffeur</item>
+        <item>Désactiver Résident</item>
+        <item>Obtenez des Rapports</item>
+        <item>Mis un message</item>
+        <item>Analyses</item>
+    </string-array>
+    <string-array name="Languages">
+        <item>Anglais (Canada)</item>
+        <item>Français (Canada)</item>
+        <item>Inuktitut</item>
+    </string-array>
+    <string name="title_activity_settings">Paramètres</string>
+
+    <string name="login">Accès</string>
+    <string name="refresh">Rafraîchir</string>
+    <string name="report">Rapport</string>
+    <string name="userInfo" />
+    <string name="user_pin" />
+    <string name="random_pin">Nip Aléatoire</string>
+    <string name="add">Ajouter</string>
+    <string name="remove">Retirer</string>
+    <string name="get_all_reports">Obtenez tous les rapports</string>
+    <string name="reports_by_company">Rapports par Entreprise</string>
+    <string name="none">Aucune</string>
+    <string name="on_the_way">En Route</string>
+    <string name="before_break">avant la Pause</string>
+    <string name="today">Aujourd hui</string>
+    <string name="tomorrow">Demain</string>
+    <string name="ignore">Ignorer</string>
+    <string name="delete">Supprimer</string>
+    <string name="house_number">Numéro de maison</string>
+    <string name="confirm">Confirmer</string>
+    <string name="message">Message</string>
+    <string name="enter">Entrée</string>
+    <string name="tank_number">numéro de réservoir</string>
+    <string name="email_address">Couriel</string>
+    <string name="work_list">Work List</string>
+    <string name="delivery_list">Delivery List</string>
+    <string name="english">Anglais</string>
+    <string name="french">Français</string>
+    <string name="inuktitut">Inuktitut</string>
+
+
+</resources>

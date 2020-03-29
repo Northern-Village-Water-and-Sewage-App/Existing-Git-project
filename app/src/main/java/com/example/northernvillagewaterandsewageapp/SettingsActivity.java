@@ -5,30 +5,91 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.northernvillagewaterandsewageapp.Fragments.SettingsFragment;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Locale;
 import java.util.jar.Attributes;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    protected String pinCheck = "123";
+    protected String userType;
+    protected Button englishButton, frenchButton, inuktitutButton;
+    private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new SettingsFragment())
-                .commit();
+        englishButton = findViewById(R.id.englishbutton);
+        frenchButton = findViewById(R.id.frenchbutton);
+        inuktitutButton = findViewById(R.id.inuktitutbutton);
+
+        //getSupportFragmentManager().beginTransaction()
+        //        .replace(android.R.id.content, new SettingsFragment())
+        //        .commit();
 
         //shows back button
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        settingsUI();
+
+    }
+
+    // sets the desired language for the app
+    private void setAppLanguage(String language) {
+        Resources resources = getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+
+        config.setLocale(new Locale(language.toLowerCase()));
+
+        resources.updateConfiguration(config, displayMetrics);
+    }
+
+    // Changes app's language depending on the option pressed
+    protected void settingsUI() {
+
+        englishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAppLanguage("en");
+            }
+        });
+        frenchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAppLanguage("fr");
+            }
+        });
+        inuktitutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAppLanguage("iu");
+            }
+        });
     }
 
     //back navigation working, 3 next functions
@@ -42,23 +103,13 @@ public class SettingsActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
 
+        goToManagerActivity();
+
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString(getString(R.string.user_name), null);
+        String username = sharedPreferences.getString(getString(R.string.user_name), null);
         String userPin = sharedPreferences.getString(getString(R.string.user_pin), null);
 
-        int pin = Integer.parseInt(userPin);
-        int userType = new DBHelper().returnUserType(userName, pin);
-
-        if (userType == 0) {
-            goToManagerActivity();
-        }
-        else if (userType == 1) {
-            goToResidentActivity();
-        }
-        else if (userType == 2) {
-            goToDriverActivity();
-        }
     }
 
     //To go to Login activity

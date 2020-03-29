@@ -8,4 +8,33 @@
     android:layout_height="match_parent">
     <!--android:background="@drawable/gradient_background"-->
 
+    <Button
+        android:id="@+id/englishbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="434dp"
+        android:text="@string/english" />
+
+    <Button
+        android:id="@+id/frenchbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="316dp"
+        android:text="@string/french" />
+
+    <Button
+        android:id="@+id/inuktitutbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="194dp"
+        android:text="@string/inuktitut" />
 </RelativeLayout>

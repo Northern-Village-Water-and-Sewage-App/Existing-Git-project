@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Northern VIllage Water and Sewage App</string>
+    <string name="app_name">Northern Village Water and Sewage App</string>
     <string name="pin">PIN</string>
     <string name="user_name">User Name</string>
     <string name="add_service">Add Service</string>
@@ -21,7 +21,7 @@
     <string name="cancel">Cancel</string>
     <string name="complaint">Complaint</string>
     <string name="tank_status_ok">Status: OK</string>
-    <string name="tank_status_warning">Status: Warning</string>
+    <string name="tank_status_warning">Status: Warning!</string>
     <string name="tank_status_critical">Status: Critical</string>
     <string name="resident_activity_title_text">Tank Information</string>
 
@@ -65,26 +65,12 @@
         <item>Analytics</item>
     </string-array>
     <string-array name="Languages">
-        <item>English (United Sates)</item>
+        <item>English (Canada)</item>
         <item>French (Canada)</item>
         <item>Inuktitut</item>
     </string-array>
     <string name="title_activity_settings">Settings</string>
 
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="login">Login</string>
     <string name="refresh">Refresh</string>
     <string name="report">Report</string>
@@ -93,7 +79,6 @@
     <string name="random_pin">Random Pin</string>
     <string name="add">ADD</string>
     <string name="remove">Remove</string>
-    <string name="email_address">Email address</string>
     <string name="get_all_reports">Get all reports</string>
     <string name="reports_by_company">Reports by company</string>
     <string name="none">None</string>
@@ -108,5 +93,11 @@
     <string name="message">Message</string>
     <string name="enter">Enter</string>
     <string name="tank_number">Tank Number</string>
+    <string name="email_address">Email Address</string>
+    <string name="work_list">Work List</string>
+    <string name="delivery_list">Delivery List</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="inuktitut">Inuktitut</string>
 
 </resources>
