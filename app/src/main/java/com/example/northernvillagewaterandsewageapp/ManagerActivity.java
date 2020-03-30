@@ -11,11 +11,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,6 +34,7 @@ import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,17 +45,94 @@ import java.util.ArrayList;
 
 public class ManagerActivity extends AppCompatActivity {
 
-    protected Button addServiceButton;
     protected ListView worklistListView;
-    protected Integer HiddenOption;
 
     private RequestQueue mQueue;
+    FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident;
+    TextView tv_service, tv_driver, tv_resident;
+    Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
+
+    boolean isOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
         mQueue = Volley.newRequestQueue(this);
+
+        fab_add_any = findViewById(R.id.floatingActionButtonAddAny);
+        fab_add_service = findViewById(R.id.floatingActionButtonAddService);
+        fab_add_driver = findViewById(R.id.floatingActionButtonAddDriver);
+        fab_add_resident = findViewById(R.id.floatingActionButtonAddResident);
+
+        fab_add_service.setClickable(false);
+        fab_add_driver.setClickable(false);
+        fab_add_resident.setClickable(false);
+
+        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
+        FabRAntiClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
+
+        tv_service = findViewById(R.id.textViewAddService);
+        tv_driver = findViewById(R.id.textViewAddDriver);
+        tv_resident = findViewById(R.id.textViewAddResident);
+
+        fab_add_any.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isOpen) {
+                    fab_add_service.startAnimation(FabClose);
+                    fab_add_driver.startAnimation(FabClose);
+                    fab_add_resident.startAnimation(FabClose);
+                    fab_add_any.startAnimation(FabRAntiClockwise);
+
+                    fab_add_service.setClickable(false);
+                    fab_add_driver.setClickable(false);
+                    fab_add_resident.setClickable(false);
+
+                    tv_service.startAnimation(FabClose);
+                    tv_driver.startAnimation(FabClose);
+                    tv_resident.startAnimation(FabClose);
+
+                    isOpen = false;
+                } else {
+                    fab_add_service.startAnimation(FabOpen);
+                    fab_add_driver.startAnimation(FabOpen);
+                    fab_add_resident.startAnimation(FabOpen);
+                    fab_add_any.startAnimation(FabRClockwise);
+
+                    fab_add_service.setClickable(true);
+                    fab_add_driver.setClickable(true);
+                    fab_add_resident.setClickable(true);
+
+                    tv_service.startAnimation(FabOpen);
+                    tv_driver.startAnimation(FabOpen);
+                    tv_resident.startAnimation(FabOpen);
+
+                    isOpen = true;
+                }
+            }
+        });
+
+        fab_add_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                manualDemand();
+            }
+        });
+        fab_add_driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addDriver();
+            }
+        });
+        fab_add_resident.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addResident();
+            }
+        });
 
         setUpManagerUI();
 
@@ -83,46 +164,7 @@ public class ManagerActivity extends AppCompatActivity {
     }
 
     protected void setUpManagerUI() {
-        addServiceButton = findViewById(R.id.manualserviceButton);
         worklistListView = findViewById(R.id.WorklistListView);
-
-        //a drop down menu to hide less used features
-        Spinner hiddenOptionsSpinner = findViewById(R.id.managerHiddenOptionsSpinner);
-        hiddenOptionsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //gets the selection of the drop down menu
-                HiddenOption = position;
-
-                //uses the selection to open up the right fragment
-                if (HiddenOption == 1) {
-                    addResident();
-                } else if (HiddenOption == 2) {
-                    addDriver();
-                } else if (HiddenOption == 3) {
-                    disableUser();
-                } else if (HiddenOption == 4) {
-                    getReports();
-                } else if (HiddenOption == 5) {
-                    putMessage();
-                } else if (HiddenOption == 6) {
-                    goToAnalytics();
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        addServiceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                manualDemand();
-            }
-        });
 
         //shows back button
         assert getSupportActionBar() != null;

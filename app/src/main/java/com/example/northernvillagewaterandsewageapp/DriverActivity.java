@@ -24,7 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class DriverActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener{
+public class DriverActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     protected ListView driverWorklistListView;
     protected Button addServiceButton;
@@ -40,7 +40,7 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
         driverWorklistListView = findViewById(R.id.DriverWorklistListView);
         addServiceButton = findViewById(R.id.manualserviceButton);
         driverReportButton = findViewById(R.id.driverMakeReportButton);
-        sideBarDriver = findViewById(R.id.sideBar);
+        sideBarDriver = findViewById(R.id.sideBarDriver);
         NavigationView navigationView = findViewById(R.id.design_navigation_view);
 
         setUpDriverUI();
@@ -48,14 +48,14 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
         loadListView();
 
         toggle = new ActionBarDrawerToggle(this, sideBarDriver, R.string.open, R.string.close);
-        //navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
         sideBarDriver.addDrawerListener(toggle);
         toggle.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    /*@Override
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
@@ -69,7 +69,7 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
         }
         sideBarDriver.closeDrawer(GravityCompat.START);
         return true;
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

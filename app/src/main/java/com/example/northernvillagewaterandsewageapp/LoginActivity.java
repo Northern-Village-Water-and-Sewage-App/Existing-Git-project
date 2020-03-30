@@ -34,7 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class LoginActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener {
 
 
     protected EditText userName;
@@ -57,24 +57,24 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         userName = findViewById(R.id.UserNameText);
         userPin = findViewById(R.id.PinText);
         loginButton = findViewById(R.id.LoginButton);
-        sideBarLogin = findViewById(R.id.sideBar);
+        /*sideBarLogin = findViewById(R.id.sideBar);
         NavigationView navigationView = findViewById(R.id.design_navigation_view);
-
-        userName.addTextChangedListener(loginTextWatcher);
-        userPin.addTextChangedListener(loginTextWatcher);
 
         navigationView.setNavigationItemSelectedListener(this);
         toggleLogin = new ActionBarDrawerToggle(this, sideBarLogin, R.string.open, R.string.close);
         sideBarLogin.addDrawerListener(toggleLogin);
         toggleLogin.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+
+        userName.addTextChangedListener(loginTextWatcher);
+        userPin.addTextChangedListener(loginTextWatcher);
 
         mQueue = Volley.newRequestQueue(this);
 
     }
 
-    @Override
+    /*@Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     // Saves login info
     public void saveInfo(View v)

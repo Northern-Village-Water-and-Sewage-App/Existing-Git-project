@@ -51,18 +51,17 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
         progressBar = findViewById(R.id.progressBar);
         waterStatus = findViewById(R.id.txtViewStatusWater);
         sewageStatus = findViewById(R.id.txtViewStatusSewage);
-        sideBarResident = findViewById(R.id.sideBar);
+        /*sideBarResident = findViewById(R.id.sideBarResident);
         NavigationView navigationView = findViewById(R.id.design_navigation_view);
-
-        updateInfo();
-        setUpResidentUI();
 
         toggle = new ActionBarDrawerToggle(this, sideBarResident, R.string.open, R.string.close);
         //navigationView.setNavigationItemSelectedListener(this);
         sideBarResident.addDrawerListener(toggle);
         toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        updateInfo();
+        setUpResidentUI();
 
     }
 
@@ -93,10 +92,16 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (toggle.onOptionsItemSelected(item)) {
+        /*if (toggle.onOptionsItemSelected(item)) {
             return true;
-        }
+        }*/
         switch (item.getItemId()) {
+            case R.id.subitem1:
+                goToLogin();
+                return true;
+            case R.id.subitem2:
+                goToSettingsActivity();
+                return true;
             case R.id.subitem3:
                 updateInfo();
                 return true;
@@ -129,17 +134,6 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             waterStatus.setText(R.string.tank_status_ok);
         }
-
-        // Color-wise indication for water alarm
-        /*if ((0 <= newWaterAlarm && newWaterAlarm <= 30)) {
-            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
-        }
-        else if ((30 < newWaterAlarm && newWaterAlarm <= 65)) {
-            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,165,0	)));  // Medium water level
-        }
-        else {
-            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
-        }*/
 
         // Color-wise indication for sewage alarm
         switch (newSewageAlarm) {

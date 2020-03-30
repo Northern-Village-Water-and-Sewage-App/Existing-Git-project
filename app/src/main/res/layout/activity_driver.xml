@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DriverActivity"
-    android:id="@+id/sideBar">
+    android:id="@+id/sideBarDriver">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

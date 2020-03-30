@@ -103,6 +103,17 @@
     <string name="languages">Languages</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="water">Eau</string>
+    <string name="sewage">Égouts</string>
+    <string name="average_wait_time">Average Wait Time:</string>
+    <string name="edit">Edit</string>
+    <string name="my_usage">My Usage</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="showers">Showers</string>
+    <string name="dish_washes">Dish Washes</string>
+    <string name="estimated_usage">Estimated Usage</string>
+    <string name="washes">Washes</string>
 
 
 </resources>
