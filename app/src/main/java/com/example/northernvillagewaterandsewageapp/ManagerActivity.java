@@ -1,11 +1,7 @@
 package com.example.northernvillagewaterandsewageapp;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,7 +31,6 @@ import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
-import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,13 +39,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class ManagerActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener{
+public class ManagerActivity extends AppCompatActivity {
 
     protected Button addServiceButton;
     protected ListView worklistListView;
     protected Integer HiddenOption;
-    private DrawerLayout sideBarManager;
-    private ActionBarDrawerToggle toggle;
 
     private RequestQueue mQueue;
 
@@ -58,45 +51,33 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
-
-        sideBarManager = findViewById(R.id.sideBar);
-        NavigationView navigationView = findViewById(R.id.design_navigation_view);
-
         mQueue = Volley.newRequestQueue(this);
 
         setUpManagerUI();
 
         loadListView();
-
-        toggle = new ActionBarDrawerToggle(this, sideBarManager, R.string.open, R.string.close);
-        //navigationView.setNavigationItemSelectedListener(this);
-        sideBarManager.addDrawerListener(toggle);
-        toggle.syncState();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    /*@Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    // Logout and settings menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-        switch (item.getItemId()) {
-            case R.id.languages:
-                goToSettingsActivity();
-                return true;
-            case R.id.logout:
-                goToLogin();
-                return true;
-            default:
-        }
-        sideBarManager.closeDrawer(GravityCompat.START);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.settings_menu, menu);
         return true;
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (toggle.onOptionsItemSelected(item)) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.subitem1:
+                goToLogin();
+                return true;
+            case R.id.subitem2:
+                goToSettingsActivity();
+                return true;
+            default:
         }
         return super.onOptionsItemSelected(item);
     }
