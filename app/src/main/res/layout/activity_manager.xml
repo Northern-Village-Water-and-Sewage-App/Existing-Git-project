@@ -6,43 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ManagerActivity">
 
-    <Button
-        android:id="@+id/manualserviceButton"
-        android:layout_width="176dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="47dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/add_service"
-        android:textColor="@color/colorLightText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/managerHiddenOptionsSpinner" />
-
     <ListView
         android:id="@+id/WorklistListView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="64dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/managerHiddenOptionsSpinner"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/managerHiddenOptionsSpinner"
-        android:layout_width="188dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="32dp"
-        android:entries="@array/ManagerHiddenOptions"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/manualserviceButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WorklistListView" />
 
     <TextView
         android:id="@+id/workLst"
@@ -57,5 +29,96 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddAny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="48dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:tint="@color/colorLightText"
+        android:elevation="12dp"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="138dp"
+        android:clickable="false"
+        android:tint="@color/colorLightText"
+        app:backgroundTint="#9C27B0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/pinclipart_com_mail_clipart_295687" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="218dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        app:backgroundTint="#00BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/icon" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddResident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="298dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/home" />
+
+    <TextView
+        android:id="@+id/textViewAddService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_service"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddService"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddService"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddService"
+        />
+
+    <TextView
+        android:id="@+id/textViewAddDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_driver"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddDriver"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddDriver"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddDriver" />
+
+    <TextView
+        android:id="@+id/textViewAddResident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_resident"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddResident"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddResident"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddResident" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
