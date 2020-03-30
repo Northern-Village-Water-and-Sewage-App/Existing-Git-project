@@ -113,6 +113,24 @@ public class ManagerActivity extends AppCompatActivity {
             }
         });
 
+        fab_add_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                manualDemand();
+            }
+        });
+        fab_add_driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addDriver();
+            }
+        });
+        fab_add_resident.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addResident();
+            }
+        });
         setUpManagerUI();
 
         loadListView();
