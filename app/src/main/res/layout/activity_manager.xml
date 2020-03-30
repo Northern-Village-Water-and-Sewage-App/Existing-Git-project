@@ -1,61 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManagerActivity">
+    tools:context=".ManagerActivity"
+    android:id="@+id/sideBar">
 
-    <Button
-        android:id="@+id/manualserviceButton"
-        android:layout_width="176dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="47dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/add_service"
-        android:textColor="@color/colorLightText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/managerHiddenOptionsSpinner" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/WorklistListView"
+        <Button
+            android:id="@+id/manualserviceButton"
+            android:layout_width="176dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="47dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/add_service"
+            android:textColor="@color/colorLightText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/managerHiddenOptionsSpinner" />
+
+        <ListView
+            android:id="@+id/WorklistListView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/managerHiddenOptionsSpinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/managerHiddenOptionsSpinner"
+            android:layout_width="188dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:entries="@array/ManagerHiddenOptions"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/manualserviceButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WorklistListView" />
+
+        <TextView
+            android:id="@+id/workLst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/work_list"
+            android:textColor="@color/colorDarkText"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/WorklistListView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/managerHiddenOptionsSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        app:menu="@menu/menu_drawer_manager"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_layout_manager">
 
-    <Spinner
-        android:id="@+id/managerHiddenOptionsSpinner"
-        android:layout_width="188dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="32dp"
-        android:entries="@array/ManagerHiddenOptions"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/manualserviceButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WorklistListView" />
+    </com.google.android.material.navigation.NavigationView>
 
-    <TextView
-        android:id="@+id/workLst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/work_list"
-        android:textColor="@color/colorDarkText"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/WorklistListView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

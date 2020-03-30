@@ -103,7 +103,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
 
-        goToManagerActivity();
+        goToLoginActivity();
 
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);

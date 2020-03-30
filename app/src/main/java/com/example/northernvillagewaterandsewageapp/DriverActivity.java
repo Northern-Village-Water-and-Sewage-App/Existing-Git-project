@@ -1,6 +1,10 @@
 package com.example.northernvillagewaterandsewageapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,14 +20,17 @@ import android.widget.ListView;
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class DriverActivity extends AppCompatActivity {
+public class DriverActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener{
 
     protected ListView driverWorklistListView;
     protected Button addServiceButton;
     protected Button driverReportButton;
+    private DrawerLayout sideBarDriver;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,31 +40,42 @@ public class DriverActivity extends AppCompatActivity {
         driverWorklistListView = findViewById(R.id.DriverWorklistListView);
         addServiceButton = findViewById(R.id.manualserviceButton);
         driverReportButton = findViewById(R.id.driverMakeReportButton);
+        sideBarDriver = findViewById(R.id.sideBar);
+        NavigationView navigationView = findViewById(R.id.design_navigation_view);
 
         setUpDriverUI();
 
         loadListView();
+
+        toggle = new ActionBarDrawerToggle(this, sideBarDriver, R.string.open, R.string.close);
+        //navigationView.setNavigationItemSelectedListener(this);
+        sideBarDriver.addDrawerListener(toggle);
+        toggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    // Logout and settings menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    /*@Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.settings_menu, menu);
+        switch (item.getItemId()) {
+            case R.id.languages:
+                goToSettingsActivity();
+                return true;
+            case R.id.logout:
+                goToLogin();
+                return true;
+            default:
+        }
+        sideBarDriver.closeDrawer(GravityCompat.START);
         return true;
-    }
+    }*/
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.subitem1:
-                goToLogin();
-                return true;
-            case R.id.subitem2:
-                goToSettingsActivity();
-                return true;
-            default:
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

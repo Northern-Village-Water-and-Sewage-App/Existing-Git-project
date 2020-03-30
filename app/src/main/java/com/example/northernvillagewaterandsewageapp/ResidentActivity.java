@@ -1,7 +1,11 @@
 package com.example.northernvillagewaterandsewageapp;
 
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -18,10 +22,11 @@ import android.widget.TextView;
 
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Random;
 
-public class ResidentActivity extends AppCompatActivity {
+public class ResidentActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener {
 
     protected Button deliveryButton;
     protected Button analyticsButton;
@@ -30,6 +35,8 @@ public class ResidentActivity extends AppCompatActivity {
     protected ProgressBar progressBar;
     protected TextView waterStatus;
     protected TextView sewageStatus;
+    private DrawerLayout sideBarResident;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +51,37 @@ public class ResidentActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         waterStatus = findViewById(R.id.txtViewStatusWater);
         sewageStatus = findViewById(R.id.txtViewStatusSewage);
+        sideBarResident = findViewById(R.id.sideBar);
+        NavigationView navigationView = findViewById(R.id.design_navigation_view);
 
         updateInfo();
         setUpResidentUI();
 
+        toggle = new ActionBarDrawerToggle(this, sideBarResident, R.string.open, R.string.close);
+        //navigationView.setNavigationItemSelectedListener(this);
+        sideBarResident.addDrawerListener(toggle);
+        toggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
-    // Logout and settings menu
+    /*@Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.languages:
+                goToSettingsActivity();
+                return true;
+            case R.id.logout:
+                goToLogin();
+                return true;
+            default:
+        }
+        sideBarResident.closeDrawer(GravityCompat.START);
+        return true;
+    }*/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -58,16 +89,14 @@ public class ResidentActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.settings_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
         switch (item.getItemId()) {
-            case R.id.subitem1:
-                goToLogin();
-                return true;
-            case R.id.subitem2:
-                goToSettingsActivity();
-                return true;
             case R.id.subitem3:
                 updateInfo();
                 return true;

@@ -90,7 +90,7 @@
     <string name="ignore">ᑲᒪᒋᔭᑦᓴᐅᖏᑦᑐᖅ</string>
     <string name="delete">ᓄᖑᑎᕆᐅᑎᒃ</string>
     <string name="house_number">ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ</string>
-    <string name="confirm">Confirm_inu</string>
+    <string name="confirm">ᓱᕐᖁᐃᓯᐅᑎᑦ</string>
     <string name="message">ᑐᓴᕐᑎᓯᐅᑎᒃ</string>
     <string name="enter">ᑲᑕᒃ</string>
     <string name="tank_number">Tank Number_inu</string>
@@ -100,5 +100,8 @@
     <string name="english">English</string>
     <string name="french">French</string>
     <string name="inuktitut">Inuktitut</string>
+    <string name="languages">Languages</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 </resources>

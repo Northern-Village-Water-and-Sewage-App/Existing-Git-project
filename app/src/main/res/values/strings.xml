@@ -99,5 +99,8 @@
     <string name="english">English</string>
     <string name="french">French</string>
     <string name="inuktitut">Inuktitut</string>
+    <string name="languages">Languages</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 </resources>
