@@ -42,9 +42,7 @@ import java.util.ArrayList;
 
 public class ManagerActivity extends AppCompatActivity {
 
-    protected Button addServiceButton;
     protected ListView worklistListView;
-    protected Integer HiddenOption;
     private RequestQueue mQueue;
     FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident;
     TextView tv_service, tv_driver, tv_resident;
@@ -161,46 +159,7 @@ public class ManagerActivity extends AppCompatActivity {
     }
 
     protected void setUpManagerUI() {
-        addServiceButton = findViewById(R.id.manualserviceButton);
         worklistListView = findViewById(R.id.WorklistListView);
-
-        //a drop down menu to hide less used features
-        Spinner hiddenOptionsSpinner = findViewById(R.id.managerHiddenOptionsSpinner);
-        hiddenOptionsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //gets the selection of the drop down menu
-                HiddenOption = position;
-
-                //uses the selection to open up the right fragment
-                if (HiddenOption == 1) {
-                    addResident();
-                } else if (HiddenOption == 2) {
-                    addDriver();
-                } else if (HiddenOption == 3) {
-                    disableUser();
-                } else if (HiddenOption == 4) {
-                    getReports();
-                } else if (HiddenOption == 5) {
-                    putMessage();
-                } else if (HiddenOption == 6) {
-                    goToAnalytics();
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        addServiceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                manualDemand();
-            }
-        });
 
         //shows back button
         assert getSupportActionBar() != null;
