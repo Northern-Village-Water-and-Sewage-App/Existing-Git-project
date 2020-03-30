@@ -59,16 +59,94 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/floatingActionButtonAddAny"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="48dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
-        android:tint="@color/colorPrimaryDark"/>
+        android:tint="@color/colorLightText"
+        android:elevation="12dp"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="138dp"
+        android:clickable="false"
+        android:tint="@color/colorLightText"
+        app:backgroundTint="#9C27B0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/pinclipart_com_mail_clipart_295687" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="218dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        app:backgroundTint="#00BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/icon" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddResident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="298dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/home" />
+
+    <TextView
+        android:id="@+id/textViewAddService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_service"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddService"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddService"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddService"
+        />
+
+    <TextView
+        android:id="@+id/textViewAddDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_driver"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddDriver"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddDriver"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddDriver" />
+
+    <TextView
+        android:id="@+id/textViewAddResident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_resident"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddResident"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddResident"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddResident" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

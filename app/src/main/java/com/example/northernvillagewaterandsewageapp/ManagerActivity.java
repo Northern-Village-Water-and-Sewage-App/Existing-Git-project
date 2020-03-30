@@ -3,20 +3,20 @@ package com.example.northernvillagewaterandsewageapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,6 +31,7 @@ import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,14 +45,73 @@ public class ManagerActivity extends AppCompatActivity {
     protected Button addServiceButton;
     protected ListView worklistListView;
     protected Integer HiddenOption;
-
     private RequestQueue mQueue;
+    FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident;
+    TextView tv_service, tv_driver, tv_resident;
+    Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
+
+    boolean isOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
         mQueue = Volley.newRequestQueue(this);
+
+        fab_add_any = findViewById(R.id.floatingActionButtonAddAny);
+        fab_add_service = findViewById(R.id.floatingActionButtonAddService);
+        fab_add_driver = findViewById(R.id.floatingActionButtonAddDriver);
+        fab_add_resident = findViewById(R.id.floatingActionButtonAddResident);
+
+        fab_add_service.setClickable(false);
+        fab_add_driver.setClickable(false);
+        fab_add_resident.setClickable(false);
+
+        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
+        FabRAntiClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
+
+        tv_service = findViewById(R.id.textViewAddService);
+        tv_driver = findViewById(R.id.textViewAddDriver);
+        tv_resident = findViewById(R.id.textViewAddResident);
+
+        fab_add_any.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isOpen) {
+                    fab_add_service.startAnimation(FabClose);
+                    fab_add_driver.startAnimation(FabClose);
+                    fab_add_resident.startAnimation(FabClose);
+                    fab_add_any.startAnimation(FabRAntiClockwise);
+
+                    fab_add_service.setClickable(false);
+                    fab_add_driver.setClickable(false);
+                    fab_add_resident.setClickable(false);
+
+                    tv_service.startAnimation(FabClose);
+                    tv_driver.startAnimation(FabClose);
+                    tv_resident.startAnimation(FabClose);
+
+                    isOpen = false;
+                } else {
+                    fab_add_service.startAnimation(FabOpen);
+                    fab_add_driver.startAnimation(FabOpen);
+                    fab_add_resident.startAnimation(FabOpen);
+                    fab_add_any.startAnimation(FabRClockwise);
+
+                    fab_add_service.setClickable(true);
+                    fab_add_driver.setClickable(true);
+                    fab_add_resident.setClickable(true);
+
+                    tv_service.startAnimation(FabOpen);
+                    tv_driver.startAnimation(FabOpen);
+                    tv_resident.startAnimation(FabOpen);
+
+                    isOpen = true;
+                }
+            }
+        });
 
         setUpManagerUI();
 
@@ -181,16 +241,19 @@ public class ManagerActivity extends AppCompatActivity {
         Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ResidentAnalyticsActivity.class);
         startActivity(manAnalyticsIntent);
     }
+
     // Function to add a new resident in the database
     protected void addResident() {
         CreateResidentFragment createUser = new CreateResidentFragment();
         createUser.show(getSupportFragmentManager(), "Dialog");
     }
+
     // Function to disable an existing resident from the database
     protected void disableUser() {
         DisableUserFragment disableUserFragment = new DisableUserFragment();
         disableUserFragment.show(getSupportFragmentManager(), "Dialog");
     }
+
     // Function to add or remove a driver from the database
     protected void addDriver() {
         CreateDriverFragment addDriverFragment = new CreateDriverFragment();
