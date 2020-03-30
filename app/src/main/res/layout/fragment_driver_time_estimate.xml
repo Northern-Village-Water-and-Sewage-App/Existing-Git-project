@@ -7,11 +7,11 @@
     <Button
         android:id="@+id/noneDriverTimeEstimateButton"
         android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="27dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorLightText"
@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/onTheWayDriverTimeEstimateButton"
         android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/noneDriverTimeEstimateButton"
         android:layout_alignStart="@+id/noneDriverTimeEstimateButton"
         android:layout_marginStart="0dp"
@@ -32,7 +32,7 @@
     <Button
         android:id="@+id/beforeBreakDriverTimeEstimateButton"
         android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/onTheWayDriverTimeEstimateButton"
         android:layout_alignStart="@+id/noneDriverTimeEstimateButton"
         android:layout_marginStart="0dp"
@@ -44,7 +44,7 @@
     <Button
         android:id="@+id/todayDriverTimeEstimateButton"
         android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/beforeBreakDriverTimeEstimateButton"
         android:layout_alignStart="@+id/noneDriverTimeEstimateButton"
         android:layout_marginStart="0dp"
@@ -56,7 +56,7 @@
     <Button
         android:id="@+id/tomorrowDriverTimeEstimateButton"
         android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/todayDriverTimeEstimateButton"
         android:layout_alignStart="@+id/noneDriverTimeEstimateButton"
         android:layout_marginStart="0dp"
@@ -68,7 +68,7 @@
     <Button
         android:id="@+id/ignoreDriverTimeEstimateButton"
         android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/tomorrowDriverTimeEstimateButton"
         android:layout_alignStart="@+id/noneDriverTimeEstimateButton"
         android:layout_marginStart="0dp"
@@ -80,12 +80,12 @@
     <Button
         android:id="@+id/cancelDriverTimeEstimateButton"
         android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/ignoreDriverTimeEstimateButton"
         android:layout_alignStart="@+id/noneDriverTimeEstimateButton"
         android:layout_marginStart="0dp"
         android:layout_marginTop="22dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/colorPrimary"
         android:text="@string/cancel"
         android:textColor="@color/colorLightText" />
