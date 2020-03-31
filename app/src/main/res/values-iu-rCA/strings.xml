@@ -15,16 +15,16 @@
     <string name="add_driver">ᐊᖁᑦᑎᒥᑦ ᐃᓓᒍᑎᒃ</string>
     <string name="analytics">ᓱᕐᖁᐃᓯᐅᑎᑦ</string>
     <string name="cancel">ᖁᔭᓇᕐᓂᑦ</string>
-    <string name="settings">settings_inu</string>
-    <string name="user_type">usertype_inu</string>
-    <string name="logout">log out_inu</string>
-    <string name="user_settings">user settings_inu</string>
+    <string name="settings">ᖃᓪᓗᓈᑦᑎᑐᑦ</string>
+    <string name="user_type">ᐃᓄᕈᓐᓂᑐᖅ</string>
+    <string name="logout">ᐃᓱᒃ</string>
+    <string name="user_settings">ᖃᓪᓗᓈᑦᑎᑐᑦ</string>
     <string name="complaint">ᖁᔭᓇᕐᓂᑦ</string>
     <string name="textview">textview_inu</string>
-    <string name="resident_activity_title_text">Tank Information_inu</string>
-    <string name="tank_status_warning">Status: critical_inu</string>
-    <string name="tank_status_critical">Status: warning_inu</string>
-    <string name="tank_status_ok">Status: ok_inu</string>
+    <string name="resident_activity_title_text">ᖃᐅᔨᒪᔪᖅ</string>
+    <string name="tank_status_warning">ᓄᕐᖃᑐᖅ</string>
+    <string name="tank_status_critical">ᐃᓂᕐᑎᕆᔪᖅ</string>
+    <string name="tank_status_ok">ᓈᒻᒪᑐᖅ</string>
 
     <string-array name="demandTypes">
         <item>ᐃᒪᖅ</item>
@@ -70,10 +70,10 @@
         <item>French (Canada)</item>
         <item>Inuktitut</item>
     </string-array>
-    <string name="title_activity_settings">Settings_inu</string>
+    <string name="title_activity_settings">ᖃᓪᓗᓈᑦᑎᑐᑦ</string>
 
     <string name="login">ᐃᑎᕆᖅᓂᖅ</string>
-    <string name="refresh">Refresh_inu</string>
+    <string name="refresh">ᐊᑏᓗ</string>
     <string name="report">ᑐᓴᕐᑎᓯᐅᑎᒃ</string>
     <string name="userInfo" />
     <string name="user_pin" />
@@ -90,15 +90,29 @@
     <string name="ignore">ᑲᒪᒋᔭᑦᓴᐅᖏᑦᑐᖅ</string>
     <string name="delete">ᓄᖑᑎᕆᐅᑎᒃ</string>
     <string name="house_number">ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ</string>
-    <string name="confirm">Confirm_inu</string>
+    <string name="confirm">ᓱᕐᖁᐃᓯᐅᑎᑦ</string>
     <string name="message">ᑐᓴᕐᑎᓯᐅᑎᒃ</string>
     <string name="enter">ᑲᑕᒃ</string>
-    <string name="tank_number">Tank Number_inu</string>
+    <string name="tank_number">ᑭᑎᑦᔪᑏᑦ</string>
     <string name="email_address">ᖃᐅᑕᐅᔭᒃᑯᑦ ᓯᓚᑎ</string>
     <string name="work_list">Work List</string>
     <string name="delivery_list">Delivery List</string>
-    <string name="english">English</string>
-    <string name="french">French</string>
-    <string name="inuktitut">Inuktitut</string>
+    <string name="english">ᖃᓪᓗᓚᖅᑎᑐᑦ</string>
+    <string name="french">ᒍᐃᒍᐃᑦ</string>
+    <string name="inuktitut">ᐃᓄᑦᑎᑐᑦ</string>
+    <string name="languages">Languages</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="water">ᐃᒪᖅ</string>
+    <string name="sewage">ᖁᕐᕕᖃᐅᑎᒃ</string>
+    <string name="average_wait_time">Average Wait Time:</string>
+    <string name="edit">Edit</string>
+    <string name="my_usage">My Usage</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="showers">Showers</string>
+    <string name="dish_washes">Dish Washes</string>
+    <string name="estimated_usage">Estimated Usage</string>
+    <string name="washes">Washes</string>
 
 </resources>
