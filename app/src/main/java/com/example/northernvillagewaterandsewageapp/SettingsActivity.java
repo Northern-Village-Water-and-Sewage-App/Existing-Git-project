@@ -7,28 +7,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.northernvillagewaterandsewageapp.Fragments.SettingsFragment;
-import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Locale;
-import java.util.jar.Attributes;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -103,7 +89,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
 
-        goToManagerActivity();
+        goToLoginActivity();
 
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);

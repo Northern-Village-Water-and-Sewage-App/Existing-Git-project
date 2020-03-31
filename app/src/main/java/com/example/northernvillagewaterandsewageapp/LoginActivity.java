@@ -1,6 +1,10 @@
 package com.example.northernvillagewaterandsewageapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +13,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,12 +28,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener {
 
 
     protected EditText userName;
@@ -35,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
     protected String userType;
     protected Button loginButton;
     private int pinInput;
+    private DrawerLayout sideBarLogin;
+    private ActionBarDrawerToggle toggleLogin;
 
 
     private RequestQueue mQueue;
@@ -47,6 +57,15 @@ public class LoginActivity extends AppCompatActivity {
         userName = findViewById(R.id.UserNameText);
         userPin = findViewById(R.id.PinText);
         loginButton = findViewById(R.id.LoginButton);
+        /*sideBarLogin = findViewById(R.id.sideBar);
+        NavigationView navigationView = findViewById(R.id.design_navigation_view);
+
+        navigationView.setNavigationItemSelectedListener(this);
+        toggleLogin = new ActionBarDrawerToggle(this, sideBarLogin, R.string.open, R.string.close);
+        sideBarLogin.addDrawerListener(toggleLogin);
+        toggleLogin.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);
@@ -54,6 +73,27 @@ public class LoginActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
 
     }
+
+    /*@Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.languages:
+                goToSettingsActivity();
+                return true;
+        }
+        sideBarLogin.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (toggleLogin.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }*/
 
     // Saves login info
     public void saveInfo(View v)
@@ -153,5 +193,11 @@ public class LoginActivity extends AppCompatActivity {
     public void goToDriverActivity() {
         Intent driverIntent = new Intent(LoginActivity.this, DriverActivity.class);
         startActivity(driverIntent);
+    }
+
+    // Goes to settings activity
+    private void goToSettingsActivity() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }

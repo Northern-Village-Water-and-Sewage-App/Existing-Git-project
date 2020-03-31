@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ManagerAnalyticsActivity">
 
+    <TextView
+        android:id="@+id/averageWaitTextView"
+        android:layout_width="199dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/average_wait_time"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageWaitTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

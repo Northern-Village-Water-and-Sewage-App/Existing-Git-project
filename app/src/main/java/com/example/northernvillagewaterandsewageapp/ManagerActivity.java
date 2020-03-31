@@ -3,7 +3,9 @@ package com.example.northernvillagewaterandsewageapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +19,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -43,6 +46,7 @@ import java.util.ArrayList;
 public class ManagerActivity extends AppCompatActivity {
 
     protected ListView worklistListView;
+
     private RequestQueue mQueue;
     FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident;
     TextView tv_service, tv_driver, tv_resident;
@@ -129,6 +133,7 @@ public class ManagerActivity extends AppCompatActivity {
                 addResident();
             }
         });
+
         setUpManagerUI();
 
         loadListView();
@@ -218,19 +223,16 @@ public class ManagerActivity extends AppCompatActivity {
         Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ResidentAnalyticsActivity.class);
         startActivity(manAnalyticsIntent);
     }
-
     // Function to add a new resident in the database
     protected void addResident() {
         CreateResidentFragment createUser = new CreateResidentFragment();
         createUser.show(getSupportFragmentManager(), "Dialog");
     }
-
     // Function to disable an existing resident from the database
     protected void disableUser() {
         DisableUserFragment disableUserFragment = new DisableUserFragment();
         disableUserFragment.show(getSupportFragmentManager(), "Dialog");
     }
-
     // Function to add or remove a driver from the database
     protected void addDriver() {
         CreateDriverFragment addDriverFragment = new CreateDriverFragment();
