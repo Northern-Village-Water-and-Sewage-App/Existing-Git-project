@@ -10,7 +10,6 @@
 
     <!--         android:background="@drawable/round_corner_buttons"
         android:backgroundTint="#20265C" -->
-
     <ListView
         android:id="@+id/DriverWorklistListView"
         android:layout_width="match_parent"
@@ -23,15 +22,41 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/textViewAddService2"
+        android:id="@+id/textViewAddReportDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_report"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddReportDelivery"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddReportDelivery"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddReportDelivery" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddReportDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="218dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        android:visibility="invisible"
+        app:backgroundTint="#00BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/icon" />
+
+
+    <TextView
+        android:id="@+id/textViewAddServiceDriver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_service"
         android:textColor="@color/colorDarkText"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddService"
-        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddService"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddService" />
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddServiceDriver"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddServiceDriver"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddServiceDriver" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonAddServiceDriver"

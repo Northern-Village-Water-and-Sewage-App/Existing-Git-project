@@ -114,5 +114,6 @@
     <string name="dish_washes">Dish Washes</string>
     <string name="estimated_usage">Estimated Usage</string>
     <string name="washes">Washes</string>
+    <string name="add_report" translatable="false">Add Report</string>
 
 </resources>
