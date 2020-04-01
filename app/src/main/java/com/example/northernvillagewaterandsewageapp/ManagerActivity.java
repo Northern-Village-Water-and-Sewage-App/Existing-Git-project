@@ -73,13 +73,8 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
         mQueue = Volley.newRequestQueue(this);
 
         //debug
-        troubleshoot = findViewById(R.id.troubleshooterButton);
-        troubleshoot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                putMessage();
-            }
-        });
+//        troubleshoot = findViewById(R.id.troubleshooterButton);
+
 
         fab_add_any = findViewById(R.id.floatingActionButtonAddAny);
         fab_add_service = findViewById(R.id.floatingActionButtonAddService);
@@ -100,6 +95,13 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
         tv_driver = findViewById(R.id.textViewAddDriver);
         tv_resident = findViewById(R.id.textViewAddResident);
         tv_message = findViewById(R.id.textViewAddMessage);
+
+        fab_add_message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                putMessage();
+            }
+        });
 
         fab_add_any.setOnClickListener(new View.OnClickListener() {
             @Override
