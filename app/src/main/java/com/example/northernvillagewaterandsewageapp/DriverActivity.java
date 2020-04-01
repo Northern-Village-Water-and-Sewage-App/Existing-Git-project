@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class DriverActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener{
 
     protected ListView driverWorklistListView;
-    protected Button driverReportButton;
     TextView tv_service, tv_report;
     FloatingActionButton fab_add_any, fab_add_service, fab_add_report;
     Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
@@ -36,7 +35,6 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
         setContentView(R.layout.activity_driver);
 
         driverWorklistListView = findViewById(R.id.DriverWorklistListView);
-        driverReportButton = findViewById(R.id.driverMakeReportButton);
 
         fab_add_any = findViewById(R.id.floatingActionButtonAddAnyDriver);
         fab_add_service = findViewById(R.id.floatingActionButtonAddServiceDriver);
