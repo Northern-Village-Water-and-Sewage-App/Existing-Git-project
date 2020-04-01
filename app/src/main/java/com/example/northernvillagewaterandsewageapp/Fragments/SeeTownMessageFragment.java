@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,31 +32,41 @@ public class SeeTownMessageFragment extends DialogFragment {
     protected TextView message;
     protected String temp;
     private RequestQueue mQueue;
+    protected View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         //attaches the XML file to this java file
-        View view = inflater.inflate(R.layout.fragment_see_town_message, container, false);
-        mQueue = Volley.newRequestQueue(getActivity());
+        view = inflater.inflate(R.layout.fragment_see_town_message, container, false);
 
         //attach the buttons and edit text to the java file
         message = view.findViewById(R.id.townMessageTextView);
+
+        mQueue = Volley.newRequestQueue(getActivity());
+
+       return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         //sets up a string to hold the message
         temp = "";
 
         //gets the last message from the database
-        String url = "http://13.59.214.194:5000/get_message/";
+        String url = "http://13.59.214.194:5000/get_latest_message/";
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
                     JSONObject e;
-                    //I think this is response.length - 1 but not sure
-                    e = response.getJSONObject(response.length()-1);
-                    temp += e.getString("messages");
+                    e = response.getJSONObject(0);
+                    temp = e.getString("messages");
+
+                    message.setText(temp);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -71,14 +82,5 @@ public class SeeTownMessageFragment extends DialogFragment {
         mQueue.add(request);
 
 
-
-        //if the string is still empty tells the person that things are working like they should
-        if (temp == ""){
-            temp = "Service are working normally";
-        }
-
-        message.setText(temp);
-
-       return view;
     }
 }

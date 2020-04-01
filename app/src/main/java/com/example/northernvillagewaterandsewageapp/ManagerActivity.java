@@ -46,6 +46,7 @@ import java.util.ArrayList;
 public class ManagerActivity extends AppCompatActivity {
 
     protected ListView worklistListView;
+    protected Button troubleshoot;
 
     private RequestQueue mQueue;
     FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident;
@@ -59,6 +60,15 @@ public class ManagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
         mQueue = Volley.newRequestQueue(this);
+
+        //debug
+        troubleshoot = findViewById(R.id.troubleshooterButton);
+        troubleshoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                putMessage();
+            }
+        });
 
         fab_add_any = findViewById(R.id.floatingActionButtonAddAny);
         fab_add_service = findViewById(R.id.floatingActionButtonAddService);

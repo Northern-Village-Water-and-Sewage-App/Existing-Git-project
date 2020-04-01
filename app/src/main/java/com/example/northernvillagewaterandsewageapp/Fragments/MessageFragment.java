@@ -63,10 +63,10 @@ public class MessageFragment extends DialogFragment {
 
                 if (townMessage != "") {
                     String url = "http://13.59.214.194:5000/add_message/{message}".replace("{message}", townMessage);
+                    //Toast.makeText(getActivity(), townMessage, Toast.LENGTH_SHORT).show();
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
-                        public void onResponse(JSONArray response) {
-                        }
+                        public void onResponse(JSONArray response) {}
                     },
                             new Response.ErrorListener() {
                                 @Override
