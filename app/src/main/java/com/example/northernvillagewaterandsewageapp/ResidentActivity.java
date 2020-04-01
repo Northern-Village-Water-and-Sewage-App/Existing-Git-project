@@ -9,9 +9,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,12 +24,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.SeeTownMessageFragment;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Locale;
 import java.util.Random;
 
-public class ResidentActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener {
+public class ResidentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     protected Button deliveryButton;
     protected Button analyticsButton;
@@ -37,6 +43,7 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
     protected TextView sewageStatus;
     private DrawerLayout sideBarResident;
     private ActionBarDrawerToggle toggle;
+    protected FloatingActionButton infoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,63 +58,20 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
         progressBar = findViewById(R.id.progressBar);
         waterStatus = findViewById(R.id.txtViewStatusWater);
         sewageStatus = findViewById(R.id.txtViewStatusSewage);
-        /*sideBarResident = findViewById(R.id.sideBarResident);
-        NavigationView navigationView = findViewById(R.id.design_navigation_view);
+        infoButton = findViewById(R.id.townInfoFloatingActionButton);
+
+        sideBarResident = findViewById(R.id.sideBarResident);
+        NavigationView navigationView = findViewById(R.id.nav_view_resident);
 
         toggle = new ActionBarDrawerToggle(this, sideBarResident, R.string.open, R.string.close);
-        //navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
         sideBarResident.addDrawerListener(toggle);
         toggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         updateInfo();
         setUpResidentUI();
 
-    }
-
-    /*@Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.languages:
-                goToSettingsActivity();
-                return true;
-            case R.id.logout:
-                goToLogin();
-                return true;
-            default:
-        }
-        sideBarResident.closeDrawer(GravityCompat.START);
-        return true;
-    }*/
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.settings_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        /*if (toggle.onOptionsItemSelected(item)) {
-            return true;
-        }*/
-        switch (item.getItemId()) {
-            case R.id.subitem1:
-                goToLogin();
-                return true;
-            case R.id.subitem2:
-                goToSettingsActivity();
-                return true;
-            case R.id.subitem3:
-                updateInfo();
-                return true;
-            default:
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     //Gets updated tank info with their respective color indications
@@ -167,6 +131,81 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
                 goToAnalytics();
             }
         });
+
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSeeMessageFragment();
+            }
+        });
+
+    }
+
+    //                  ------------------------- Navigation bar related stuff -------------------------
+    @Override
+    public void onBackPressed() {
+        if (sideBarResident.isDrawerOpen(GravityCompat.START)) {
+            sideBarResident.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.logout:
+                goToLogin();
+                break;
+            case R.id.English:
+                setAppLanguage("en");
+                break;
+            case R.id.French:
+                setAppLanguage("fr");
+                break;
+            case R.id.Inuktitut:
+                setAppLanguage("iu");
+                break;
+        }
+        sideBarResident.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    // Function to change app language
+    private void setAppLanguage(String language) {
+        Resources resources = getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+
+        config.setLocale(new Locale(language.toLowerCase()));
+
+        resources.updateConfiguration(config, displayMetrics);
+    }
+
+    // Option to refresh
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        switch (item.getItemId()) {
+            case R.id.subitem3:
+                updateInfo();
+                return true;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected void getManualDelivery()
@@ -192,28 +231,16 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
         startActivity(resAnalyticsIntent);
     }
 
-    //back navigation working, 3 next functions
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-    @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-        finish();
-        goToLogin();
-    }
     //GoTo Login
     protected void goToLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
-    // Goes to settings activity
-    private void goToSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+    //Open message fragment
+    private void openSeeMessageFragment(){
+        SeeTownMessageFragment seeTownMessageFragment = new SeeTownMessageFragment();
+        seeTownMessageFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
 }

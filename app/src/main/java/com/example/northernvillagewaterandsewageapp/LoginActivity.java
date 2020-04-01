@@ -9,9 +9,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +37,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.Locale;
+
+public class LoginActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     protected EditText userName;
@@ -57,55 +62,21 @@ public class LoginActivity extends AppCompatActivity {//implements NavigationVie
         userName = findViewById(R.id.UserNameText);
         userPin = findViewById(R.id.PinText);
         loginButton = findViewById(R.id.LoginButton);
-        /*sideBarLogin = findViewById(R.id.sideBar);
-        NavigationView navigationView = findViewById(R.id.design_navigation_view);
+        sideBarLogin = findViewById(R.id.sideBar);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(this);
         toggleLogin = new ActionBarDrawerToggle(this, sideBarLogin, R.string.open, R.string.close);
         sideBarLogin.addDrawerListener(toggleLogin);
         toggleLogin.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);
 
         mQueue = Volley.newRequestQueue(this);
 
-    }
-
-    /*@Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.languages:
-                goToSettingsActivity();
-                return true;
-        }
-        sideBarLogin.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if (toggleLogin.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
-
-    // Saves login info
-    public void saveInfo(View v)
-    {
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
-        String usernameInput = userName.getText().toString().trim();
-        //String pinInput = userPin.getText().toString();
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(getString(R.string.user_name), usernameInput);
-        editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
-        editor.apply();
     }
 
     // Makes the login button clickable only when both fields are full
@@ -177,6 +148,66 @@ public class LoginActivity extends AppCompatActivity {//implements NavigationVie
                     }
                 });
         mQueue.add(request);
+    }
+
+    //                  -------------------------Navigation bar related stuff------------------------
+    @Override
+    public void onBackPressed() {
+        if (sideBarLogin.isDrawerOpen(GravityCompat.START)) {
+            sideBarLogin.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (toggleLogin.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.English:
+                setAppLanguage("en");
+                break;
+            case R.id.French:
+                setAppLanguage("fr");
+                break;
+            case R.id.Inuktitut:
+                setAppLanguage("iu");
+                break;
+        }
+        sideBarLogin.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    // Function to change app language
+    private void setAppLanguage(String language) {
+        Resources resources = getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+
+        config.setLocale(new Locale(language.toLowerCase()));
+
+        resources.updateConfiguration(config, displayMetrics);
+    }
+
+    // Saves login info
+    public void saveInfo(View v)
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
+        String usernameInput = userName.getText().toString().trim();
+        //String pinInput = userPin.getText().toString();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.user_name), usernameInput);
+        editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
+        editor.apply();
     }
 
 

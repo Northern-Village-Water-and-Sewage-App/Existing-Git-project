@@ -1,137 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sideBarResident"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#00FFFFFF"
+    android:foregroundTint="@android:color/darker_gray"
     tools:context=".ResidentActivity">
 
-    <Button
-        android:id="@+id/analyticsButton"
-        android:layout_width="120dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="32dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/analytics"
-        android:textColor="@color/colorLightText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="0.50" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/manualDeliveryButton"
-        android:layout_width="120dp"
-        android:layout_height="58dp"
-        android:layout_marginEnd="32dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/get_delivery"
-        android:textColor="@color/colorLightText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/analyticsButton"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/analyticsButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="500dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/analytics"
+            android:textColor="@color/colorLightText" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="75dp"
-        android:layout_height="400dp"
-        android:layout_marginStart="32dp"
-        android:progressDrawable="@drawable/verticalprogressbar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        <Button
+            android:id="@+id/manualDeliveryButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-100dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginBottom="-700dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/get_delivery"
+            android:textColor="@color/colorLightText" />
 
-    <Button
-        android:id="@+id/sewageAlarm"
-        android:layout_width="63dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="44dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="#00BCD4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/waterAlarm" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="80dp"
+            android:layout_height="400dp"
+            android:layout_gravity="left"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="110dp"
+            android:layout_marginTop="180dp"
+            android:progressDrawable="@drawable/verticalprogressbar" />
 
-    <Button
-        android:id="@+id/waterAlarm"
-        android:layout_width="63dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="250dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="#00BCD4"
-        app:layout_constraintStart_toEndOf="@+id/progressBar"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
+        <Button
+            android:id="@+id/waterAlarm"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="-60dp"
+            android:layout_marginStart="130dp"
+            android:background="@drawable/round_button"
+            android:backgroundTint="#00BCD4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="70dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/sewage"
+            android:textAlignment="center"
+            android:textColor="@color/colorDarkText" />
+
+        <Button
+            android:id="@+id/sewageAlarm"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="-100dp"
+            android:background="@drawable/round_button"
+            android:backgroundTint="#00BCD4" />
+
+        <TextView
+            android:id="@+id/messageFromTownTextView"
+            android:layout_width="164dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="271dp"
+            android:layout_marginBottom="35dp" />
+
+        <TextView
+            android:id="@+id/txtViewStatusWater"
+            android:layout_width="100dp"
+            android:layout_height="31dp"
+            android:layout_gravity="left"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="-420dp"
+            android:layout_marginEnd="190dp"
+            android:text="Status: OK"
+            android:textColor="@color/colorDarkText" />
+
+        <TextView
+            android:id="@+id/txtViewStatusSewage"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="-35dp"
+            android:layout_marginEnd="40dp"
+            android:text="Status: OK"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorDarkText" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="220dp"
+            android:text="@string/water"
+            android:textAlignment="center"
+            android:textColor="@color/colorDarkText" />
+
+        <TextView
+            android:id="@+id/tankStatusTitle"
+            android:layout_width="172dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="-450dp"
+            android:text="@string/resident_activity_title_text"
+            android:textColor="@color/colorDarkText"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/deliveryEstimateTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="192dp"
+            android:layout_marginBottom="389dp" />
+
+        <TextView
+            android:id="@+id/deliveryEstimateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/deliveryEstimateTitleTextView"
+            app:layout_constraintStart_toEndOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/townInfoFloatingActionButton"
+            android:layout_width="57dp"
+            android:layout_height="67dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-435dp"
+            android:backgroundTint="#00FFFFFF"
+            android:clickable="true"
+            android:scaleType="center"
+            app:backgroundTint="#FFFFFF"
+            app:elevation="0dp"
+            app:fabSize="auto"
+            app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view_resident"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/water"
-        android:textColor="@color/colorDarkText"
-        app:layout_constraintEnd_toEndOf="@+id/waterAlarm"
-        app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toStartOf="@+id/waterAlarm"
-        app:layout_constraintTop_toBottomOf="@+id/waterAlarm" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_drawer_resident"
+        app:headerLayout="@layout/nav_header_resident"/>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/sewage"
-        android:textColor="@color/colorDarkText"
-        app:layout_constraintEnd_toEndOf="@+id/sewageAlarm"
-        app:layout_constraintHorizontal_bias=".5"
-        app:layout_constraintStart_toStartOf="@+id/sewageAlarm"
-        app:layout_constraintTop_toBottomOf="@+id/sewageAlarm" />
+</androidx.drawerlayout.widget.DrawerLayout>
 
-    <TextView
-        android:id="@+id/messageFromTownTextView"
-        android:layout_width="164dp"
-        android:layout_height="17dp"
-        app:layout_constraintEnd_toEndOf="@+id/sewageAlarm"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="@+id/waterAlarm"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/txtViewStatusWater"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="Status: OK"
-        android:textColor="@color/colorDarkText"
-        app:layout_constraintBottom_toTopOf="@+id/waterAlarm"
-        app:layout_constraintEnd_toEndOf="@+id/waterAlarm"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/waterAlarm" />
-
-    <TextView
-        android:id="@+id/txtViewStatusSewage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="Status: OK"
-        android:textColor="@color/colorDarkText"
-        app:layout_constraintBottom_toTopOf="@+id/sewageAlarm"
-        app:layout_constraintEnd_toEndOf="@+id/sewageAlarm"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/sewageAlarm" />
-
-    <TextView
-        android:id="@+id/tankStatusTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/resident_activity_title_text"
-        android:textColor="@color/colorDarkText"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/sewageAlarm"
-        app:layout_constraintStart_toStartOf="@+id/waterAlarm"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
