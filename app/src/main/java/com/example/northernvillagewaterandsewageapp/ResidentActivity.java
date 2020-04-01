@@ -21,7 +21,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.SeeTownMessageFragment;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Random;
@@ -37,6 +39,7 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
     protected TextView sewageStatus;
     private DrawerLayout sideBarResident;
     private ActionBarDrawerToggle toggle;
+    protected FloatingActionButton infoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
         progressBar = findViewById(R.id.progressBar);
         waterStatus = findViewById(R.id.txtViewStatusWater);
         sewageStatus = findViewById(R.id.txtViewStatusSewage);
+        infoButton = findViewById(R.id.townInfoFloatingActionButton);
         /*sideBarResident = findViewById(R.id.sideBarResident);
         NavigationView navigationView = findViewById(R.id.design_navigation_view);
 
@@ -167,6 +171,14 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
                 goToAnalytics();
             }
         });
+
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSeeMessageFragment();
+            }
+        });
+
     }
 
     protected void getManualDelivery()
@@ -214,6 +226,12 @@ public class ResidentActivity extends AppCompatActivity {//implements Navigation
     private void goToSettingsActivity() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
+    }
+
+    //Open message fragment
+    private void openSeeMessageFragment(){
+        SeeTownMessageFragment seeTownMessageFragment = new SeeTownMessageFragment();
+        seeTownMessageFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
 }

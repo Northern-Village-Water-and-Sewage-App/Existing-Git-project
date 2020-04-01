@@ -96,7 +96,6 @@ public class CreateResidentFragment extends DialogFragment {
                     //dismiss the fragment if this went through
                     getDialog().dismiss();
                 }
-                //There is a bug here, it goes to the login page                                                        **************************************
                 else
                     Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT).show();
             }

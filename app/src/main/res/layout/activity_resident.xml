@@ -5,25 +5,26 @@
     android:id="@+id/sideBarResident"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#00FFFFFF"
+    android:foregroundTint="@android:color/darker_gray"
     tools:context=".ResidentActivity">
 
     <Button
         android:id="@+id/analyticsButton"
         android:layout_width="120dp"
-        android:layout_height="58dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
+        android:layout_marginBottom="50dp"
         android:background="@color/colorPrimary"
         android:text="@string/analytics"
         android:textColor="@color/colorLightText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="0.50" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/manualDeliveryButton"
         android:layout_width="120dp"
-        android:layout_height="58dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="32dp"
         android:background="@color/colorPrimary"
         android:text="@string/get_delivery"
@@ -36,74 +37,66 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="75dp"
+        android:layout_width="0dp"
         android:layout_height="400dp"
         android:layout_marginStart="32dp"
+        android:layout_marginEnd="110dp"
         android:progressDrawable="@drawable/verticalprogressbar"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deliveryEstimateTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
 
     <Button
-        android:id="@+id/sewageAlarm"
-        android:layout_width="63dp"
+        android:id="@+id/waterAlarm"
+        android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="183dp"
+        android:layout_marginEnd="220dp"
         android:background="@drawable/round_button"
         android:backgroundTint="#00BCD4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/waterAlarm" />
-
-    <Button
-        android:id="@+id/waterAlarm"
-        android:layout_width="63dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="250dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="#00BCD4"
-        app:layout_constraintStart_toEndOf="@+id/progressBar"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/water"
-        android:textColor="@color/colorDarkText"
-        app:layout_constraintEnd_toEndOf="@+id/waterAlarm"
-        app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toStartOf="@+id/waterAlarm"
-        app:layout_constraintTop_toBottomOf="@+id/waterAlarm" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="@string/sewage"
         android:textColor="@color/colorDarkText"
         app:layout_constraintEnd_toEndOf="@+id/sewageAlarm"
-        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="@+id/sewageAlarm"
         app:layout_constraintTop_toBottomOf="@+id/sewageAlarm" />
+
+    <Button
+        android:id="@+id/sewageAlarm"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="#00BCD4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/waterAlarm" />
 
     <TextView
         android:id="@+id/messageFromTownTextView"
         android:layout_width="164dp"
-        android:layout_height="17dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="271dp"
+        android:layout_marginBottom="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/deliveryEstimateTitleTextView"
         app:layout_constraintEnd_toEndOf="@+id/sewageAlarm"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="@+id/waterAlarm"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtViewStatusWater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:text="Status: OK"
         android:textColor="@color/colorDarkText"
         app:layout_constraintBottom_toTopOf="@+id/waterAlarm"
@@ -115,23 +108,72 @@
         android:id="@+id/txtViewStatusSewage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:text="Status: OK"
         android:textColor="@color/colorDarkText"
         app:layout_constraintBottom_toTopOf="@+id/sewageAlarm"
         app:layout_constraintEnd_toEndOf="@+id/sewageAlarm"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/sewageAlarm" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/water"
+        android:textColor="@color/colorDarkText"
+        app:layout_constraintEnd_toEndOf="@+id/waterAlarm"
+        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintStart_toStartOf="@+id/waterAlarm"
+        app:layout_constraintTop_toBottomOf="@+id/waterAlarm" />
 
     <TextView
         android:id="@+id/tankStatusTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
         android:text="@string/resident_activity_title_text"
         android:textColor="@color/colorDarkText"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/sewageAlarm"
         app:layout_constraintStart_toStartOf="@+id/waterAlarm"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deliveryEstimateTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="192dp"
+        android:layout_marginBottom="389dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/deliveryEstimateTextView"
+        app:layout_constraintTop_toBottomOf="@+id/messageFromTownTextView" />
+
+    <TextView
+        android:id="@+id/deliveryEstimateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deliveryEstimateTitleTextView"
+        app:layout_constraintStart_toEndOf="@+id/progressBar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/townInfoFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="#00FFFFFF"
+        android:clickable="true"
+        android:scaleType="center"
+        app:backgroundTint="#FFFFFF"
+        app:elevation="0dp"
+        app:fabSize="auto"
+        app:layout_constraintStart_toEndOf="@+id/tankStatusTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
