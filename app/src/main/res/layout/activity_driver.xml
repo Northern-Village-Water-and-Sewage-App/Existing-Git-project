@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddService" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonAddService"
+        android:id="@+id/floatingActionButtonAddServiceDriver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -48,7 +48,7 @@
         app:srcCompat="@drawable/pinclipart_com_mail_clipart_295687" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonAddAny"
+        android:id="@+id/floatingActionButtonAddAnyDriver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
