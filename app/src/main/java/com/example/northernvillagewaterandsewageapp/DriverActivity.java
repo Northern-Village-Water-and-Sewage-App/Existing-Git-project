@@ -1,36 +1,33 @@
 package com.example.northernvillagewaterandsewageapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class DriverActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener{
 
     protected ListView driverWorklistListView;
-    protected Button addServiceButton;
-    protected Button driverReportButton;
-    private DrawerLayout sideBarDriver;
-    private ActionBarDrawerToggle toggle;
+    TextView tv_service, tv_report;
+    FloatingActionButton fab_add_any, fab_add_service, fab_add_report;
+    Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
+
+    boolean isOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +35,47 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
         setContentView(R.layout.activity_driver);
 
         driverWorklistListView = findViewById(R.id.DriverWorklistListView);
-        addServiceButton = findViewById(R.id.manualserviceButton);
-        driverReportButton = findViewById(R.id.driverMakeReportButton);
-        /*sideBarDriver = findViewById(R.id.sideBarDriver);
-        NavigationView navigationView = findViewById(R.id.design_navigation_view);
 
-        toggle = new ActionBarDrawerToggle(this, sideBarDriver, R.string.open, R.string.close);
-        navigationView.setNavigationItemSelectedListener(this);
-        sideBarDriver.addDrawerListener(toggle);
-        toggle.syncState();*/
+        fab_add_any = findViewById(R.id.floatingActionButtonAddAnyDriver);
+        fab_add_service = findViewById(R.id.floatingActionButtonAddServiceDriver);
+        fab_add_report = findViewById(R.id.floatingActionButtonAddReportDelivery);
+
+        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
+        FabRAntiClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
+
+        tv_service = findViewById(R.id.textViewAddServiceDriver);
+        tv_report = findViewById(R.id.textViewAddReportDelivery);
+
+        fab_add_any.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isOpen){
+                    fab_add_service.startAnimation(FabClose);
+                    fab_add_report.startAnimation(FabClose);
+                    fab_add_any.startAnimation(FabRAntiClockwise);
+
+                    fab_add_service.setClickable(false);
+
+                    tv_service.startAnimation(FabClose);
+                    tv_report.startAnimation(FabClose);
+
+                    isOpen = false;
+                } else{
+                    fab_add_service.startAnimation(FabOpen);
+                    fab_add_report.startAnimation(FabOpen);
+                    fab_add_any.startAnimation(FabRClockwise);
+
+                    fab_add_service.setClickable(true);
+
+                    tv_service.startAnimation(FabOpen);
+                    tv_report.startAnimation(FabOpen);
+
+                    isOpen = true;
+                }
+            }
+        });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -83,13 +112,13 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
 
     protected void setUpDriverUI()
     {
-        addServiceButton.setOnClickListener(new View.OnClickListener() {
+        fab_add_service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 manualDemand();
             }
         });
-        driverReportButton.setOnClickListener(new View.OnClickListener() {
+        fab_add_report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openReportFragment();

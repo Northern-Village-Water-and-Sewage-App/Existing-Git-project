@@ -10,43 +10,82 @@
 
     <!--         android:background="@drawable/round_corner_buttons"
         android:backgroundTint="#20265C" -->
-
     <ListView
         android:id="@+id/DriverWorklistListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/driverMakeReportButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/driverMakeReportButton"
-        android:layout_width="137dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="64dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/report"
-        android:textColor="@color/colorLightText"
+    <TextView
+        android:id="@+id/textViewAddReportDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_report"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddReportDelivery"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddReportDelivery"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddReportDelivery" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddReportDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="218dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        android:visibility="invisible"
+        app:backgroundTint="#00BCD4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:srcCompat="@drawable/report" />
 
-    <Button
-        android:id="@+id/manualserviceButton"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
+
+    <TextView
+        android:id="@+id/textViewAddServiceDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/add_service"
-        android:textColor="@color/colorLightText"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddServiceDriver"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddServiceDriver"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddServiceDriver" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddServiceDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="138dp"
+        android:clickable="false"
+        android:tint="@color/colorLightText"
+        android:visibility="invisible"
+        app:backgroundTint="#9C27B0"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.81"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/driverMakeReportButton" />
+        app:srcCompat="@drawable/pinclipart_com_mail_clipart_295687" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddAnyDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="48dp"
+        android:clickable="true"
+        android:elevation="12dp"
+        android:tint="@color/colorLightText"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
 
     <TextView
         android:id="@+id/textView3"
