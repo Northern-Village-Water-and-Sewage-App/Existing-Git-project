@@ -1,62 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sideBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".LoginActivity">
 
-    <EditText
-        android:id="@+id/UserNameText"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="180dp"
-        android:autofillHints=""
-        android:drawableStart="@drawable/ic_action_user_icon"
-        android:ems="10"
-        android:hint="@string/user_name"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/PinText"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="48dp"
-        android:autofillHints=""
-        android:drawableStart="@drawable/ic_action_lock_icon"
-        android:ems="10"
-        android:hint="@string/pin"
-        android:inputType="numberPassword"
-        android:maxLength="3"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/UserNameText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/UserNameText"
-        app:layout_constraintTop_toBottomOf="@+id/UserNameText" />
+        <EditText
+            android:id="@+id/UserNameText"
+            android:layout_width="230dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="180dp"
+            android:autofillHints=""
+            android:drawableStart="@drawable/ic_action_user_icon"
+            android:ems="10"
+            android:hint="@string/user_name"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.314" />
 
-    <Button
-        android:id="@+id/LoginButton"
-        android:layout_width="206dp"
-        android:layout_height="52dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="68dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/login"
-        android:textColor="@color/colorLightText"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/PinText"
-        app:layout_constraintStart_toStartOf="@+id/PinText"
-        app:layout_constraintTop_toBottomOf="@+id/PinText" />
+        <EditText
+            android:id="@+id/PinText"
+            android:layout_width="230dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:autofillHints=""
+            android:drawableStart="@drawable/ic_action_lock_icon"
+            android:ems="10"
+            android:hint="@string/pin"
+            android:inputType="numberPassword"
+            android:maxLength="3"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/UserNameText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/UserNameText"
+            app:layout_constraintTop_toBottomOf="@+id/UserNameText" />
 
+        <Button
+            android:id="@+id/LoginButton"
+            android:layout_width="206dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="68dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/login"
+            android:textColor="@color/colorLightText"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/PinText"
+            app:layout_constraintStart_toStartOf="@+id/PinText"
+            app:layout_constraintTop_toBottomOf="@+id/PinText" />
+    </LinearLayout>
+    
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/nav_view"
+        app:menu="@menu/menu_drawer_login"
+        app:headerLayout="@layout/nav_header_login"/>
 
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

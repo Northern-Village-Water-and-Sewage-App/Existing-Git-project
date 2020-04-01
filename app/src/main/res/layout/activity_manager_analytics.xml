@@ -6,6 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ManagerAnalyticsActivity">
 
+    <EditText
+        android:id="@+id/sewageWaitTimeET"
+        android:layout_width="139dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sewageWaitTV" />
+
+    <EditText
+        android:id="@+id/waterWaitTimeLastET"
+        android:layout_width="143dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterWaitLastTV" />
+
+    <TextView
+        android:id="@+id/sewageWaitLastTV"
+        android:layout_width="76dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/sewage"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.844"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageWaitLastMonthET" />
+
+    <TextView
+        android:id="@+id/waterWaitLastTV"
+        android:layout_width="76dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/water"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageWaitLastMonthET" />
+
     <TextView
         android:id="@+id/averageWaitTextView"
         android:layout_width="199dp"
@@ -18,13 +66,142 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/averageWaitTimeET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/averageWaitTextView" />
+
+    <TextView
+        android:id="@+id/averageWaitLastMonthTV"
+        android:layout_width="199dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="192dp"
+        android:text="@string/average_wait_previous_month"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageWaitTextView" />
+
+    <EditText
+        android:id="@+id/waterWaitTimeET"
+        android:layout_width="143dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterWaitTV" />
+
+    <EditText
+        android:id="@+id/sewageWaitTimeLastET"
+        android:layout_width="139dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sewageWaitLastTV" />
+
+    <TextView
+        android:id="@+id/waterWaitTV"
+        android:layout_width="76dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/water"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageWaitTimeET" />
+
+    <TextView
+        android:id="@+id/sewageWaitTV"
+        android:layout_width="76dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/sewage"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageWaitTimeET" />
+
+    <EditText
+        android:id="@+id/averageWaitLastMonthET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageWaitLastMonthTV" />
+
+    <TextView
+        android:id="@+id/CallNumTV"
+        android:layout_width="181dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="444dp"
+        android:text="@string/number_of_calls"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageWaitTextView" />
+
+    <TextView
+        android:id="@+id/callsThisMonthTV"
+        android:layout_width="83dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/this_month"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CallNumTV" />
+
+    <TextView
+        android:id="@+id/callsLastMonthTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/last_month"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CallNumTV" />
+
+    <EditText
+        android:id="@+id/callsThisMonthET"
+        android:layout_width="140dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callsThisMonthTV" />
+
+    <EditText
+        android:id="@+id/callsLastMonthET"
+        android:layout_width="132dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callsLastMonthTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

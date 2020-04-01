@@ -3,15 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="">
 
+    <item android:title="@string/languages"
+        android:icon="@drawable/ic_language_black_24dp">
         <menu>
             <item
-                android:id="@+id/languages"
-                android:icon="@drawable/ic_language_black_24dp"
-                android:title="@string/languages" />
+                android:id="@+id/English"
+                android:title="@string/english" />
+            <item
+                android:id="@+id/French"
+                android:title="@string/french" />
+            <item
+                android:id="@+id/Inuktitut"
+                android:title="@string/inuktitut" />
         </menu>
-
     </item>
 
 </menu>

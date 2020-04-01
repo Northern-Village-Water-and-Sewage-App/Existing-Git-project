@@ -1,12 +1,19 @@
 package com.example.northernvillagewaterandsewageapp;
 
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,15 +42,17 @@ import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimat
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
-public class ManagerActivity extends AppCompatActivity {
+public class ManagerActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener {
 
     protected ListView worklistListView;
     protected Button troubleshoot;
@@ -52,6 +61,8 @@ public class ManagerActivity extends AppCompatActivity {
     FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident;
     TextView tv_service, tv_driver, tv_resident;
     Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
+    private DrawerLayout sideBar;
+    private ActionBarDrawerToggle toggle;
 
     boolean isOpen = false;
 
@@ -144,33 +155,19 @@ public class ManagerActivity extends AppCompatActivity {
             }
         });
 
+        /*sideBar = findViewById(R.id.sideBarManager);
+        NavigationView navigationView = findViewById(R.id.nav_view_manager);
+
+        navigationView.setNavigationItemSelectedListener(this);
+        toggle = new ActionBarDrawerToggle(this, sideBar, R.string.open, R.string.close);
+        sideBar.addDrawerListener(toggle);
+        toggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+
         setUpManagerUI();
 
         loadListView();
-    }
-
-    // Logout and settings menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.settings_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.subitem1:
-                goToLogin();
-                return true;
-            case R.id.subitem2:
-                goToSettingsActivity();
-                return true;
-            default:
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     protected void setUpManagerUI() {
@@ -265,20 +262,6 @@ public class ManagerActivity extends AppCompatActivity {
     protected void manualDemand() {
         ManualDemandFragment manualDemandFragment = new ManualDemandFragment();
         manualDemandFragment.show(getSupportFragmentManager(), "Dialog");
-    }
-
-    //back navigation working, 3 next functions
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-        goToLogin();
     }
 
     //GoTo Login
