@@ -7,18 +7,18 @@
     tools:context=".ManagerActivity"
     android:id="@+id/sideBarManager">
 
-        <ListView
-            android:id="@+id/WorklistListView"
-            android:layout_width="wrap_content"
-            android:layout_height="2dp"
-            android:layout_marginTop="64dp"
-            android:layout_gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <ListView
+        android:id="@+id/WorklistListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25">
 
-        </ListView>
+    </ListView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButtonAddAny"
@@ -94,17 +94,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <TextView
-        android:id="@+id/textViewAddService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_service"
-        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddService"
-        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddService"
-        android:textColor="@color/colorDarkText"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddService"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/textViewAddService"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/add_service"-->
+<!--        android:textColor="@color/colorDarkText"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddService"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddService"-->
+<!--        tools:layout_editor_absoluteY="594dp" />-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButtonAddResident"
