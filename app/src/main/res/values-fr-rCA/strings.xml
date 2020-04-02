@@ -116,12 +116,12 @@
     <string name="washes">Washes</string>
     <string name="average_wait_previous_month">Average Wait Previous Month:</string>
     <string name="number_of_calls">Number of Calls</string>
-    <string name="this_month">This Month</string>
-    <string name="last_month">Last Month</string>
-    <string name="remember_me">Remember Me</string>
-    <string name="do_you_want_to_log_out">Do you want to log out?</string>
-    <string name="no">No</string>
-    <string name="yes">Yes</string>
+    <string name="this_month">Ce mois-ci</string>
+    <string name="last_month">Le mois dernier</string>
+    <string name="remember_me">Souviens-toi de moi</string>
+    <string name="do_you_want_to_log_out">Voulez-vous vous déconnecter?</string>
+    <string name="no">Non</string>
+    <string name="yes">Oui</string>
 
 
 </resources>
