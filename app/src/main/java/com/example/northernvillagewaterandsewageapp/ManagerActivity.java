@@ -66,8 +66,8 @@ public class ManagerActivity extends AppCompatActivity {
         troubleshoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //getReports();
-                putMessage();
+                getReports();
+                //putMessage();
             }
         });
 

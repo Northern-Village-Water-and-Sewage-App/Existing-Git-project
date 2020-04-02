@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +56,7 @@ GetReportFragment extends DialogFragment {
         cancelGetReportButton = view.findViewById(R.id.cancelGetReportsButton);
 
         //gets the drop down menu to work
+        company = 0;
         Spinner companyReportsSpinner = view.findViewById(R.id.companyReportSpinner);
         companyReportsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -90,15 +92,22 @@ GetReportFragment extends DialogFragment {
                             String hold = "";
                             for (int pos = 0; pos < response.length(); pos++) {
                                 e = response.getJSONObject(pos);
-                                hold += "Company: " + e.getString("company_fk");
-                                hold += "  Complaint Type: " + e.getString("complaint_type_fk");
-                                hold += "\nComplain: " + e.getString("complaint") + "\n\n";
+                                hold += "Company: " + e.getString("company_name");
+                                hold += "  Complaint Type: " + e.getString("complaint_type");
+                                hold += "\nComplaint: " + e.getString("complaint") + "\n\n";
                             }
 
                             //send the email stuff
                             String recipient = emailAddressEditText.getText().toString();
                             String subject  = "Reports from water and sewage delivery drivers";
-                            sendEmail(recipient, subject, hold);
+
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.putExtra(Intent.EXTRA_EMAIL, recipient);
+                            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                            intent.putExtra(Intent.EXTRA_TEXT, hold);
+
+                            intent.setType("message/rfc822");
+                            startActivity(Intent.createChooser(intent, "Choose an email client"));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -121,9 +130,6 @@ GetReportFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 String url = "http://13.59.214.194:5000/get_reports/";
-                final ArrayList<String> complaintTypeList = new ArrayList<>();
-                final ArrayList<String> companyList = new ArrayList<>();
-                final ArrayList<String> reportsList = new ArrayList<>();
                 final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -133,18 +139,27 @@ GetReportFragment extends DialogFragment {
                             for (int pos = 0; pos < response.length(); pos++) {
                                 e = response.getJSONObject(pos);
                                 //checks to see if the report is for that company
-                                if (Integer.toString(company) == e.getString("company_fk")) {
+
+                                Toast.makeText(getActivity(), Integer.toString(company) + Integer.toString(companyNameToNum(e.getString("company_name"))),Toast.LENGTH_SHORT).show();
+                                if (company == companyNameToNum(e.getString("company_name"))) {
                                     //makes the body of the email
-                                    hold += "Company: " + e.getString("company_fk");
-                                    hold += "  Complaint Type: " + e.getString("complaint_type_fk");
-                                    hold += "\nComplain: " + e.getString("complaint") + "\n\n";
+                                    hold += "Company: " + e.getString("company_name");
+                                    hold += "  Complaint Type: " + e.getString("complaint_type");
+                                    hold += "\nComplaint: " + e.getString("complaint") + "\n\n";
                                 }
                             }
 
                             //Puts the email together
                             String recipient = emailAddressEditText.getText().toString();
-                            String subject  = "Reports for " + companyNumToName(Integer.toString(company)) + "by water and sewage delivery drivers";
-                            sendEmail(recipient, subject, hold);
+                            String subject  = "Reports for " + companyNumToName(company) + "by water and sewage delivery drivers";
+
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.putExtra(Intent.EXTRA_EMAIL, recipient);
+                            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                            intent.putExtra(Intent.EXTRA_TEXT, hold);
+
+                            intent.setType("message/rfc822");
+                            startActivity(Intent.createChooser(intent, "Choose an email client"));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -165,29 +180,31 @@ GetReportFragment extends DialogFragment {
     }
 
     //converts the number in the database into a company name
-    private String companyNumToName(String i){
-        if (i == "0"){return "KMHB";}
-        else if (i == "1"){return "KSB";}
-        else if (i == "2"){return "KRG";}
+    private String companyNumToName(int i){
+        if (i == 0){return "KMHB";}
+        else if (i == 1){return "KSB";}
+        else if (i == 2){return "KRG";}
         else {return "Makivik";}
+    }
+
+    private int companyNameToNum(String i){
+        if (i == "KMHB"){return 0;}
+        else if (i == "KSB"){return 1;}
+        else if (i == "KRG"){return 2;}
+        else if (i == "Makivik"){return 3;}
+        else return 5;
     }
 
     //converts the number in the database into a complaint
     private String complaintNumToName(String i){
-        if (i == "0"){return "Complaint";}
-        else if (i == "1"){return "Broken Lights";}
-        else if (i == "2"){return "Malfuctioning Lights";}
+        if (i == "1"){return "Complaint";}
+        else if (i == "2"){return "Broken Lights";}
+        else if (i == "3"){return "Malfuctioning Lights";}
         else {return "No need to call";}
     }
 
     private void sendEmail(String recipient, String subject, String text){
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL, recipient);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_TEXT, text);
 
-        intent.setType("message/rfc822");
-        startActivity(Intent.createChooser(intent, "Choose an email client"));
 
     }
 
