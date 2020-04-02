@@ -65,11 +65,7 @@
         <item>Mis un message</item>
         <item>Analyses</item>
     </string-array>
-    <string-array name="Languages">
-        <item>Anglais (Canada)</item>
-        <item>Français (Canada)</item>
-        <item>Inuktitut</item>
-    </string-array>
+    
     <string name="title_activity_settings">Paramètres</string>
 
     <string name="login">Accès</string>
@@ -97,8 +93,8 @@
     <string name="email_address">Couriel</string>
     <string name="work_list">Work List</string>
     <string name="delivery_list">Delivery List</string>
-    <string name="english">Anglais</string>
-    <string name="french">Français</string>
+    <string name="english">English</string>
+    <string name="french">Français (Canada)</string>
     <string name="inuktitut">Inuktitut</string>
     <string name="languages">Langue</string>
     <string name="open">Open</string>

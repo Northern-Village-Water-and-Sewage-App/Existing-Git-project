@@ -64,11 +64,6 @@
         <item>Set Message</item>
         <item>Analytics</item>
     </string-array>
-    <string-array name="Languages">
-        <item>English (Canada)</item>
-        <item>French (Canada)</item>
-        <item>Inuktitut</item>
-    </string-array>
     <string name="title_activity_settings">Settings</string>
 
     <string name="login">Login</string>
@@ -97,8 +92,8 @@
     <string name="work_list">Work List</string>
     <string name="delivery_list">Delivery List</string>
     <string name="english">English</string>
-    <string name="french">French</string>
-    <string name="inuktitut">Inuktitut</string>
+    <string name="french">Français (Canada)</string>
+    <string name="inuktitut">Inuktitut (ᐃᓄᑦᑎᑐᑦ)</string>
     <string name="languages">Languages</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
