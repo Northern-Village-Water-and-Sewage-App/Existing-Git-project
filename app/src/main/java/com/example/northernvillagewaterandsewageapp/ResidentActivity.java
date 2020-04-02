@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.SeeTownMessageFragment;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
@@ -155,7 +156,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
         switch (item.getItemId()) {
             case R.id.logout:
-                goToLogin();
+                logoutFragment();
                 break;
             case R.id.English:
                 setAppLanguage("en");
@@ -239,6 +240,12 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private void openSeeMessageFragment(){
         SeeTownMessageFragment seeTownMessageFragment = new SeeTownMessageFragment();
         seeTownMessageFragment.show(getSupportFragmentManager(), "Dialog");
+    }
+
+    //Open logout fragment
+    private void logoutFragment(){
+        LogoutFragment logoutFragment = new LogoutFragment();
+        logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
 }

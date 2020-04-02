@@ -92,7 +92,7 @@ public class MessageFragment extends DialogFragment {
                 } else
                     Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT).show();
             }
-            });
+        });
 
        return view;
     }

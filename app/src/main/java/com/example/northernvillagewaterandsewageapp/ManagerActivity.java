@@ -38,6 +38,7 @@ import com.example.northernvillagewaterandsewageapp.Fragments.CreateDriverFragme
 import com.example.northernvillagewaterandsewageapp.Fragments.CreateResidentFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DisableUserFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
@@ -249,7 +250,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
         switch (item.getItemId()) {
             case R.id.logout:
-                goToLogin();
+                logoutFragment();
                 break;
             case R.id.English:
                 setAppLanguage("en");
@@ -344,10 +345,10 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         startActivity(intent);
     }
 
-    // Goes to settings activity
-    private void goToSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+    //Open logout fragment
+    private void logoutFragment(){
+        LogoutFragment logoutFragment = new LogoutFragment();
+        logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
 }

@@ -120,5 +120,9 @@
     <string name="this_month">This Month</string>
     <string name="last_month">Last Month</string>
     <string name="remember_me">Remember Me</string>
+    
+    <string name="do_you_want_to_log_out">Do you want to log out?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 
 </resources>

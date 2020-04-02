@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverTimeEstimateFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -172,7 +173,7 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
 
         switch (item.getItemId()) {
             case R.id.logout:
-                goToLogin();
+                logoutFragment();
                 break;
             case R.id.English:
                 setAppLanguage("en");
@@ -234,10 +235,10 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         startActivity(intent);
     }
 
-    // Goes to settings activity
-    private void goToSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+    //Open logout fragment
+    private void logoutFragment(){
+        LogoutFragment logoutFragment = new LogoutFragment();
+        logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
 }
