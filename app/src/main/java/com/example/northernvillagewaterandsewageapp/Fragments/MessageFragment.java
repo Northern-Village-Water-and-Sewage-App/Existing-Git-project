@@ -23,6 +23,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.R;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MessageFragment extends DialogFragment {
 
@@ -66,7 +68,15 @@ public class MessageFragment extends DialogFragment {
                     //Toast.makeText(getActivity(), townMessage, Toast.LENGTH_SHORT).show();
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
-                        public void onResponse(JSONArray response) {}
+                        public void onResponse(JSONArray response) {
+                            try {
+                                JSONObject e;
+                                e = response.getJSONObject(0);
+                            }
+                            catch (JSONException e){
+                                e.printStackTrace();
+                            }
+                        }
                     },
                             new Response.ErrorListener() {
                                 @Override
@@ -77,7 +87,6 @@ public class MessageFragment extends DialogFragment {
                     mQueue.add(request);
                     //Note that it worked
                     Toast.makeText(getActivity(), "Message added", Toast.LENGTH_SHORT).show();
-
                     //dismiss the fragment if this went through
                     getDialog().dismiss();
                 } else

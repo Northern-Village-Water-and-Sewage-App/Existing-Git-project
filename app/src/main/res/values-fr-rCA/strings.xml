@@ -100,7 +100,7 @@
     <string name="english">Anglais</string>
     <string name="french">Français</string>
     <string name="inuktitut">Inuktitut</string>
-    <string name="languages">Languages</string>
+    <string name="languages">Langue</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="water">Eau</string>
@@ -114,6 +114,10 @@
     <string name="dish_washes">Dish Washes</string>
     <string name="estimated_usage">Estimated Usage</string>
     <string name="washes">Washes</string>
+    <string name="average_wait_previous_month">Average Wait Previous Month:</string>
+    <string name="number_of_calls">Number of Calls</string>
+    <string name="this_month">This Month</string>
+    <string name="last_month">Last Month</string>
 
 
 </resources>

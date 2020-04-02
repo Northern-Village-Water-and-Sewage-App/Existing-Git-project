@@ -39,9 +39,10 @@ public class SeeTownMessageFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         //attaches the XML file to this java file
-        view = inflater.inflate(R.layout.fragment_see_town_message, container, false);
+        //view = inflater.inflate(R.layout.fragment_see_town_message, container, false);
 
         //attach the buttons and edit text to the java file
+        view = inflater.inflate(R.layout.fragment_see_town_message, container, false);
         message = view.findViewById(R.id.townMessageTextView);
 
         mQueue = Volley.newRequestQueue(getActivity());
@@ -80,7 +81,5 @@ public class SeeTownMessageFragment extends DialogFragment {
                     }
                 });
         mQueue.add(request);
-
-
     }
 }

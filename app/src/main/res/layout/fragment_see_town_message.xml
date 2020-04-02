@@ -9,8 +9,29 @@
         android:id="@+id/townMessageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:text="Loading Message"
+        android:textAlignment="center"
+        android:textColor="@color/colorDarkText"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="20dp"
-        android:text="Message from town" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Message From town"
+        android:textAlignment="center"
+        android:textColor="@color/colorDarkText"
+        android:textSize="18sp" />
 </RelativeLayout>

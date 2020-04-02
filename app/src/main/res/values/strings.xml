@@ -115,5 +115,9 @@
     <string name="estimated_usage">Estimated Usage</string>
     <string name="washes">Washes</string>
     <string name="add_report" translatable="false">Add Report</string>
+    <string name="average_wait_previous_month">Average Wait Previous Month:</string>
+    <string name="number_of_calls">Number of Calls</string>
+    <string name="this_month">This Month</string>
+    <string name="last_month">Last Month</string>
 
 </resources>
