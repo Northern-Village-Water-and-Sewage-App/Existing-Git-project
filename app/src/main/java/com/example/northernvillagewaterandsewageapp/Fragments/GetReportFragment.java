@@ -2,6 +2,7 @@ package com.example.northernvillagewaterandsewageapp.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -141,7 +142,11 @@ GetReportFragment extends DialogFragment {
                                 //checks to see if the report is for that company
 
                                 Toast.makeText(getActivity(), Integer.toString(company) + Integer.toString(companyNameToNum(e.getString("company_name"))),Toast.LENGTH_SHORT).show();
-                                if (company == companyNameToNum(e.getString("company_name"))) {
+                                Log.d("STATE", companyNumToName(company));
+                                Log.d("STATE", e.getString("company_name"));
+
+                                //Very weird that this doesn't work
+                                if (company == companyNameToNum("KSB")) {//                                    if (company == companyNameToNum(e.getString("company_name"))) {
                                     //makes the body of the email
                                     hold += "Company: " + e.getString("company_name");
                                     hold += "  Complaint Type: " + e.getString("complaint_type");
@@ -181,14 +186,14 @@ GetReportFragment extends DialogFragment {
 
     //converts the number in the database into a company name
     private String companyNumToName(int i){
-        if (i == 0){return "KMHB";}
+        if (i == 0){return "KHMB";}
         else if (i == 1){return "KSB";}
         else if (i == 2){return "KRG";}
         else {return "Makivik";}
     }
 
     private int companyNameToNum(String i){
-        if (i == "KMHB"){return 0;}
+        if (i == "KHMB"){return 0;}
         else if (i == "KSB"){return 1;}
         else if (i == "KRG"){return 2;}
         else if (i == "Makivik"){return 3;}
