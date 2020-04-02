@@ -22,12 +22,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.SeeTownMessageFragment;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Locale;
 import java.util.Random;
@@ -44,11 +55,15 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private DrawerLayout sideBarResident;
     private ActionBarDrawerToggle toggle;
     protected FloatingActionButton infoButton;
+    String username;
+    private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident);
+        mQueue = Volley.newRequestQueue(this);
+        Bundle extras = getIntent().getExtras();
 
 
         deliveryButton = findViewById(R.id.manualDeliveryButton);
@@ -69,55 +84,79 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        updateInfo();
+        if (extras != null)
+            username = extras.getString("username");
+        else
+            username = "Zebedee";
+
+        updateInfo(username);
         setUpResidentUI();
 
     }
 
     //Gets updated tank info with their respective color indications
-    protected void updateInfo()
-    {
-        int newWaterHeight = new TankStatus().getWaterHeight();
-        //int newWaterAlarm = new TankStatus().getWaterAlarm();
-        int newSewageAlarm = new TankStatus().getSewageAlarm();
-        progressBar.setProgress(newWaterHeight);
+    protected void updateInfo(String username) {
+        String url = "http://13.59.214.194:5000/get_user/{username}".replace("{username}", username);
+
+//        int newWaterHeight = new TankStatus().getWaterHeight();
+//        int newSewageAlarm = new TankStatus().getSewageAlarm();
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    JSONObject user = response.getJSONObject(0);
+                    int newWaterHeightPercentage = Integer.parseInt(user.getString("water_tank_height_percentage"));
+                    int newSewageAlarm = Integer.parseInt(user.getString("sewage_tank_status"));
+
+                    progressBar.setProgress(newWaterHeightPercentage);
+
+                    if ((0 <= newWaterHeightPercentage && newWaterHeightPercentage <= 30)) {
+                        progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
+                        waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                        waterStatus.setText(R.string.tank_status_critical);
+                    } else if ((30 < newWaterHeightPercentage && newWaterHeightPercentage <= 65)) {
+                        progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium water level
+                        waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));
+                        waterStatus.setText(R.string.tank_status_warning);
+                    } else {
+                        progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
+                        waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                        waterStatus.setText(R.string.tank_status_ok);
+                    }
+
+                    // Color-wise indication for sewage alarm
+                    switch (newSewageAlarm) {
+                        case (0):
+                            sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Low sewage
+                            sewageStatus.setText(R.string.tank_status_ok);
+                            break;
+                        case (1):
+                            sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium sewage
+                            sewageStatus.setText(R.string.tank_status_warning);
+                            break;
+                        case (2):
+                            sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // High sewage
+                            sewageStatus.setText(R.string.tank_status_critical);
+                            break;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+        mQueue.add(request);
 
         // Color-wise indication for water level
-        if ((0 <= newWaterHeight && newWaterHeight <= 30)) {
-            progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
-            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-            waterStatus.setText(R.string.tank_status_critical);
-        }
-        else if ((30 < newWaterHeight && newWaterHeight <= 65)) {
-            progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium water level
-            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,204,0	)));
-            waterStatus.setText(R.string.tank_status_warning);
-        }
-        else {
-            progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
-            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            waterStatus.setText(R.string.tank_status_ok);
-        }
-
-        // Color-wise indication for sewage alarm
-        switch (newSewageAlarm) {
-            case (0):
-                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Low sewage
-                sewageStatus.setText(R.string.tank_status_ok);
-                break;
-            case (1):
-                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,204,0	)));  // Medium sewage
-                sewageStatus.setText(R.string.tank_status_warning);
-                break;
-            case (2):
-                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // High sewage
-                sewageStatus.setText(R.string.tank_status_critical);
-                break;
-        }
     }
 
-    protected void setUpResidentUI()
-    {
+    protected void setUpResidentUI() {
         deliveryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,8 +185,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     public void onBackPressed() {
         if (sideBarResident.isDrawerOpen(GravityCompat.START)) {
             sideBarResident.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -201,44 +239,43 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         }
         switch (item.getItemId()) {
             case R.id.subitem3:
-                updateInfo();
+                updateInfo(username);
                 return true;
             default:
         }
         return super.onOptionsItemSelected(item);
     }
 
-    protected void getManualDelivery()
-    {
+    protected void getManualDelivery() {
         ManualDemandFragment manualDemandFragment = new ManualDemandFragment();
         manualDemandFragment.show(getSupportFragmentManager(), "Dialog");
     }
-    protected void displayCurrentWater()
-    {
+
+    protected void displayCurrentWater() {
         //dbHelper.GetTankInfo();
     }
-    protected void displayCurrentSewage()
-    {
+
+    protected void displayCurrentSewage() {
         //tankStatus.getSewageAlarm();
     }
-    protected void getTimeDeliveryEstimate()
-    {
+
+    protected void getTimeDeliveryEstimate() {
 
     }
-    protected void goToAnalytics()
-    {
+
+    protected void goToAnalytics() {
         Intent resAnalyticsIntent = new Intent(ResidentActivity.this, ResidentAnalyticsActivity.class);
         startActivity(resAnalyticsIntent);
     }
 
     //GoTo Login
-    protected void goToLogin(){
+    protected void goToLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
     //Open message fragment
-    private void openSeeMessageFragment(){
+    private void openSeeMessageFragment() {
         SeeTownMessageFragment seeTownMessageFragment = new SeeTownMessageFragment();
         seeTownMessageFragment.show(getSupportFragmentManager(), "Dialog");
     }

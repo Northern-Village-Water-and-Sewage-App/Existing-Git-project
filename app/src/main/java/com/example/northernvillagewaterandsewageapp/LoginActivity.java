@@ -218,6 +218,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
 
     public void goToResidentActivity() {
         Intent residentIntent = new Intent(LoginActivity.this, ResidentActivity.class);
+        residentIntent.putExtra("username", userName.getText());
         startActivity(residentIntent);
     }
 
