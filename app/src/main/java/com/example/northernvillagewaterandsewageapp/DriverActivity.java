@@ -1,15 +1,24 @@
 package com.example.northernvillagewaterandsewageapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,15 +26,19 @@ import com.example.northernvillagewaterandsewageapp.Fragments.DriverReportFragme
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class DriverActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener{
+public class DriverActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     protected ListView driverWorklistListView;
     TextView tv_service, tv_report;
     FloatingActionButton fab_add_any, fab_add_service, fab_add_report;
     Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
+    private DrawerLayout sideBar;
+    private ActionBarDrawerToggle toggle;
 
     boolean isOpen = false;
 
@@ -77,6 +90,14 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
             }
         });
 
+        sideBar = findViewById(R.id.sideBarDriver);
+        NavigationView navigationView = findViewById(R.id.nav_view_driver);
+
+        navigationView.setNavigationItemSelectedListener(this);
+        toggle = new ActionBarDrawerToggle(this, sideBar, R.string.open, R.string.close);
+        sideBar.addDrawerListener(toggle);
+        toggle.syncState();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setUpDriverUI();
@@ -84,31 +105,6 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
         loadListView();
 
     }
-
-    /*@Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.languages:
-                goToSettingsActivity();
-                return true;
-            case R.id.logout:
-                goToLogin();
-                return true;
-            default:
-        }
-        sideBarDriver.closeDrawer(GravityCompat.START);
-        return true;
-    }*/
-
-    /*@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (toggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 
     protected void setUpDriverUI()
     {
@@ -160,25 +156,79 @@ public class DriverActivity extends AppCompatActivity {//implements NavigationVi
         });
     }
 
+    //                  ------------------------- Navigation bar related stuff -------------------------
+    @Override
+    public void onBackPressed() {
+        if (sideBar.isDrawerOpen(GravityCompat.START)) {
+            sideBar.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.logout:
+                goToLogin();
+                break;
+            case R.id.English:
+                setAppLanguage("en");
+                break;
+            case R.id.French:
+                setAppLanguage("fr");
+                break;
+            case R.id.Inuktitut:
+                setAppLanguage("iu");
+                break;
+        }
+        sideBar.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    // Function to change app language
+    private void setAppLanguage(String language) {
+        Resources resources = getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+
+        config.setLocale(new Locale(language.toLowerCase()));
+
+        resources.updateConfiguration(config, displayMetrics);
+    }
+
+    // Option to refresh
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.refresh_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        /*switch (item.getItemId()) {
+            case R.id.subitem3:
+                updateInfo();
+                return true;
+            default:
+        }*/
+        return super.onOptionsItemSelected(item);
+    }
+
     //Open report fragment
     protected void openReportFragment(){
         DriverReportFragment driverReportFragment = new DriverReportFragment();
         driverReportFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
-
-    //back navigation working, 3 next functions
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-    @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-        finish();
-        goToLogin();
-    }
     //GoTo Login
     protected void goToLogin(){
         Intent intent = new Intent(this, LoginActivity.class);

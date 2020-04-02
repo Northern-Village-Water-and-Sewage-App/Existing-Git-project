@@ -13,7 +13,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,7 +29,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Locale;
-import java.util.Random;
 
 public class ResidentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -189,7 +187,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.settings_menu, menu);
+        menuInflater.inflate(R.menu.refresh_menu, menu);
         return true;
     }
 
@@ -200,7 +198,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
             return true;
         }
         switch (item.getItemId()) {
-            case R.id.subitem3:
+            case R.id.refreshItem:
                 updateInfo();
                 return true;
             default:

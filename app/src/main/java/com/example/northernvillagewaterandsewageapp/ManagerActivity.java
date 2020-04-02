@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -24,9 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -52,7 +48,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-public class ManagerActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener {
+public class ManagerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     protected ListView worklistListView;
     protected Button troubleshoot;
@@ -163,7 +159,7 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
             }
         });
 
-        /*sideBar = findViewById(R.id.sideBarManager);
+        sideBar = findViewById(R.id.sideBarManager);
         NavigationView navigationView = findViewById(R.id.nav_view_manager);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -171,7 +167,7 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
         sideBar.addDrawerListener(toggle);
         toggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setUpManagerUI();
 
@@ -231,6 +227,73 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
                     }
                 });
         mQueue.add(request);
+    }
+
+    //                  ------------------------- Navigation bar related stuff -------------------------
+    @Override
+    public void onBackPressed() {
+        if (sideBar.isDrawerOpen(GravityCompat.START)) {
+            sideBar.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.logout:
+                goToLogin();
+                break;
+            case R.id.English:
+                setAppLanguage("en");
+                break;
+            case R.id.French:
+                setAppLanguage("fr");
+                break;
+            case R.id.Inuktitut:
+                setAppLanguage("iu");
+                break;
+        }
+        sideBar.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    // Function to change app language
+    private void setAppLanguage(String language) {
+        Resources resources = getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+
+        config.setLocale(new Locale(language.toLowerCase()));
+
+        resources.updateConfiguration(config, displayMetrics);
+    }
+
+    // Option to refresh
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.refresh_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        /*switch (item.getItemId()) {
+            case R.id.subitem3:
+                updateInfo();
+                return true;
+            default:
+        }*/
+        return super.onOptionsItemSelected(item);
     }
 
     // Function that shows the manager analytics when its button is clicked
