@@ -77,7 +77,7 @@ public class CreateResidentFragment extends DialogFragment {
                 String userPin = PinEditText.getText().toString();
                 String tankNum = tankNumEditText.getText().toString();
                 if (username != "" && houseNum != "" && tankNum != "" && userPin != "") {
-                    //adds a user by using the db helper
+                    //adds a user
                     String url = "http://13.59.214.194:5000/add_resident/{username}/{userpin}".replace("{username}", username).replace("{userpin}", PinEditText.getText().toString());
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
