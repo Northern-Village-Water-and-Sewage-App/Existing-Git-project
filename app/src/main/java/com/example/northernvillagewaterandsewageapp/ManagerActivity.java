@@ -46,11 +46,10 @@ import java.util.ArrayList;
 public class ManagerActivity extends AppCompatActivity {
 
     protected ListView worklistListView;
-    protected Button troubleshoot;
 
     private RequestQueue mQueue;
-    FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident, fab_add_message;
-    TextView tv_service, tv_driver, tv_resident, tv_message;
+    FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident, fab_add_message, fab_disable_resident, fab_get_reports, fab_analytics;
+    TextView tv_service, tv_driver, tv_resident, tv_message, tv_disable_resident, tv_get_reports, tv_analytics;
     Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
 
     boolean isOpen = false;
@@ -61,25 +60,22 @@ public class ManagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manager);
         mQueue = Volley.newRequestQueue(this);
 
-        //debug
-        troubleshoot = findViewById(R.id.troubleshooterButton);
-        troubleshoot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getReports();
-                //putMessage();
-            }
-        });
 
         fab_add_any = findViewById(R.id.floatingActionButtonAddAny);
         fab_add_service = findViewById(R.id.floatingActionButtonAddService);
         fab_add_driver = findViewById(R.id.floatingActionButtonAddDriver);
         fab_add_resident = findViewById(R.id.floatingActionButtonAddResident);
         fab_add_message = findViewById(R.id.floatingActionButtonAddMessage);
+        fab_disable_resident = findViewById(R.id.floatingActionButtonDisableResident);
+        fab_get_reports = findViewById(R.id.floatingActionButtonGetReports);
+        fab_analytics = findViewById(R.id.floatingActionButtonAnalytics);
 
         fab_add_service.setClickable(false);
         fab_add_driver.setClickable(false);
         fab_add_resident.setClickable(false);
+        fab_disable_resident.setClickable(false);
+        fab_get_reports.setClickable(false);
+        fab_analytics.setClickable(false);
 
         FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
@@ -90,6 +86,9 @@ public class ManagerActivity extends AppCompatActivity {
         tv_driver = findViewById(R.id.textViewAddDriver);
         tv_resident = findViewById(R.id.textViewAddResident);
         tv_message = findViewById(R.id.textViewAddMessage);
+        tv_disable_resident = findViewById(R.id.textViewDisableResdient);
+        tv_get_reports = findViewById(R.id.textViewGetReports);
+        tv_analytics = findViewById(R.id.textViewAnalytics);
 
         fab_add_any.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,16 +98,25 @@ public class ManagerActivity extends AppCompatActivity {
                     fab_add_driver.startAnimation(FabClose);
                     fab_add_resident.startAnimation(FabClose);
                     fab_add_message.startAnimation(FabClose);
+                    fab_disable_resident.startAnimation(FabClose);
+                    fab_get_reports.startAnimation(FabClose);
+                    fab_analytics.startAnimation(FabClose);
                     fab_add_any.startAnimation(FabRAntiClockwise);
 
                     fab_add_service.setClickable(false);
                     fab_add_driver.setClickable(false);
                     fab_add_resident.setClickable(false);
+                    fab_disable_resident.setClickable(false);
+                    fab_get_reports.setClickable(false);
+                    fab_analytics.setClickable(false);
 
                     tv_service.startAnimation(FabClose);
                     tv_driver.startAnimation(FabClose);
                     tv_resident.startAnimation(FabClose);
                     tv_message.startAnimation(FabClose);
+                    tv_disable_resident.startAnimation(FabClose);
+                    tv_get_reports.startAnimation(FabClose);
+                    tv_analytics.startAnimation(FabClose);
 
                     isOpen = false;
                 } else {
@@ -116,16 +124,25 @@ public class ManagerActivity extends AppCompatActivity {
                     fab_add_driver.startAnimation(FabOpen);
                     fab_add_resident.startAnimation(FabOpen);
                     fab_add_message.startAnimation(FabOpen);
+                    fab_get_reports.startAnimation(FabOpen);
+                    fab_disable_resident.startAnimation(FabOpen);
+                    fab_analytics.startAnimation(FabOpen);
                     fab_add_any.startAnimation(FabRClockwise);
 
                     fab_add_service.setClickable(true);
                     fab_add_driver.setClickable(true);
                     fab_add_resident.setClickable(true);
+                    fab_disable_resident.setClickable(true);
+                    fab_get_reports.setClickable(true);
+                    fab_analytics.setClickable(true);
 
                     tv_service.startAnimation(FabOpen);
                     tv_driver.startAnimation(FabOpen);
                     tv_resident.startAnimation(FabOpen);
                     tv_message.startAnimation(FabOpen);
+                    tv_disable_resident.startAnimation(FabOpen);
+                    tv_get_reports.startAnimation(FabOpen);
+                    tv_analytics.startAnimation(FabOpen);
 
                     isOpen = true;
                 }
@@ -148,6 +165,24 @@ public class ManagerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addResident();
+            }
+        });
+        fab_disable_resident.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                disableUser();
+            }
+        });
+        fab_get_reports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getReports();
+            }
+        });
+        fab_analytics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToAnalytics();
             }
         });
 

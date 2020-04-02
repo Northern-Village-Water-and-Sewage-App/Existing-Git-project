@@ -141,12 +141,12 @@ GetReportFragment extends DialogFragment {
                                 e = response.getJSONObject(pos);
                                 //checks to see if the report is for that company
 
-                                Toast.makeText(getActivity(), Integer.toString(company) + Integer.toString(companyNameToNum(e.getString("company_name"))),Toast.LENGTH_SHORT).show();
-                                Log.d("STATE", companyNumToName(company));
-                                Log.d("STATE", e.getString("company_name"));
+                                /*Log.d("STATE", companyNumToName(company));
+                                Log.d("STATE", e.getString("company_name"));*/
 
-                                //Very weird that this doesn't work
-                                if (company == companyNameToNum("KSB")) {//                                    if (company == companyNameToNum(e.getString("company_name"))) {
+                                //Next line bug temp fix.
+                                if (company == companyNameToNum("KSB")) {
+                                //if (company == companyNameToNum((e.getString("company_name"))) {
                                     //makes the body of the email
                                     hold += "Company: " + e.getString("company_name");
                                     hold += "  Complaint Type: " + e.getString("complaint_type");

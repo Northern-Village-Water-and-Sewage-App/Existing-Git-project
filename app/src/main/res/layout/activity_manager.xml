@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="4dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="138dp"
+        android:layout_marginBottom="82dp"
         android:clickable="false"
         android:tint="@color/colorLightText"
         app:backgroundTint="#9C27B0"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="218dp"
+        android:layout_marginBottom="159dp"
         android:clickable="true"
         android:tint="@color/colorLightText"
         app:backgroundTint="#00BCD4"
@@ -78,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="298dp"
+        android:layout_marginBottom="236dp"
         android:clickable="true"
         android:tint="@color/colorLightText"
         app:backgroundTint="#4CAF50"
@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="378dp"
+        android:layout_marginBottom="312dp"
         android:clickable="true"
         android:tint="@color/colorLightText"
         android:visibility="invisible"
@@ -100,6 +100,48 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonDisableResident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="388dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        android:visibility="invisible"
+        app:backgroundTint="#FF8C00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonGetReports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="466dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        android:visibility="invisible"
+        app:backgroundTint="#9400D3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_report_image" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAnalytics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="540dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        android:visibility="invisible"
+        app:backgroundTint="#7FFFD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_agenda" />
 
     <TextView
         android:id="@+id/textViewAddService"
@@ -145,5 +187,38 @@
         app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddMessage"
         app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddMessage"
         app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddMessage" />
+
+    <TextView
+        android:id="@+id/textViewDisableResdient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/disable_resident"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonDisableResident"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonDisableResident"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonDisableResident" />
+
+    <TextView
+        android:id="@+id/textViewGetReports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_reports"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonGetReports"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonGetReports"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonGetReports" />
+
+    <TextView
+        android:id="@+id/textViewAnalytics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/analytics"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAnalytics"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAnalytics"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAnalytics" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
