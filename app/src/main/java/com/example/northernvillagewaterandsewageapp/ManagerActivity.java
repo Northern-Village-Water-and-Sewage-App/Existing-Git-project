@@ -49,8 +49,8 @@ public class ManagerActivity extends AppCompatActivity {
     protected Button troubleshoot;
 
     private RequestQueue mQueue;
-    FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident;
-    TextView tv_service, tv_driver, tv_resident;
+    FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident, fab_add_message;
+    TextView tv_service, tv_driver, tv_resident, tv_message;
     Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
 
     boolean isOpen = false;
@@ -75,6 +75,7 @@ public class ManagerActivity extends AppCompatActivity {
         fab_add_service = findViewById(R.id.floatingActionButtonAddService);
         fab_add_driver = findViewById(R.id.floatingActionButtonAddDriver);
         fab_add_resident = findViewById(R.id.floatingActionButtonAddResident);
+        fab_add_message = findViewById(R.id.floatingActionButtonAddMessage);
 
         fab_add_service.setClickable(false);
         fab_add_driver.setClickable(false);
@@ -88,6 +89,7 @@ public class ManagerActivity extends AppCompatActivity {
         tv_service = findViewById(R.id.textViewAddService);
         tv_driver = findViewById(R.id.textViewAddDriver);
         tv_resident = findViewById(R.id.textViewAddResident);
+        tv_message = findViewById(R.id.textViewAddMessage);
 
         fab_add_any.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +98,7 @@ public class ManagerActivity extends AppCompatActivity {
                     fab_add_service.startAnimation(FabClose);
                     fab_add_driver.startAnimation(FabClose);
                     fab_add_resident.startAnimation(FabClose);
+                    fab_add_message.startAnimation(FabClose);
                     fab_add_any.startAnimation(FabRAntiClockwise);
 
                     fab_add_service.setClickable(false);
@@ -105,12 +108,14 @@ public class ManagerActivity extends AppCompatActivity {
                     tv_service.startAnimation(FabClose);
                     tv_driver.startAnimation(FabClose);
                     tv_resident.startAnimation(FabClose);
+                    tv_message.startAnimation(FabClose);
 
                     isOpen = false;
                 } else {
                     fab_add_service.startAnimation(FabOpen);
                     fab_add_driver.startAnimation(FabOpen);
                     fab_add_resident.startAnimation(FabOpen);
+                    fab_add_message.startAnimation(FabOpen);
                     fab_add_any.startAnimation(FabRClockwise);
 
                     fab_add_service.setClickable(true);
@@ -120,6 +125,7 @@ public class ManagerActivity extends AppCompatActivity {
                     tv_service.startAnimation(FabOpen);
                     tv_driver.startAnimation(FabOpen);
                     tv_resident.startAnimation(FabOpen);
+                    tv_message.startAnimation(FabOpen);
 
                     isOpen = true;
                 }

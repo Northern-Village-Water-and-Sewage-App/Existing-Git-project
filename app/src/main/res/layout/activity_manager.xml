@@ -15,9 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-    </ListView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonAddAny"
@@ -89,6 +87,20 @@
         android:visibility="invisible"
         app:srcCompat="@drawable/home" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="378dp"
+        android:clickable="true"
+        android:tint="@color/colorLightText"
+        android:visibility="invisible"
+        app:backgroundTint="#F44336"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
+
     <TextView
         android:id="@+id/textViewAddService"
         android:layout_width="wrap_content"
@@ -123,14 +135,15 @@
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddResident" />
 
-    <Button
-        android:id="@+id/troubleshooterButton"
+    <TextView
+        android:id="@+id/textViewAddMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Troubleshooting"
-        tools:layout_editor_absoluteY="64dp"
-        android:layout_margin="40dp"/>
+        android:text="@string/add_message"
+        android:textColor="@color/colorDarkText"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonAddMessage"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButtonAddMessage"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButtonAddMessage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
