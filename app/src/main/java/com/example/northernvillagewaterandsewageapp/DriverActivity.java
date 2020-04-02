@@ -214,12 +214,11 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         if (toggle.onOptionsItemSelected(item)) {
             return true;
         }
-        /*switch (item.getItemId()) {
-            case R.id.subitem3:
-                updateInfo();
+        switch (item.getItemId()) {
+            case R.id.refreshItem:
                 return true;
             default:
-        }*/
+        }
         return super.onOptionsItemSelected(item);
     }
 
