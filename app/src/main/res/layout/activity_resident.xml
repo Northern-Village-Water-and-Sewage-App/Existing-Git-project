@@ -91,10 +91,10 @@
 
         <TextView
             android:id="@+id/txtViewStatusWater"
-            android:layout_width="100dp"
-            android:layout_height="31dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="left"
-            android:layout_marginStart="125dp"
+            android:layout_marginStart="127dp"
             android:layout_marginTop="-420dp"
             android:layout_marginEnd="190dp"
             android:text="Status: OK"
@@ -102,10 +102,10 @@
 
         <TextView
             android:id="@+id/txtViewStatusSewage"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="144dp"
             android:layout_marginTop="-35dp"
             android:layout_marginEnd="40dp"
             android:text="Status: OK"
@@ -115,7 +115,7 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="60dp"
-            android:layout_height="24dp"
+            android:layout_height="27dp"
             android:layout_gravity="right"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="220dp"
