@@ -30,6 +30,18 @@
         <item>Sewage</item>
         <item>Water and Sewage</item>
     </string-array>
+    <string-array name="waterTankTypes">
+        <item>Select Water Tank</item>
+        <item>Cylindrical</item>
+        <item>Box</item>
+        <item>Horizontal Cylinder</item>
+    </string-array>
+    <string-array name="sewageTankTypes">
+        <item>Select Sewage Tank</item>
+        <item>Cylindrical</item>
+        <item>Box</item>
+        <item>Horizontal Cylinder</item>
+    </string-array>
     <string-array name="timeEstimate">
         <item>None</item>
         <item>On the way</item>
