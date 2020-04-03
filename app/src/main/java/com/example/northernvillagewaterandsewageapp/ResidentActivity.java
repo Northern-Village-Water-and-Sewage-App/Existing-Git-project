@@ -60,10 +60,10 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         infoButton = findViewById(R.id.townInfoFloatingActionButton);
 
         sideBarResident = findViewById(R.id.sideBarResident);
-        NavigationView navigationView = findViewById(R.id.nav_view_resident);
+//        NavigationView navigationView = findViewById(R.id.nav_view_resident);
 
         toggle = new ActionBarDrawerToggle(this, sideBarResident, R.string.open, R.string.close);
-        navigationView.setNavigationItemSelectedListener(this);
+//        navigationView.setNavigationItemSelectedListener(this);
         sideBarResident.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
