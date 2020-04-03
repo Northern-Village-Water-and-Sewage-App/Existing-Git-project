@@ -43,6 +43,7 @@ import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimat
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.RemoveDriverFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.RemoveResidentFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -250,6 +251,9 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.remove_resident:
+                removeResident();
+                break;
             case R.id.remove_driver:
                 removeDriver();
                 break;
@@ -313,6 +317,11 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     protected void addResident() {
         CreateResidentFragment createUser = new CreateResidentFragment();
         createUser.show(getSupportFragmentManager(), "Dialog");
+    }
+    // Function to remove a resident from the database
+    protected void removeResident() {
+        RemoveResidentFragment removeResidentFragment = new RemoveResidentFragment();
+        removeResidentFragment.show(getSupportFragmentManager(), "Dialog");
     }
     // Function to disable an existing resident from the database
     protected void disableUser() {

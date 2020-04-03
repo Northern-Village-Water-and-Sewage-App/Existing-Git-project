@@ -31,7 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RemoveDriverFragment extends DialogFragment {
+public class RemoveResidentFragment extends DialogFragment {
 
     protected EditText UsernameEditText;
     protected Button CancelButton;
@@ -43,13 +43,13 @@ public class RemoveDriverFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_remove_driver, container, false);
+        View view = inflater.inflate(R.layout.fragment_remove_resident, container, false);
 
         //connects the edit texts to the Java file
-        UsernameEditText = view.findViewById(R.id.driverNameEditText);
+        UsernameEditText = view.findViewById(R.id.residentNameEditText);
         //connects the buttons to the Java file
-        CancelButton = view.findViewById(R.id.cancelRemoveDriverButton);
-        RemoveUserButton = view.findViewById(R.id.removeDriverButton);
+        CancelButton = view.findViewById(R.id.cancelRemoveResidentButton);
+        RemoveUserButton = view.findViewById(R.id.removeResidentButton);
 
         mQueue = Volley.newRequestQueue(getActivity());
 
@@ -66,7 +66,7 @@ public class RemoveDriverFragment extends DialogFragment {
                 String username = UsernameEditText.getText().toString();
                 if (!username.equals("")) {
                     //removes a user by using the db
-                    String url = "http://13.59.214.194:5000/remove_driver/{username}".replace("{username}", username);
+                    String url = "http://13.59.214.194:5000/remove_resident/{username}".replace("{username}", username);
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {}
@@ -79,12 +79,11 @@ public class RemoveDriverFragment extends DialogFragment {
                             });
                     mQueue.add(request);
                     //Note that it worked
-                    Toast.makeText(getActivity(), "Driver removed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Resident removed", Toast.LENGTH_SHORT).show();
 
                     //dismiss the fragment if this went through
                     getDialog().dismiss();
                 }
-                //There is a bug here, it goes to the login page                                                        **************************************
                 else
                     Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT).show();
             }
