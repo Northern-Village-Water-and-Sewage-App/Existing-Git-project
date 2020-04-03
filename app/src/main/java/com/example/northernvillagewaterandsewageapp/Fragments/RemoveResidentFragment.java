@@ -31,14 +31,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class CreateDriverFragment extends DialogFragment {
+public class RemoveResidentFragment extends DialogFragment {
 
     protected EditText UsernameEditText;
-    protected EditText PinEditText;
-    protected Button RandomPinButton;
-    protected Button AddUserButton;
-    protected Button CancelAddUserButton;
-    //protected Button RemoveUserButton;
+    protected Button CancelButton;
+    protected Button RemoveUserButton;
 
     private RequestQueue mQueue;
 
@@ -46,36 +43,30 @@ public class CreateDriverFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_create_driver, container, false);
+        View view = inflater.inflate(R.layout.fragment_remove_resident, container, false);
 
         //connects the edit texts to the Java file
-        UsernameEditText = view.findViewById(R.id.driverNameEditText);
-        PinEditText = view.findViewById(R.id.driverPinEditText);
+        UsernameEditText = view.findViewById(R.id.residentNameEditText);
         //connects the buttons to the Java file
-        RandomPinButton = view.findViewById(R.id.pinButton);
-        AddUserButton = view.findViewById(R.id.addDriverButton);
-        CancelAddUserButton = view.findViewById(R.id.cancelAddDriverButton);
-        //RemoveUserButton = view.findViewById(R.id.removeDriverButton);
+        CancelButton = view.findViewById(R.id.cancelRemoveResidentButton);
+        RemoveUserButton = view.findViewById(R.id.removeResidentButton);
 
         mQueue = Volley.newRequestQueue(getActivity());
 
-        //Makes buttons do something on click
-        RandomPinButton.setOnClickListener(new View.OnClickListener() {
+        CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random random = new Random();
-                int randomInt = random.nextInt(999);
-                PinEditText.setText(Integer.toString(randomInt));
+                getDialog().dismiss();
             }
         });
-        AddUserButton.setOnClickListener(new View.OnClickListener() {
+        RemoveUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //gets the parameters for the new user
                 String username = UsernameEditText.getText().toString();
-                if (!PinEditText.getText().toString().equals("") && !username.equals("")) {
-                    //adds a user by using the db helper
-                    String url = "http://13.59.214.194:5000/add_driver/{username}/{userpin}".replace("{username}", username).replace("{userpin}", PinEditText.getText().toString());
+                if (!username.equals("")) {
+                    //removes a user by using the db
+                    String url = "http://13.59.214.194:5000/remove_resident/{username}".replace("{username}", username);
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {}
@@ -88,38 +79,15 @@ public class CreateDriverFragment extends DialogFragment {
                             });
                     mQueue.add(request);
                     //Note that it worked
-                    Toast.makeText(getActivity(), "Driver " + username + " added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Resident " + username + " removed", Toast.LENGTH_SHORT).show();
 
                     //dismiss the fragment if this went through
                     getDialog().dismiss();
                 }
-                //There is a bug here, it goes to the login page                                                        **************************************
                 else
                     Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT).show();
             }
         });
-        CancelAddUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getDialog().dismiss();
-            }
-        });
-        /*RemoveUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //gets the parameters for the new user
-                String username = UsernameEditText.getText().toString();
-                //removes user by using dbhelper
-                DBHelper dbhelper = new DBHelper(getActivity());
-                dbhelper.removeUser(username);
-                //Note that it worked
-                Toast toast = Toast.makeText(getActivity(), "User removed", Toast.LENGTH_SHORT);
-                toast.show();
-                //dismiss the fragment if this went through
-                getDialog().dismiss();
-            }
-        });*/
-
 
         return view;
     }

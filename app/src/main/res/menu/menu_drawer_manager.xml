@@ -5,6 +5,12 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/remove_resident"
+            android:title="@string/remove_resident" />
+        <item
+            android:id="@+id/remove_driver"
+            android:title="@string/remove_driver" />
+        <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/logout" />

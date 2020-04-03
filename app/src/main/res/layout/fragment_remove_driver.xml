@@ -19,55 +19,29 @@
         android:inputType="textPersonName"
         android:textAlignment="center" />
 
-    <EditText
-        android:id="@+id/driverPinEditText"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="30dp"
-        android:ems="10"
-        android:hint="@string/pin"
-        android:inputType="number"
-        android:maxLength="3"
-        android:textAlignment="center" />
-
     <Button
-        android:id="@+id/pinButton"
+        android:id="@+id/removeDriverButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="212dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/random_pin"
-        android:textColor="@color/colorLightText" />
-
-    <Button
-        android:id="@+id/addDriverButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/driverPinEditText"
+        android:layout_below="@+id/driverNameEditText"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="111dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="30dp"
         android:background="@color/colorPrimary"
-        android:text="@string/add"
+        android:text="@string/remove"
         android:textColor="@color/colorLightText" />
 
     <Button
-        android:id="@+id/cancelAddDriverButton"
+        android:id="@+id/cancelRemoveDriverButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/driverPinEditText"
+        android:layout_below="@+id/driverNameEditText"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="111dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="62dp"
         android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
         android:text="@string/cancel"
         android:textColor="@color/colorLightText" />
-
 
 </RelativeLayout>

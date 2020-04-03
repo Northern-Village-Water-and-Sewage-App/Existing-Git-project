@@ -34,7 +34,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -51,12 +50,12 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     protected String pinCheck = "123";
     protected String userType;
     protected Button loginButton;
-    protected Button troubleshooter;
     private int pinInput;
     private DrawerLayout sideBarLogin;
     private ActionBarDrawerToggle toggleLogin;
     protected CheckBox rememberMe;
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     private RequestQueue mQueue;
 
@@ -78,24 +77,18 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         toggleLogin.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //for troubleshooting
-        troubleshooter = findViewById(R.id.troubleshooting);
-        troubleshooter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GetReportFragment getReportFragment = new GetReportFragment();
-                getReportFragment.show(getSupportFragmentManager(), "Dialog");
-            }
-        });
+        sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
-        /*SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-        String checkbox = preferences.getString("remember", "");
-        if (checkbox.equals("true")) {
-            setUserPinFromUsername(userName.getText().toString().trim());
+        if (sharedPreferences.getBoolean("remember", false)) {
+            rememberMe.setChecked(true);
         }
         else {
-            setUserPinFromUsername(userName.getText().toString().trim());
-        }*/
+            rememberMe.setChecked(false);
+        }
+
+        userName.setText(sharedPreferences.getString("user name", ""));
+        userPin.setText(sharedPreferences.getString(getString(R.string.user_pin), ""));
 
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);
@@ -134,31 +127,31 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             }
         });
 
+    }
+
+    // to remember login details
+    private void rememberMe() {
         // Option to keep user logged in
         rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
                 if (compoundButton.isChecked()) {
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("checkbox", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("remember", "true");
+                    editor.putString(getString(R.string.user_name), userName.getText().toString().trim());
+                    editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
+                    editor.putBoolean("remember", true);
                     editor.apply();
                     Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
-                    saveInfo();
                 }
                 else if (!compoundButton.isChecked()) {
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("checkbox", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("remember", "false");
+                    editor.putBoolean("remember", false);
                     editor.apply();
-                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
 
     private void setUserPinFromUsername(String username) {
         String url = "http://13.59.214.194:5000/get_user/{username}".replace("{username}", username);
@@ -258,7 +251,6 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
         editor.apply();
     }
-
 
     public void goToManagerActivity() {
         Intent managerIntent = new Intent(LoginActivity.this, ManagerActivity.class);

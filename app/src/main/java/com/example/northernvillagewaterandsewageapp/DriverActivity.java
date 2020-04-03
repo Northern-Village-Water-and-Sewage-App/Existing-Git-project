@@ -217,6 +217,7 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         }
         switch (item.getItemId()) {
             case R.id.refreshItem:
+                loadListView();
                 return true;
             default:
         }
