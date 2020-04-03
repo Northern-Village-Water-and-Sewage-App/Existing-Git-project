@@ -79,7 +79,7 @@ public class RemoveDriverFragment extends DialogFragment {
                             });
                     mQueue.add(request);
                     //Note that it worked
-                    Toast.makeText(getActivity(), "Driver removed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Driver " + username + " removed", Toast.LENGTH_SHORT).show();
 
                     //dismiss the fragment if this went through
                     getDialog().dismiss();

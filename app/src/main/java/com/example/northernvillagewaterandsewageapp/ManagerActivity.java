@@ -302,6 +302,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         }
         switch (item.getItemId()) {
             case R.id.refreshItem:
+                loadListView();
                 return true;
             default:
         }

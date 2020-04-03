@@ -79,7 +79,7 @@ public class RemoveResidentFragment extends DialogFragment {
                             });
                     mQueue.add(request);
                     //Note that it worked
-                    Toast.makeText(getActivity(), "Resident removed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Resident " + username + " removed", Toast.LENGTH_SHORT).show();
 
                     //dismiss the fragment if this went through
                     getDialog().dismiss();

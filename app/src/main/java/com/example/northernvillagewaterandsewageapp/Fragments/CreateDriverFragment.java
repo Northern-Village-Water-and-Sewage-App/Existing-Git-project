@@ -88,7 +88,7 @@ public class CreateDriverFragment extends DialogFragment {
                             });
                     mQueue.add(request);
                     //Note that it worked
-                    Toast.makeText(getActivity(), "Driver added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Driver " + username + " added", Toast.LENGTH_SHORT).show();
 
                     //dismiss the fragment if this went through
                     getDialog().dismiss();
