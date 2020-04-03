@@ -8,17 +8,16 @@
     android:fitsSystemWindows="true"
     tools:context=".LoginActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <EditText
             android:id="@+id/UserNameText"
             android:layout_width="230dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="160dp"
             android:autofillHints=""
             android:drawableStart="@drawable/ic_action_user_icon"
             android:ems="10"
@@ -27,17 +26,17 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.314" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/PinText"
             android:layout_width="230dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="20dp"
             android:autofillHints=""
             android:drawableStart="@drawable/ic_action_lock_icon"
             android:ems="10"
@@ -55,7 +54,7 @@
             android:layout_width="206dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="96dp"
             android:background="@color/colorPrimary"
             android:text="@string/login"
             android:textColor="@color/colorLightText"
@@ -63,14 +62,28 @@
             app:layout_constraintEnd_toEndOf="@+id/PinText"
             app:layout_constraintStart_toStartOf="@+id/PinText"
             app:layout_constraintTop_toBottomOf="@+id/PinText" />
-    </LinearLayout>
-    
+
+        <CheckBox
+            android:id="@+id/rememberMeCheckBox"
+            android:layout_width="229dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/remember_me"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PinText"
+            android:buttonTint="@color/colorPrimary"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:id="@+id/nav_view"
-        app:menu="@menu/menu_drawer_login"
-        app:headerLayout="@layout/nav_header_login"/>
+        app:headerLayout="@layout/nav_header_login"
+        app:menu="@menu/menu_drawer_login" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

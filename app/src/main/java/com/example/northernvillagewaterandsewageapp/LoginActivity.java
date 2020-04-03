@@ -21,6 +21,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Checkable;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -50,6 +53,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     private int pinInput;
     private DrawerLayout sideBarLogin;
     private ActionBarDrawerToggle toggleLogin;
+    protected CheckBox rememberMe;
 
 
     private RequestQueue mQueue;
@@ -62,15 +66,24 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         userName = findViewById(R.id.UserNameText);
         userPin = findViewById(R.id.PinText);
         loginButton = findViewById(R.id.LoginButton);
+        rememberMe = findViewById(R.id.rememberMeCheckBox);
+
         sideBarLogin = findViewById(R.id.sideBar);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
         navigationView.setNavigationItemSelectedListener(this);
         toggleLogin = new ActionBarDrawerToggle(this, sideBarLogin, R.string.open, R.string.close);
         sideBarLogin.addDrawerListener(toggleLogin);
         toggleLogin.syncState();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        /*SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+        String checkbox = preferences.getString("remember", "");
+        if (checkbox.equals("true")) {
+            setUserPinFromUsername(userName.getText().toString().trim());
+        }
+        else {
+            setUserPinFromUsername(userName.getText().toString().trim());
+        }*/
 
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);
@@ -106,6 +119,30 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             public void onClick(View v) {
 
                 setUserPinFromUsername(userName.getText().toString().trim());
+            }
+        });
+
+        // Option to keep user logged in
+        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (compoundButton.isChecked()) {
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("checkbox", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("remember", "true");
+                    editor.apply();
+                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
+                    saveInfo();
+                }
+                else if (!compoundButton.isChecked()) {
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("checkbox", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("remember", "false");
+                    editor.apply();
+                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -198,7 +235,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     }
 
     // Saves login info
-    public void saveInfo(View v)
+    public void saveInfo()
     {
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
         String usernameInput = userName.getText().toString().trim();

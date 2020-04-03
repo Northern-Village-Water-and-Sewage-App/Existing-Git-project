@@ -38,6 +38,7 @@ import com.example.northernvillagewaterandsewageapp.Fragments.CreateDriverFragme
 import com.example.northernvillagewaterandsewageapp.Fragments.CreateResidentFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DisableUserFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
@@ -52,7 +53,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-public class ManagerActivity extends AppCompatActivity {//implements NavigationView.OnNavigationItemSelectedListener {
+public class ManagerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     protected ListView worklistListView;
     protected Button troubleshoot;
@@ -163,7 +164,7 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
             }
         });
 
-        /*sideBar = findViewById(R.id.sideBarManager);
+        sideBar = findViewById(R.id.sideBarManager);
         NavigationView navigationView = findViewById(R.id.nav_view_manager);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -171,7 +172,7 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
         sideBar.addDrawerListener(toggle);
         toggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setUpManagerUI();
 
@@ -233,6 +234,72 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
         mQueue.add(request);
     }
 
+    //                  ------------------------- Navigation bar related stuff -------------------------
+    @Override
+    public void onBackPressed() {
+        if (sideBar.isDrawerOpen(GravityCompat.START)) {
+            sideBar.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.logout:
+                logoutFragment();
+                break;
+            case R.id.English:
+                setAppLanguage("en");
+                break;
+            case R.id.French:
+                setAppLanguage("fr");
+                break;
+            case R.id.Inuktitut:
+                setAppLanguage("iu");
+                break;
+        }
+        sideBar.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    // Function to change app language
+    private void setAppLanguage(String language) {
+        Resources resources = getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+
+        config.setLocale(new Locale(language.toLowerCase()));
+
+        resources.updateConfiguration(config, displayMetrics);
+    }
+
+    // Option to refresh
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.refresh_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        switch (item.getItemId()) {
+            case R.id.refreshItem:
+                return true;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     // Function that shows the manager analytics when its button is clicked
     protected void goToAnalytics() {
         Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ResidentAnalyticsActivity.class);
@@ -278,10 +345,10 @@ public class ManagerActivity extends AppCompatActivity {//implements NavigationV
         startActivity(intent);
     }
 
-    // Goes to settings activity
-    private void goToSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+    //Open logout fragment
+    private void logoutFragment(){
+        LogoutFragment logoutFragment = new LogoutFragment();
+        logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
 }

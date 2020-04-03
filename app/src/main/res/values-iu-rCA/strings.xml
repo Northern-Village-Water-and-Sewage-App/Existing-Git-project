@@ -65,11 +65,6 @@
         <item>ᑐᓴᕐᑎᓯᐅᑎᒥᑦ ᐊᐅᓚᑎᑦᓯᓂᖅ</item>
         <item>ᓱᕐᖁᐃᓯᐅᑎᑦ</item>
     </string-array>
-    <string-array name="Languages">
-        <item>English (Canada)</item>
-        <item>French (Canada)</item>
-        <item>Inuktitut</item>
-    </string-array>
     <string name="title_activity_settings">ᖃᓪᓗᓈᑦᑎᑐᑦ</string>
 
     <string name="login">ᐃᑎᕆᖅᓂᖅ</string>
@@ -97,8 +92,8 @@
     <string name="email_address">ᖃᐅᑕᐅᔭᒃᑯᑦ ᓯᓚᑎ</string>
     <string name="work_list">Work List</string>
     <string name="delivery_list">Delivery List</string>
-    <string name="english">ᖃᓪᓗᓚᖅᑎᑐᑦ</string>
-    <string name="french">ᒍᐃᒍᐃᑦ</string>
+    <string name="english">English</string>
+    <string name="french">Français (Canada)</string>
     <string name="inuktitut">ᐃᓄᑦᑎᑐᑦ</string>
     <string name="languages">Languages</string>
     <string name="open">Open</string>
@@ -118,5 +113,10 @@
     <string name="number_of_calls">Number of Calls</string>
     <string name="this_month">This Month</string>
     <string name="last_month">Last Month</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="do_you_want_to_log_out">Do you want to log out?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+
 
 </resources>
