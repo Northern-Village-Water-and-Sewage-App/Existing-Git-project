@@ -32,7 +32,7 @@
             android:label="Resident"
             android:parentActivityName=".LoginActivity" />
         <activity android:name=".LoginActivity"
-            android:label="Ullumi">
+            android:label="Uima">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
