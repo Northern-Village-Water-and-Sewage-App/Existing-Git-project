@@ -42,6 +42,7 @@ import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.RemoveDriverFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -249,6 +250,9 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.remove_driver:
+                removeDriver();
+                break;
             case R.id.logout:
                 logoutFragment();
                 break;
@@ -315,12 +319,16 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         DisableUserFragment disableUserFragment = new DisableUserFragment();
         disableUserFragment.show(getSupportFragmentManager(), "Dialog");
     }
-    // Function to add or remove a driver from the database
+    // Function to add a driver from the database
     protected void addDriver() {
         CreateDriverFragment addDriverFragment = new CreateDriverFragment();
         addDriverFragment.show(getSupportFragmentManager(), "Dialog");
     }
-
+    // Function to remove a driver from the database
+    protected void removeDriver() {
+        RemoveDriverFragment removeDriverFragment = new RemoveDriverFragment();
+        removeDriverFragment.show(getSupportFragmentManager(), "Dialog");
+    }
     // Function to get manager reports
     protected void getReports() {
         GetReportFragment getReportFragment = new GetReportFragment();
