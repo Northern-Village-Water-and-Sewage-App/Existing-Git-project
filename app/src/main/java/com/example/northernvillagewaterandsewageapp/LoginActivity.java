@@ -34,6 +34,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     protected String pinCheck = "123";
     protected String userType;
     protected Button loginButton;
+    protected Button troubleshooter;
     private int pinInput;
     private DrawerLayout sideBarLogin;
     private ActionBarDrawerToggle toggleLogin;
@@ -75,6 +77,16 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         sideBarLogin.addDrawerListener(toggleLogin);
         toggleLogin.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //for troubleshooting
+        troubleshooter = findViewById(R.id.troubleshooting);
+        troubleshooter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetReportFragment getReportFragment = new GetReportFragment();
+                getReportFragment.show(getSupportFragmentManager(), "Dialog");
+            }
+        });
 
         /*SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
         String checkbox = preferences.getString("remember", "");
