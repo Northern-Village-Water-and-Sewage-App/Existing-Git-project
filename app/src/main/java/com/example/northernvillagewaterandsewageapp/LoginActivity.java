@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     private ActionBarDrawerToggle toggleLogin;
     protected CheckBox rememberMe;
 
-
     private RequestQueue mQueue;
 
     @Override
@@ -126,22 +125,22 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 if (compoundButton.isChecked()) {
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("checkbox", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("remember", "true");
+                    editor.putString(getString(R.string.user_name), userName.getText().toString().trim());
+                    editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
+                    editor.putBoolean("remember", true);
                     editor.apply();
                     Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
-                    saveInfo();
+
                 }
                 else if (!compoundButton.isChecked()) {
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("checkbox", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("remember", "false");
+                    editor.putBoolean("remember", false);
                     editor.apply();
-                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -246,7 +245,6 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
         editor.apply();
     }
-
 
     public void goToManagerActivity() {
         Intent managerIntent = new Intent(LoginActivity.this, ManagerActivity.class);
