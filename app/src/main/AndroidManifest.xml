@@ -15,9 +15,11 @@
 
         <activity
             android:name=".ManagerAnalyticsActivity"
+            android:label="@string/analytics"
             android:parentActivityName=".ManagerActivity" />
         <activity
             android:name=".ResidentAnalyticsActivity"
+            android:label="@string/analytics"
             android:parentActivityName=".ResidentActivity" />
         <activity
             android:name=".DriverActivity"
