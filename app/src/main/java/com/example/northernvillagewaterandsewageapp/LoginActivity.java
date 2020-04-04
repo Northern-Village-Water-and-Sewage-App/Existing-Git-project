@@ -1,11 +1,5 @@
 package com.example.northernvillagewaterandsewageapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,18 +9,19 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.Checkable;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -54,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     private DrawerLayout sideBarLogin;
     private ActionBarDrawerToggle toggleLogin;
     protected CheckBox rememberMe;
-
+    protected SharedPreferenceHelper sharedPreferenceHelper;
 
     private RequestQueue mQueue;
 
@@ -75,7 +71,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         sideBarLogin.addDrawerListener(toggleLogin);
         toggleLogin.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
         /*SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
         String checkbox = preferences.getString("remember", "");
         if (checkbox.equals("true")) {
@@ -133,7 +129,6 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
                     editor.putString("remember", "true");
                     editor.apply();
                     Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
-                    saveInfo();
                 }
                 else if (!compoundButton.isChecked()) {
 
@@ -162,12 +157,15 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
                     if (pinCheck.equals(pinInput)) {
                         switch (userType) {
                             case "manager":
+                                saveInfo(0);
                                 goToManagerActivity();
                                 break;
                             case "resident":
+                                saveInfo(1);
                                 goToResidentActivity();
                                 break;
                             case "driver":
+                                saveInfo(2);
                                 goToDriverActivity();
                                 break;
                         }
@@ -235,16 +233,10 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     }
 
     // Saves login info
-    public void saveInfo()
+    public void saveInfo(int type)
     {
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
-        String usernameInput = userName.getText().toString().trim();
-        //String pinInput = userPin.getText().toString();
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(getString(R.string.user_name), usernameInput);
-        editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
-        editor.apply();
+        User user = new User(userName.getText().toString().trim(),Integer.parseInt(userPin.getText().toString()), type, "");
+        sharedPreferenceHelper.saveUser(user, getString(R.string.user_name), getString(R.string.pin), getString(R.string.user_type));
     }
 
 

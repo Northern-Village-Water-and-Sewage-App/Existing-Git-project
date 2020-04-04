@@ -1,14 +1,12 @@
 package com.example.northernvillagewaterandsewageapp.ObjectClasses;
 
-import android.content.pm.LauncherApps;
-
 public class User {
 
-    String UserName;
-    int PIN;
+    private String UserName;
+    private int PIN;
     //0: manager, 1: resident, 2: driver
-    int userType;
-    String HouseNum;
+    private int userType;
+    private String HouseNum;
 
     //constructor
     public User (String username, int pin, int usertype, String houseNum){
@@ -46,7 +44,7 @@ public class User {
     }
 
     public int getUserType() {
-        if (UserName.equals("Matt") && PIN == 111) {
+        /*if (UserName.equals("Matt") && PIN == 111) {
             return userType = 0;
         }
         else if (UserName.equals("Red") && PIN == 222) {
@@ -57,7 +55,8 @@ public class User {
         }
         else {
             return userType = 3;
-        }
+        }*/
+        return userType;
     }
 
     public void setUserType(int usertype) {

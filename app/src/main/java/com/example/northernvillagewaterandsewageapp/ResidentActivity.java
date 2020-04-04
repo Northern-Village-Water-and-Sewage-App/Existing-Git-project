@@ -1,12 +1,6 @@
 package com.example.northernvillagewaterandsewageapp;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
@@ -22,11 +16,26 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.SeeTownMessageFragment;
-import com.example.northernvillagewaterandsewageapp.ObjectClasses.TankStatus;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Locale;
 
@@ -42,13 +51,16 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private DrawerLayout sideBarResident;
     private ActionBarDrawerToggle toggle;
     protected FloatingActionButton infoButton;
-
+    protected SharedPreferenceHelper sharedPreferencehelper;
+    private String ResidentName;
+    private RequestQueue mQueue;
+    private int ResidentPin;
+    private int newWaterHeight;
+    int newSewageAlarm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident);
-
-
         deliveryButton = findViewById(R.id.manualDeliveryButton);
         analyticsButton = findViewById(R.id.analyticsButton);
         waterAlarm = findViewById(R.id.waterAlarm);
@@ -57,10 +69,11 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         waterStatus = findViewById(R.id.txtViewStatusWater);
         sewageStatus = findViewById(R.id.txtViewStatusSewage);
         infoButton = findViewById(R.id.townInfoFloatingActionButton);
-
+        sharedPreferencehelper = new SharedPreferenceHelper(ResidentActivity.this);
+        ResidentName = sharedPreferencehelper.getUserName(getString(R.string.user_name));
         sideBarResident = findViewById(R.id.sideBarResident);
         NavigationView navigationView = findViewById(R.id.nav_view_resident);
-
+        mQueue = Volley.newRequestQueue(this);
         toggle = new ActionBarDrawerToggle(this, sideBarResident, R.string.open, R.string.close);
         navigationView.setNavigationItemSelectedListener(this);
         sideBarResident.addDrawerListener(toggle);
@@ -69,15 +82,12 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
         updateInfo();
         setUpResidentUI();
-
     }
 
     //Gets updated tank info with their respective color indications
     protected void updateInfo()
     {
-        int newWaterHeight = new TankStatus().getWaterHeight();
-        //int newWaterAlarm = new TankStatus().getWaterAlarm();
-        int newSewageAlarm = new TankStatus().getSewageAlarm();
+        TankStatus();
         progressBar.setProgress(newWaterHeight);
 
         // Color-wise indication for water level
@@ -240,6 +250,28 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         SeeTownMessageFragment seeTownMessageFragment = new SeeTownMessageFragment();
         seeTownMessageFragment.show(getSupportFragmentManager(), "Dialog");
     }
+    public void TankStatus() {
 
+        String url = "http://13.59.214.194:5000/get_tank_info/{username}".replace("{username}", ResidentName);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    JSONObject user = response.getJSONObject(0);
+                    newWaterHeight = user.getInt("water_tank_height");
+                    newSewageAlarm = user.getInt("sewage_tank_status");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+        mQueue.add(request);
+    }
 }
 
