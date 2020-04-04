@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         }
         else {
             rememberMe.setChecked(false);
-        }
+        }*/
 
         userName.setText(sharedPreferences.getString("user name", ""));
         userPin.setText(sharedPreferences.getString(getString(R.string.user_pin), ""));
