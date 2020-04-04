@@ -93,6 +93,7 @@ GetReportFragment extends DialogFragment {
                             String hold = "";
                             for (int pos = 0; pos < response.length(); pos++) {
                                 e = response.getJSONObject(pos);
+
                                 hold += "Company: " + e.getString("company_name");
                                 hold += "  Complaint Type: " + e.getString("complaint_type");
                                 hold += "\nComplaint: " + e.getString("complaint") + "\n\n";
@@ -136,27 +137,35 @@ GetReportFragment extends DialogFragment {
                     public void onResponse(JSONArray response) {
                         try {
                             JSONObject e;
+                            //make the body of the email
                             String hold = "";
+                            String hold1 = "";
+                            String hold2 = "";
+                            String hold3 = "";
                             for (int pos = 0; pos < response.length(); pos++) {
                                 e = response.getJSONObject(pos);
-                                //checks to see if the report is for that company
 
-                                /*Log.d("STATE", companyNumToName(company));
-                                Log.d("STATE", e.getString("company_name"));*/
+                                hold1 =  e.getString("company_name");
+                                hold2 =  e.getString("complaint_type");
+                                hold3 =  e.getString("complaint");
 
-                                //Next line bug temp fix.
-                                if (company == companyNameToNum("KSB")) {
-                                //if (company == companyNameToNum((e.getString("company_name"))) {
-                                    //makes the body of the email
-                                    hold += "Company: " + e.getString("company_name");
-                                    hold += "  Complaint Type: " + e.getString("complaint_type");
-                                    hold += "\nComplaint: " + e.getString("complaint") + "\n\n";
+                                String company1 = companyNumToName(company);
+
+                                //bug fix here, for getting a string out of a json object
+                                if (hold1.equals(company1)){
+                                    Log.d("STATE",  "conditional");
+                                    hold += "Company: " + hold1;
+                                    hold += "  Complaint Type: " + hold2;
+                                    hold += "\nComplaint: " + hold3 + "\n\n";
                                 }
+                                Log.d("STATE",  Integer.toString(pos));
+                                Log.d("STATE",  hold1);
+                                Log.d("STATE",  e.getString("company_name"));
                             }
 
-                            //Puts the email together
+                            //send the email stuff
                             String recipient = emailAddressEditText.getText().toString();
-                            String subject  = "Reports for " + companyNumToName(company) + "by water and sewage delivery drivers";
+                            String subject  = "Reports from water and sewage delivery drivers";
 
                             Intent intent = new Intent(Intent.ACTION_SEND);
                             intent.putExtra(Intent.EXTRA_EMAIL, recipient);
@@ -178,6 +187,7 @@ GetReportFragment extends DialogFragment {
                             }
                         });
                 mQueue.add(request);
+
             }
         });
 
