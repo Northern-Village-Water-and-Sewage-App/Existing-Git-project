@@ -113,12 +113,22 @@
     <string name="number_of_calls">Number of Calls</string>
     <string name="this_month">This Month</string>
     <string name="last_month">Last Month</string>
+
     <string name="remember_me">Remember Me</string>
     <string name="do_you_want_to_log_out">Do you want to log out?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+
     <string name="remove_driver">Remove Driver</string>
     <string name="remove_resident">Remove Resident</string>
+    <string name="time_stamp">"TIme stamp: "</string>
+    <string name="_resident">"Resident: "</string>
+    <string name="housenum">"ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ: "</string>
+    <string name="tank_type">"Tank Type: "</string>
+    <string name="time_est">"Time Estimate: "</string>
+    <string name="service">"Service: "</string>
+    <string name="current_time_estimate">Current Time Estimate</string>
+    <string name="no_delivery_scheduled">No Delivery Scheduled</string>
 
 
 </resources>

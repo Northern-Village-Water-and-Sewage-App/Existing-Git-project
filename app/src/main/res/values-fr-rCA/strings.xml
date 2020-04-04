@@ -114,12 +114,22 @@
     <string name="number_of_calls">Number of Calls</string>
     <string name="this_month">Ce mois-ci</string>
     <string name="last_month">Le mois dernier</string>
+
     <string name="remember_me">Souviens-toi de moi</string>
     <string name="do_you_want_to_log_out">Voulez-vous vous déconnecter?</string>
     <string name="no">Non</string>
     <string name="yes">Oui</string>
-    <string name="remove_driver">Remove Driver</string>
-    <string name="remove_resident">Remove Resident</string>
+
+    <string name="remove_driver">Supprimer le Chauffeur</string>
+    <string name="remove_resident">Supprimer un Résident</string>
+    <string name="time_stamp">"TIme stamp: "</string>
+    <string name="_resident">"Résident: "</string>
+    <string name="housenum">"Numéro de maison: "</string>
+    <string name="tank_type">"Type de Réservoir: "</string>
+    <string name="time_est">"Estimation du Temps: "</string>
+    <string name="service">"Service: "</string>
+    <string name="current_time_estimate">Estimation de le heure actuelle</string>
+    <string name="no_delivery_scheduled">Aucune livraison prévue</string>
 
 
 </resources>
