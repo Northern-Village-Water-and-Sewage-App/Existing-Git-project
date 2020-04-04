@@ -257,6 +257,12 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
             case R.id.remove_driver:
                 removeDriver();
                 break;
+            case R.id.reports:
+                getReports();
+                break;
+            case R.id.managerAnalytics:
+                goToAnalytics();
+                break;
             case R.id.logout:
                 logoutFragment();
                 break;
@@ -311,7 +317,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
     // Function that shows the manager analytics when its button is clicked
     protected void goToAnalytics() {
-        Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ResidentAnalyticsActivity.class);
+        Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ManagerAnalyticsActivity.class);
         startActivity(manAnalyticsIntent);
     }
     // Function to add a new resident in the database

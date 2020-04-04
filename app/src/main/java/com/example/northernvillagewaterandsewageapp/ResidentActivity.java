@@ -33,8 +33,6 @@ import java.util.Locale;
 
 public class ResidentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    protected Button deliveryButton;
-    protected Button analyticsButton;
     protected Button waterAlarm;
     protected Button sewageAlarm;
     protected ProgressBar progressBar;
@@ -50,8 +48,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         setContentView(R.layout.activity_resident);
 
 
-        deliveryButton = findViewById(R.id.manualDeliveryButton);
-        analyticsButton = findViewById(R.id.analyticsButton);
         waterAlarm = findViewById(R.id.waterAlarm);
         sewageAlarm = findViewById(R.id.sewageAlarm);
         progressBar = findViewById(R.id.progressBar);
@@ -117,19 +113,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
     protected void setUpResidentUI()
     {
-        deliveryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getManualDelivery();
-            }
-        });
-
-        analyticsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToAnalytics();
-            }
-        });
 
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +138,12 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.getDelivery:
+                getManualDelivery();
+                break;
+            case R.id.resAnalytics:
+                goToAnalytics();
+                break;
             case R.id.logout:
                 logoutFragment();
                 break;

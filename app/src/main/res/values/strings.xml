@@ -142,5 +142,6 @@
     <string name="service">"Service: "</string>
     <string name="current_time_estimate">Current Time Estimate</string>
     <string name="no_delivery_scheduled">No Delivery Scheduled</string>
+    <string name="reports">Reports</string>
 
 </resources>
