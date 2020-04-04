@@ -137,9 +137,9 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         for(int i = 0; i < 5; i++)
         {
             String temp = "";
-            temp+= R.string.housenum + i * 49 + 8 + "\n";
-            temp+= R.string.service + "Water" + "\n";
-            temp+= R.string.time_est + "None" + "\n";
+            temp+= "House Number: " + i * 49 + 8 + "\n";
+            temp+= "Service: " + "Water" + "\n";
+            temp+= "Time Estimate: " + "None" + "\n";
 
             worklistListText.add(temp);
         }

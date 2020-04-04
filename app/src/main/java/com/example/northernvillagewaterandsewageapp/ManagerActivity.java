@@ -203,11 +203,11 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                     for (int pos = 0; pos < response.length(); pos++) {
                         String temp = "";
                         e = response.getJSONObject(pos);
-                        temp += R.string.time_stamp + e.getString("timestamp") + "\n";
-                        temp += R.string._resident + e.getString("username") + "\n";
-                        temp += R.string.housenum + e.getString("house_number") + "\n";
-                        temp += R.string.tank_type + e.getString("tank_type") + "\n";
-                        temp += R.string.time_est + e.getString("estimate");
+                        temp += "TIme Stamp: " + e.getString("timestamp") + "\n";
+                        temp += "Resident: " + e.getString("username") + "\n";
+                        temp += "House Number: " + e.getString("house_number") + "\n";
+                        temp += "Tank Type: " + e.getString("tank_type") + "\n";
+                        temp += "Time estimate: " + e.getString("estimate");
                         worklistListText.add("\n" + temp + "\n");
                     }
                     arrayAdapter.addAll(worklistListText);

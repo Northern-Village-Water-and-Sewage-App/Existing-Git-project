@@ -31,6 +31,18 @@
         <item>ᖁᕐᕕᖃᐅᑎᒃ</item>
         <item>ᐃᒣᖅᑖᖅ ᖁᕐᕕᓂᑯᐃᑦ</item>
     </string-array>
+    <string-array name="waterTankTypes">
+        <item>Select Water Tank</item>
+        <item>Cylindrical</item>
+        <item>Box</item>
+        <item>Horizontal Cylinder</item>
+    </string-array>
+    <string-array name="sewageTankTypes">
+        <item>Select Sewage Tank</item>
+        <item>Cylindrical</item>
+        <item>Box</item>
+        <item>Horizontal Cylinder</item>
+    </string-array>
     <string-array name="timeEstimate">
         <item>ᓇᒻᒪᓂᖃᖕᖏᑐᑦ</item>
         <item>ᙯᓕᕐᑐᖅ</item>

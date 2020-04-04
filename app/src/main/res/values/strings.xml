@@ -134,7 +134,7 @@
 
     <string name="remove_driver">Remove Driver</string>
     <string name="remove_resident">Remove Resident</string>
-    <string name="time_stamp">"TIme stamp: "</string>
+    <string name="time_stamp">"Time stamp: "</string>
     <string name="_resident">"Resident: "</string>
     <string name="housenum">"House Number: "</string>
     <string name="tank_type">"Tank Type: "</string>
