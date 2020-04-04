@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     private ActionBarDrawerToggle toggleLogin;
     protected CheckBox rememberMe;
     protected SharedPreferenceHelper sharedPreferenceHelper;
+    private String ResidentName;
+    private String ResidentPin;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -79,18 +81,21 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
+
         sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
-        if (sharedPreferences.getBoolean("remember", false)) {
+        /*if (sharedPreferences.getBoolean("remember", false)) {
             rememberMe.setChecked(true);
         }
         else {
             rememberMe.setChecked(false);
-        }
+        }*/
 
-        userName.setText(sharedPreferences.getString("user name", ""));
-        userPin.setText(sharedPreferences.getString(getString(R.string.user_pin), ""));
+        ResidentName = sharedPreferenceHelper.getUserName(getString(R.string.user_name));
+        ResidentPin = sharedPreferenceHelper.getUserPin(getString(R.string.user_pin));
+
+        userName.setText(ResidentName);
+        userPin.setText(ResidentPin);
 
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);
@@ -125,7 +130,8 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View v) {
 
-                setUserPinFromUsername(userName.getText().toString().trim());
+                //setUserPinFromUsername(userName.getText().toString().trim());
+                goToResidentActivity();
             }
         });
 

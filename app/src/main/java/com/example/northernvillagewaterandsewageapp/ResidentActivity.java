@@ -79,7 +79,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TankStatus();
+        updateInfo();
         setUpResidentUI();
     }
 
