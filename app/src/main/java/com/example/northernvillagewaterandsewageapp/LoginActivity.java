@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     }
 
     private void setUserPinFromUsername(String username) {
-        String url = "http://13.59.214.194:5000/get_user/{username}".replace("{username}", username);
+        String url = "http://54.201.85.48:32132/get_user/{username}".replace("{username}", username);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

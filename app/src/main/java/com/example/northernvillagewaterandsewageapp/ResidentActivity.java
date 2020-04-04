@@ -86,7 +86,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     // Tank status pulled from db
     public void TankStatus() {
 
-        String url = "http://13.59.214.194:5000/get_tank_info/{username}".replace("{username}", ResidentName);
+        String url = "http://54.201.85.48:32132/get_tank_info/{username}".replace("{username}", ResidentName);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

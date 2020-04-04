@@ -192,7 +192,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
 
     private void loadListView() {
-        String url = "http://13.59.214.194:5000/get_work_list/";
+        String url = "http://54.201.85.48:32132/get_work_list/";
         final ArrayList<String> worklistListText = new ArrayList<>();
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {

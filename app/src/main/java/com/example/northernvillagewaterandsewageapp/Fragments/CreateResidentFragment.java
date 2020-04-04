@@ -92,7 +92,7 @@ public class CreateResidentFragment extends DialogFragment {
                 String tankNum = "1";
                 if (username != "" && houseNum != "" && tankNum != "" && userPin != "") {
                     //adds a user
-                    String url = "http://13.59.214.194:5000/add_resident/<user_name>/<house_number>/<user_pin>/<water_tank_fk>/<sewage_tank_fk>".
+                    String url = "http://54.201.85.48:32132/add_resident/<user_name>/<house_number>/<user_pin>/<water_tank_fk>/<sewage_tank_fk>".
                             replace("<user_name>", username).
                             replace("<user_pin>", userPin).
                             replace("<house_number>", houseNum).
