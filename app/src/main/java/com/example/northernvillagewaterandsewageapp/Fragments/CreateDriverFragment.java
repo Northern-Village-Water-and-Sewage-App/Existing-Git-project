@@ -75,7 +75,7 @@ public class CreateDriverFragment extends DialogFragment {
                 String username = UsernameEditText.getText().toString();
                 if (!PinEditText.getText().toString().equals("") && !username.equals("")) {
                     //adds a user by using the db helper
-                    String url = "http://13.59.214.194:5000/add_driver/{username}/{userpin}".replace("{username}", username).replace("{userpin}", PinEditText.getText().toString());
+                    String url = "http://54.201.85.48:32132/add_driver/{username}/{userpin}".replace("{username}", username).replace("{userpin}", PinEditText.getText().toString());
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {}

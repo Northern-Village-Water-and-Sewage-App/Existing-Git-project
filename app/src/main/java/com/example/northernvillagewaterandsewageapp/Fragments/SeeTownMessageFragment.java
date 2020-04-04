@@ -58,7 +58,7 @@ public class SeeTownMessageFragment extends DialogFragment {
         temp = "";
 
         //gets the last message from the database
-        String url = "http://13.59.214.194:5000/get_latest_message/";
+        String url = "http://54.201.85.48:32132/get_latest_message/";
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
