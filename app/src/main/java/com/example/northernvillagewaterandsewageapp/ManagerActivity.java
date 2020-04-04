@@ -38,9 +38,12 @@ import com.example.northernvillagewaterandsewageapp.Fragments.CreateDriverFragme
 import com.example.northernvillagewaterandsewageapp.Fragments.CreateResidentFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DisableUserFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.RemoveDriverFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.RemoveResidentFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -200,11 +203,11 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                     for (int pos = 0; pos < response.length(); pos++) {
                         String temp = "";
                         e = response.getJSONObject(pos);
-                        temp += "Time Stamp: " + e.getString("timestamp") + "\n";
+                        temp += "TIme Stamp: " + e.getString("timestamp") + "\n";
                         temp += "Resident: " + e.getString("username") + "\n";
                         temp += "House Number: " + e.getString("house_number") + "\n";
                         temp += "Tank Type: " + e.getString("tank_type") + "\n";
-                        temp += "Time Estimate: " + e.getString("estimate");
+                        temp += "Time estimate: " + e.getString("estimate");
                         worklistListText.add("\n" + temp + "\n");
                     }
                     arrayAdapter.addAll(worklistListText);
@@ -248,8 +251,20 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.remove_resident:
+                removeResident();
+                break;
+            case R.id.remove_driver:
+                removeDriver();
+                break;
+            case R.id.reports:
+                getReports();
+                break;
+            case R.id.managerAnalytics:
+                goToAnalytics();
+                break;
             case R.id.logout:
-                goToLogin();
+                logoutFragment();
                 break;
             case R.id.English:
                 setAppLanguage("en");
@@ -293,6 +308,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         }
         switch (item.getItemId()) {
             case R.id.refreshItem:
+                loadListView();
                 return true;
             default:
         }
@@ -301,7 +317,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
     // Function that shows the manager analytics when its button is clicked
     protected void goToAnalytics() {
-        Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ResidentAnalyticsActivity.class);
+        Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ManagerAnalyticsActivity.class);
         startActivity(manAnalyticsIntent);
     }
     // Function to add a new resident in the database
@@ -309,17 +325,26 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         CreateResidentFragment createUser = new CreateResidentFragment();
         createUser.show(getSupportFragmentManager(), "Dialog");
     }
+    // Function to remove a resident from the database
+    protected void removeResident() {
+        RemoveResidentFragment removeResidentFragment = new RemoveResidentFragment();
+        removeResidentFragment.show(getSupportFragmentManager(), "Dialog");
+    }
     // Function to disable an existing resident from the database
     protected void disableUser() {
         DisableUserFragment disableUserFragment = new DisableUserFragment();
         disableUserFragment.show(getSupportFragmentManager(), "Dialog");
     }
-    // Function to add or remove a driver from the database
+    // Function to add a driver from the database
     protected void addDriver() {
         CreateDriverFragment addDriverFragment = new CreateDriverFragment();
         addDriverFragment.show(getSupportFragmentManager(), "Dialog");
     }
-
+    // Function to remove a driver from the database
+    protected void removeDriver() {
+        RemoveDriverFragment removeDriverFragment = new RemoveDriverFragment();
+        removeDriverFragment.show(getSupportFragmentManager(), "Dialog");
+    }
     // Function to get manager reports
     protected void getReports() {
         GetReportFragment getReportFragment = new GetReportFragment();
@@ -344,10 +369,10 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         startActivity(intent);
     }
 
-    // Goes to settings activity
-    private void goToSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+    //Open logout fragment
+    private void logoutFragment(){
+        LogoutFragment logoutFragment = new LogoutFragment();
+        logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
 }

@@ -28,6 +28,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.SeeTownMessageFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,8 +42,6 @@ import java.util.Locale;
 
 public class ResidentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    protected Button deliveryButton;
-    protected Button analyticsButton;
     protected Button waterAlarm;
     protected Button sewageAlarm;
     protected ProgressBar progressBar;
@@ -61,8 +60,8 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident);
-        deliveryButton = findViewById(R.id.manualDeliveryButton);
-        analyticsButton = findViewById(R.id.analyticsButton);
+
+
         waterAlarm = findViewById(R.id.waterAlarm);
         sewageAlarm = findViewById(R.id.sewageAlarm);
         progressBar = findViewById(R.id.progressBar);
@@ -126,19 +125,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
     protected void setUpResidentUI()
     {
-        deliveryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getManualDelivery();
-            }
-        });
-
-        analyticsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToAnalytics();
-            }
-        });
 
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,8 +150,14 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.getDelivery:
+                getManualDelivery();
+                break;
+            case R.id.resAnalytics:
+                goToAnalytics();
+                break;
             case R.id.logout:
-                goToLogin();
+                logoutFragment();
                 break;
             case R.id.English:
                 setAppLanguage("en");
@@ -250,7 +242,14 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         SeeTownMessageFragment seeTownMessageFragment = new SeeTownMessageFragment();
         seeTownMessageFragment.show(getSupportFragmentManager(), "Dialog");
     }
+    //Open logout fragment
+    private void logoutFragment(){
+        LogoutFragment logoutFragment = new LogoutFragment();
+        logoutFragment.show(getSupportFragmentManager(), "Dialog");
+    }
     public void TankStatus() {
+
+
 
         String url = "http://13.59.214.194:5000/get_tank_info/{username}".replace("{username}", ResidentName);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {

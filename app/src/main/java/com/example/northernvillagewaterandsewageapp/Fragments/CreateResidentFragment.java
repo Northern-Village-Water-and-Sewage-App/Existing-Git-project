@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +21,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.DBHelper;
-import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
 import com.example.northernvillagewaterandsewageapp.R;
 
 import org.json.JSONArray;
@@ -31,11 +32,13 @@ public class CreateResidentFragment extends DialogFragment {
     protected EditText UsernameEditText;
     protected EditText HouseNumberEditText;
     protected EditText PinEditText;
-    protected EditText tankNumEditText;
+//    protected EditText tankNumEditText;
     protected Button RandomPinButton;
     protected Button AddUserButton;
     protected Button CancelAddUserButton;
     protected Button RemoveUserButton;
+    protected Spinner water_tank_spinner, sewage_tank_spinner;
+    protected ArrayAdapter<String> water_tank_spinner_array_adapter, sewage_tank_spinner_array_adapter;
 
     private RequestQueue mQueue;
 
@@ -49,12 +52,23 @@ public class CreateResidentFragment extends DialogFragment {
         UsernameEditText = view.findViewById(R.id.driverNameEditText);
         HouseNumberEditText = view.findViewById(R.id.housNumEditText);
         PinEditText = view.findViewById(R.id.driverPinEditText);
-        tankNumEditText = view.findViewById(R.id.tankNumEditText);
         //connects the buttons to the Java file
         RandomPinButton = view.findViewById(R.id.pinButton);
         AddUserButton = view.findViewById(R.id.addUserButton);
         CancelAddUserButton = view.findViewById(R.id.cancelAddUserButton);
         RemoveUserButton = view.findViewById(R.id.removeUserButton);
+        water_tank_spinner = view.findViewById(R.id.water_tank_spinner);
+        sewage_tank_spinner = view.findViewById(R.id.sewage_tank_spinner);
+
+        water_tank_spinner_array_adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_expandable_list_item_1, getResources().getStringArray(R.array.waterTankTypes));
+        sewage_tank_spinner_array_adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_expandable_list_item_1, getResources().getStringArray(R.array.sewageTankTypes));
+
+        water_tank_spinner_array_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sewage_tank_spinner_array_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        water_tank_spinner.setAdapter(water_tank_spinner_array_adapter);
+        sewage_tank_spinner.setAdapter(sewage_tank_spinner_array_adapter);
+
 
         mQueue = Volley.newRequestQueue(getActivity());
 
@@ -75,13 +89,19 @@ public class CreateResidentFragment extends DialogFragment {
                 String username = UsernameEditText.getText().toString();
                 String houseNum = HouseNumberEditText.getText().toString();
                 String userPin = PinEditText.getText().toString();
-                String tankNum = tankNumEditText.getText().toString();
+                String tankNum = "1";
                 if (username != "" && houseNum != "" && tankNum != "" && userPin != "") {
                     //adds a user
-                    String url = "http://13.59.214.194:5000/add_resident/{username}/{userpin}".replace("{username}", username).replace("{userpin}", PinEditText.getText().toString());
+                    String url = "http://13.59.214.194:5000/add_resident/<user_name>/<house_number>/<user_pin>/<water_tank_fk>/<sewage_tank_fk>".
+                            replace("<user_name>", username).
+                            replace("<user_pin>", userPin).
+                            replace("<house_number>", houseNum).
+                            replace("<water_tank_fk>", tankNum).
+                            replace("<sewage_tank_fk>", "1");
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
-                        public void onResponse(JSONArray response) {}
+                        public void onResponse(JSONArray response) {
+                        }
                     },
                             new Response.ErrorListener() {
                                 @Override
@@ -91,12 +111,11 @@ public class CreateResidentFragment extends DialogFragment {
                             });
                     mQueue.add(request);
                     //Note that it worked
-                    Toast.makeText(getActivity(), "Resident added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Resident " + username + " added", Toast.LENGTH_SHORT).show();
 
                     //dismiss the fragment if this went through
                     getDialog().dismiss();
-                }
-                else
+                } else
                     Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT).show();
             }
         });
@@ -121,6 +140,6 @@ public class CreateResidentFragment extends DialogFragment {
                 getDialog().dismiss();
             }
         });
-       return view;
+        return view;
     }
 }

@@ -51,6 +51,8 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     private ActionBarDrawerToggle toggleLogin;
     protected CheckBox rememberMe;
     protected SharedPreferenceHelper sharedPreferenceHelper;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     private RequestQueue mQueue;
 
@@ -76,10 +78,19 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         String checkbox = preferences.getString("remember", "");
         if (checkbox.equals("true")) {
             setUserPinFromUsername(userName.getText().toString().trim());
+
+        sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        if (sharedPreferences.getBoolean("remember", false)) {
+            rememberMe.setChecked(true);
         }
         else {
-            setUserPinFromUsername(userName.getText().toString().trim());
-        }*/
+            rememberMe.setChecked(false);
+        }
+
+        userName.setText(sharedPreferences.getString("user name", ""));
+        userPin.setText(sharedPreferences.getString(getString(R.string.user_pin), ""));
 
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);
@@ -118,30 +129,31 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             }
         });
 
+    }
+
+    // to remember login details
+    private void rememberMe() {
         // Option to keep user logged in
         rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
                 if (compoundButton.isChecked()) {
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("checkbox", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("remember", "true");
+                    editor.putString(getString(R.string.user_name), userName.getText().toString().trim());
+                    editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
+                    editor.putBoolean("remember", true);
                     editor.apply();
                     Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
                 }
                 else if (!compoundButton.isChecked()) {
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("checkbox", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("remember", "false");
+                    editor.putBoolean("remember", false);
                     editor.apply();
-                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
 
     private void setUserPinFromUsername(String username) {
         String url = "http://13.59.214.194:5000/get_user/{username}".replace("{username}", username);
@@ -238,7 +250,6 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         User user = new User(userName.getText().toString().trim(),Integer.parseInt(userPin.getText().toString()), type, "");
         sharedPreferenceHelper.saveUser(user, getString(R.string.user_name), getString(R.string.pin), getString(R.string.user_type));
     }
-
 
     public void goToManagerActivity() {
         Intent managerIntent = new Intent(LoginActivity.this, ManagerActivity.class);

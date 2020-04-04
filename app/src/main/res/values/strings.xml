@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Northern Village Water and Sewage App</string>
+    <string name="app_name">Blue App</string>
     <string name="pin">PIN</string>
     <string name="user_name">User Name</string>
     <string name="add_service">Add Service</string>
@@ -29,6 +29,18 @@
         <item>Water</item>
         <item>Sewage</item>
         <item>Water and Sewage</item>
+    </string-array>
+    <string-array name="waterTankTypes">
+        <item>Select Water Tank</item>
+        <item>Cylindrical</item>
+        <item>Box</item>
+        <item>Horizontal Cylinder</item>
+    </string-array>
+    <string-array name="sewageTankTypes">
+        <item>Select Sewage Tank</item>
+        <item>Cylindrical</item>
+        <item>Box</item>
+        <item>Horizontal Cylinder</item>
     </string-array>
     <string-array name="timeEstimate">
         <item>None</item>
@@ -64,11 +76,6 @@
         <item>Set Message</item>
         <item>Analytics</item>
     </string-array>
-    <string-array name="Languages">
-        <item>English (Canada)</item>
-        <item>French (Canada)</item>
-        <item>Inuktitut</item>
-    </string-array>
     <string name="title_activity_settings">Settings</string>
 
     <string name="login">Login</string>
@@ -97,8 +104,8 @@
     <string name="work_list">Work List</string>
     <string name="delivery_list">Delivery List</string>
     <string name="english">English</string>
-    <string name="french">French</string>
-    <string name="inuktitut">Inuktitut</string>
+    <string name="french">Français (Canada)</string>
+    <string name="inuktitut">Inuktitut (ᐃᓄᑦᑎᑐᑦ)</string>
     <string name="languages">Languages</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -119,6 +126,22 @@
     <string name="number_of_calls">Number of Calls</string>
     <string name="this_month">This Month</string>
     <string name="last_month">Last Month</string>
+
     <string name="remember_me">Remember Me</string>
+    <string name="do_you_want_to_log_out">Do you want to log out?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+
+    <string name="remove_driver">Remove Driver</string>
+    <string name="remove_resident">Remove Resident</string>
+    <string name="time_stamp">"Time stamp: "</string>
+    <string name="_resident">"Resident: "</string>
+    <string name="housenum">"House Number: "</string>
+    <string name="tank_type">"Tank Type: "</string>
+    <string name="time_est">"Time Estimate: "</string>
+    <string name="service">"Service: "</string>
+    <string name="current_time_estimate">Current Time Estimate</string>
+    <string name="no_delivery_scheduled">No Delivery Scheduled</string>
+    <string name="reports">Reports</string>
 
 </resources>
