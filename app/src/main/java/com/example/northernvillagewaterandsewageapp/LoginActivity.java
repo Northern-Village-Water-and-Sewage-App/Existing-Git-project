@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -73,12 +77,8 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         sideBarLogin.addDrawerListener(toggleLogin);
         toggleLogin.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
-        /*SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-        String checkbox = preferences.getString("remember", "");
-        if (checkbox.equals("true")) {
-            setUserPinFromUsername(userName.getText().toString().trim());
 
+        sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
         sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         }
         else {
             rememberMe.setChecked(false);
-        }*/
+        }
 
         userName.setText(sharedPreferences.getString("user name", ""));
         userPin.setText(sharedPreferences.getString(getString(R.string.user_pin), ""));

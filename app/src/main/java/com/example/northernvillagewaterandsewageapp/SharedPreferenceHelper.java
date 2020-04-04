@@ -22,12 +22,13 @@ public class SharedPreferenceHelper {
         editor.putString(name_key, profile.getUserName());//save the name under profileName
         editor.putInt(pin_key, profile.getPIN());
         editor.putInt(type_key, profile.getUserType());
-        editor.commit();//save the changes
+        editor.apply();//save the changes
     }
+    //get the name
     public String getUserName(String name)
     {
         return sharedPreferences.getString(name, null);
-    } //get the name
+    }
     public String getUserPin(String pin)//get the pin
     {
         return sharedPreferences.getString(pin, null);
@@ -40,7 +41,7 @@ public class SharedPreferenceHelper {
     {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
 

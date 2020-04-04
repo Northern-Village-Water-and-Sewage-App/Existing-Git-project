@@ -79,8 +79,33 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        updateInfo();
+        TankStatus();
         setUpResidentUI();
+    }
+
+    // Tank status pulled from db
+    public void TankStatus() {
+
+        String url = "http://13.59.214.194:5000/get_tank_info/{username}".replace("{username}", ResidentName);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    JSONObject user = response.getJSONObject(0);
+                    newWaterHeight = user.getInt("water_tank_height");
+                    newSewageAlarm = user.getInt("sewage_tank_status");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+        mQueue.add(request);
     }
 
     //Gets updated tank info with their respective color indications
@@ -246,31 +271,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private void logoutFragment(){
         LogoutFragment logoutFragment = new LogoutFragment();
         logoutFragment.show(getSupportFragmentManager(), "Dialog");
-    }
-    public void TankStatus() {
-
-
-
-        String url = "http://13.59.214.194:5000/get_tank_info/{username}".replace("{username}", ResidentName);
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                try {
-                    JSONObject user = response.getJSONObject(0);
-                    newWaterHeight = user.getInt("water_tank_height");
-                    newSewageAlarm = user.getInt("sewage_tank_status");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                });
-        mQueue.add(request);
     }
 }
 
