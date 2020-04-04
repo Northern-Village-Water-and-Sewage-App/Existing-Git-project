@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.DBHelper;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
 import com.example.northernvillagewaterandsewageapp.R;
+import com.example.northernvillagewaterandsewageapp.SharedPreferenceHelper;
 
 import org.json.JSONArray;
 
@@ -36,12 +37,17 @@ public class ResidentUsageFragment extends DialogFragment {
     protected Button AddUseButton;
     protected Button CancelButton;
     protected Button SaveButton;
+    protected SharedPreferenceHelper sharedPreferenceHelper;
+    private String estimatedUsage;
+    private String dishes;
+    private String washes;
+    private String showers;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_create_resident, container, false);
+        View view = inflater.inflate(R.layout.fragment_resident_usage, container, false);
 
         //connects the edit texts to the Java file
         EstimatedUseEt = view.findViewById(R.id.estimatedUseEditText);
@@ -61,6 +67,23 @@ public class ResidentUsageFragment extends DialogFragment {
             }
         });
 
+        AddUseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveUsage();
+            }
+        });
+
         return view;
+    }
+
+    private void saveUsage() {
+        estimatedUsage = EstimatedUseEt.getText().toString().trim();
+        dishes = DishWashesEt.getText().toString().trim();
+        washes = WashesEt.getText().toString().trim();
+        showers = ShowersEt.getText().toString().trim();
+
+        User usage = new User(estimatedUsage, dishes, washes,showers);
+        sharedPreferenceHelper.saveResidentUsage(usage, getString(R.string.estimated_usage), getString(R.string.dish_washes), getString(R.string.washes), getString(R.string.showers));
     }
 }

@@ -14,7 +14,7 @@
         android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/estimated_usage"
-        android:inputType="number"
+        android:inputType="text"
         android:maxLength="3"
         android:textAlignment="center" />
 
@@ -28,7 +28,7 @@
         android:layout_marginTop="130dp"
         android:ems="10"
         android:hint="@string/dish_washes"
-        android:inputType="number"
+        android:inputType="text"
         android:maxLength="3"
         android:textAlignment="center" />
 
@@ -40,7 +40,7 @@
         android:layout_marginTop="230dp"
         android:ems="10"
         android:hint="@string/washes"
-        android:inputType="number"
+        android:inputType="text"
         android:maxLength="3"
         android:textAlignment="center" />
 
@@ -54,7 +54,7 @@
         android:layout_marginTop="320dp"
         android:ems="10"
         android:hint="@string/showers"
-        android:inputType="number"
+        android:inputType="text"
         android:maxLength="3"
         android:textAlignment="center" />
 

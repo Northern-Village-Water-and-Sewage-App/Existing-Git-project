@@ -8,10 +8,10 @@ public class User {
     private int userType;
     private String HouseNum;
 
-    private int EstimatedUsage;
-    private int Dishes;
-    private int Washes;
-    private int Showers;
+    private String EstimatedUsage;
+    private String Dishes;
+    private String Washes;
+    private String Showers;
 
     //constructor
     public User (String username, int pin, int usertype, String houseNum){
@@ -21,7 +21,7 @@ public class User {
         HouseNum = houseNum;
     }
     // Constructor for resident analytics
-    public User (int estimatedUse, int dishes, int washes, int showers){
+    public User (String estimatedUse, String dishes, String washes, String showers){
         EstimatedUsage = estimatedUse;
         Dishes = dishes;
         Washes = washes;
@@ -68,35 +68,35 @@ public class User {
 
     // For resident analytics
 
-    public int getEstimatedUsage() {
+    public String getEstimatedUsage() {
         return EstimatedUsage;
     }
 
-    public void setEstimatedUsage(int estimatedUsage) {
+    public void setEstimatedUsage(String estimatedUsage) {
         EstimatedUsage = estimatedUsage;
     }
 
-    public int getDishes() {
+    public String getDishes() {
         return Dishes;
     }
 
-    public void setDishes(int dishes) {
+    public void setDishes(String dishes) {
         Dishes = dishes;
     }
 
-    public int getWashes() {
+    public String getWashes() {
         return Washes;
     }
 
-    public void setWashes(int washes) {
+    public void setWashes(String washes) {
         Washes = washes;
     }
 
-    public int getShowers() {
+    public String getShowers() {
         return Showers;
     }
 
-    public void setShowers(int showers) {
+    public void setShowers(String showers) {
         Showers = showers;
     }
 }

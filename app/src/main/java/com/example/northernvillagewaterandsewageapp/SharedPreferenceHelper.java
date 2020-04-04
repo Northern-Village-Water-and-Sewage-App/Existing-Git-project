@@ -44,15 +44,26 @@ public class SharedPreferenceHelper {
         editor.apply();
     }
 
-    public void saveResidentUsage(User profile, String estUse_key, String dishes_key, String washes_key, String showers_key) {
+    public void saveResidentUsage(User usage, String estUse_key, String dishes_key, String washes_key, String showers_key) {
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(estUse_key, profile.getEstimatedUsage());//save the name under profileName
-        editor.putInt(dishes_key, profile.getDishes());
-        editor.putInt(washes_key, profile.getWashes());
-        editor.putInt(showers_key, profile.getShowers());
+        editor.putString(estUse_key, usage.getEstimatedUsage());//save the name under profileName
+        editor.putString(dishes_key, usage.getDishes());
+        editor.putString(washes_key, usage.getWashes());
+        editor.putString(showers_key, usage.getShowers());
         editor.apply();//save the changes
     }
-
+    public String getEstUsage(String usage) {
+        return sharedPreferences.getString(usage, null);
+    }
+    public String getDishes(String dishes) {
+        return sharedPreferences.getString(dishes, null);
+    }
+    public String getWashes(String washes) {
+        return sharedPreferences.getString(washes, null);
+    }
+    public String getShowers(String showers) {
+        return sharedPreferences.getString(showers, null);
+    }
 
 }
