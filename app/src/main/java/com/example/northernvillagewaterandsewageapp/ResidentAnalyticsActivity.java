@@ -21,7 +21,8 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
     protected ListView myUsageListView;
     protected FloatingActionButton addUsageFloatingButton;
     protected Switch editSwitch;
-    protected ProgressBar progressBarAnalytics;
+    protected ProgressBar firstProgressBar;
+    protected ProgressBar secondProgressBar;
     protected TextView textView;
     protected SharedPreferenceHelper sharedPreferenceHelper;
     private int estimatedUsage;
@@ -61,7 +62,7 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             }
         });
 
-        progressBarAnalytics.setProgress(20);
+        firstProgressBar.setProgress(20);
         loadListView();
         setUpUI();
 
@@ -98,7 +99,8 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
 
         addUsageFloatingButton = findViewById(R.id.addUseFloatingActionButton);
         editSwitch = findViewById(R.id.editUseSwitch);
-        progressBarAnalytics = findViewById(R.id.progressBarAnalytics);
+        firstProgressBar = findViewById(R.id.progressBarAnalytics);
+        secondProgressBar = findViewById(R.id.progressBarAnalytics2);
         textView = findViewById(R.id.myUsageTextView);
         myUsageListView = findViewById(R.id.residentUseListView);
 
