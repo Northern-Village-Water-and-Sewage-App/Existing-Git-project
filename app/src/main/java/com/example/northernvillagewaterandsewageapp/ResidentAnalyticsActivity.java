@@ -34,6 +34,8 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident_analytics);
 
+        setUpUI();
+
         //get the useItem array to equal something, this is for testing, it should be gotten from the sharedProfile
         useItem use1 = new useItem("Shower", 15);
         useItem use2 = new useItem("Bath", 30);
@@ -47,24 +49,9 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             numUses.add(0);
         }
 
-        editSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.editUseSwitch:
-                        if (editSwitch.isChecked()) {
-                            addUsageFloatingButton.setEnabled(true);
-                        }
-                        else {
-                            addUsageFloatingButton.setEnabled(false);
-                        }
-                }
-            }
-        });
-
-        setUpUI();
         firstProgressBar.setProgress(20);
         //secondProgressBar.setProgress(estimatedUsage);
+
         loadListView();
 
     }
@@ -81,16 +68,15 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             String temp = "";
 
         for (int pos = 0; pos < useAnalyticsList.size(); pos++){
+            temp = "\n";
             temp += useAnalyticsList.get(pos).getName();
             temp += "\npercent: ";
             temp += useAnalyticsList.get(pos).getUse();
             temp += "     Times: ";
             temp += numUses.get(pos);
-        }
-
-            temp += "Estimated Usage: " + estimatedUsage + "\n";
-
+            temp += "\n";
             usagelistListText.add(temp);
+        }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usagelistListText);
         myUsageListView.setAdapter(arrayAdapter);
@@ -105,10 +91,28 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         textView = findViewById(R.id.myUsageTextView);
         myUsageListView = findViewById(R.id.residentUseListView);
 
+        useAnalyticsList = new ArrayList<>();
+        numUses = new ArrayList<>();
+
         addUsageFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addUsage();
+            }
+        });
+
+        editSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.editUseSwitch:
+                        if (editSwitch.isChecked()) {
+                            addUsageFloatingButton.setEnabled(true);
+                        }
+                        else {
+                            addUsageFloatingButton.setEnabled(false);
+                        }
+                }
             }
         });
 
