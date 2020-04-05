@@ -82,9 +82,9 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
 
         sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
 
-        sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
+        /*sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        /*if (sharedPreferences.getBoolean("remember", false)) {
+        if (sharedPreferences.getBoolean("remember", false)) {
             rememberMe.setChecked(true);
         }
         else {
@@ -130,8 +130,8 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View v) {
 
-                //setUserPinFromUsername(userName.getText().toString().trim());
-                goToResidentActivity();
+                setUserPinFromUsername(userName.getText().toString().trim());
+
             }
         });
 
@@ -144,10 +144,14 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
 
-                if (compoundButton.isChecked()) {
+                sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
 
-                    editor.putString(getString(R.string.user_name), userName.getText().toString().trim());
-                    editor.putString(getString(R.string.user_pin), Integer.toString(pinInput));
+                if (compoundButton.isChecked()) {
+                    ResidentName = sharedPreferenceHelper.getUserName(getString(R.string.user_name));
+                    ResidentPin = sharedPreferenceHelper.getUserPin(getString(R.string.user_pin));
+                    userName.setText(ResidentName);
+                    userPin.setText(ResidentPin);
+
                     editor.putBoolean("remember", true);
                     editor.apply();
                     Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();

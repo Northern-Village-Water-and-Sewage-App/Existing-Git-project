@@ -83,6 +83,12 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         setUpResidentUI();
     }
 
+    @Override
+    protected void onResume() {
+        updateInfo();
+        super.onResume();
+    }
+
     // Tank status pulled from db
     public void TankStatus() {
 
