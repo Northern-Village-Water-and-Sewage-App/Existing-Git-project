@@ -21,7 +21,8 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
     protected ListView myUsageListView;
     protected FloatingActionButton addUsageFloatingButton;
     protected Switch editSwitch;
-    protected ProgressBar progressBarAnalytics;
+    protected ProgressBar firstProgressBar;
+    protected ProgressBar secondProgressBar;
     protected TextView textView;
     protected SharedPreferenceHelper sharedPreferenceHelper;
     private int estimatedUsage;
@@ -32,9 +33,6 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident_analytics);
-
-        setUpUI();
-
 
         //get the useItem array to equal something, this is for testing, it should be gotten from the sharedProfile
         useItem use1 = new useItem("Shower", 15);
@@ -49,56 +47,6 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             numUses.add(0);
         }
 
-        progressBarAnalytics.setProgress(20);
-        loadListView();
-    }
-
-    //LoadListViewFunction
-    protected void loadListView() {
-        sharedPreferenceHelper = new SharedPreferenceHelper(ResidentAnalyticsActivity.this);
-
-        String estimatedUsage = sharedPreferenceHelper.getEstUsage(getString(R.string.estimated_usage));
-
-        ArrayList<String> usagelistListText = new ArrayList<>();
-
-        //makes a list item
-
-
-        for (int pos = 0; pos < useAnalyticsList.size(); pos++){
-            String temp = "\n";
-            temp += useAnalyticsList.get(pos).getName();
-            temp += "\npercent: ";
-            temp += useAnalyticsList.get(pos).getUse();
-            temp += "     Times: ";
-            temp += numUses.get(pos);
-            temp += "\n";
-            usagelistListText.add(temp);
-        }
-
-
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usagelistListText);
-        myUsageListView.setAdapter(arrayAdapter);
-    }
-
-    public void setUpUI() {
-
-        addUsageFloatingButton = findViewById(R.id.addUseFloatingActionButton);
-        editSwitch = findViewById(R.id.editUseSwitch);
-        progressBarAnalytics = findViewById(R.id.progressBarAnalytics);
-        textView = findViewById(R.id.myUsageTextView);
-        myUsageListView = findViewById(R.id.residentUseListView);
-
-        useAnalyticsList = new ArrayList<>();
-        numUses = new ArrayList<>();
-
-        addUsageFloatingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addUsage();
-            }
-        });
-
         editSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +59,56 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
                             addUsageFloatingButton.setEnabled(false);
                         }
                 }
+            }
+        });
+
+        setUpUI();
+        firstProgressBar.setProgress(20);
+        //secondProgressBar.setProgress(estimatedUsage);
+        loadListView();
+
+    }
+
+    //LoadListViewFunction
+    protected void loadListView() {
+        sharedPreferenceHelper = new SharedPreferenceHelper(ResidentAnalyticsActivity.this);
+
+        String estimatedUsage = sharedPreferenceHelper.getEstUsage(getString(R.string.estimated_usage));
+
+        ArrayList<String> usagelistListText = new ArrayList<>();
+
+        //makes a list item
+            String temp = "";
+
+        for (int pos = 0; pos < useAnalyticsList.size(); pos++){
+            temp += useAnalyticsList.get(pos).getName();
+            temp += "\npercent: ";
+            temp += useAnalyticsList.get(pos).getUse();
+            temp += "     Times: ";
+            temp += numUses.get(pos);
+        }
+
+            temp += "Estimated Usage: " + estimatedUsage + "\n";
+
+            usagelistListText.add(temp);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usagelistListText);
+        myUsageListView.setAdapter(arrayAdapter);
+    }
+
+    public void setUpUI() {
+
+        addUsageFloatingButton = findViewById(R.id.addUseFloatingActionButton);
+        editSwitch = findViewById(R.id.editUseSwitch);
+        firstProgressBar = findViewById(R.id.progressBarAnalytics);
+        secondProgressBar = findViewById(R.id.progressBarAnalytics2);
+        textView = findViewById(R.id.myUsageTextView);
+        myUsageListView = findViewById(R.id.residentUseListView);
+
+        addUsageFloatingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addUsage();
             }
         });
 
