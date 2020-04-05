@@ -1,6 +1,7 @@
 package com.example.northernvillagewaterandsewageapp.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,9 @@ public class ResidentUsageFragment extends DialogFragment {
     protected SharedPreferenceHelper sharedPreferenceHelper;
     private int estimatedUsage;
     private String useType;
+    protected int use;
+    protected int pos;
+    protected String name;
 
     @Nullable
     @Override
@@ -62,5 +66,23 @@ public class ResidentUsageFragment extends DialogFragment {
 
         useItem useitem = new useItem(useType, estimatedUsage);
         //sharedPreferenceHelper.saveResidentUsage(getString(R.string.usage_type), getString(R.string.estimated_usage));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            //get the info out of the bundle
+            //Log.d("State", bundle.getString("name"));
+            use = bundle.getInt("use");
+            pos = bundle.getInt("pos");
+            name = bundle.getString("name");
+
+            //set the info
+            usageTypeEt.setText(name);
+            EstimatedUseEt.setText(Integer.toString(use));
+        }
+        else{Log.d("State", "not entered");}
     }
 }

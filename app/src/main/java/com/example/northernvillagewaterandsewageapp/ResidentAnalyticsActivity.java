@@ -62,7 +62,7 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
 
         String estimatedUsage = sharedPreferenceHelper.getEstUsage(getString(R.string.estimated_usage));
 
-        ArrayList<String> usagelistListText = new ArrayList<>();
+        ArrayList<String> usageListListText = new ArrayList<>();
 
         //makes a list item
             String temp = "";
@@ -75,10 +75,10 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             temp += "     Times: ";
             temp += numUses.get(pos);
             temp += "\n";
-            usagelistListText.add(temp);
+            usageListListText.add(temp);
         }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usagelistListText);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usageListListText);
         myUsageListView.setAdapter(arrayAdapter);
     }
 
