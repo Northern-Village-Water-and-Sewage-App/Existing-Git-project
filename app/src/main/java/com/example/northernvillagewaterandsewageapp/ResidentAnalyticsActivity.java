@@ -62,9 +62,10 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             }
         });
 
-        firstProgressBar.setProgress(20);
-        loadListView();
         setUpUI();
+        firstProgressBar.setProgress(20);
+        //secondProgressBar.setProgress(estimatedUsage);
+        loadListView();
 
     }
 
