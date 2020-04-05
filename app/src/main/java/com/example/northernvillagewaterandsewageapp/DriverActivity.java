@@ -21,13 +21,24 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -40,13 +51,21 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
     private DrawerLayout sideBar;
     private ActionBarDrawerToggle toggle;
-
+    private RequestQueue mQueue;
     boolean isOpen = false;
-
+    ArrayList<String> worklistListText;
+    ArrayList<Integer> worklistListInt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
+        mQueue = Volley.newRequestQueue(this);
+        getList(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadListView();
+            }
+        });
 
         driverWorklistListView = findViewById(R.id.DriverWorklistListView);
 
@@ -128,21 +147,11 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         ManualDemandFragment manualDemandFragment = new ManualDemandFragment();
         manualDemandFragment.show(getSupportFragmentManager(), "Dialog");
     }
-
+    public interface VolleyCallBack {
+        void onSuccess();
+    }
     //LoadListViewFunction
     protected void loadListView(){
-        ArrayList<String> worklistListText = new ArrayList<>();
-
-        //makes a list item                                                               //Fix here to make the list view correct
-        for(int i = 0; i < 5; i++)
-        {
-            String temp = "";
-            temp+= "House Number: " + i * 49 + 8 + "\n";
-            temp+= "Service: " + "Water" + "\n";
-            temp+= "Time Estimate: " + "None" + "\n";
-
-            worklistListText.add(temp);
-        }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, worklistListText);
         driverWorklistListView.setAdapter(arrayAdapter);
 
@@ -150,8 +159,12 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         driverWorklistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //need to pass other stuff here to make this work                                                                                                            ************************
+                //need to pass other stuff here to make this work
+                // ************************
+                Bundle bundle = new Bundle();
+                bundle.putInt("pk",worklistListInt.get(position));
                 DriverTimeEstimateFragment driverTimeEstimateFragment = new DriverTimeEstimateFragment();
+                driverTimeEstimateFragment.setArguments(bundle);
                driverTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
             }
         });
@@ -217,7 +230,12 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         }
         switch (item.getItemId()) {
             case R.id.refreshItem:
-                loadListView();
+                getList(new VolleyCallBack() {
+                    @Override
+                    public void onSuccess() {
+                        loadListView();
+                    }
+                });
                 return true;
             default:
         }
@@ -240,6 +258,45 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     private void logoutFragment(){
         LogoutFragment logoutFragment = new LogoutFragment();
         logoutFragment.show(getSupportFragmentManager(), "Dialog");
+    }
+    protected void getList(final VolleyCallBack callBack)
+    {
+
+        worklistListText = new ArrayList<String>();
+        worklistListInt = new ArrayList<Integer>();
+        String url = "http://54.201.85.48:32132/get_work_list/";
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+
+                    for(int i = 0; i < response.length(); i++)
+                    {
+                        JSONObject user = response.getJSONObject(i);
+                        String temp = "";
+                        temp+= "House Number: " + user.getString("house_number") + "\n";
+                        temp+= "Service: " + user.getString("tank_type") + "\n";
+                        temp+= "Time Estimate: " + user.getString("estimate") + "\n";
+                        worklistListText.add(temp);
+                        worklistListInt.add(user.getInt("pk"));
+                        //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
+                    }
+                    callBack.onSuccess();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Toast.makeText(DriverActivity.this, "Failed: "+error.toString(), Toast.LENGTH_LONG).show();
+                    }
+
+                });
+        mQueue.add(request);
+
     }
 
 }

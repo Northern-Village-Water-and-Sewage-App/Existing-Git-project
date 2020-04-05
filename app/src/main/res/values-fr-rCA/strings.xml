@@ -25,7 +25,7 @@
     <string name="tank_status_critical">Statut: Critique</string>
     <string name="textview">textview_fr</string>
     <string name="resident_activity_title_text">Informations sur le réservoir</string>
-
+    <string name="complete">Terminé</string>
     <string-array name="demandTypes">
         <item>Eau</item>
         <item>Égouts</item>

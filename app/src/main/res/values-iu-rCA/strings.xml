@@ -25,7 +25,7 @@
     <string name="tank_status_warning">ᓄᕐᖃᑐᖅ</string>
     <string name="tank_status_critical">ᐃᓂᕐᑎᕆᔪᖅ</string>
     <string name="tank_status_ok">ᓈᒻᒪᑐᖅ</string>
-
+    <string name="complete">Complete_inu_placeholder</string>
     <string-array name="demandTypes">
         <item>ᐃᒪᖅ</item>
         <item>ᖁᕐᕕᖃᐅᑎᒃ</item>
