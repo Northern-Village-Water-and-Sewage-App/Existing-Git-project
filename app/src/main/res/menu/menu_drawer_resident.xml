@@ -7,7 +7,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/getDelivery"
-            app:srcCompat="@drawable/pinclipart_com_mail_clipart_295687"
+            android:icon="@drawable/pinclipart_com_mail_clipart_295687"
             android:title="@string/get_delivery" />
         <item
             android:id="@+id/resAnalytics"
