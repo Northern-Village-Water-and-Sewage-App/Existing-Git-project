@@ -103,8 +103,8 @@
     <string name="enter">Entrée</string>
     <string name="tank_number">numéro de réservoir</string>
     <string name="email_address">Couriel</string>
-    <string name="work_list">Work List</string>
-    <string name="delivery_list">Delivery List</string>
+    <string name="work_list">Liste de travail</string>
+    <string name="delivery_list">Liste de livraison</string>
     <string name="english">English</string>
     <string name="french">Français (Canada)</string>
     <string name="inuktitut">Inuktitut</string>
@@ -113,17 +113,17 @@
     <string name="close">Close</string>
     <string name="water">Eau</string>
     <string name="sewage">Égouts</string>
-    <string name="average_wait_time">Average Wait Time:</string>
-    <string name="edit">Edit</string>
-    <string name="my_usage">My Usage</string>
-    <string name="save">Save</string>
-    <string name="update">Update</string>
-    <string name="showers">Showers</string>
-    <string name="dish_washes">Dish Washes</string>
-    <string name="estimated_usage">Estimated Usage</string>
-    <string name="washes">Washes</string>
-    <string name="average_wait_previous_month">Average Wait Previous Month:</string>
-    <string name="number_of_calls">Number of Calls</string>
+    <string name="average_wait_time">Temps attente moyen:</string>
+    <string name="edit">Éditer</string>
+    <string name="my_usage">Mon utilisation</string>
+    <string name="save">Sauvegarder</string>
+    <string name="update">Mise à jour</string>
+    <string name="showers">Douches</string>
+    <string name="dish_washes">Lave-vaisselle</string>
+    <string name="estimated_usage">Utilisation estimée</string>
+    <string name="washes">Lavages</string>
+    <string name="average_wait_previous_month">Attente moyenne du mois précédent:</string>
+    <string name="number_of_calls">Nombre appels</string>
     <string name="this_month">Ce mois-ci</string>
     <string name="last_month">Le mois dernier</string>
 
@@ -143,7 +143,7 @@
     <string name="current_time_estimate">Estimation de heure actuelle</string>
     <string name="no_delivery_scheduled">Aucune livraison prévue</string>
     <string name="reports">Rapports</string>
-    <string name="usage_type">Usage Type</string>
+    <string name="usage_type">Type Utilisation</string>
 
 
 </resources>

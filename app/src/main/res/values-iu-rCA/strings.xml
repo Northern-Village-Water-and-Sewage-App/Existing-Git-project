@@ -32,16 +32,16 @@
         <item>ᐃᒣᖅᑖᖅ ᖁᕐᕕᓂᑯᐃᑦ</item>
     </string-array>
     <string-array name="waterTankTypes">
-        <item>Select Water Tank</item>
-        <item>Cylindrical</item>
-        <item>Box</item>
-        <item>Horizontal Cylinder</item>
+        <item>ᐃᒪᖃᐅᑎᒥᑦ ᓇᓗᓀᕐᓯᓂᖅ</item>
+        <item>ᖁᒻᒧᔫᔭᖅ</item>
+        <item>ᐃᕐᓯᕕᒃ</item>
+        <item>ᖁᒻᒧᔫᔭᖅ ᐃᓐᓇᖓᔪᖅ</item>
     </string-array>
     <string-array name="sewageTankTypes">
-        <item>Select Sewage Tank</item>
-        <item>Cylindrical</item>
-        <item>Box</item>
-        <item>Horizontal Cylinder</item>
+        <item>ᖁᕐᕕᓗᑯᓐᓂᒃ ᓇᓗᓀᕐᓯᓂᑦ</item>
+        <item>ᖁᒻᒧᔫᔭᖅ</item>
+        <item>ᐃᕐᓯᕕᒃ</item>
+        <item>ᖁᒻᒧᔫᔭᖅ ᐃᓐᓇᖓᔪᖅ</item>
     </string-array>
     <string-array name="timeEstimate">
         <item>ᓇᒻᒪᓂᖃᖕᖏᑐᑦ</item>
@@ -102,8 +102,8 @@
     <string name="enter">ᑲᑕᒃ</string>
     <string name="tank_number">ᑭᑎᑦᔪᑏᑦ</string>
     <string name="email_address">ᖃᐅᑕᐅᔭᒃᑯᑦ ᓯᓚᑎ</string>
-    <string name="work_list">Work List</string>
-    <string name="delivery_list">Delivery List</string>
+    <string name="work_list">ᐱᔭᑦᓭᑦ ᐊᓪᓚᓯᒪᓂᖏᑦ</string>
+    <string name="delivery_list">ᒥᓇᕐᑕᓭᑦ ᐊᑎᖏᑦ</string>
     <string name="english">English</string>
     <string name="french">Français (Canada)</string>
     <string name="inuktitut">ᐃᓄᑦᑎᑐᑦ</string>
@@ -113,35 +113,35 @@
     <string name="water">ᐃᒪᖅ</string>
     <string name="sewage">ᖁᕐᕕᖃᐅᑎᒃ</string>
     <string name="average_wait_time">Average Wait Time:</string>
-    <string name="edit">Edit</string>
-    <string name="my_usage">My Usage</string>
-    <string name="save">Save</string>
-    <string name="update">Update</string>
-    <string name="showers">Showers</string>
-    <string name="dish_washes">Dish Washes</string>
-    <string name="estimated_usage">Estimated Usage</string>
-    <string name="washes">Washes</string>
-    <string name="average_wait_previous_month">Average Wait Previous Month:</string>
-    <string name="number_of_calls">Number of Calls</string>
-    <string name="this_month">This Month</string>
-    <string name="last_month">Last Month</string>
+    <string name="edit">ᐊᕐᖀᓱᐃᓂᖅ</string>
+    <string name="my_usage">ᓇᒻᒥᓂᖅ ᐊᑐᕐᓂᑲ</string>
+    <string name="save">ᐱᐅᓕᑦᓯᐅᑎ</string>
+    <string name="update">ᓄᑕᐅᓕᑎᕐᓯᒪᔪᑦ</string>
+    <string name="showers">ᐃᓘᓐᓇᓂᐊᕐᓂᖅ</string>
+    <string name="dish_washes">ᐃᒡᒍᑐᐊᑦ</string>
+    <string name="estimated_usage">ᐊᑐᕐᓂᓴᓂᑦ  ᒥᑦᓴᐅᓵᒍᑏᑦ</string>
+    <string name="washes">ᐃᒡᒍᑐᐃᓃᑦ</string>
+    <string name="average_wait_previous_month">ᐅᑕᕐᕿᓂᐅᓯᒪᔪᐃᑦ ᑕᕐᕿᐅᓚᐅᔪᔪᒥ:</string>
+    <string name="number_of_calls">ᓯᕙᓂᕐᓂᐅᓯᒪᔪᐃᑦ ᐅᓄᕐᓂᖏᑦ</string>
+    <string name="this_month">ᑕᕝᕙᓂ ᑕᕐᕿᒥ</string>
+    <string name="last_month">ᑕᕐᑭᐅᓚᐅᔪᔪᒥ</string>
 
-    <string name="remember_me">Remember Me</string>
-    <string name="do_you_want_to_log_out">Do you want to log out?</string>
-    <string name="no">No</string>
-    <string name="yes">Yes</string>
+    <string name="remember_me">ᐊᐅᓚᔨᕕᖕᖓ</string>
+    <string name="do_you_want_to_log_out">ᐊᓂᐅᑎᒥᑦ ᑲᔪᓯᖁᔨᕕᑦ?</string>
+    <string name="no">ᐊᐅᑲ</string>
+    <string name="yes">ᐋ</string>
 
-    <string name="remove_driver">Remove Driver</string>
-    <string name="remove_resident">Remove Resident</string>
-    <string name="time_stamp">"TIme stamp: "</string>
-    <string name="_resident">"Resident: "</string>
+    <string name="remove_driver">ᐊᖁᑦᑎᒥᑦ ᐱᕐᓯᒍᑎᒃ</string>
+    <string name="remove_resident">ᐃᓪᓗᓕᒻᒥᑦ ᐱᕐᓯᒍᑎᒃ</string>
+    <string name="time_stamp">"ᐃᑲᐅᕈᐸᓕᐊᓃᑦ ᐅᖑᒻᒧᐊᓂᖓ: "</string>
+    <string name="_resident">"ᐃᓪᓗᓕᒃ: "</string>
     <string name="housenum">"ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ: "</string>
-    <string name="tank_type">"Tank Type: "</string>
-    <string name="time_est">"Time Estimate: "</string>
-    <string name="service">"Service: "</string>
-    <string name="current_time_estimate">Current Time Estimate</string>
-    <string name="no_delivery_scheduled">No Delivery Scheduled</string>
-    <string name="reports">Reports</string>
+    <string name="tank_type">"ᖃᑦᑕᒪᑉ ᓱᓇᐅᑯᑦᓲᓂᖓ: "</string>
+    <string name="time_est">"ᐃᑲᐅᕈᐸᓕᐊᓃᑦ  ᒥᑦᓴᐅᓴᕐᑕᐅᓂᖏᑦ: "</string>
+    <string name="service">"ᐱᒍᑦᔨᓂᖅ: "</string>
+    <string name="current_time_estimate">ᒪᓐᓇ ᒥᑦᓴᐅᓵᒋᒍᑏᑦ ᐃᑲᐅᕐᓂᑎᒍᑦ</string>
+    <string name="no_delivery_scheduled">ᒥᓇᕐᑕᐅᕕᑦᓴᐅᑉ ᓇᒻᒪᓯᕕᑦᓴᖓ</string>
+    <string name="reports">ᑐᓴᕐᑎᓯᐅᑏᑦ</string>
     <string name="usage_type">Usage Type</string>
 
 
