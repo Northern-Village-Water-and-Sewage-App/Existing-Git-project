@@ -97,7 +97,7 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         addUsageFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addUsage();
+                addUsage("", 0, useAnalyticsList.size() + 1);
             }
         });
 
@@ -119,8 +119,13 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
     }
 
     //Function to open fragment for adding/updating resident's water usage
-    protected void addUsage() {
+    protected void addUsage(String name, int use, int pos) {
         ResidentUsageFragment residentUsageFragment = new ResidentUsageFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("name", name);
+        bundle.putInt("use", use);
+        bundle.putInt("pos", pos);
+        residentUsageFragment.setArguments(bundle);
         residentUsageFragment.show(getSupportFragmentManager(), "Dialog");
     }
 
