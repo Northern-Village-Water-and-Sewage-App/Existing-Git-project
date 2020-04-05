@@ -58,8 +58,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private int ResidentPin;
     private int newWaterHeight;
     int newSewageAlarm;
-    Handler Delay;
-    Runnable startDelay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,17 +82,9 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Delay = new Handler();
-        startDelay = new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(ResidentActivity.this, "Delayed for 5 secs", Toast.LENGTH_SHORT).show();
-            }
-        };
-        Toast.makeText(ResidentActivity.this, "Delaying for 5 secs", Toast.LENGTH_SHORT).show();
-        Delay.postDelayed(startDelay, 5000);
-
-        updateInfo();
+        for (int i = 0; i <= 5; i++) {
+            updateInfo();
+        }
         setUpResidentUI();
     }
 
@@ -105,6 +96,18 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
     // Tank status pulled from db
     public void TankStatus() {
+
+            /*Handler Delay;
+    Runnable startDelay;
+    Delay = new Handler();
+    startDelay = new Runnable() {
+        @Override
+        public void run() {
+            Toast.makeText(LoginActivity.this, "Delayed for 5 secs", Toast.LENGTH_SHORT).show();
+        }
+    };
+        Toast.makeText(LoginActivity.this, "Delaying for 5 secs", Toast.LENGTH_SHORT).show();
+        Delay.postDelayed(startDelay, 5000);*/
 
         String url = "http://54.201.85.48:32132/get_tank_info/{username}".replace("{username}", ResidentName);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
