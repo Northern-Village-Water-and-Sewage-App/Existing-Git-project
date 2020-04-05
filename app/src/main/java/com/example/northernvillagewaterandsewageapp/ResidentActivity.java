@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -51,11 +52,16 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private ActionBarDrawerToggle toggle;
     protected FloatingActionButton infoButton;
     protected SharedPreferenceHelper sharedPreferencehelper;
+    protected TextView deliveryEstimateTextView;
     private String ResidentName;
     private RequestQueue mQueue;
     private int ResidentPin;
     private int newWaterHeight;
+    private String deliveryEstimate;
+    private String tankType;
+
     int newSewageAlarm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +77,8 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         sharedPreferencehelper = new SharedPreferenceHelper(ResidentActivity.this);
         ResidentName = sharedPreferencehelper.getUserName(getString(R.string.user_name));
         sideBarResident = findViewById(R.id.sideBarResident);
+        deliveryEstimateTextView = findViewById(R.id.deliveryEstimateTextView);
+
         NavigationView navigationView = findViewById(R.id.nav_view_resident);
         mQueue = Volley.newRequestQueue(this);
         toggle = new ActionBarDrawerToggle(this, sideBarResident, R.string.open, R.string.close);
@@ -115,8 +123,41 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     }
 
     //Gets updated tank info with their respective color indications
-    protected void updateInfo()
-    {
+    protected void updateInfo() {
+        updateTank();
+        updateDelivery();
+    }
+
+    protected void updateDelivery() {
+        String url = "http://54.201.85.48:32132/get_work_list_estimate_for_resident/{username}".replace("{username}", ResidentName);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    StringBuilder displayString = new StringBuilder();
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject user = response.getJSONObject(i);
+                        deliveryEstimate = user.getString("estimate");
+                        tankType = user.getString("tank_type");
+                        displayString.append("\n{tankType} Delivery Time Estimate: \t{estimate}"
+                                .replace("{tankType}", tankType).replace("{estimate}", deliveryEstimate));
+                    }
+                    deliveryEstimateTextView.setText(displayString.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+        mQueue.add(request);
+    }
+
+    protected void updateTank() {
         TankStatus();
         progressBar.setProgress(newWaterHeight);
 
@@ -125,13 +166,11 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             waterStatus.setText(R.string.tank_status_critical);
-        }
-        else if ((30 < newWaterHeight && newWaterHeight <= 65)) {
+        } else if ((30 < newWaterHeight && newWaterHeight <= 65)) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium water level
-            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,204,0	)));
+            waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));
             waterStatus.setText(R.string.tank_status_warning);
-        }
-        else {
+        } else {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));  // Optimum to full water level
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             waterStatus.setText(R.string.tank_status_ok);
@@ -144,7 +183,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
                 sewageStatus.setText(R.string.tank_status_ok);
                 break;
             case (1):
-                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255,204,0	)));  // Medium sewage
+                sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium sewage
                 sewageStatus.setText(R.string.tank_status_warning);
                 break;
             case (2):
@@ -154,8 +193,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         }
     }
 
-    protected void setUpResidentUI()
-    {
+    protected void setUpResidentUI() {
 
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,8 +209,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     public void onBackPressed() {
         if (sideBarResident.isDrawerOpen(GravityCompat.START)) {
             sideBarResident.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -239,42 +276,42 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         return super.onOptionsItemSelected(item);
     }
 
-    protected void getManualDelivery()
-    {
+    protected void getManualDelivery() {
         ManualDemandFragment manualDemandFragment = new ManualDemandFragment();
         manualDemandFragment.show(getSupportFragmentManager(), "Dialog");
     }
-    protected void displayCurrentWater()
-    {
+
+    protected void displayCurrentWater() {
         //dbHelper.GetTankInfo();
     }
-    protected void displayCurrentSewage()
-    {
+
+    protected void displayCurrentSewage() {
         //tankStatus.getSewageAlarm();
     }
-    protected void getTimeDeliveryEstimate()
-    {
+
+    protected void getTimeDeliveryEstimate() {
 
     }
-    protected void goToAnalytics()
-    {
+
+    protected void goToAnalytics() {
         Intent resAnalyticsIntent = new Intent(ResidentActivity.this, ResidentAnalyticsActivity.class);
         startActivity(resAnalyticsIntent);
     }
 
     //GoTo Login
-    protected void goToLogin(){
+    protected void goToLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
     //Open message fragment
-    private void openSeeMessageFragment(){
+    private void openSeeMessageFragment() {
         SeeTownMessageFragment seeTownMessageFragment = new SeeTownMessageFragment();
         seeTownMessageFragment.show(getSupportFragmentManager(), "Dialog");
     }
+
     //Open logout fragment
-    private void logoutFragment(){
+    private void logoutFragment() {
         LogoutFragment logoutFragment = new LogoutFragment();
         logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
