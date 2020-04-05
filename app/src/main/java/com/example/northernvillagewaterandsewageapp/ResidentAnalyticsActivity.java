@@ -49,11 +49,9 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             numUses.add(0);
         }
 
-
-
-
         firstProgressBar.setProgress(20);
         //secondProgressBar.setProgress(estimatedUsage);
+
         loadListView();
 
     }
@@ -70,16 +68,15 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             String temp = "";
 
         for (int pos = 0; pos < useAnalyticsList.size(); pos++){
+            temp = "\n";
             temp += useAnalyticsList.get(pos).getName();
             temp += "\npercent: ";
             temp += useAnalyticsList.get(pos).getUse();
             temp += "     Times: ";
             temp += numUses.get(pos);
-        }
-
-            temp += "Estimated Usage: " + estimatedUsage + "\n";
-
+            temp += "\n";
             usagelistListText.add(temp);
+        }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usagelistListText);
         myUsageListView.setAdapter(arrayAdapter);
