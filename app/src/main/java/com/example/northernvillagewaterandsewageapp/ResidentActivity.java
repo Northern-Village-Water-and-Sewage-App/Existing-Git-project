@@ -82,9 +82,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        for (int i = 0; i <= 5; i++) {
-            updateInfo();
-        }
+        updateInfo();
         setUpResidentUI();
     }
 
@@ -96,18 +94,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
     // Tank status pulled from db
     public void TankStatus() {
-
-            /*Handler Delay;
-    Runnable startDelay;
-    Delay = new Handler();
-    startDelay = new Runnable() {
-        @Override
-        public void run() {
-            Toast.makeText(LoginActivity.this, "Delayed for 5 secs", Toast.LENGTH_SHORT).show();
-        }
-    };
-        Toast.makeText(LoginActivity.this, "Delaying for 5 secs", Toast.LENGTH_SHORT).show();
-        Delay.postDelayed(startDelay, 5000);*/
 
         String url = "http://54.201.85.48:32132/get_tank_info/{username}".replace("{username}", ResidentName);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
