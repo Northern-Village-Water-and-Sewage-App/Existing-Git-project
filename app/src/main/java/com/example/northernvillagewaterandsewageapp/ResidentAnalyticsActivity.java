@@ -11,6 +11,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.northernvillagewaterandsewageapp.Fragments.ResidentUsageFragment;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.useItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -24,20 +25,26 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
     protected TextView textView;
     protected SharedPreferenceHelper sharedPreferenceHelper;
     private int estimatedUsage;
-    private int dishes;
-    private int washes;
-    private int showers;
+    protected ArrayList<useItem> useAnalyticsList;
+    protected ArrayList<Integer> numUses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident_analytics);
 
-        addUsageFloatingButton = findViewById(R.id.addUseFloatingActionButton);
-        editSwitch = findViewById(R.id.editUseSwitch);
-        progressBarAnalytics = findViewById(R.id.progressBarAnalytics);
-        textView = findViewById(R.id.myUsageTextView);
-        myUsageListView = findViewById(R.id.residentUseListView);
+        //get the useItem array to equal something, this is for testing, it should be gotten from the sharedProfile
+        useItem use1 = new useItem("Shower", 15);
+        useItem use2 = new useItem("Bath", 30);
+        useItem use3 = new useItem("Dishes", 45);
+        useAnalyticsList.add(use1);
+        useAnalyticsList.add(use2);
+        useAnalyticsList.add(use3);
+
+        //Make the numUses be as long as useAnalytics, and set them to 0 (this is good code)
+        for (int pos = 0; pos < useAnalyticsList.size(); pos++){
+            numUses.add(0);
+        }
 
         editSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,19 +72,21 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         sharedPreferenceHelper = new SharedPreferenceHelper(ResidentAnalyticsActivity.this);
 
         String estimatedUsage = sharedPreferenceHelper.getEstUsage(getString(R.string.estimated_usage));
-        String dishes = sharedPreferenceHelper.getDishes(getString(R.string.dish_washes));
-        String washes = sharedPreferenceHelper.getWashes(getString(R.string.washes));
-        String showers = sharedPreferenceHelper.getShowers(getString(R.string.showers));
 
         ArrayList<String> usagelistListText = new ArrayList<>();
 
         //makes a list item
-
             String temp = "";
+
+        for (int pos = 0; pos < useAnalyticsList.size(); pos++){
+            temp += useAnalyticsList.get(pos).getName();
+            temp += "\npercent: ";
+            temp += useAnalyticsList.get(pos).getUse();
+            temp += "     Times: ";
+            temp += numUses.get(pos);
+        }
+
             temp += "Estimated Usage: " + estimatedUsage + "\n";
-            temp += "Dish washes: " + dishes + "\n";
-            temp += "Washes: " + washes + "\n";
-            temp += "Showers: " + showers + "\n";
 
             usagelistListText.add(temp);
 
@@ -86,6 +95,12 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
     }
 
     public void setUpUI() {
+
+        addUsageFloatingButton = findViewById(R.id.addUseFloatingActionButton);
+        editSwitch = findViewById(R.id.editUseSwitch);
+        progressBarAnalytics = findViewById(R.id.progressBarAnalytics);
+        textView = findViewById(R.id.myUsageTextView);
+        myUsageListView = findViewById(R.id.residentUseListView);
 
         addUsageFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
