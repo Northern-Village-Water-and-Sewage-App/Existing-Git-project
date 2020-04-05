@@ -32,11 +32,9 @@ public class CreateResidentFragment extends DialogFragment {
     protected EditText UsernameEditText;
     protected EditText HouseNumberEditText;
     protected EditText PinEditText;
-//    protected EditText tankNumEditText;
     protected Button RandomPinButton;
     protected Button AddUserButton;
     protected Button CancelAddUserButton;
-    protected Button RemoveUserButton;
     protected Spinner water_tank_spinner, sewage_tank_spinner;
     protected ArrayAdapter<String> water_tank_spinner_array_adapter, sewage_tank_spinner_array_adapter;
 
@@ -56,7 +54,6 @@ public class CreateResidentFragment extends DialogFragment {
         RandomPinButton = view.findViewById(R.id.pinButton);
         AddUserButton = view.findViewById(R.id.addUserButton);
         CancelAddUserButton = view.findViewById(R.id.cancelAddUserButton);
-        RemoveUserButton = view.findViewById(R.id.removeUserButton);
         water_tank_spinner = view.findViewById(R.id.water_tank_spinner);
         sewage_tank_spinner = view.findViewById(R.id.sewage_tank_spinner);
 
@@ -92,7 +89,7 @@ public class CreateResidentFragment extends DialogFragment {
                 String tankNum = "1";
                 if (username != "" && houseNum != "" && tankNum != "" && userPin != "") {
                     //adds a user
-                    String url = "http://13.59.214.194:5000/add_resident/<user_name>/<house_number>/<user_pin>/<water_tank_fk>/<sewage_tank_fk>".
+                    String url = "http://54.201.85.48:32132/add_resident/<user_name>/<house_number>/<user_pin>/<water_tank_fk>/<sewage_tank_fk>".
                             replace("<user_name>", username).
                             replace("<user_pin>", userPin).
                             replace("<house_number>", houseNum).
@@ -126,20 +123,7 @@ public class CreateResidentFragment extends DialogFragment {
                 getDialog().dismiss();
             }
         });
-        RemoveUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //gets the parameters for the new user
-                String username = UsernameEditText.getText().toString();
-                //removes user by using dbhelper
-                DBHelper dbhelper = new DBHelper(getActivity());
-                dbhelper.removeUser(username);
-                //Note that it worked
-                Toast.makeText(getActivity(), "User removed", Toast.LENGTH_SHORT).show();
-                //dismiss the fragment if this went through
-                getDialog().dismiss();
-            }
-        });
+
         return view;
     }
 }

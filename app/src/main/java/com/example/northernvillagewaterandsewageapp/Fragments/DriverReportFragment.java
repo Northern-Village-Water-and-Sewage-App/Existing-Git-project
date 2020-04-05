@@ -94,7 +94,7 @@ public class DriverReportFragment extends DialogFragment {
                 //Checks to see that the complaint is not empty
                 if (complaintText != "") {
                     //adds the report, by a json to the database
-                    String url = "http://13.59.214.194:5000/add_report/{complainttype}/{company}/{complaint}".replace("{complainttype}", Integer.toString(complaintType +1)).replace("{company}", Integer.toString(companyComplaint + 1)).replace("{complaint}", complaintText);
+                    String url = "http://54.201.85.48:32132/add_report/{complainttype}/{company}/{complaint}".replace("{complainttype}", Integer.toString(complaintType +1)).replace("{company}", Integer.toString(companyComplaint + 1)).replace("{complaint}", complaintText);
                     Toast.makeText(getContext(), url, Toast.LENGTH_SHORT).show();
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override

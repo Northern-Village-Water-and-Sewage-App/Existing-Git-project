@@ -8,6 +8,11 @@ public class User {
     private int userType;
     private String HouseNum;
 
+    private int EstimatedUsage;
+    private int Dishes;
+    private int Washes;
+    private int Showers;
+
     //constructor
     public User (String username, int pin, int usertype, String houseNum){
         UserName = username;
@@ -15,11 +20,12 @@ public class User {
         userType = usertype;
         HouseNum = houseNum;
     }
-
-    public User (String username, int pin, int usertype){
-        UserName = username;
-        PIN = pin;
-        userType = usertype;
+    // Constructor for resident analytics
+    public User (int estimatedUse, int dishes, int washes, int showers){
+        EstimatedUsage = estimatedUse;
+        Dishes = dishes;
+        Washes = washes;
+        Showers = showers;
     }
 
     public User (String username, int pin){
@@ -44,18 +50,7 @@ public class User {
     }
 
     public int getUserType() {
-        /*if (UserName.equals("Matt") && PIN == 111) {
-            return userType = 0;
-        }
-        else if (UserName.equals("Red") && PIN == 222) {
-            return userType = 1;
-        }
-        else if (UserName.equals("Dean") && PIN == 333) {
-            return userType = 2;
-        }
-        else {
-            return userType = 3;
-        }*/
+
         return userType;
     }
 
@@ -69,5 +64,39 @@ public class User {
 
     public void setHouseNum(String houseNum) {
         HouseNum = houseNum;
+    }
+
+    // For resident analytics
+
+    public int getEstimatedUsage() {
+        return EstimatedUsage;
+    }
+
+    public void setEstimatedUsage(int estimatedUsage) {
+        EstimatedUsage = estimatedUsage;
+    }
+
+    public int getDishes() {
+        return Dishes;
+    }
+
+    public void setDishes(int dishes) {
+        Dishes = dishes;
+    }
+
+    public int getWashes() {
+        return Washes;
+    }
+
+    public void setWashes(int washes) {
+        Washes = washes;
+    }
+
+    public int getShowers() {
+        return Showers;
+    }
+
+    public void setShowers(int showers) {
+        Showers = showers;
     }
 }

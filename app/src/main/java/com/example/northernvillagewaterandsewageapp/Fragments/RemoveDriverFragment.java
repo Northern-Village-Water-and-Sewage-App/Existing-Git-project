@@ -66,7 +66,7 @@ public class RemoveDriverFragment extends DialogFragment {
                 String username = UsernameEditText.getText().toString();
                 if (!username.equals("")) {
                     //removes a user by using the db
-                    String url = "http://13.59.214.194:5000/remove_driver/{username}".replace("{username}", username);
+                    String url = "http://54.201.85.48:32132/remove_driver/{username}".replace("{username}", username);
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {}
