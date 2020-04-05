@@ -123,17 +123,22 @@
             android:id="@+id/townInfoFloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="#00FFFFFF"
             android:clickable="true"
+            android:outlineProvider="background"
             android:scaleType="center"
-            app:backgroundTint="#FFFFFF"
+            android:tint="@color/colorPrimaryDark"
+            app:backgroundTint="@color/colorLightText"
             app:elevation="0dp"
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="@+id/tankStatusTitle"
-            app:layout_constraintStart_toEndOf="@+id/tankStatusTitle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tankStatusTitle"
-            app:srcCompat="@android:drawable/ic_menu_info_details" />
+            app:rippleColor="@color/colorPrimaryDark"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            app:srcCompat="@drawable/bell_01" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

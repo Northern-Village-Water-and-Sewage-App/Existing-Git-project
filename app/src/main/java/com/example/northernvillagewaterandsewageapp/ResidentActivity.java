@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +51,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     protected TextView sewageStatus;
     private DrawerLayout sideBarResident;
     private ActionBarDrawerToggle toggle;
-    protected FloatingActionButton infoButton;
+    protected ImageView infoButton;
     protected SharedPreferenceHelper sharedPreferencehelper;
     protected TextView deliveryEstimateTextView;
     private String ResidentName;
@@ -139,7 +140,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
                         JSONObject user = response.getJSONObject(i);
                         deliveryEstimate = user.getString("estimate");
                         tankType = user.getString("tank_type");
-                        displayString.append("\n{tankType} Delivery Time Estimate: \t{estimate}"
+                        displayString.append("\n{tankType} Delivery Estimate: \t{estimate}"
                                 .replace("{tankType}", tankType).replace("{estimate}", deliveryEstimate));
                     }
                     deliveryEstimateTextView.setText(displayString.toString());

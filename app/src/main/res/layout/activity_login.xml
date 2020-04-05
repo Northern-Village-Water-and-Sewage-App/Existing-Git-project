@@ -14,28 +14,26 @@
 
         <EditText
             android:id="@+id/UserNameText"
-            android:layout_width="230dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:autofillHints=""
             android:drawableStart="@drawable/ic_action_user_icon"
             android:ems="10"
             android:hint="@string/user_name"
             android:inputType="textPersonName"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.0625" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <EditText
             android:id="@+id/PinText"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="32dp"
             android:autofillHints=""
             android:drawableStart="@drawable/ic_action_lock_icon"
             android:ems="10"
@@ -50,23 +48,23 @@
 
         <Button
             android:id="@+id/LoginButton"
-            android:layout_width="206dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="32dp"
             android:background="@color/colorPrimary"
             android:text="@string/login"
             android:textColor="@color/colorLightText"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/PinText"
-            app:layout_constraintStart_toStartOf="@+id/PinText"
-            app:layout_constraintTop_toBottomOf="@+id/PinText" />
+            app:layout_constraintEnd_toEndOf="@+id/rememberMeCheckBox"
+            app:layout_constraintStart_toStartOf="@+id/rememberMeCheckBox"
+            app:layout_constraintTop_toBottomOf="@+id/rememberMeCheckBox" />
 
         <CheckBox
             android:id="@+id/rememberMeCheckBox"
             android:layout_width="229dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="32dp"
             android:buttonTint="@color/colorPrimary"
             android:text="@string/remember_me"
             android:textAlignment="viewStart"
