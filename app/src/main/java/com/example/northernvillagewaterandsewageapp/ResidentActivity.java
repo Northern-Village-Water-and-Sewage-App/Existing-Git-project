@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -65,8 +66,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident);
 
-        Delay = new Handler();
-
         waterAlarm = findViewById(R.id.waterAlarm);
         sewageAlarm = findViewById(R.id.sewageAlarm);
         progressBar = findViewById(R.id.progressBar);
@@ -83,6 +82,16 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         sideBarResident.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Delay = new Handler();
+        startDelay = new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(ResidentActivity.this, "Delayed for 5 secs", Toast.LENGTH_SHORT).show();
+            }
+        };
+        Toast.makeText(ResidentActivity.this, "Delaying for 5 secs", Toast.LENGTH_SHORT).show();
+        Delay.postDelayed(startDelay, 5000);
 
         updateInfo();
         setUpResidentUI();
