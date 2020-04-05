@@ -143,6 +143,7 @@
     <string name="current_time_estimate">Estimation de heure actuelle</string>
     <string name="no_delivery_scheduled">Aucune livraison prévue</string>
     <string name="reports">Rapports</string>
+    <string name="usage_type">Usage Type</string>
 
 
 </resources>

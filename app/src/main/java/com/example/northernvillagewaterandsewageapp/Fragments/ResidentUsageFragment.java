@@ -1,47 +1,44 @@
 package com.example.northernvillagewaterandsewageapp.Fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.northernvillagewaterandsewageapp.DBHelper;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.useItem;
 import com.example.northernvillagewaterandsewageapp.R;
+import com.example.northernvillagewaterandsewageapp.ResidentAnalyticsActivity;
 import com.example.northernvillagewaterandsewageapp.SharedPreferenceHelper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
-import java.util.Random;
+import static android.content.Context.MODE_PRIVATE;
 
 public class ResidentUsageFragment extends DialogFragment {
 
     protected EditText EstimatedUseEt;
-    protected EditText DishWashesEt;
-    protected EditText WashesEt;
-    protected EditText ShowersEt;
-    protected Button UpdateButton;
-    protected Button AddUseButton;
+    protected EditText usageTypeEt;
     protected Button CancelButton;
     protected Button SaveButton;
     protected SharedPreferenceHelper sharedPreferenceHelper;
-    private String estimatedUsage;
-    private String dishes;
-    private String washes;
-    private String showers;
+    private int estimatedUsage;
+    private String useType;
+    protected int use;
+    protected int pos;
+    protected String name;
+    protected  ArrayList<useItem> newList;
 
     @Nullable
     @Override
@@ -50,13 +47,9 @@ public class ResidentUsageFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_resident_usage, container, false);
 
         //connects the edit texts to the Java file
+        usageTypeEt = view.findViewById(R.id.usageTypeEditText);
         EstimatedUseEt = view.findViewById(R.id.estimatedUseEditText);
-        DishWashesEt = view.findViewById(R.id.dishesEditText);
-        WashesEt = view.findViewById(R.id.washesEditText);
-        ShowersEt = view.findViewById(R.id.showersEditText);
         //connects the buttons to the Java file
-        UpdateButton = view.findViewById(R.id.updateUseButton);
-        AddUseButton = view.findViewById(R.id.addUseButton);
         CancelButton = view.findViewById(R.id.cancelButton);
         SaveButton = view.findViewById(R.id.saveUseButton);
 
@@ -67,7 +60,7 @@ public class ResidentUsageFragment extends DialogFragment {
             }
         });
 
-        AddUseButton.setOnClickListener(new View.OnClickListener() {
+        SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveUsage();
@@ -78,12 +71,70 @@ public class ResidentUsageFragment extends DialogFragment {
     }
 
     private void saveUsage() {
-        estimatedUsage = EstimatedUseEt.getText().toString().trim();
-        dishes = DishWashesEt.getText().toString().trim();
-        washes = WashesEt.getText().toString().trim();
-        showers = ShowersEt.getText().toString().trim();
+        estimatedUsage = Integer.parseInt(EstimatedUseEt.getText().toString().trim());
+        useType = usageTypeEt.getText().toString().trim();
 
-        User usage = new User(estimatedUsage, dishes, washes,showers);
-        sharedPreferenceHelper.saveResidentUsage(usage, getString(R.string.estimated_usage), getString(R.string.dish_washes), getString(R.string.washes), getString(R.string.showers));
+        useItem useitem = new useItem(useType, estimatedUsage);
+
+        //make the listArray
+        ArrayList<useItem> newList = new ArrayList<>();
+        loadData();
+
+        //either adds a new item, if the position was set to -1, or replaces the item if the position another number
+        if (pos == -1){
+            newList.add(useitem);
+        }
+        else{
+            newList.set(pos, useitem);
+        }
+
+        saveDate();
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            //get the info out of the bundle
+            use = bundle.getInt("use");
+            pos = bundle.getInt("pos");
+            name = bundle.getString("name");
+
+            //set the info
+            usageTypeEt.setText(name);
+            EstimatedUseEt.setText(Integer.toString(use));
+        }
+    }
+
+    private void saveDate(){
+        //Use shared preferences to save
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UsePreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(newList);
+        editor.putString("use_list", json);
+        editor.apply();
+
+        //reloads the list on the resident analytics activity
+        ((ResidentAnalyticsActivity)getActivity()).loadListView();
+        //dismisses the fragment
+        getDialog().dismiss();
+
+    }
+
+    private void loadData(){
+        //get the list
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UsePreferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("use_list", null);
+        Type type = new TypeToken<ArrayList<useItem>>() {}.getType();
+        newList = gson.fromJson(json, type);
+
+        if (newList == null){
+            newList = new ArrayList<>();
+        }
+
     }
 }

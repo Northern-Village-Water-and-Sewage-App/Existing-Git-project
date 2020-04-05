@@ -7,11 +7,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/getDelivery"
-            app:srcCompat="@drawable/pinclipart_com_mail_clipart_295687"
+            android:icon="@drawable/pinclipart_com_mail_clipart_295687"
             android:title="@string/get_delivery" />
         <item
             android:id="@+id/resAnalytics"
-            android:icon="@drawable/ic_trending_up_black_24dp"
+            android:icon="@drawable/ic_assessment_black_24dp"
             android:title="@string/analytics" />
         <item
             android:id="@+id/logout"

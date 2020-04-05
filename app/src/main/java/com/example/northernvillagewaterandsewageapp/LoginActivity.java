@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -81,15 +82,6 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
-
-        /*sharedPreferences = getSharedPreferences(getString(R.string.userInfo), Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        if (sharedPreferences.getBoolean("remember", false)) {
-            rememberMe.setChecked(true);
-        }
-        else {
-            rememberMe.setChecked(false);
-        }*/
 
         ResidentName = sharedPreferenceHelper.getUserName(getString(R.string.user_name));
         ResidentPin = sharedPreferenceHelper.getUserPin(getString(R.string.user_pin));
