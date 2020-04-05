@@ -16,14 +16,14 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="64dp"
-            android:layout_height="562dp"
-            android:layout_marginStart="32dp"
+            android:layout_width="67dp"
+            android:layout_height="497dp"
+            android:layout_marginStart="48dp"
             android:progressDrawable="@drawable/verticalprogressbar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.497" />
+            app:layout_constraintVertical_bias="0.3" />
 
         <Button
             android:id="@+id/waterAlarm"
@@ -31,10 +31,8 @@
             android:layout_height="60dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="183dp"
-            android:layout_marginEnd="220dp"
             android:background="@drawable/round_button"
             android:backgroundTint="#00BCD4"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/progressBar"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +52,7 @@
             android:id="@+id/sewageAlarm"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/round_button"
             android:backgroundTint="#00BCD4"
             app:layout_constraintEnd_toEndOf="parent"
@@ -139,6 +137,18 @@
             android:scaleX="1.5"
             android:scaleY="1.5"
             app:srcCompat="@drawable/bell_01" />
+
+        <TextView
+            android:id="@+id/textViewRemainingWater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Water Remaining: \n100 Liters"
+            android:textColor="@color/colorDarkText"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

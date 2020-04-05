@@ -57,9 +57,11 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private String ResidentName;
     private RequestQueue mQueue;
     private int ResidentPin;
-    private int newWaterHeight;
+    private float newWaterHeight;
+    private int newWaterHeightPercentage;
     private String deliveryEstimate;
     private String tankType;
+    protected TextView textViewRemainingWater;
 
     int newSewageAlarm;
 
@@ -79,6 +81,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         ResidentName = sharedPreferencehelper.getUserName(getString(R.string.user_name));
         sideBarResident = findViewById(R.id.sideBarResident);
         deliveryEstimateTextView = findViewById(R.id.deliveryEstimateTextView);
+        textViewRemainingWater = findViewById(R.id.textViewRemainingWater);
 
         NavigationView navigationView = findViewById(R.id.nav_view_resident);
         mQueue = Volley.newRequestQueue(this);
@@ -107,7 +110,8 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
             public void onResponse(JSONArray response) {
                 try {
                     JSONObject user = response.getJSONObject(0);
-                    newWaterHeight = user.getInt("water_tank_height");
+                    newWaterHeight = user.getLong("water_tank_height");
+                    newWaterHeightPercentage = user.getInt("water_tank_height_percentage");
                     newSewageAlarm = user.getInt("sewage_tank_status");
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -160,14 +164,15 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
     protected void updateTank() {
         TankStatus();
-        progressBar.setProgress(newWaterHeight);
+        textViewRemainingWater.setText("Water Remaining: \n{100} Liters".replace("{100}", String.valueOf(newWaterHeight * 10)));
+        progressBar.setProgress(newWaterHeightPercentage);
 
         // Color-wise indication for water level
-        if ((0 <= newWaterHeight && newWaterHeight <= 30)) {
+        if ((0 <= newWaterHeightPercentage && newWaterHeightPercentage <= 30)) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));  // Critically low water level
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             waterStatus.setText(R.string.tank_status_critical);
-        } else if ((30 < newWaterHeight && newWaterHeight <= 65)) {
+        } else if ((30 < newWaterHeightPercentage && newWaterHeightPercentage <= 65)) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium water level
             waterAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));
             waterStatus.setText(R.string.tank_status_warning);
