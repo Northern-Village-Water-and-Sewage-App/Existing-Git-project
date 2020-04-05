@@ -9,9 +9,8 @@ public class User {
     private String HouseNum;
 
     private String EstimatedUsage;
-    private String Dishes;
-    private String Washes;
-    private String Showers;
+    private String usageType;
+
 
     //constructor
     public User (String username, int pin, int usertype, String houseNum){
@@ -21,11 +20,10 @@ public class User {
         HouseNum = houseNum;
     }
     // Constructor for resident analytics
-    public User (String estimatedUse, String dishes, String washes, String showers){
+    public User (String useType, String estimatedUse){
         EstimatedUsage = estimatedUse;
-        Dishes = dishes;
-        Washes = washes;
-        Showers = showers;
+        usageType = useType;
+
     }
 
     public User (String username, int pin){
@@ -72,31 +70,16 @@ public class User {
         return EstimatedUsage;
     }
 
-    public void setEstimatedUsage(String estimatedUsage) {
-        EstimatedUsage = estimatedUsage;
+    public void setEstimatedUsage(String estimatedUse) {
+        EstimatedUsage = estimatedUse;
     }
 
-    public String getDishes() {
-        return Dishes;
+    public String getUsageType() {
+        return usageType;
     }
 
-    public void setDishes(String dishes) {
-        Dishes = dishes;
+    public void setUsageType(String useType) {
+        usageType = useType;
     }
 
-    public String getWashes() {
-        return Washes;
-    }
-
-    public void setWashes(String washes) {
-        Washes = washes;
-    }
-
-    public String getShowers() {
-        return Showers;
-    }
-
-    public void setShowers(String showers) {
-        Showers = showers;
-    }
 }

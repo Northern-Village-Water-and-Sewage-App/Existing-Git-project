@@ -143,5 +143,6 @@
     <string name="current_time_estimate">Current Time Estimate</string>
     <string name="no_delivery_scheduled">No Delivery Scheduled</string>
     <string name="reports">Reports</string>
+    <string name="usage_type">Usage Type</string>
 
 </resources>
