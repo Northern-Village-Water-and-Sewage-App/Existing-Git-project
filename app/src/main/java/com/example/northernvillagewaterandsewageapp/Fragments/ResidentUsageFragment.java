@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.User;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.useItem;
 import com.example.northernvillagewaterandsewageapp.R;
 import com.example.northernvillagewaterandsewageapp.SharedPreferenceHelper;
 
@@ -22,7 +23,7 @@ public class ResidentUsageFragment extends DialogFragment {
     protected Button CancelButton;
     protected Button SaveButton;
     protected SharedPreferenceHelper sharedPreferenceHelper;
-    private String estimatedUsage;
+    private int estimatedUsage;
     private String useType;
 
     @Nullable
@@ -56,10 +57,10 @@ public class ResidentUsageFragment extends DialogFragment {
     }
 
     private void saveUsage() {
-        estimatedUsage = EstimatedUseEt.getText().toString().trim();
+        estimatedUsage = Integer.parseInt(EstimatedUseEt.getText().toString().trim());
         useType = usageTypeEt.getText().toString().trim();
 
-        User usage = new User(estimatedUsage, useType);
-        sharedPreferenceHelper.saveResidentUsage(usage, getString(R.string.usage_type), getString(R.string.estimated_usage));
+        useItem useitem = new useItem(useType, estimatedUsage);
+        //sharedPreferenceHelper.saveResidentUsage(getString(R.string.usage_type), getString(R.string.estimated_usage));
     }
 }

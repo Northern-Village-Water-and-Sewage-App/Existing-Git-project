@@ -64,20 +64,16 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
     protected void loadListView() {
         sharedPreferenceHelper = new SharedPreferenceHelper(ResidentAnalyticsActivity.this);
 
-        String estimatedUsage = sharedPreferenceHelper.getEstUsage(getString(R.string.estimated_usage));
-        String dishes = sharedPreferenceHelper.getDishes(getString(R.string.dish_washes));
-        String washes = sharedPreferenceHelper.getWashes(getString(R.string.washes));
-        String showers = sharedPreferenceHelper.getShowers(getString(R.string.showers));
+        String estimatedUse = sharedPreferenceHelper.getEstUsage(getString(R.string.estimated_usage));
+        String useType = sharedPreferenceHelper.getUsageType(getString(R.string.usage_type));
 
         ArrayList<String> usagelistListText = new ArrayList<>();
 
         //makes a list item
 
             String temp = "";
-            temp += "Estimated Usage: " + estimatedUsage + "\n";
-            temp += "Dish washes: " + dishes + "\n";
-            temp += "Washes: " + washes + "\n";
-            temp += "Showers: " + showers + "\n";
+            temp += "Estimated Usage: " + estimatedUse + "\n";
+            temp += "Dish washes: " + useType + "\n";
 
             usagelistListText.add(temp);
 
