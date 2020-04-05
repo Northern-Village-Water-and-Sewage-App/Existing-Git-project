@@ -66,7 +66,7 @@
         android:textColor="@color/colorLightText" />
 
     <Button
-        android:id="@+id/ignoreDriverTimeEstimateButton"
+        android:id="@+id/completeDriverTimeEstimateButton"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_below="@+id/tomorrowDriverTimeEstimateButton"
@@ -74,14 +74,14 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="22dp"
         android:background="@color/colorPrimary"
-        android:text="@string/ignore"
+        android:text="@string/complete"
         android:textColor="@color/colorLightText" />
 
     <Button
         android:id="@+id/cancelDriverTimeEstimateButton"
         android:layout_width="180dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/ignoreDriverTimeEstimateButton"
+        android:layout_below="@+id/completeDriverTimeEstimateButton"
         android:layout_alignStart="@+id/noneDriverTimeEstimateButton"
         android:layout_marginStart="0dp"
         android:layout_marginTop="22dp"
