@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -56,11 +57,15 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private int ResidentPin;
     private int newWaterHeight;
     int newSewageAlarm;
+    Handler Delay;
+    Runnable startDelay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident);
 
+        Delay = new Handler();
 
         waterAlarm = findViewById(R.id.waterAlarm);
         sewageAlarm = findViewById(R.id.sewageAlarm);

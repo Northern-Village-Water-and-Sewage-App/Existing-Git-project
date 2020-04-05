@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/estimatedUseEditText"
+        android:id="@+id/usageTypeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -13,13 +13,13 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:hint="@string/estimated_usage"
+        android:hint="@string/usage_type"
         android:inputType="text"
-        android:maxLength="3"
+        android:maxLength="20"
         android:textAlignment="center" />
 
     <EditText
-        android:id="@+id/dishesEditText"
+        android:id="@+id/estimatedUseEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -27,60 +27,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="130dp"
         android:ems="10"
-        android:hint="@string/dish_washes"
-        android:inputType="text"
+        android:hint="@string/estimated_usage"
+        android:inputType="number"
         android:maxLength="3"
         android:textAlignment="center" />
-
-    <EditText
-        android:id="@+id/washesEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="230dp"
-        android:ems="10"
-        android:hint="@string/washes"
-        android:inputType="text"
-        android:maxLength="3"
-        android:textAlignment="center" />
-
-    <EditText
-        android:id="@+id/showersEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="320dp"
-        android:ems="10"
-        android:hint="@string/showers"
-        android:inputType="text"
-        android:maxLength="3"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/updateUseButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="400dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/update"
-        android:textColor="@color/colorLightText" />
-
-    <Button
-        android:id="@+id/addUseButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/add"
-        android:textColor="@color/colorLightText" />
 
     <Button
         android:id="@+id/cancelButton"
@@ -89,7 +39,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="234dp"
         android:background="@color/colorPrimary"
         android:text="@string/cancel"
         android:textColor="@color/colorLightText" />
@@ -100,8 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="470dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginEnd="21dp"
         android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
         android:text="@string/save"
