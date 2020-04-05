@@ -144,7 +144,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
                         JSONObject user = response.getJSONObject(i);
                         deliveryEstimate = user.getString("estimate");
                         tankType = user.getString("tank_type");
-                        displayString.append("\n{tankType} Delivery Estimate: \t{estimate}"
+                        displayString.append("\nDelivery Type: \t\t\t\t\t{tankType}\nDelivery Estimate: \t\t\t{estimate}"
                                 .replace("{tankType}", tankType).replace("{estimate}", deliveryEstimate));
                     }
                     deliveryEstimateTextView.setText(displayString.toString());

@@ -17,7 +17,7 @@
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="67dp"
-            android:layout_height="497dp"
+            android:layout_height="480dp"
             android:layout_marginStart="48dp"
             android:progressDrawable="@drawable/verticalprogressbar"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -102,6 +102,7 @@
             android:textColor="@color/colorDarkText"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.328"
             app:layout_constraintStart_toEndOf="@+id/progressBar"
             app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
@@ -121,11 +122,13 @@
             android:id="@+id/townInfoFloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="28dp"
             android:backgroundTint="#00FFFFFF"
             android:clickable="true"
             android:outlineProvider="background"
             android:scaleType="center"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
             android:tint="@color/colorPrimaryDark"
             app:backgroundTint="@color/colorLightText"
             app:elevation="0dp"
@@ -133,9 +136,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/tankStatusTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tankStatusTitle"
+            app:layout_constraintVertical_bias="0.482"
             app:rippleColor="@color/colorPrimaryDark"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
             app:srcCompat="@drawable/bell_01" />
 
         <TextView
