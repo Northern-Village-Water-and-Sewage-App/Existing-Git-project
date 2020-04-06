@@ -145,6 +145,10 @@
     <string name="reports">ᑐᓴᕐᑎᓯᐅᑏᑦ</string>
     <string name="usage_type">Usage Type</string>
     <string name="disable">Disable Resident</string>
+    <string name="textview2" />
+    <string name="textview3" />
+    <string name="textview4" />
+    <string name="textview5" />
 
 
 </resources>

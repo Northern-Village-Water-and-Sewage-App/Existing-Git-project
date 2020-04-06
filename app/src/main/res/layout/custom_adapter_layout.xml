@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+    <TextView
+        android:id="@+id/customAdapterTV1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="@string/textview"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/customAdapterTV2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="@string/textview2"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/customAdapterTV3"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="@string/textview3"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/customAdapterTV4"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="@string/textview4"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/customAdapterTV5"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="@string/textview5"
+        android:textAlignment="center" />
+
+
+</LinearLayout>

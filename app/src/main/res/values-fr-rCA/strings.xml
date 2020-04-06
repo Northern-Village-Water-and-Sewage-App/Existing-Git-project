@@ -146,6 +146,10 @@
     <string name="reports">Rapports</string>
     <string name="usage_type">Type d\'utilisation</string>
     <string name="disable">Désactiver résident</string>
+    <string name="textview2" />
+    <string name="textview3" />
+    <string name="textview4" />
+    <string name="textview5" />
 
 
 </resources>

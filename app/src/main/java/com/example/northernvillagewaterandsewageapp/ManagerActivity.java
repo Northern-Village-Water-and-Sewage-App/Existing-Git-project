@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.service.wallpaper.WallpaperService;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,6 +45,7 @@ import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragme
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.RemoveDriverFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.RemoveResidentFragment;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.WorkList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -178,6 +180,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
         setUpManagerUI();
 
+        //loadWorkList();
         loadListView();
     }
 
@@ -190,6 +193,51 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
     }
 
+    private void loadWorkList() {
+        String url = "http://54.201.85.48:32132/get_work_list/";
+        final ArrayList<WorkList> workLists = new ArrayList<>();
+        final WorkListAdapter adapter = new WorkListAdapter(this, R.layout.custom_adapter_layout, workLists);
+        final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    JSONObject e;
+                    for (int pos = 0; pos < response.length(); pos++) {
+                        String temp = "";
+                        e = response.getJSONObject(pos);
+                        WorkList object = new WorkList(e.getString("timestamp"), e.getString("username"), e.getString("house_number"), e.getString("tank_type"), e.getString("estimate"));
+                        /*temp += "Resident: " + e.getString("username") + "\n";
+                        temp += "House Number: " + e.getString("house_number") + "\n";
+                        temp += "Tank Type: " + e.getString("tank_type") + "\n";
+                        temp += "Time estimate: " + e.getString("estimate");*/
+                        workLists.add(object);
+                    }
+                    adapter.addAll(workLists);
+                    worklistListView.setAdapter(adapter);
+
+                    //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
+                    worklistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //need to pass other stuff here to make this work                                                                                                            ************************
+                            ManagerTimeEstimateFragment managerTimeEstimateFragment = new ManagerTimeEstimateFragment();
+                            managerTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+        mQueue.add(request);
+
+    }
 
     private void loadListView() {
         String url = "http://54.201.85.48:32132/get_work_list/";
@@ -203,7 +251,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                     for (int pos = 0; pos < response.length(); pos++) {
                         String temp = "";
                         e = response.getJSONObject(pos);
-                        temp += "TIme Stamp: " + e.getString("timestamp") + "\n";
+                        temp += "Time Stamp: " + e.getString("timestamp") + "\n";
                         temp += "Resident: " + e.getString("username") + "\n";
                         temp += "House Number: " + e.getString("house_number") + "\n";
                         temp += "Tank Type: " + e.getString("tank_type") + "\n";
