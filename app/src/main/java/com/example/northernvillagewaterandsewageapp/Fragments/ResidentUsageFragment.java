@@ -77,18 +77,13 @@ public class ResidentUsageFragment extends DialogFragment {
         useItem useitem = new useItem(useType, estimatedUsage);
 
         //make the listArray
-        ArrayList<useItem> newList = new ArrayList<>();
-        loadData();
 
-        //either adds a new item, if the position was set to -1, or replaces the item if the position another number
-        if (pos == -1){
-            newList.add(useitem);
-        }
-        else{
-            newList.set(pos, useitem);
-        }
+        //reloads the list on the resident analytics activity
+        ((ResidentAnalyticsActivity)getActivity()).loadListView1();
+        //dismisses the fragment
+        getDialog().dismiss();
 
-        saveDate();
+
 
     }
 
@@ -108,6 +103,9 @@ public class ResidentUsageFragment extends DialogFragment {
         }
     }
 
+
+}
+/*
     private void saveDate(){
         //Use shared preferences to save
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("UsePreferences", MODE_PRIVATE);
@@ -117,10 +115,7 @@ public class ResidentUsageFragment extends DialogFragment {
         editor.putString("use_list", json);
         editor.apply();
 
-        //reloads the list on the resident analytics activity
-        ((ResidentAnalyticsActivity)getActivity()).loadListView();
-        //dismisses the fragment
-        getDialog().dismiss();
+
 
     }
 
@@ -137,4 +132,17 @@ public class ResidentUsageFragment extends DialogFragment {
         }
 
     }
-}
+
+    ArrayList<useItem> newList = new ArrayList<>();
+        loadData();
+
+        //either adds a new item, if the position was set to -1, or replaces the item if the position another number
+        if (pos == -1){
+            newList.add(useitem);
+        }
+        else{
+            newList.set(pos, useitem);
+        }
+
+        saveDate();
+ */
