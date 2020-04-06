@@ -48,17 +48,6 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
 
         //loadData();
 
-        /* old stuff for testing
-        //get the useItem array to equal something, this is for testing, it should be gotten from the sharedProfile
-        useItem use1 = new useItem("Shower", 15);
-        useAnalyticsList.add(use1);
-        useItem use2 = new useItem("Bath", 30);
-        useAnalyticsList.add(use2);
-        useItem use3 = new useItem("Dishes", 45);
-        useAnalyticsList.add(use3);
-
-         */
-
         //Make the numUses be as long as useAnalytics, and set them to 0
         for (int pos = 0; pos < useAnalyticsList.size(); pos++){
             numUses.add(0);
@@ -83,8 +72,14 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         useAnalyticsList = new ArrayList<>();
 
         //for testing
-        useItem use1 = new useItem("Shower", 15);
+        useItem use1 = new useItem("Shower", 7);
         useAnalyticsList.add(use1);
+        useItem use2 = new useItem("Bath", 14);
+        useAnalyticsList.add(use2);
+        useItem use3 = new useItem("Dishes", 4);
+        useAnalyticsList.add(use3);
+        useItem use4 = new useItem("Wash", 17);
+        useAnalyticsList.add(use4);
 
         numUses = new ArrayList<>();
 
@@ -130,6 +125,38 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             temp += "\n";
             usageListListText.add(temp);
         }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usageListListText);
+        myUsageListView.setAdapter(arrayAdapter);
+    }
+    public void loadListView1() {
+
+        //useAnalyticsList.add(new useItem("Dishwasher", 8));
+
+        ArrayList<String> usageListListText = new ArrayList<>();
+
+        //makes a list item
+        String temp = "";
+
+        for (int pos = 0; pos < useAnalyticsList.size(); pos++){
+            temp = "\n";
+            temp += useAnalyticsList.get(pos).getName();
+            temp += "\npercent: ";
+            temp += useAnalyticsList.get(pos).getUse();
+            temp += "     Times: ";
+            temp += numUses.get(pos);
+            temp += "\n";
+            usageListListText.add(temp);
+        }
+        temp = "\n";
+        temp += "Dishwasher";
+        temp += "\npercent: ";
+        temp += "8";
+        temp += "     Times: ";
+        temp += "0";
+        temp += "\n";
+        usageListListText.add(temp);
+
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usageListListText);
         myUsageListView.setAdapter(arrayAdapter);
