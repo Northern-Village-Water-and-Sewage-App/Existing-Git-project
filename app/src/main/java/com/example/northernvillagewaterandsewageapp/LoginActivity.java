@@ -83,8 +83,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
 
         sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
 
-        //ResidentName = sharedPreferenceHelper.getUserName(getString(R.string.user_name));
-        //ResidentPin = sharedPreferenceHelper.getUserPin(R.string.user_pin);
+        ResidentName = sharedPreferenceHelper.getUserName(getString(R.string.user_name));
 
         /*if (rememberMe.isChecked()) {
             userName.setText(ResidentName);
@@ -94,7 +93,6 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             userName.setText("");
             userPin.setText("");
         }*/
-        rememberMe();
 
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);
