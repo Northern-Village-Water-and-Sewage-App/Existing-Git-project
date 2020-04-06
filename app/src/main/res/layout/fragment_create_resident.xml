@@ -12,6 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
@@ -27,6 +28,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="0dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
         android:hint="@string/house_number"
         android:inputType="number"
@@ -43,6 +45,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="0dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
         android:hint="@string/pin"
         android:inputType="number"
@@ -112,6 +115,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="0dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:scrollbarSize="28sp" />
 
     <Spinner
@@ -124,6 +128,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="0dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:scrollbarSize="28sp" />
 
 
