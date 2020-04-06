@@ -144,6 +144,7 @@
     <string name="no_delivery_scheduled">ᒥᓇᕐᑕᐅᕕᑦᓴᐅᑉ ᓇᒻᒪᓯᕕᑦᓴᖓ</string>
     <string name="reports">ᑐᓴᕐᑎᓯᐅᑏᑦ</string>
     <string name="usage_type">Usage Type</string>
+    <string name="disable">Disable</string>
 
 
 </resources>
