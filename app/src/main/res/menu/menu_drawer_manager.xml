@@ -6,6 +6,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/disable_resident"
+            android:icon="ic_screen_lock_portrait_black_24dp"
+            android:title="@string/disable" />
+        <item
             android:id="@+id/remove_resident"
             android:icon="@drawable/ic_remove_circle_outline_black_24dp"
             android:title="@string/remove_resident" />
