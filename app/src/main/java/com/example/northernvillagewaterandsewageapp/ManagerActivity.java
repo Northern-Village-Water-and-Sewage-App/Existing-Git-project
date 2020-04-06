@@ -251,6 +251,8 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.disable_resident:
+                disableUser();
             case R.id.remove_resident:
                 removeResident();
                 break;
