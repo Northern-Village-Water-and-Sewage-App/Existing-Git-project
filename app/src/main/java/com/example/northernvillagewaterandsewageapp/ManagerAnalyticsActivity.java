@@ -52,14 +52,14 @@ public class ManagerAnalyticsActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     JSONObject stats = response.getJSONObject(0);
-                    averageWaitTimeET.setText(stats.getString("this_month_all_avg"));
-                    waterWaitTimeET.setText(stats.getString("this_month_all_avg_water"));
-                    sewageWaitTimeET.setText(stats.getString("this_month_all_avg_sewage"));
-                    averageWaitLastMonthET.setText(stats.getString("previous_all_avg"));
-                    waterWaitTimeLastET.setText(stats.getString("previous_all_water_avg"));
-                    sewageWaitTimeLastET.setText(stats.getString("previous_all_sewage_avg"));
-                    callsThisMonthET.setText(stats.getString("this_month_all_calls"));
-                    callsLastMonthET.setText(stats.getString("previous_all_calls"));
+                    averageWaitTimeET.setText(stats.getString("this_month_all_avg").toUpperCase());
+                    waterWaitTimeET.setText(stats.getString("this_month_all_avg_water").toUpperCase());
+                    sewageWaitTimeET.setText(stats.getString("this_month_all_avg_sewage").toUpperCase());
+                    averageWaitLastMonthET.setText(stats.getString("previous_all_avg").toUpperCase());
+                    waterWaitTimeLastET.setText(stats.getString("previous_all_water_avg").toUpperCase());
+                    sewageWaitTimeLastET.setText(stats.getString("previous_all_sewage_avg").toUpperCase());
+                    callsThisMonthET.setText(stats.getString("this_month_all_calls").toUpperCase());
+                    callsLastMonthET.setText(stats.getString("previous_all_calls").toUpperCase());
                     //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
                 } catch (JSONException e) {
                     e.printStackTrace();
