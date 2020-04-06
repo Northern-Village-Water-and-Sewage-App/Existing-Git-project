@@ -3,6 +3,8 @@ package com.example.northernvillagewaterandsewageapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -55,8 +57,11 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         //loads the list view with the 2 lists useAnalyticsList and numUses
         loadListView();
 
-        firstProgressBar.setProgress(20);
-        //secondProgressBar.setProgress(estimatedUsage);
+        firstProgressBar.setProgressTintList(ColorStateList.valueOf((Color.BLUE)));
+        firstProgressBar.setProgress(80);
+        estimatedUsage = 80;
+        secondProgressBar.setProgressTintList(ColorStateList.valueOf((Color.BLUE)));
+        setSecondProgressBar();
 
     }
 
@@ -187,6 +192,10 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
             useAnalyticsList = new ArrayList<>();
         }
 
+    }
+
+    protected void setSecondProgressBar(){
+        secondProgressBar.setProgress(estimatedUsage);
     }
 
 
