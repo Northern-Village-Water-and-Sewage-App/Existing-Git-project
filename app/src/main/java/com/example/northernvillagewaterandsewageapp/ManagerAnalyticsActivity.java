@@ -53,6 +53,13 @@ public class ManagerAnalyticsActivity extends AppCompatActivity {
                 try {
                     JSONObject stats = response.getJSONObject(0);
                     averageWaitTimeET.setText(stats.getString("this_month_all_avg"));
+                    waterWaitTimeET.setText(stats.getString("this_month_all_avg_water"));
+                    sewageWaitTimeET.setText(stats.getString("this_month_all_avg_sewage"));
+                    averageWaitLastMonthET.setText(stats.getString("previous_all_avg"));
+                    waterWaitTimeLastET.setText(stats.getString("previous_all_water_avg"));
+                    sewageWaitTimeLastET.setText(stats.getString("previous_all_sewage_avg"));
+                    callsThisMonthET.setText(stats.getString("this_month_all_calls"));
+                    callsLastMonthET.setText(stats.getString("previous_all_calls"));
                     //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
                 } catch (JSONException e) {
                     e.printStackTrace();
