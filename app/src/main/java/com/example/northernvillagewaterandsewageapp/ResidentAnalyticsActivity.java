@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -34,6 +35,7 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
     private int estimatedUsage;
     protected ArrayList<useItem> useAnalyticsList;
     protected ArrayList<Integer> numUses;
+    protected Boolean editable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,7 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         secondProgressBar = findViewById(R.id.progressBarAnalytics2);
         textView = findViewById(R.id.myUsageTextView);
         myUsageListView = findViewById(R.id.residentUseListView);
+        editable = false;
 
         useAnalyticsList = new ArrayList<>();
 
@@ -91,8 +94,9 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         addUsageFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addUsage("", 0, -1);
-            }
+                addUsage("", 0, -1);}
+
+
         });
 
         editSwitch.setOnClickListener(new View.OnClickListener() {
@@ -102,9 +106,11 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
                     case R.id.editUseSwitch:
                         if (editSwitch.isChecked()) {
                             addUsageFloatingButton.setEnabled(true);
+                            editable = false;
                         }
                         else {
                             addUsageFloatingButton.setEnabled(false);
+                            editable = true;
                         }
                 }
             }
@@ -133,6 +139,23 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usageListListText);
         myUsageListView.setAdapter(arrayAdapter);
+
+        myUsageListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //on click of a list item with the edit switch on
+                if (editSwitch.isChecked()){
+                    //opens the fragment with the data inserted, this is currently dummy data
+                    addUsage("Bath", 14,1);
+                }
+                else{
+                    if (estimatedUsage - 10 > 0){
+                        estimatedUsage = estimatedUsage - 10;
+                        setSecondProgressBar();
+                    };
+                }
+            }
+        });
     }
     public void loadListView1() {
 

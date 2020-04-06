@@ -79,16 +79,16 @@ public class ManualDemandFragment extends DialogFragment {
             public void onClick(View v) {
                 String name = username.getText().toString();
                 if (demandType ==0){
-                    String demand = "0";
-                    usedatabase(demand, name);
-                }
-                else if (demandType ==1){
                     String demand = "1";
                     usedatabase(demand, name);
                 }
+                else if (demandType ==1){
+                    String demand = "2";
+                    usedatabase(demand, name);
+                }
                 else{
-                    String demand = "0";
-                    String demand1 = "1";
+                    String demand = "1";
+                    String demand1 = "2";
                     usedatabase(demand, name);
                     usedatabase(demand1, name);
                 }
@@ -102,7 +102,7 @@ public class ManualDemandFragment extends DialogFragment {
     protected void usedatabase(String demand, String username){
         if (username != "" ) {
             //adds a user
-            String url = "http://13.59.214.194:5000/add_demand/<user_name>/<demand_type>".
+            String url = "http://54.201.85.48:32132/add_manual_demand/<user_name>/<demand_type>".
                     replace("<user_name>", username).
                     replace("<demand_type>", demand);
             final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
