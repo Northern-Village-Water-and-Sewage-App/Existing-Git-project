@@ -55,7 +55,7 @@ public class DisableUserFragment extends DialogFragment {
                 String userName = usernameIDDisableUserEditText.getText().toString().trim();
                 if (userName != "") {
                     //disables user
-                    String url = "http://54.201.85.48:32132/disable_resident/<user_name>>".replace("<user_name>", userName);
+                    String url = "http://54.201.85.48:32132/disable_resident/<user_name>".replace("<user_name>", userName);
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
@@ -85,7 +85,7 @@ public class DisableUserFragment extends DialogFragment {
                 String userName = usernameIDDisableUserEditText.getText().toString().trim();
                 if (userName != "") {
                     //enables user
-                    String url = "http://54.201.85.48:32132/enable_resident/<user_name>>".replace("<user_name>", userName);
+                    String url = "http://54.201.85.48:32132/enable_resident/<user_name>".replace("<user_name>", userName);
                     final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {

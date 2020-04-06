@@ -79,16 +79,16 @@ public class ManualDemandFragment extends DialogFragment {
             public void onClick(View v) {
                 String name = username.getText().toString();
                 if (demandType ==0){
-                    String demand = "0";
-                    usedatabase(demand, name);
-                }
-                else if (demandType ==1){
                     String demand = "1";
                     usedatabase(demand, name);
                 }
+                else if (demandType ==1){
+                    String demand = "2";
+                    usedatabase(demand, name);
+                }
                 else{
-                    String demand = "0";
-                    String demand1 = "1";
+                    String demand = "1";
+                    String demand1 = "2";
                     usedatabase(demand, name);
                     usedatabase(demand1, name);
                 }
