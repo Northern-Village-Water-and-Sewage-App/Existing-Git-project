@@ -94,9 +94,9 @@ public class ResidentAnalyticsActivity extends AppCompatActivity {
         addUsageFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editable)
-                addUsage("", 0, -1);
-            }
+                addUsage("", 0, -1);}
+
+
         });
 
         editSwitch.setOnClickListener(new View.OnClickListener() {
