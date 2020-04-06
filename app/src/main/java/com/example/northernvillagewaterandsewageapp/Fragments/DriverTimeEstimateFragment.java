@@ -48,7 +48,6 @@ public class DriverTimeEstimateFragment extends DialogFragment {
         //attaches the XML file to this java file
         View view = inflater.inflate(R.layout.fragment_driver_time_estimate, container, false);
         pk = getArguments().getInt("pk");
-        Toast.makeText(getActivity(), pk.toString(), Toast.LENGTH_LONG).show();
         //attach the buttons and edit text to the java file
         NoneButton = view.findViewById(R.id.noneDriverTimeEstimateButton);
         OnTheWayButton = view.findViewById(R.id.onTheWayDriverTimeEstimateButton);
@@ -132,7 +131,6 @@ public class DriverTimeEstimateFragment extends DialogFragment {
             }
         });
 
-        pk = -1;
         //dismisses the activity if the cancel button is pressed
         CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,12 +146,12 @@ public class DriverTimeEstimateFragment extends DialogFragment {
 
     protected void Enter(Integer estimate, final VolleyCallBackFragment callBack){
         //2-6
-        Toast.makeText(getActivity(), "You made it this far", Toast.LENGTH_LONG).show();
+
         if(estimate == 1)
         {
 
                 final String url_complete = "http://54.201.85.48:32132/demand_completed/{pk}".replace("{pk}",pk.toString());
-            JsonObjectRequest request_complete = new JsonObjectRequest(Request.Method.GET,  url_complete, null,  new Response.Listener<JSONObject>() {
+                JsonObjectRequest request_complete = new JsonObjectRequest(Request.Method.GET,  url_complete, null,  new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response_complete){
                         callBack.onSuccess();
@@ -171,6 +169,7 @@ public class DriverTimeEstimateFragment extends DialogFragment {
         else
         {
             String url_update = "http://54.201.85.48:32132/update_demand/<pk>/<time_estimate_fk>".replace("<pk>",pk.toString()).replace("<time_estimate_fk>",estimate.toString());
+           // Toast.makeText(getActivity(), url_update, Toast.LENGTH_LONG).show();
             JsonObjectRequest request_update = new JsonObjectRequest(Request.Method.GET,  url_update, null,  new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response_update) {
