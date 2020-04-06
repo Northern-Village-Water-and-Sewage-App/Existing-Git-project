@@ -13,9 +13,9 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sewageWaitTV"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/sewageWaitTV"
         app:layout_constraintTop_toBottomOf="@+id/sewageWaitTV" />
 
     <EditText
@@ -25,9 +25,9 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/waterWaitLastTV"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/waterWaitLastTV"
         app:layout_constraintTop_toBottomOf="@+id/waterWaitLastTV" />
 
     <TextView
@@ -73,8 +73,8 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/averageWaitTextView"
+        app:layout_constraintStart_toStartOf="@+id/averageWaitTextView"
         app:layout_constraintTop_toBottomOf="@+id/averageWaitTextView" />
 
     <TextView
@@ -84,8 +84,8 @@
         android:layout_marginTop="176dp"
         android:text="@string/average_wait_previous_month"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/averageWaitTextView"
+        app:layout_constraintStart_toStartOf="@+id/averageWaitTextView"
         app:layout_constraintTop_toBottomOf="@+id/averageWaitTextView" />
 
     <EditText
@@ -95,9 +95,9 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/waterWaitTV"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/waterWaitTV"
         app:layout_constraintTop_toBottomOf="@+id/waterWaitTV" />
 
     <EditText
@@ -107,9 +107,9 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sewageWaitLastTV"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/sewageWaitLastTV"
         app:layout_constraintTop_toBottomOf="@+id/sewageWaitLastTV" />
 
     <TextView
@@ -143,8 +143,8 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/averageWaitLastMonthTV"
+        app:layout_constraintStart_toStartOf="@+id/averageWaitLastMonthTV"
         app:layout_constraintTop_toBottomOf="@+id/averageWaitLastMonthTV" />
 
     <TextView
@@ -154,8 +154,8 @@
         android:layout_marginTop="408dp"
         android:text="@string/number_of_calls"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/averageWaitTextView"
+        app:layout_constraintStart_toStartOf="@+id/averageWaitTextView"
         app:layout_constraintTop_toBottomOf="@+id/averageWaitTextView" />
 
     <TextView
@@ -189,9 +189,9 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/callsThisMonthTV"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/callsThisMonthTV"
         app:layout_constraintTop_toBottomOf="@+id/callsThisMonthTV" />
 
     <EditText
@@ -201,8 +201,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/callsLastMonthTV"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/callsLastMonthTV"
         app:layout_constraintTop_toBottomOf="@+id/callsLastMonthTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>
