@@ -147,6 +147,16 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         ManualDemandFragment manualDemandFragment = new ManualDemandFragment();
         manualDemandFragment.show(getSupportFragmentManager(), "Dialog");
     }
+    @Override
+    protected void onResume() {
+        getList(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadListView();
+            }
+        });
+        super.onResume();
+    }
     public interface VolleyCallBack {
         void onSuccess();
     }
@@ -261,7 +271,6 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     }
     protected void getList(final VolleyCallBack callBack)
     {
-
         worklistListText = new ArrayList<String>();
         worklistListInt = new ArrayList<Integer>();
         String url = "http://54.201.85.48:32132/get_work_list/";
@@ -269,7 +278,8 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
             @Override
             public void onResponse(JSONArray response) {
                 try {
-
+                    worklistListText = new ArrayList<String>();
+                    worklistListInt = new ArrayList<Integer>();
                     for(int i = 0; i < response.length(); i++)
                     {
                         JSONObject user = response.getJSONObject(i);

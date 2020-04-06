@@ -63,7 +63,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private String tankType;
     protected TextView textViewRemainingWater;
 
-    int newSewageAlarm;
+    String newSewageAlarm ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,12 +79,18 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         infoButton = findViewById(R.id.townInfoFloatingActionButton);
         sharedPreferencehelper = new SharedPreferenceHelper(ResidentActivity.this);
         ResidentName = sharedPreferencehelper.getUserName(getString(R.string.user_name));
+        mQueue = Volley.newRequestQueue(this);
+        TankStatus(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                updateTank();
+            }
+        });
         sideBarResident = findViewById(R.id.sideBarResident);
         deliveryEstimateTextView = findViewById(R.id.deliveryEstimateTextView);
         textViewRemainingWater = findViewById(R.id.textViewRemainingWater);
-
         NavigationView navigationView = findViewById(R.id.nav_view_resident);
-        mQueue = Volley.newRequestQueue(this);
+
         toggle = new ActionBarDrawerToggle(this, sideBarResident, R.string.open, R.string.close);
         navigationView.setNavigationItemSelectedListener(this);
         sideBarResident.addDrawerListener(toggle);
@@ -97,12 +103,20 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     protected void onResume() {
-        updateInfo();
+        TankStatus(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                updateInfo();
+            }
+
+        });
         super.onResume();
     }
-
+    public interface VolleyCallBack {
+        void onSuccess();
+    }
     // Tank status pulled from db
-    public void TankStatus() {
+    public void TankStatus(final VolleyCallBack callBack) {
 
         String url = "http://54.201.85.48:32132/get_tank_info/{username}".replace("{username}", ResidentName);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -112,7 +126,8 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
                     JSONObject user = response.getJSONObject(0);
                     newWaterHeight = user.getLong("water_tank_height");
                     newWaterHeightPercentage = user.getInt("water_tank_height_percentage");
-                    newSewageAlarm = user.getInt("sewage_tank_status");
+                    newSewageAlarm = user.getString("sewage_tank_status");
+                    callBack.onSuccess();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -163,7 +178,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     }
 
     protected void updateTank() {
-        TankStatus();
         textViewRemainingWater.setText("Water Remaining: \n{100} Liters".replace("{100}", String.valueOf(newWaterHeight * 10)));
         progressBar.setProgress(newWaterHeightPercentage);
 
@@ -184,15 +198,15 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
         // Color-wise indication for sewage alarm
         switch (newSewageAlarm) {
-            case (0):
+            case ("OK"):
                 sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Low sewage
                 sewageStatus.setText(R.string.tank_status_ok);
                 break;
-            case (1):
+            case ("WARNING"):
                 sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium sewage
                 sewageStatus.setText(R.string.tank_status_warning);
                 break;
-            case (2):
+            case ("CRITICAL"):
                 sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // High sewage
                 sewageStatus.setText(R.string.tank_status_critical);
                 break;
@@ -275,6 +289,11 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         }
         switch (item.getItemId()) {
             case R.id.refreshItem:
+                TankStatus(new VolleyCallBack() {
+                    @Override
+                    public void onSuccess() {
+                        updateInfo();
+                    }});
                 updateInfo();
                 return true;
             default:
