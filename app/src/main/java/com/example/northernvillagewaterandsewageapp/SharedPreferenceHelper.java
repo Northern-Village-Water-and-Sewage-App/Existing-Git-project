@@ -29,9 +29,11 @@ public class SharedPreferenceHelper {
     {
         return sharedPreferences.getString(name, null);
     }
-    public String getUserPin(String pin)//get the pin
+    //gets the pin
+    public int getUserPin(String key, int pin)
     {
-        return sharedPreferences.getString(pin, null);
+        //int pin_key = Integer.parseInt(pin);
+        return sharedPreferences.getInt(key, pin);
     }
     public String getUserType(String type)
     {

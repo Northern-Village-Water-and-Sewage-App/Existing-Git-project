@@ -32,13 +32,13 @@
         <item>Eau et Égouts</item>
     </string-array>
     <string-array name="waterTankTypes">
-        <item>Sélectionnez réservoir d eau</item>
+        <item>Sélectionnez réservoir d\'eau</item>
         <item>Cylindrique</item>
         <item>Boîte</item>
         <item>Cylindre horizontal</item>
     </string-array>
     <string-array name="sewageTankTypes">
-        <item>Sélectionnez le réservoir d eaux usées</item>
+        <item>Sélectionnez le réservoir d\'eaux usées</item>
         <item>Cylindrique</item>
         <item>Boîte</item>
         <item>Cylindre horizontal</item>
@@ -47,7 +47,7 @@
         <item>Aucune</item>
         <item>En Route</item>
         <item>Avant la Pause</item>
-        <item>Aujourd hui</item>
+        <item>Aujourd\'hui</item>
         <item>Demain</item>
     </string-array>
     <string-array name="times">
@@ -60,7 +60,7 @@
         <item>Plainte</item>
         <item>Lumières Cassées</item>
         <item>Lumières Défectueuses</item>
-        <item>Pas besoin de appeler</item>
+        <item>Pas besoin d\'appeler</item>
     </string-array>
     <string-array name="companies">
         <item>KHMB</item>
@@ -128,6 +128,7 @@
     <string name="last_month">Le mois dernier</string>
 
     <string name="remember_me">Souviens-toi de moi</string>
+    <string name="remember_username">Se souvenir du nom d\'utilisateur</string>
     <string name="do_you_want_to_log_out">Voulez-vous vous déconnecter?</string>
     <string name="no">Non</string>
     <string name="yes">Oui</string>
@@ -140,10 +141,10 @@
     <string name="tank_type">"Type de Réservoir: "</string>
     <string name="time_est">"Estimation du Temps: "</string>
     <string name="service">"Service: "</string>
-    <string name="current_time_estimate">Estimation de heure actuelle</string>
+    <string name="current_time_estimate">Estimation de l\'heure actuelle</string>
     <string name="no_delivery_scheduled">Aucune livraison prévue</string>
     <string name="reports">Rapports</string>
-    <string name="usage_type">Type Utilisation</string>
+    <string name="usage_type">Type d\'utilisation</string>
 
 
 </resources>

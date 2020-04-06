@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:buttonTint="@color/colorPrimary"
-            android:text="@string/remember_me"
+            android:text="@string/remember_username"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="@+id/PinText"
             app:layout_constraintStart_toStartOf="@+id/PinText"
