@@ -21,6 +21,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.DBHelper;
 import com.example.northernvillagewaterandsewageapp.R;
 
@@ -47,12 +48,14 @@ public class DisableUserFragment extends DialogFragment {
         disableUserButton = view.findViewById(R.id.disableUserButton);
         enableUserButton = view.findViewById(R.id.enableUserButton);
 
+        mQueue = Volley.newRequestQueue(getActivity());
 
         //sets the info for disabling the user in DB
         disableUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userName = usernameIDDisableUserEditText.getText().toString().trim();
+
                 if (userName != "") {
                     //disables user
                     String url = "http://54.201.85.48:32132/disable_resident/<user_name>".replace("<user_name>", userName);
@@ -75,6 +78,8 @@ public class DisableUserFragment extends DialogFragment {
                     getDialog().dismiss();
                 } else
                     Toast.makeText(getActivity(), "Invalid Entry", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
