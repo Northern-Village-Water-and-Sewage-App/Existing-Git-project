@@ -12,20 +12,22 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/colorAccent"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/colorDarkText" />
 
     <Button
         android:id="@+id/removeDriverButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/driverNameEditText"
+        android:layout_alignTop="@+id/cancelRemoveDriverButton"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="30dp"
         android:background="@color/colorPrimary"
         android:text="@string/remove"
@@ -38,10 +40,22 @@
         android:layout_below="@+id/driverNameEditText"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="64dp"
         android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
         android:text="@string/cancel"
         android:textColor="@color/colorLightText" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/driverNameEditText"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/remove_driver"
+        android:textColor="@color/colorDarkText"
+        android:textSize="18sp" />
 
 </RelativeLayout>

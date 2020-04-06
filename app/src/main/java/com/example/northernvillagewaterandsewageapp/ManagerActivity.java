@@ -253,6 +253,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         switch (item.getItemId()) {
             case R.id.disable_resident:
                 disableUser();
+                break;
             case R.id.remove_resident:
                 removeResident();
                 break;
