@@ -18,60 +18,28 @@
         android:textAlignment="center"
         android:layout_centerInParent="true"/>
 
-
-    <EditText
-        android:id="@+id/timeDIsableUserEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="150dp"
-        android:ems="10"
-        android:hint="@string/disable_time"
-        android:inputType="number"
-        android:textAlignment="center" />
-
-    <Spinner
-        android:id="@+id/timesDisableUserSpinner"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="240dp"
-        android:entries="@array/times" />
-
-    <TextView
-        android:id="@+id/disableUserMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="300dp"
-        android:text="" />
-
     <Button
-        android:id="@+id/confirmDisableUserButton"
+        android:id="@+id/disableUserButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="370dp"
-        android:text="@string/confirm" />
+        android:layout_marginTop="110dp"
+        android:text="Disable" />
 
     <Button
-        android:id="@+id/cancelDisableUserButton"
+        android:id="@+id/enableUserButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="110dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/cancel" />
+        android:text="Enable" />
+
+
 
     />
 </RelativeLayout>
