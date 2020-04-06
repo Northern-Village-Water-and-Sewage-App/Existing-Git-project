@@ -2,6 +2,7 @@ package com.example.northernvillagewaterandsewageapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,6 +49,7 @@ public class ManagerAnalyticsActivity extends AppCompatActivity {
     public void setupInfo(){
         String url = "http://54.201.85.48:32132/get_monthly_stats/";
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONArray response) {
                 try {
