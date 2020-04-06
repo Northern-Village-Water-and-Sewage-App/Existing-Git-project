@@ -146,5 +146,6 @@
     <string name="reports">Reports</string>
     <string name="usage_type">Usage Type</string>
     <string name="remember_username">Remember Username</string>
+    <string name="disable">Disable Resident</string>
 
 </resources>

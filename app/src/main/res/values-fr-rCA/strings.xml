@@ -145,6 +145,7 @@
     <string name="no_delivery_scheduled">Aucune livraison prévue</string>
     <string name="reports">Rapports</string>
     <string name="usage_type">Type d\'utilisation</string>
+    <string name="disable">Désactiver résident</string>
 
 
 </resources>
