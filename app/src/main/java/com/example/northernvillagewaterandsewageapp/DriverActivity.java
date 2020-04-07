@@ -277,45 +277,6 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         LogoutFragment logoutFragment = new LogoutFragment();
         logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
-    protected void getList()//final VolleyCallBack callBack)
-    {
-        worklistListText = new ArrayList<String>();
-        worklistListInt = new ArrayList<Integer>();
-        String url = "http://54.201.85.48:32132/get_work_list/";
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                try {
-                    worklistListText = new ArrayList<String>();
-                    worklistListInt = new ArrayList<Integer>();
-                    for(int i = 0; i < response.length(); i++)
-                    {
-                        JSONObject user = response.getJSONObject(i);
-                        String temp = "";
-                        temp+= "House Number: " + user.getString("house_number") + "\n";
-                        temp+= "Service: " + user.getString("tank_type") + "\n";
-                        temp+= "Time Estimate: " + user.getString("estimate") + "\n";
-                        worklistListText.add(temp);
-                        worklistListInt.add(user.getInt("pk"));
-                        //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
-                    }
-                    //callBack.onSuccess();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        Toast.makeText(DriverActivity.this, "Failed: "+error.toString(), Toast.LENGTH_LONG).show();
-                    }
-
-                });
-        mQueue.add(request);
-
-    }
 
     // with custom adapter
     private void getDeliveryList(final VolleyCallBack callBack) {
@@ -359,3 +320,44 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     }
 
 }
+            //    NOT NEEDED ANYMORE...
+    /*
+    protected void getList()//final VolleyCallBack callBack)
+    {
+        worklistListText = new ArrayList<String>();
+        worklistListInt = new ArrayList<Integer>();
+        String url = "http://54.201.85.48:32132/get_work_list/";
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    worklistListText = new ArrayList<String>();
+                    worklistListInt = new ArrayList<Integer>();
+                    for(int i = 0; i < response.length(); i++)
+                    {
+                        JSONObject user = response.getJSONObject(i);
+                        String temp = "";
+                        temp+= "House Number: " + user.getString("house_number") + "\n";
+                        temp+= "Service: " + user.getString("tank_type") + "\n";
+                        temp+= "Time Estimate: " + user.getString("estimate") + "\n";
+                        worklistListText.add(temp);
+                        worklistListInt.add(user.getInt("pk"));
+                        //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
+                    }
+                    //callBack.onSuccess();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Toast.makeText(DriverActivity.this, "Failed: "+error.toString(), Toast.LENGTH_LONG).show();
+                    }
+
+                });
+        mQueue.add(request);
+
+    }*/

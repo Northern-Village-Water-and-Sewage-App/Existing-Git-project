@@ -35,4 +35,18 @@ public class DeliveryList {
     public void setService(String service) {
         Service = service;
     }
+
+    public String getResourceID() {
+        String resourceID = "0";
+
+        switch (getService()) {
+            case "Water":
+                resourceID = "@drawable/water_image2";
+                break;
+            case "Sewage":
+                resourceID = "@drawable/sewage";
+                break;
+        }
+        return resourceID;
+    }
 }
