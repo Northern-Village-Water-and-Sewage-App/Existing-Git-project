@@ -180,8 +180,8 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
         setUpManagerUI();
 
-        //loadWorkList();
-        loadListView();
+        loadWorkList();
+        //loadListView();
     }
 
     protected void setUpManagerUI() {
@@ -421,7 +421,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     }
 
     //Open logout fragment
-    private void logoutFragment(){
+    private void logoutFragment() {
         LogoutFragment logoutFragment = new LogoutFragment();
         logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }

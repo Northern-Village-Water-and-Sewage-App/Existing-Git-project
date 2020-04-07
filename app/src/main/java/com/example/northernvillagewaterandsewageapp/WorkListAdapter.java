@@ -1,5 +1,6 @@
 package com.example.northernvillagewaterandsewageapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,10 +22,11 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
 
     public WorkListAdapter(@NonNull Context context, int resource, @NonNull List<WorkList> objects) {
         super(context, resource, objects);
-        this.mContext = mContext;
+        this.mContext = getContext();
         this.mResource = resource;
     }
 
+    @SuppressLint("ViewHolder")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

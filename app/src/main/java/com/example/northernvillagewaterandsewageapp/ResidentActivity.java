@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -33,7 +32,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.SeeTownMessageFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -62,6 +60,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     private String deliveryEstimate;
     private String tankType;
     protected TextView textViewRemainingWater;
+    protected TextView residentHeaderName;
 
     String newSewageAlarm ="";
 
@@ -69,7 +68,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident);
-
 
         waterAlarm = findViewById(R.id.waterAlarm);
         sewageAlarm = findViewById(R.id.sewageAlarm);
@@ -90,6 +88,9 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         deliveryEstimateTextView = findViewById(R.id.deliveryEstimateTextView);
         textViewRemainingWater = findViewById(R.id.textViewRemainingWater);
         NavigationView navigationView = findViewById(R.id.nav_view_resident);
+
+        //residentHeaderName = findViewById(R.id.residentHeaderNameTV);
+        //residentHeaderName.setText(ResidentName);
 
         toggle = new ActionBarDrawerToggle(this, sideBarResident, R.string.open, R.string.close);
         navigationView.setNavigationItemSelectedListener(this);

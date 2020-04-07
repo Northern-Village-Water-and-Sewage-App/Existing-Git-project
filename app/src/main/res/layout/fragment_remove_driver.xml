@@ -47,7 +47,7 @@
         android:textColor="@color/colorLightText" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/residentHeaderNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/driverNameEditText"
