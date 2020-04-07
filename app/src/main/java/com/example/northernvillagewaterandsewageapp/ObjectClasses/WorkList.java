@@ -1,5 +1,8 @@
 package com.example.northernvillagewaterandsewageapp.ObjectClasses;
 
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+
 public class WorkList {
 
     private String TimeStamp;
@@ -7,6 +10,8 @@ public class WorkList {
     private String HouseNum;
     private String TankType;
     private String TimeEstimate;
+    private String waterID = "@drawable/water_image2";
+    private int sewageID;
 
     // constructor
     public WorkList(String timeStamp, String resident, String houseNum, String tankType, String timeEstimate) {
@@ -55,6 +60,20 @@ public class WorkList {
 
     public void setTimeEstimate(String timeEstimate) {
         this.TimeEstimate = timeEstimate;
+    }
+
+    public String getResourceID() {
+        String resourceID = "0";
+
+        switch (getTankType()) {
+            case "Water":
+                resourceID = "@drawable/water_image2";
+                break;
+            case "Sewage":
+                resourceID = "@drawable/water_image1";
+                break;
+        }
+        return resourceID;
     }
 
 }

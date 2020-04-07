@@ -67,7 +67,8 @@ public class DriverTimeEstimateFragment extends DialogFragment {
 
         //gets the drop down menu to work
         timeEstimate = 0;
-        Spinner timeEstimatesSpinner = view.findViewById(R.id.timeEstimatesSpinner);
+        
+        /*Spinner timeEstimatesSpinner = view.findViewById(R.id.timeEstimatesSpinner);
         timeEstimatesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -129,7 +130,7 @@ public class DriverTimeEstimateFragment extends DialogFragment {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
         //dismisses the activity if the cancel button is pressed
         CancelButton.setOnClickListener(new View.OnClickListener() {

@@ -2,10 +2,13 @@ package com.example.northernvillagewaterandsewageapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +45,9 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
         String HouseNum = getItem(position).getHouseNum();
         String TankType = getItem(position).getTankType();
         String TimeEstimate = getItem(position).getTimeEstimate();
+        String image = getItem(position).getResourceID();
+
+        int id = Resources.getSystem().getIdentifier("water_image2.png", "drawable", "android");
 
         WorkList workList = new WorkList(TimeStamp, Resident, HouseNum, TankType, TimeEstimate);
 
@@ -50,12 +56,14 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
         TextView houseNumTv = convertView.findViewById(R.id.customAdapterTV3);
         TextView tankTypeTv = convertView.findViewById(R.id.customAdapterTV4);
         TextView timeEstimateTv = convertView.findViewById(R.id.customAdapterTV5);
+        ImageView imageView = convertView.findViewById(R.id.imageViewManager);
 
         timeStampTv.setText(TimeStamp);
         residentTv.setText(Resident);
         houseNumTv.setText(HouseNum);
         tankTypeTv.setText(TankType);
         timeEstimateTv.setText(TimeEstimate);
+        imageView.setImageResource(id);
 
         return convertView;
     }
