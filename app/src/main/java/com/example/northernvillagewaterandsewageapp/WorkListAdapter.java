@@ -22,8 +22,7 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
 
     public WorkListAdapter(@NonNull Context context, int resource, @NonNull List<WorkList> objects) {
         super(context, resource, objects);
-        Toast.makeText(context, "Testing", Toast.LENGTH_SHORT).show();
-        this.mContext = mContext;
+        this.mContext = getContext();
         this.mResource = resource;
     }
 
