@@ -25,7 +25,7 @@
     <string name="tank_status_warning">ᓄᕐᖃᑐᖅ</string>
     <string name="tank_status_critical">ᐃᓂᕐᑎᕆᔪᖅ</string>
     <string name="tank_status_ok">ᓈᒻᒪᑐᖅ</string>
-    <string name="complete">Complete_inu_placeholder</string>
+    <string name="complete">Complete</string>
     <string-array name="demandTypes">
         <item>ᐃᒪᖅ</item>
         <item>ᖁᕐᕕᖃᐅᑎᒃ</item>
@@ -44,11 +44,13 @@
         <item>ᖁᒻᒧᔫᔭᖅ ᐃᓐᓇᖓᔪᖅ</item>
     </string-array>
     <string-array name="timeEstimate">
+        <item>Select a time estimate</item>
         <item>ᓇᒻᒪᓂᖃᖕᖏᑐᑦ</item>
         <item>ᙯᓕᕐᑐᖅ</item>
         <item>ᕿᑲᑲᓐᓇᖏᓐᓂᑎᓂ</item>
         <item>ᐅᓪᓗᒥ</item>
         <item>ᖃᐅᑉᐸᑦ</item>
+        <item>Complete</item>
     </string-array>
     <string-array name="times">
         <item>ᐃᑲᐅᓃᑦ</item>

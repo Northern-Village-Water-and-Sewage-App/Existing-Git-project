@@ -33,6 +33,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.Fragments.CreateDriverFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.CreateResidentFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DisableUserFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.DriverTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.GetReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
@@ -212,8 +213,8 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             //need to pass other stuff here to make this work                                                                                                            ************************
-                            ManagerTimeEstimateFragment managerTimeEstimateFragment = new ManagerTimeEstimateFragment();
-                            managerTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
+                            DriverTimeEstimateFragment driverTimeEstimateFragment = new DriverTimeEstimateFragment();
+                            driverTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
                         }
                     });
                 } catch (JSONException e) {

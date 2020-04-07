@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,11 +39,15 @@ public class DriverTimeEstimateFragment extends DialogFragment {
     protected Button TomorrowButton;
     protected Button CompleteButton;
     protected Button CancelButton;
+    private int timeEstimate;
+
     private RequestQueue mQueue;
     private Integer pk;
+
     public interface VolleyCallBackFragment {
         void onSuccess();
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,76 +64,69 @@ public class DriverTimeEstimateFragment extends DialogFragment {
         CompleteButton = view.findViewById(R.id.completeDriverTimeEstimateButton);
         CancelButton = view.findViewById(R.id.cancelDriverTimeEstimateButton);
         mQueue = Volley.newRequestQueue(getActivity());
-        //If the button is pressed, it uses a integer to say which button was pressed, and then uses the same function but with different inputs
-        NoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(6, new VolleyCallBackFragment() {
-                    @Override
-                    public void onSuccess() {
-                        getDialog().dismiss();
-                    }
-                });
-            }
-        });
 
-        OnTheWayButton.setOnClickListener(new View.OnClickListener() {
+        //gets the drop down menu to work
+        timeEstimate = 0;
+        Spinner timeEstimatesSpinner = view.findViewById(R.id.timeEstimatesSpinner);
+        timeEstimatesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Enter(2, new VolleyCallBackFragment() {
-                    @Override
-                    public void onSuccess() {
-                        getDialog().dismiss();
-                    }
-                });
-            }
-        });
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                timeEstimate = position;
 
-        BeforeBreakButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(3, new VolleyCallBackFragment() {
-                    @Override
-                    public void onSuccess() {
-                        getDialog().dismiss();
-                    }
-                });
+                switch (timeEstimate) {
+                    case 1: // None
+                        Enter(6, new VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 2: // On the Way
+                        Enter(2, new VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 3: // Before Break
+                        Enter(3, new VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 4: // Today
+                        Enter(4, new VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 5: // Tomorrow
+                        Enter(5, new VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 6: // Complete
+                        Enter(1, new VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                }
             }
-        });
 
-        TodayButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Enter(4, new VolleyCallBackFragment() {
-                    @Override
-                    public void onSuccess() {
-                        getDialog().dismiss();
-                    }
-                });
-            }
-        });
-
-        TomorrowButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(5, new VolleyCallBackFragment() {
-                    @Override
-                    public void onSuccess() {
-                        getDialog().dismiss();
-                    }
-                });
-            }
-        });
-
-        CompleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(1, new VolleyCallBackFragment() {
-                    @Override
-                    public void onSuccess() {
-                        getDialog().dismiss();
-                    }
-                });
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -138,8 +138,6 @@ public class DriverTimeEstimateFragment extends DialogFragment {
                 getDialog().dismiss();
             }
         });
-
-
 
        return view;
     }
@@ -185,8 +183,8 @@ public class DriverTimeEstimateFragment extends DialogFragment {
             mQueue.add(request_update);
         }
 
+        timeEstimate = 0;
         //Update database with new time estimate.                           //Not figured out yet
     }
-
 
 }

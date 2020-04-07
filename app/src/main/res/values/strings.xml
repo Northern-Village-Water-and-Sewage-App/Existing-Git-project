@@ -43,11 +43,13 @@
         <item>Horizontal Cylinder</item>
     </string-array>
     <string-array name="timeEstimate">
+        <item>Select a time estimate</item>
         <item>None</item>
         <item>On the way</item>
         <item>Before Break</item>
         <item>Today</item>
         <item>Tomorrow</item>
+        <item>Complete</item>
     </string-array>
     <string-array name="times">
         <item>Hours</item>
