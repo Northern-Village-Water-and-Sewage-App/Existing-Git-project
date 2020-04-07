@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +19,7 @@ import java.util.List;
 public class WorkListAdapter extends ArrayAdapter<WorkList> {
 
     private Context mContext;
-    int mResource;
+    private int mResource;
 
     public WorkListAdapter(@NonNull Context context, int resource, @NonNull List<WorkList> objects) {
         super(context, resource, objects);
@@ -40,6 +41,7 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
 
         WorkList workList = new WorkList(TimeStamp, Resident, HouseNum, TankType, TImeEstimate);
 
+        mContext = getContext();
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
