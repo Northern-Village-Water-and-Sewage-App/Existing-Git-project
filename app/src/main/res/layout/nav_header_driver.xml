@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/icon" />
 
     <TextView
-        android:id="@+id/residentHeaderNameTV"
+        android:id="@+id/driverHeaderNameTV"
         android:layout_width="127dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

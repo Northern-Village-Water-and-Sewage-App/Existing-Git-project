@@ -122,8 +122,11 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         toggle = new ActionBarDrawerToggle(this, sideBar, R.string.open, R.string.close);
         sideBar.addDrawerListener(toggle);
         toggle.syncState();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.driverHeaderNameTV);
+        navUsername.setText("Hello");
 
         setUpDriverUI();
 

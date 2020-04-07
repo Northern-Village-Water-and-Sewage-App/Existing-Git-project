@@ -16,8 +16,7 @@
             android:id="@+id/imageViewManager"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/water_image2">
+            android:layout_gravity="center">
 
         </ImageView>
 

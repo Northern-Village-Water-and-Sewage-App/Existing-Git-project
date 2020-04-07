@@ -1,6 +1,7 @@
 package com.example.northernvillagewaterandsewageapp;
 
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -177,13 +179,16 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
         sideBar = findViewById(R.id.sideBarManager);
         NavigationView navigationView = findViewById(R.id.nav_view_manager);
-
         navigationView.setNavigationItemSelectedListener(this);
+
         toggle = new ActionBarDrawerToggle(this, sideBar, R.string.open, R.string.close);
         sideBar.addDrawerListener(toggle);
         toggle.syncState();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.managerHeaderNameTV);
+        navUsername.setText("Your Text Here");
 
         setUpManagerUI();
 

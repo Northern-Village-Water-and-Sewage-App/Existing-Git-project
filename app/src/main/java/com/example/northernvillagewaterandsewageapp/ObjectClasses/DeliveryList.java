@@ -1,5 +1,8 @@
 package com.example.northernvillagewaterandsewageapp.ObjectClasses;
 
+import com.example.northernvillagewaterandsewageapp.R;
+
+
 public class DeliveryList {
 
     private String HouseNum;
@@ -36,17 +39,20 @@ public class DeliveryList {
         Service = service;
     }
 
-    public String getResourceID() {
-        String resourceID = "0";
+    public int getResourceID() {
 
-        switch (getService()) {
-            case "Water":
-                resourceID = "@drawable/water_image2";
-                break;
-            case "Sewage":
-                resourceID = "@drawable/sewage";
-                break;
+        int id = 0;
+        if (Service.equals("Water")) {
+            id = R.drawable.water_image2;
         }
-        return resourceID;
+        else if (Service.equals("Sewage")) {
+            id = R.drawable.sewage;
+        }
+        else {
+            id = R.drawable.ic_action_lock_icon; // for testing
+        }
+
+        return id;
     }
+
 }

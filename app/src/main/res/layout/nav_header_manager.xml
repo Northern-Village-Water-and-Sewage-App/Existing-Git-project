@@ -7,7 +7,7 @@
     android:background="@color/colorPrimary">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/headerImageManager"
         android:layout_width="93dp"
         android:layout_height="85dp"
         android:layout_alignParentStart="true"
@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/ic_business_black_24dp" />
 
     <TextView
-        android:id="@+id/residentHeaderNameTV"
+        android:id="@+id/managerHeaderNameTV"
         android:layout_width="127dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

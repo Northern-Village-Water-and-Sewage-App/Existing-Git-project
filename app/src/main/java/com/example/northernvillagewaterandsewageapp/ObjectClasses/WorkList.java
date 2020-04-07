@@ -3,6 +3,8 @@ package com.example.northernvillagewaterandsewageapp.ObjectClasses;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
+import com.example.northernvillagewaterandsewageapp.R;
+
 public class WorkList {
 
     private String TimeStamp;
@@ -51,18 +53,18 @@ public class WorkList {
         this.TimeEstimate = timeEstimate;
     }
 
-    public String getResourceID() {
-        String resourceID = "0";
+    public int getResourceID() {
 
-        switch (getTankType()) {
-            case "Water":
-                resourceID = "@drawable/water_image2";
-                break;
-            case "Sewage":
-                resourceID = "@drawable/sewage";
-                break;
+        int id = 0;
+        if (TankType.equals("Water")) {
+            id = R.drawable.water_image2;
         }
-        return resourceID;
+        else if (TankType.equals("Sewage")) {
+            id = R.drawable.sewage;
+        }
+
+
+        return id;
     }
 
 }

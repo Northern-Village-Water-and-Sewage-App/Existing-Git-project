@@ -45,9 +45,7 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
         String HouseNum = getItem(position).getHouseNum();
         String TankType = getItem(position).getTankType();
         String TimeEstimate = getItem(position).getTimeEstimate();
-        String image = getItem(position).getResourceID();
-
-        //int id = Resources.getSystem().getIdentifier("ic_launcher_reports", "drawable", "android");
+        int id = getItem(position).getResourceID();
 
         WorkList workList = new WorkList(TimeStamp, HouseNum, TankType, TimeEstimate);
 
@@ -63,7 +61,8 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
         houseNumTv.setText(HouseNum);
         tankTypeTv.setText(TankType);
         timeEstimateTv.setText(TimeEstimate);
-        //imageView.setImageResource(id);
+
+        imageView.setImageResource(id);
 
         return convertView;
     }

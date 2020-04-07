@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
+import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -42,8 +43,7 @@ import java.util.List;
             String HouseNum = getItem(position).getHouseNum();
             String Service = getItem(position).getService();
             String TimeEstimate = getItem(position).getTimeEstimate();
-
-            int id = Resources.getSystem().getIdentifier("ic_dialog_alert", "drawable", "android");
+            int id = getItem(position).getResourceID();
 
             DeliveryList deliveryList = new DeliveryList(HouseNum, Service, TimeEstimate);
 
@@ -55,8 +55,8 @@ import java.util.List;
             houseNumTv.setText(HouseNum);
             serviceTv.setText(Service);
             timeEstimateTv.setText(TimeEstimate);
-            imageView.setImageResource(id);
 
+            imageView.setImageResource(id);
 
             return convertView;
         }
