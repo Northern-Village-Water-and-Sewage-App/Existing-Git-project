@@ -180,8 +180,8 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
         setUpManagerUI();
 
-        //loadWorkList();
-        loadListView();
+        loadWorkList();
+//        loadListView();
     }
 
     protected void setUpManagerUI() {
@@ -206,10 +206,12 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                         String temp = "";
                         e = response.getJSONObject(pos);
                         WorkList object = new WorkList(e.getString("timestamp"), e.getString("username"), e.getString("house_number"), e.getString("tank_type"), e.getString("estimate"));
-                        /*temp += "Resident: " + e.getString("username") + "\n";
+                        /*
+                        temp += "Resident: " + e.getString("username") + "\n";
                         temp += "House Number: " + e.getString("house_number") + "\n";
                         temp += "Tank Type: " + e.getString("tank_type") + "\n";
-                        temp += "Time estimate: " + e.getString("estimate");*/
+                        temp += "Time estimate: " + e.getString("estimate");
+                        */
                         workLists.add(object);
                     }
                     adapter.addAll(workLists);
@@ -289,8 +291,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     public void onBackPressed() {
         if (sideBar.isDrawerOpen(GravityCompat.START)) {
             sideBar.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -371,31 +372,37 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         Intent manAnalyticsIntent = new Intent(ManagerActivity.this, ManagerAnalyticsActivity.class);
         startActivity(manAnalyticsIntent);
     }
+
     // Function to add a new resident in the database
     protected void addResident() {
         CreateResidentFragment createUser = new CreateResidentFragment();
         createUser.show(getSupportFragmentManager(), "Dialog");
     }
+
     // Function to remove a resident from the database
     protected void removeResident() {
         RemoveResidentFragment removeResidentFragment = new RemoveResidentFragment();
         removeResidentFragment.show(getSupportFragmentManager(), "Dialog");
     }
+
     // Function to disable an existing resident from the database
     protected void disableUser() {
         DisableUserFragment disableUserFragment = new DisableUserFragment();
         disableUserFragment.show(getSupportFragmentManager(), "Dialog");
     }
+
     // Function to add a driver from the database
     protected void addDriver() {
         CreateDriverFragment addDriverFragment = new CreateDriverFragment();
         addDriverFragment.show(getSupportFragmentManager(), "Dialog");
     }
+
     // Function to remove a driver from the database
     protected void removeDriver() {
         RemoveDriverFragment removeDriverFragment = new RemoveDriverFragment();
         removeDriverFragment.show(getSupportFragmentManager(), "Dialog");
     }
+
     // Function to get manager reports
     protected void getReports() {
         GetReportFragment getReportFragment = new GetReportFragment();
@@ -421,7 +428,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     }
 
     //Open logout fragment
-    private void logoutFragment(){
+    private void logoutFragment() {
         LogoutFragment logoutFragment = new LogoutFragment();
         logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
