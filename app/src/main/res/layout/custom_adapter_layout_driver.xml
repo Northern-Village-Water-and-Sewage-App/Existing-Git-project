@@ -36,19 +36,19 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/timeEstimateTV"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:text="@string/time_est"
-            android:textAlignment="center" />
-
-        <TextView
             android:id="@+id/serviceTv"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:text="@string/service"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/timeEstimateTV"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="@string/time_est"
             android:textAlignment="center" />
 
     </LinearLayout>

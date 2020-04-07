@@ -39,20 +39,20 @@ import java.util.List;
             convertView = inflater.inflate(mResource, parent, false);
 
             // getting all the stuff
-            String Resident = getItem(position).getResident();
+            String HouseNum = getItem(position).getHouseNum();
             String Service = getItem(position).getService();
             String TimeEstimate = getItem(position).getTimeEstimate();
 
             int id = Resources.getSystem().getIdentifier("ic_dialog_alert", "drawable", "android");
 
-            DeliveryList deliveryList = new DeliveryList(Resident, Service, TimeEstimate);
+            DeliveryList deliveryList = new DeliveryList(HouseNum, Service, TimeEstimate);
 
-            TextView residentTv = convertView.findViewById(R.id.driverListTV1);
+            TextView houseNumTv = convertView.findViewById(R.id.driverListTV1);
             TextView serviceTv = convertView.findViewById(R.id.driverListTV2);
             TextView timeEstimateTv = convertView.findViewById(R.id.driverListTV3);
             ImageView imageView = convertView.findViewById(R.id.imageViewDriver);
 
-            residentTv.setText(Resident);
+            houseNumTv.setText(HouseNum);
             serviceTv.setText(Service);
             timeEstimateTv.setText(TimeEstimate);
             imageView.setImageResource(id);
