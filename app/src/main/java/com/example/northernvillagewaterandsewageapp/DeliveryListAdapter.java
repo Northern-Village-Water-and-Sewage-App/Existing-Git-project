@@ -2,10 +2,12 @@ package com.example.northernvillagewaterandsewageapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,15 +43,20 @@ import java.util.List;
             String Service = getItem(position).getService();
             String TimeEstimate = getItem(position).getTimeEstimate();
 
+            int id = Resources.getSystem().getIdentifier("ic_dialog_alert", "drawable", "android");
+
             DeliveryList deliveryList = new DeliveryList(Resident, Service, TimeEstimate);
 
             TextView residentTv = convertView.findViewById(R.id.driverListTV1);
             TextView serviceTv = convertView.findViewById(R.id.driverListTV2);
             TextView timeEstimateTv = convertView.findViewById(R.id.driverListTV3);
+            ImageView imageView = convertView.findViewById(R.id.imageViewDriver);
 
             residentTv.setText(Resident);
             serviceTv.setText(Service);
             timeEstimateTv.setText(TimeEstimate);
+            imageView.setImageResource(id);
+
 
             return convertView;
         }

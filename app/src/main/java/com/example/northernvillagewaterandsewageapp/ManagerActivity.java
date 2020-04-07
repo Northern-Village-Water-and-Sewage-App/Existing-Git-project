@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,6 +42,7 @@ import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragme
 import com.example.northernvillagewaterandsewageapp.Fragments.MessageFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.RemoveDriverFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.RemoveResidentFragment;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.DeliveryList;
 import com.example.northernvillagewaterandsewageapp.ObjectClasses.WorkList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -64,6 +66,8 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     Animation FabOpen, FabClose, FabRClockwise, FabRAntiClockwise;
     private DrawerLayout sideBar;
     private ActionBarDrawerToggle toggle;
+    ArrayList<Integer> worklistListInt;
+    ArrayList<WorkList> managerLists;
 
     boolean isOpen = false;
 
@@ -72,6 +76,13 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
         mQueue = Volley.newRequestQueue(this);
+        getWorkList(new DriverActivity.VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadWorkList();
+            }
+        });
+
 
         //debug
 //        troubleshoot = findViewById(R.id.troubleshooterButton);
@@ -189,34 +200,63 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
     }
 
-    private void loadWorkList() {
+    @Override
+    protected void onResume() {
+        getWorkList(new DriverActivity.VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadWorkList();
+            }
+        });
+        super.onResume();
+    }
+    public interface VolleyCallBack {
+        void onSuccess();
+    }
+
+    //LoadListViewFunction
+    protected void loadWorkList(){
+        final WorkListAdapter adapter = new WorkListAdapter(this, R.layout.custom_adapter_layout_manager, managerLists);
+
+        worklistListView.setAdapter(adapter);
+
+        //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
+        worklistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //need to pass other stuff here to make this work
+                // ************************
+                Bundle bundle = new Bundle();
+                bundle.putInt("pk",worklistListInt.get(position));
+                DriverTimeEstimateFragment driverTimeEstimateFragment = new DriverTimeEstimateFragment();
+                driverTimeEstimateFragment.setArguments(bundle);
+                driverTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
+            }
+        });
+    }
+
+    // with custom adapter
+    private void getWorkList(final DriverActivity.VolleyCallBack callBack) {
+        worklistListInt = new ArrayList<Integer>();
+        managerLists = new ArrayList<>();
         String url = "http://54.201.85.48:32132/get_work_list/";
-        final ArrayList<WorkList> workLists = new ArrayList<>();
-        final WorkListAdapter adapter = new WorkListAdapter(this, R.layout.custom_adapter_layout_manager, workLists);
-        final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+
+        final WorkListAdapter adapter = new WorkListAdapter(this, R.layout.custom_adapter_layout_driver, managerLists);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
-                    JSONObject e;
-                    for (int pos = 0; pos < response.length(); pos++) {
-                        String temp = "";
-                        e = response.getJSONObject(pos);
-                        WorkList object = new WorkList(e.getString("timestamp"), e.getString("username"), e.getString("house_number"), e.getString("tank_type"), e.getString("estimate"));
-
-                        workLists.add(object);
+                    worklistListInt = new ArrayList<Integer>();
+                    for(int i = 0; i < response.length(); i++)
+                    {
+                        JSONObject user = response.getJSONObject(i);
+                        WorkList object = new WorkList(user.getString("timestamp"), user.getString("username"), user.getString("house_number"), user.getString("tank_type"), user.getString("estimate"));
+                        managerLists.add(object);
+                        worklistListInt.add(user.getInt("pk"));
+                        //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
                     }
-                    adapter.addAll(workLists);
-                    worklistListView.setAdapter(adapter);
-
-                    //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
-                    worklistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            //need to pass other stuff here to make this work                                                                                                            ************************
-                            DriverTimeEstimateFragment driverTimeEstimateFragment = new DriverTimeEstimateFragment();
-                            driverTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
-                        }
-                    });
+                    callBack.onSuccess();
+                    adapter.addAll(managerLists);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -226,7 +266,9 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
+                        Toast.makeText(ManagerActivity.this, "Failed: "+error.toString(), Toast.LENGTH_LONG).show();
                     }
+
                 });
         mQueue.add(request);
 

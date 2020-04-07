@@ -32,12 +32,6 @@ import org.json.JSONObject;
 public class DriverTimeEstimateFragment extends DialogFragment {
 
 
-    protected Button NoneButton;
-    protected Button OnTheWayButton;
-    protected Button BeforeBreakButton;
-    protected Button TodayButton;
-    protected Button TomorrowButton;
-    protected Button CompleteButton;
     protected Button CancelButton;
     private int timeEstimate;
 
@@ -56,19 +50,13 @@ public class DriverTimeEstimateFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_driver_time_estimate, container, false);
         pk = getArguments().getInt("pk");
         //attach the buttons and edit text to the java file
-        NoneButton = view.findViewById(R.id.noneDriverTimeEstimateButton);
-        OnTheWayButton = view.findViewById(R.id.onTheWayDriverTimeEstimateButton);
-        BeforeBreakButton = view.findViewById(R.id.beforeBreakDriverTimeEstimateButton);
-        TodayButton = view.findViewById(R.id.todayDriverTimeEstimateButton);
-        TomorrowButton = view.findViewById(R.id.tomorrowDriverTimeEstimateButton);
-        CompleteButton = view.findViewById(R.id.completeDriverTimeEstimateButton);
         CancelButton = view.findViewById(R.id.cancelDriverTimeEstimateButton);
         mQueue = Volley.newRequestQueue(getActivity());
 
         //gets the drop down menu to work
         timeEstimate = 0;
-        
-        /*Spinner timeEstimatesSpinner = view.findViewById(R.id.timeEstimatesSpinner);
+
+        Spinner timeEstimatesSpinner = view.findViewById(R.id.timeEstimatesSpinner);
         timeEstimatesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -130,7 +118,7 @@ public class DriverTimeEstimateFragment extends DialogFragment {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });*/
+        });
 
         //dismisses the activity if the cancel button is pressed
         CancelButton.setOnClickListener(new View.OnClickListener() {
