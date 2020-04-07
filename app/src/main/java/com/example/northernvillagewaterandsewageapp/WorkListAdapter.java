@@ -32,18 +32,18 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
+        mContext = getContext();
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        convertView = inflater.inflate(mResource, parent, false);
+
         // getting all the stuff
         String TimeStamp = getItem(position).getTimeStamp();
         String Resident = getItem(position).getResident();
         String HouseNum = getItem(position).getHouseNum();
         String TankType = getItem(position).getTankType();
-        String TImeEstimate = getItem(position).getTImeEstimate();
+        String TimeEstimate = getItem(position).getTimeEstimate();
 
-        WorkList workList = new WorkList(TimeStamp, Resident, HouseNum, TankType, TImeEstimate);
-
-        mContext = getContext();
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        convertView = inflater.inflate(mResource, parent, false);
+        WorkList workList = new WorkList(TimeStamp, Resident, HouseNum, TankType, TimeEstimate);
 
         TextView timeStampTv = convertView.findViewById(R.id.customAdapterTV1);
         TextView residentTv = convertView.findViewById(R.id.customAdapterTV2);
@@ -55,7 +55,7 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
         residentTv.setText(Resident);
         houseNumTv.setText(HouseNum);
         tankTypeTv.setText(TankType);
-        timeEstimateTv.setText(TImeEstimate);
+        timeEstimateTv.setText(TimeEstimate);
 
         return convertView;
     }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="50">
+
+        <TextView
+            android:id="@+id/houseNumTV"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="@string/house_number" />
+
+        <TextView
+            android:id="@+id/timeEstimateTV"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="@string/time_est" />
+
+        <TextView
+            android:id="@+id/serviceTv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="@string/service" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="50">
+
+        <TextView
+            android:id="@+id/driverListTV1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="@string/textview" />
+
+        <TextView
+            android:id="@+id/driverListTV2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="@string/textview2" />
+
+        <TextView
+            android:id="@+id/driverListTV3"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="@string/textview3" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

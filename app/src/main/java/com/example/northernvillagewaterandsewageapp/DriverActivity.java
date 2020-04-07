@@ -32,7 +32,10 @@ import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverReportFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.DriverTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.LogoutFragment;
+import com.example.northernvillagewaterandsewageapp.Fragments.ManagerTimeEstimateFragment;
 import com.example.northernvillagewaterandsewageapp.Fragments.ManualDemandFragment;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.DeliveryList;
+import com.example.northernvillagewaterandsewageapp.ObjectClasses.WorkList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -55,12 +58,14 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     boolean isOpen = false;
     ArrayList<String> worklistListText;
     ArrayList<Integer> worklistListInt;
+    ArrayList<DeliveryList> deliveryLists;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
         mQueue = Volley.newRequestQueue(this);
-        getList(new VolleyCallBack() {
+        getDeliveryList(new VolleyCallBack() {
             @Override
             public void onSuccess() {
                 loadListView();
@@ -149,7 +154,7 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     }
     @Override
     protected void onResume() {
-        getList(new VolleyCallBack() {
+        getDeliveryList(new VolleyCallBack() {
             @Override
             public void onSuccess() {
                 loadListView();
@@ -160,10 +165,13 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     public interface VolleyCallBack {
         void onSuccess();
     }
+
     //LoadListViewFunction
     protected void loadListView(){
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, worklistListText);
-        driverWorklistListView.setAdapter(arrayAdapter);
+        final DeliveryListAdapter adapter = new DeliveryListAdapter(this, R.layout.custom_adapter_layout_driver, deliveryLists);
+
+        //ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, worklistListText);
+        driverWorklistListView.setAdapter(adapter);
 
         //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
         driverWorklistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -175,7 +183,7 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
                 bundle.putInt("pk",worklistListInt.get(position));
                 DriverTimeEstimateFragment driverTimeEstimateFragment = new DriverTimeEstimateFragment();
                 driverTimeEstimateFragment.setArguments(bundle);
-               driverTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
+                driverTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
             }
         });
     }
@@ -240,7 +248,7 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         }
         switch (item.getItemId()) {
             case R.id.refreshItem:
-                getList(new VolleyCallBack() {
+                getDeliveryList(new VolleyCallBack() {
                     @Override
                     public void onSuccess() {
                         loadListView();
@@ -269,7 +277,7 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         LogoutFragment logoutFragment = new LogoutFragment();
         logoutFragment.show(getSupportFragmentManager(), "Dialog");
     }
-    protected void getList(final VolleyCallBack callBack)
+    protected void getList()//final VolleyCallBack callBack)
     {
         worklistListText = new ArrayList<String>();
         worklistListInt = new ArrayList<Integer>();
@@ -291,7 +299,48 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
                         worklistListInt.add(user.getInt("pk"));
                         //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
                     }
+                    //callBack.onSuccess();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Toast.makeText(DriverActivity.this, "Failed: "+error.toString(), Toast.LENGTH_LONG).show();
+                    }
+
+                });
+        mQueue.add(request);
+
+    }
+
+    // with custom adapter
+    private void getDeliveryList(final VolleyCallBack callBack) {
+        worklistListInt = new ArrayList<Integer>();
+        deliveryLists = new ArrayList<>();
+        String url = "http://54.201.85.48:32132/get_work_list/";
+
+        final DeliveryListAdapter adapter = new DeliveryListAdapter(this, R.layout.custom_adapter_layout_driver, deliveryLists);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    worklistListInt = new ArrayList<Integer>();
+                    for(int i = 0; i < response.length(); i++)
+                    {
+                        JSONObject user = response.getJSONObject(i);
+                        String temp = "";
+                        DeliveryList object = new DeliveryList(user.getString("username"), user.getString("estimate"), user.getString("tank_type"));
+                        deliveryLists.add(object);
+                        worklistListInt.add(user.getInt("pk"));
+                        //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
+                    }
                     callBack.onSuccess();
+                    adapter.addAll(deliveryLists);
+                    //driverWorklistListView.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

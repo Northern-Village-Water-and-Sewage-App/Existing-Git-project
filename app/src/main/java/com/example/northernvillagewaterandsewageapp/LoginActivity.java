@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         userName = findViewById(R.id.UserNameText);
         userPin = findViewById(R.id.PinText);
         loginButton = findViewById(R.id.LoginButton);
-        rememberMe = findViewById(R.id.rememberMeCheckBox);
+        //rememberMe = findViewById(R.id.rememberMeCheckBox);
 
         sideBarLogin = findViewById(R.id.sideBar);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -84,15 +84,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
         sharedPreferenceHelper = new SharedPreferenceHelper(LoginActivity.this);
 
         ResidentName = sharedPreferenceHelper.getUserName(getString(R.string.user_name));
-
-        /*if (rememberMe.isChecked()) {
-            userName.setText(ResidentName);
-            userPin.setText(ResidentPin);
-        }
-        else {
-            userName.setText("");
-            userPin.setText("");
-        }*/
+        userName.setText(ResidentName);
 
         userName.addTextChangedListener(loginTextWatcher);
         userPin.addTextChangedListener(loginTextWatcher);

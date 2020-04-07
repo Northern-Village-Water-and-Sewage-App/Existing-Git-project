@@ -6,15 +6,15 @@ public class WorkList {
     private String Resident;
     private String HouseNum;
     private String TankType;
-    private String TImeEstimate;
+    private String TimeEstimate;
 
     // constructor
-    public WorkList(String timeStamp, String resident, String houseNum, String tankType, String TImeEstimate) {
+    public WorkList(String timeStamp, String resident, String houseNum, String tankType, String timeEstimate) {
         TimeStamp = timeStamp;
         Resident = resident;
         HouseNum = houseNum;
         TankType = tankType;
-        this.TImeEstimate = TImeEstimate;
+        TimeEstimate = timeEstimate;
     }
 
     public String getTimeStamp() {
@@ -49,11 +49,12 @@ public class WorkList {
         TankType = tankType;
     }
 
-    public String getTImeEstimate() {
-        return TImeEstimate;
+    public String getTimeEstimate() {
+        return TimeEstimate;
     }
 
-    public void setTImeEstimate(String TImeEstimate) {
-        this.TImeEstimate = TImeEstimate;
+    public void setTimeEstimate(String timeEstimate) {
+        this.TimeEstimate = timeEstimate;
     }
+
 }

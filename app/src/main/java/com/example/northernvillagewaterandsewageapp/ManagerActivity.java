@@ -7,13 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.service.wallpaper.WallpaperService;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,9 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -180,8 +175,8 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
 
         setUpManagerUI();
 
-        loadWorkList();
-//        loadListView();
+        loadWorkList(); // with custom adapter
+        //loadListView();
     }
 
     protected void setUpManagerUI() {
@@ -196,7 +191,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     private void loadWorkList() {
         String url = "http://54.201.85.48:32132/get_work_list/";
         final ArrayList<WorkList> workLists = new ArrayList<>();
-        final WorkListAdapter adapter = new WorkListAdapter(this, R.layout.custom_adapter_layout, workLists);
+        final WorkListAdapter adapter = new WorkListAdapter(this, R.layout.custom_adapter_layout_manager, workLists);
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -206,12 +201,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                         String temp = "";
                         e = response.getJSONObject(pos);
                         WorkList object = new WorkList(e.getString("timestamp"), e.getString("username"), e.getString("house_number"), e.getString("tank_type"), e.getString("estimate"));
-                        /*
-                        temp += "Resident: " + e.getString("username") + "\n";
-                        temp += "House Number: " + e.getString("house_number") + "\n";
-                        temp += "Tank Type: " + e.getString("tank_type") + "\n";
-                        temp += "Time estimate: " + e.getString("estimate");
-                        */
+
                         workLists.add(object);
                     }
                     adapter.addAll(workLists);
@@ -360,7 +350,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         }
         switch (item.getItemId()) {
             case R.id.refreshItem:
-                loadListView();
+                loadWorkList();
                 return true;
             default:
         }
