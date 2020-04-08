@@ -60,7 +60,6 @@ import java.util.Locale;
 public class ManagerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     protected ListView worklistListView;
-    protected Button troubleshoot;
 
     private RequestQueue mQueue;
     FloatingActionButton fab_add_any, fab_add_service, fab_add_driver, fab_add_resident, fab_add_message;
@@ -85,9 +84,6 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
             }
         });
 
-
-        //debug
-//        troubleshoot = findViewById(R.id.troubleshooterButton);
 
 
         fab_add_any = findViewById(R.id.floatingActionButtonAddAny);
@@ -219,8 +215,9 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
         void onSuccess();
     }
 
+
     //LoadListViewFunction
-    protected void loadWorkList(){
+    public void loadWorkList(){
         final WorkListAdapter adapter = new WorkListAdapter(this, R.layout.custom_adapter_layout_manager, managerLists);
 
         worklistListView.setAdapter(adapter);
@@ -233,7 +230,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                 // ************************
                 Bundle bundle = new Bundle();
                 bundle.putInt("pk",worklistListInt.get(position));
-                DriverTimeEstimateFragment driverTimeEstimateFragment = new DriverTimeEstimateFragment();
+                ManagerTimeEstimateFragment driverTimeEstimateFragment = new ManagerTimeEstimateFragment();
                 driverTimeEstimateFragment.setArguments(bundle);
                 driverTimeEstimateFragment.show(getSupportFragmentManager(), "Dialog");
             }
@@ -241,7 +238,7 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     }
 
     // with custom adapter
-    private void getWorkList(final VolleyCallBack callBack) {
+    public void getWorkList(final VolleyCallBack callBack) {
         worklistListInt = new ArrayList<Integer>();
         managerLists = new ArrayList<>();
         String url = "http://54.201.85.48:32132/get_work_list/";
@@ -258,7 +255,6 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                         WorkList object = new WorkList(user.getString("timestamp"), user.getString("house_number"), user.getString("tank_type"), user.getString("estimate"));
                         managerLists.add(object);
                         worklistListInt.add(user.getInt("pk"));
-                        //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
                     }
                     callBack.onSuccess();
                     adapter.addAll(managerLists);
@@ -321,6 +317,12 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                 setAppLanguage("iu");
                 break;
         }
+        getWorkList(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadWorkList();
+            }
+        });
         sideBar.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -429,6 +431,16 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     private void logoutFragment() {
         LogoutFragment logoutFragment = new LogoutFragment();
         logoutFragment.show(getSupportFragmentManager(), "Dialog");
+    }
+
+    public void externalLoadList(){
+        getWorkList(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadWorkList();
+            }
+        });
+
     }
 
 }

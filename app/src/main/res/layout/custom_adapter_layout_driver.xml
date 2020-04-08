@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="25"
+        android:layout_weight="20"
         android:orientation="vertical">
 
         <ImageView
@@ -24,7 +24,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="30"
+        android:layout_weight="35"
         android:orientation="vertical">
 
         <TextView
@@ -32,24 +32,21 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:text="@string/house_number"
-            android:textAlignment="center" />
+            android:text="@string/houseNum" />
 
         <TextView
             android:id="@+id/serviceTv"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:text="@string/service"
-            android:textAlignment="center" />
+            android:text="@string/service" />
 
         <TextView
             android:id="@+id/timeEstimateTV"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:text="@string/time_est"
-            android:textAlignment="center" />
+            android:text="@string/time_est"/>
 
     </LinearLayout>
 

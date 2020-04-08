@@ -5,10 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,22 +16,20 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.northernvillagewaterandsewageapp.DriverActivity;
+import com.example.northernvillagewaterandsewageapp.ManagerActivity;
 import com.example.northernvillagewaterandsewageapp.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DriverTimeEstimateFragment extends DialogFragment {
 
 
-    protected Button CancelButton;
+    protected Button cancelButton;
     private int timeEstimate;
+    protected Button confirmButton;
 
     private RequestQueue mQueue;
     private Integer pk;
@@ -50,7 +46,8 @@ public class DriverTimeEstimateFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_driver_time_estimate, container, false);
         pk = getArguments().getInt("pk");
         //attach the buttons and edit text to the java file
-        CancelButton = view.findViewById(R.id.cancelDriverTimeEstimateButton);
+        cancelButton = view.findViewById(R.id.cancelDriverTimeEstimateButton);
+        confirmButton = view.findViewById(R.id.confirmDriverTimeEstimateButton);
         mQueue = Volley.newRequestQueue(getActivity());
 
         //gets the drop down menu to work
@@ -121,15 +118,25 @@ public class DriverTimeEstimateFragment extends DialogFragment {
         });
 
         //dismisses the activity if the cancel button is pressed
-        CancelButton.setOnClickListener(new View.OnClickListener() {
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getDialog().dismiss();
             }
         });
 
+        //dismisses the activity if the cancel button is pressed
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((DriverActivity)getActivity()).externalLoadList();
+                getDialog().dismiss();
+            }
+        });
+
        return view;
     }
+
 
     protected void Enter(Integer estimate, final VolleyCallBackFragment callBack){
         //2-6
