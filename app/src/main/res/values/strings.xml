@@ -124,7 +124,7 @@
     <string name="dish_washes">Dish Washes</string>
     <string name="estimated_usage">Estimated Usage</string>
     <string name="washes">Washes</string>
-    <string name="add_report" translatable="false">Add Report</string>
+    <string name="add_report">Add Report</string>
     <string name="average_wait_previous_month">Average Wait Previous Month:</string>
     <string name="number_of_calls">Number of Calls</string>
     <string name="this_month">This Month</string>
@@ -139,7 +139,7 @@
     <string name="remove_resident">Remove Resident</string>
     <string name="time_stamp">"Time stamp: "</string>
     <string name="_resident">"Resident: "</string>
-    <string name="housenum">"House Number: "</string>
+    <string name="houseNum">"House Number: "</string>
     <string name="tank_type">"Tank Type: "</string>
     <string name="time_est">"Time Estimate: "</string>
     <string name="service">"Service: "</string>
@@ -155,9 +155,9 @@
     <string name="textview5" />
     <string name="DisableButton">Disable</string>
     <string name="enable">Enable</string>
-    <string name="water_remaining_n1000_liters">Water Remaining: \n100 Liters</string>
-    <string name="waterremaining">Water Remaining</string>
-    <string name="deleverytype">Delivery Type</string>
-    <string name="deliveryestimate">Delivery Estimate</string>
+    <string name="driver">Driver</string>
+    <string name="manager">Manager</string>
+    <string name="resident">Resident</string>
+    <string name="uima">Uima</string>
 
 </resources>

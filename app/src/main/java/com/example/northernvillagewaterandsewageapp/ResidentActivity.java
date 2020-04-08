@@ -109,7 +109,6 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
             public void onSuccess() {
                 updateInfo();
             }
-
         });
         super.onResume();
     }
@@ -258,6 +257,12 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
                 setAppLanguage("iu");
                 break;
         }
+        TankStatus(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                updateInfo();
+            }
+        });
         sideBarResident.closeDrawer(GravityCompat.START);
         return true;
     }

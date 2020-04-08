@@ -25,22 +25,22 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".DriverActivity"
-            android:label="Driver"
+            android:label="@string/driver"
             android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ManagerActivity"
-            android:label="Manager"
+            android:label="@string/manager"
             android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ResidentActivity"
-            android:label="Resident"
+            android:label="@string/resident"
             android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".LoginActivity"
             android:screenOrientation="portrait"
-            android:label="Uima">
+            android:label="@string/uima">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

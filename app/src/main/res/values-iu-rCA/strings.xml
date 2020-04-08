@@ -4,7 +4,7 @@
     <string name="pin">ᐃᑎᒍᑎᒃ</string>
     <string name="user_name">ᐊᑎᖕᖑᖅ</string>
     <string name="add_service">ᐱᑦᔪᓰᓂᕐᒥᑦ ᐃᓚᓗᒍ</string>
-    <string name="disable_resident"> ᐱᔪᓐᓇᓯᐊᖕᖏᑐᖅ</string>
+    <string name="disable_resident">ᑕᕝᕙᓂᒥᐅᖅ ᐱᔪᓐᓇᓯᐊᖕᖏᑐᖅ</string>
     <string name="get_reports">ᑐᓴᕐᑎᓯᐅᑎᓂᒃ ᐱᔪᒪᓂᖅ</string>
     <string name="get_delivery">ᑐᑦᓯᒐᕐᓂᖅ</string>
     <string name="username">ᐊᑎᖕᖑᖅ</string>
@@ -50,7 +50,7 @@
         <item>ᕿᑲᑲᓐᓇᖏᓐᓂᑎᓂ</item>
         <item>ᐅᓪᓗᒥ</item>
         <item>ᖃᐅᑉᐸᑦ</item>
-        <item>Complete</item>
+        <item>ᐱᔭᕇᕐᑐᖅ</item>
     </string-array>
     <string-array name="times">
         <item>ᐃᑲᐅᓃᑦ</item>
@@ -138,7 +138,7 @@
     <string name="remove_resident">ᐃᓪᓗᓕᒻᒥᑦ ᐱᕐᓯᒍᑎᒃ</string>
     <string name="time_stamp">"ᐃᑲᐅᕈᐸᓕᐊᓃᑦ ᐅᖑᒻᒧᐊᓂᖓ: "</string>
     <string name="_resident">"ᐃᓪᓗᓕᒃ: "</string>
-    <string name="housenum">"ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ: "</string>
+    <string name="houseNum">"ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ: "</string>
     <string name="tank_type">"ᖃᑦᑕᒪᑉ ᓱᓇᐅᑯᑦᓲᓂᖓ: "</string>
     <string name="time_est">"ᐃᑲᐅᕈᐸᓕᐊᓃᑦ  ᒥᑦᓴᐅᓴᕐᑕᐅᓂᖏᑦ: "</string>
     <string name="service">"ᐱᒍᑦᔨᓂᖅ: "</string>
@@ -157,6 +157,12 @@
     <string name="waterremaining">ᖃᑦᓯᒧᑦ</string>
     <string name="deleverytype">ᐃᒣᖅᑖᖅ ᖁᕐᕕᓂᑯᐃᑦ</string>
     <string name="deliveryestimate">ᖃᖔ</string>
+
+    <string name="add_report">ᐃᓓᒍᑎᒃ ᑐᓴᕐᑎᓯᐅᑎᒃ</string>
+    <string name="driver">ᐊᖁᑦᑎᒥᑦ</string>
+    <string name="manager">Manager</string>
+    <string name="resident">ᐃᓪᓗᓕᒃ</string>
+    <string name="uima">Uima</string>
 
 
 </resources>

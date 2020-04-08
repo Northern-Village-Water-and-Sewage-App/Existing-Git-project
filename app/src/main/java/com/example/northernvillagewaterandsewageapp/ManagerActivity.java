@@ -317,6 +317,12 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
                 setAppLanguage("iu");
                 break;
         }
+        getWorkList(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadWorkList();
+            }
+        });
         sideBar.closeDrawer(GravityCompat.START);
         return true;
     }
