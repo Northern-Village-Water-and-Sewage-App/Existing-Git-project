@@ -48,9 +48,7 @@ public class DeliveryList {
         else if (Service.equals("Sewage")) {
             id = R.drawable.sewage;
         }
-        else {
-            id = R.drawable.ic_action_lock_icon; // for testing
-        }
+
 
         return id;
     }
