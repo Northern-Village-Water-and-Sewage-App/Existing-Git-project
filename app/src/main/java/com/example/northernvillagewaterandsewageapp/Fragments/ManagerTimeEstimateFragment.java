@@ -13,95 +13,172 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.northernvillagewaterandsewageapp.ManagerActivity;
 import com.example.northernvillagewaterandsewageapp.R;
 
+import org.json.JSONObject;
+
 public class ManagerTimeEstimateFragment extends DialogFragment {
+    protected Button cancelButton;
+    private int timeEstimate;
+    protected Button confirmButton;
 
+    private RequestQueue mQueue;
+    private Integer pk;
 
-    protected Button NoneButton;
-    protected Button OnTheWayButton;
-    protected Button BeforeBreakButton;
-    protected Button TodayButton;
-    protected Button TomorrowButton;
-    protected Button IgnoreButton;
-    protected Button DeleteButton;
-    protected Button CancelButton;
+    public interface VolleyCallBackFragment {
+        void onSuccess();
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         //attaches the XML file to this java file
-        View view = inflater.inflate(R.layout.fragment_manager_time_estimate, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_driver_time_estimate, container, false);
+        pk = getArguments().getInt("pk");
         //attach the buttons and edit text to the java file
-        NoneButton = view.findViewById(R.id.noneManagerTimeEstimateButton);
-        OnTheWayButton = view.findViewById(R.id.onTheWayManagerTimeEstimateButton);
-        BeforeBreakButton = view.findViewById(R.id.beforeBreakManagerTimeEstimateButton);
-        TodayButton = view.findViewById(R.id.todayManagerTimeEstimateButton);
-        TomorrowButton = view.findViewById(R.id.tomorrowManagerTimeEstimateButton);
-        IgnoreButton = view.findViewById(R.id.ignoreManagerTimeEstimateButton);
-        DeleteButton = view.findViewById(R.id.deleteManagerTimeEstimateButton);
-        CancelButton = view.findViewById(R.id.cancelManagerTimeEstimateButton);
+        cancelButton = view.findViewById(R.id.cancelDriverTimeEstimateButton);
+        confirmButton = view.findViewById(R.id.confirmDriverTimeEstimateButton);
+        mQueue = Volley.newRequestQueue(getActivity());
 
-        //If the button is pressed, it uses a integer to say which button was pressed, and then uses the same function but with different inputs
-        NoneButton.setOnClickListener(new View.OnClickListener() {
+        //gets the drop down menu to work
+        timeEstimate = 0;
+
+        Spinner timeEstimatesSpinner = view.findViewById(R.id.timeEstimatesSpinner);
+        timeEstimatesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Enter(0);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                timeEstimate = position;
+
+                switch (timeEstimate) {
+                    case 1: // None
+                        Enter(6, new DriverTimeEstimateFragment.VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 2: // On the Way
+                        Enter(2, new DriverTimeEstimateFragment.VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 3: // Before Break
+                        Enter(3, new DriverTimeEstimateFragment.VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 4: // Today
+                        Enter(4, new DriverTimeEstimateFragment.VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 5: // Tomorrow
+                        Enter(5, new DriverTimeEstimateFragment.VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                    case 6: // Complete
+                        Enter(1, new DriverTimeEstimateFragment.VolleyCallBackFragment() {
+                            @Override
+                            public void onSuccess() {
+                                getDialog().dismiss();
+                            }
+                        });
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-
-        OnTheWayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(1);
-            }
-        });
-
-        BeforeBreakButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(2);
-            }
-        });
-
-        TodayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(3);
-            }
-        });
-
-        TomorrowButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(4);
-            }
-        });
-
-        IgnoreButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Enter(5);
-            }
-        });
-
 
         //dismisses the activity if the cancel button is pressed
-        CancelButton.setOnClickListener(new View.OnClickListener() {
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getDialog().dismiss();
             }
         });
 
+        //dismisses the activity if the cancel button is pressed
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((ManagerActivity)getActivity()).externalLoadList();
+                getDialog().dismiss();
+            }
+        });
 
-
-       return view;
+        return view;
     }
 
-    protected void Enter(int estimate){
+
+    protected void Enter(Integer estimate, final DriverTimeEstimateFragment.VolleyCallBackFragment callBack){
+        //2-6
+
+        if(estimate == 1)
+        {
+
+            final String url_complete = "http://54.201.85.48:32132/demand_completed/{pk}".replace("{pk}",pk.toString());
+            JsonObjectRequest request_complete = new JsonObjectRequest(Request.Method.GET,  url_complete, null,  new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response_complete){
+                    callBack.onSuccess();
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    });
+            mQueue.add(request_complete);
+            return;
+        }
+        else
+        {
+            String url_update = "http://54.201.85.48:32132/update_demand/<pk>/<time_estimate_fk>".replace("<pk>",pk.toString()).replace("<time_estimate_fk>",estimate.toString());
+            // Toast.makeText(getActivity(), url_update, Toast.LENGTH_LONG).show();
+            JsonObjectRequest request_update = new JsonObjectRequest(Request.Method.GET,  url_update, null,  new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response_update) {
+                    callBack.onSuccess();
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    });
+            mQueue.add(request_update);
+        }
+
+        timeEstimate = 0;
         //Update database with new time estimate.                           //Not figured out yet
     }
+
 }

@@ -322,6 +322,15 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
 
     }
 
+    public void externalLoadList() {
+        getDeliveryList(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadListView();
+            }
+        });
+    }
+
 }
             //    NOT NEEDED ANYMORE...
     /*
