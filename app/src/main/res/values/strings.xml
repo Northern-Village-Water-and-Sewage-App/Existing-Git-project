@@ -153,5 +153,11 @@
     <string name="textview3" />
     <string name="textview4" />
     <string name="textview5" />
+    <string name="DisableButton">Disable</string>
+    <string name="enable">Enable</string>
+    <string name="driver">Driver</string>
+    <string name="manager">Manager</string>
+    <string name="resident">Resident</string>
+    <string name="uima">Uima</string>
 
 </resources>

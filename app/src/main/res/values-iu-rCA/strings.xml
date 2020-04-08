@@ -25,7 +25,7 @@
     <string name="tank_status_warning">ᓄᕐᖃᑐᖅ</string>
     <string name="tank_status_critical">ᐃᓂᕐᑎᕆᔪᖅ</string>
     <string name="tank_status_ok">ᓈᒻᒪᑐᖅ</string>
-    <string name="complete">Complete</string>
+    <string name="complete">ᐱᔭᕇᕐᑐᖅ</string>
     <string-array name="demandTypes">
         <item>ᐃᒪᖅ</item>
         <item>ᖁᕐᕕᖃᐅᑎᒃ</item>
@@ -44,13 +44,13 @@
         <item>ᖁᒻᒧᔫᔭᖅ ᐃᓐᓇᖓᔪᖅ</item>
     </string-array>
     <string-array name="timeEstimate">
-        <item>Select a time estimate</item>
+        <item>ᖃᖔ</item>
         <item>ᓇᒻᒪᓂᖃᖕᖏᑐᑦ</item>
         <item>ᙯᓕᕐᑐᖅ</item>
         <item>ᕿᑲᑲᓐᓇᖏᓐᓂᑎᓂ</item>
         <item>ᐅᓪᓗᒥ</item>
         <item>ᖃᐅᑉᐸᑦ</item>
-        <item>Complete</item>
+        <item>ᐱᔭᕇᕐᑐᖅ</item>
     </string-array>
     <string-array name="times">
         <item>ᐃᑲᐅᓃᑦ</item>
@@ -145,13 +145,20 @@
     <string name="current_time_estimate">ᒪᓐᓇ ᒥᑦᓴᐅᓵᒋᒍᑏᑦ ᐃᑲᐅᕐᓂᑎᒍᑦ</string>
     <string name="no_delivery_scheduled">ᒥᓇᕐᑕᐅᕕᑦᓴᐅᑉ ᓇᒻᒪᓯᕕᑦᓴᖓ</string>
     <string name="reports">ᑐᓴᕐᑎᓯᐅᑏᑦ</string>
-    <string name="usage_type">Usage Type</string>
-    <string name="disable">Disable Resident</string>
+    <string name="usage_type">ᐃᒣᖅᑖᖅ ᖁᕐᕕᓂᑯᐃᑦ</string>
+    <string name="disable">ᑕᕝᕙᓂᒥᐅᖅ ᐱᔪᓐᓇᓯᐊᖕᖏᑐᖅ</string>
     <string name="textview2" />
     <string name="textview3" />
     <string name="textview4" />
     <string name="textview5" />
-    <string name="add_report">Add Report</string>
+    <string name="DisableButton">ᑕᕝᕙᓂᒥᐅᖅ</string>
+    <string name="enable">ᐊᑏ</string>
+
+    <string name="add_report">ᐃᓓᒍᑎᒃ ᑐᓴᕐᑎᓯᐅᑎᒃ</string>
+    <string name="driver">ᐊᖁᑦᑎᒥᑦ</string>
+    <string name="manager">Manager</string>
+    <string name="resident">ᐃᓪᓗᓕᒃ</string>
+    <string name="uima">Uima</string>
 
 
 </resources>
