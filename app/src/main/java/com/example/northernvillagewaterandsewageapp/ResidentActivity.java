@@ -199,15 +199,15 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
 
         // Color-wise indication for sewage alarm
         switch (newSewageAlarm) {
-            case ("OK"):
+            case ("ok"):
                 sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));  // Low sewage
                 sewageStatus.setText(R.string.tank_status_ok);
                 break;
-            case ("WARNING"):
+            case ("warning"):
                 sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(255, 204, 0)));  // Medium sewage
                 sewageStatus.setText(R.string.tank_status_warning);
                 break;
-            case ("CRITICAL"):
+            case ("critical"):
                 sewageAlarm.setBackgroundTintList(ColorStateList.valueOf(Color.RED));  // High sewage
                 sewageStatus.setText(R.string.tank_status_critical);
                 break;
