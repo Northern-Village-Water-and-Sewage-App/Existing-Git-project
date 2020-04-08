@@ -219,6 +219,12 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
                 setAppLanguage("iu");
                 break;
         }
+        getDeliveryList(new VolleyCallBack() {
+            @Override
+            public void onSuccess() {
+                loadListView();
+            }
+        });
         sideBar.closeDrawer(GravityCompat.START);
         return true;
     }

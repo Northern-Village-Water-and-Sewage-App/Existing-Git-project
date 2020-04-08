@@ -138,7 +138,7 @@
     <string name="remove_resident">ᐃᓪᓗᓕᒻᒥᑦ ᐱᕐᓯᒍᑎᒃ</string>
     <string name="time_stamp">"ᐃᑲᐅᕈᐸᓕᐊᓃᑦ ᐅᖑᒻᒧᐊᓂᖓ: "</string>
     <string name="_resident">"ᐃᓪᓗᓕᒃ: "</string>
-    <string name="housenum">"ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ: "</string>
+    <string name="houseNum">"ᐃᓪᓗᑉ ᑭᑎᑦᔪᑎᖓ: "</string>
     <string name="tank_type">"ᖃᑦᑕᒪᑉ ᓱᓇᐅᑯᑦᓲᓂᖓ: "</string>
     <string name="time_est">"ᐃᑲᐅᕈᐸᓕᐊᓃᑦ  ᒥᑦᓴᐅᓴᕐᑕᐅᓂᖏᑦ: "</string>
     <string name="service">"ᐱᒍᑦᔨᓂᖅ: "</string>
@@ -151,6 +151,7 @@
     <string name="textview3" />
     <string name="textview4" />
     <string name="textview5" />
+    <string name="add_report">Add Report</string>
 
 
 </resources>
