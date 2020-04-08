@@ -43,21 +43,21 @@
 
     <Button
         android:id="@+id/ReportsByCompanyButton"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/cancelGetReportsButton"
-        android:layout_alignEnd="@+id/complaintDriverReportEditText"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginEnd="10dp"
         android:text="@string/confirm" />
 
     <Button
         android:id="@+id/cancelGetReportsButton"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/complaintDriverReportEditText"
-        android:layout_alignStart="@+id/complaintDriverReportEditText"
-        android:layout_marginStart="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="20dp"
         android:text="@string/cancel" />

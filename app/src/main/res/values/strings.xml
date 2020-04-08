@@ -153,5 +153,7 @@
     <string name="textview3" />
     <string name="textview4" />
     <string name="textview5" />
+    <string name="DisableButton">Disable</string>
+    <string name="enable">Enable</string>
 
 </resources>

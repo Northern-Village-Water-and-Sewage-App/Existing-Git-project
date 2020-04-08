@@ -24,7 +24,7 @@
     <string name="tank_status_warning">Statut: AVERTISSEMENT!</string>
     <string name="tank_status_critical">Statut: Critique</string>
     <string name="textview">textview_fr</string>
-    <string name="resident_activity_title_text">Informations sur le réservoir</string>
+    <string name="resident_activity_title_text">Info réservoir</string>
     <string name="complete">Terminé</string>
     <string-array name="demandTypes">
         <item>Eau</item>
@@ -152,6 +152,8 @@
     <string name="textview3" />
     <string name="textview4" />
     <string name="textview5" />
+    <string name="DisableButton">Disactive</string>
+    <string name="enable">Active</string>
 
 
 </resources>

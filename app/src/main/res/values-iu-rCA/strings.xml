@@ -4,7 +4,7 @@
     <string name="pin">ᐃᑎᒍᑎᒃ</string>
     <string name="user_name">ᐊᑎᖕᖑᖅ</string>
     <string name="add_service">ᐱᑦᔪᓰᓂᕐᒥᑦ ᐃᓚᓗᒍ</string>
-    <string name="disable_resident">ᑕᕝᕙᓂᒥᐅᖅ ᐱᔪᓐᓇᓯᐊᖕᖏᑐᖅ</string>
+    <string name="disable_resident"> ᐱᔪᓐᓇᓯᐊᖕᖏᑐᖅ</string>
     <string name="get_reports">ᑐᓴᕐᑎᓯᐅᑎᓂᒃ ᐱᔪᒪᓂᖅ</string>
     <string name="get_delivery">ᑐᑦᓯᒐᕐᓂᖅ</string>
     <string name="username">ᐊᑎᖕᖑᖅ</string>
@@ -25,7 +25,7 @@
     <string name="tank_status_warning">ᓄᕐᖃᑐᖅ</string>
     <string name="tank_status_critical">ᐃᓂᕐᑎᕆᔪᖅ</string>
     <string name="tank_status_ok">ᓈᒻᒪᑐᖅ</string>
-    <string name="complete">Complete</string>
+    <string name="complete">ᐱᔭᕇᕐᑐᖅ</string>
     <string-array name="demandTypes">
         <item>ᐃᒪᖅ</item>
         <item>ᖁᕐᕕᖃᐅᑎᒃ</item>
@@ -44,7 +44,7 @@
         <item>ᖁᒻᒧᔫᔭᖅ ᐃᓐᓇᖓᔪᖅ</item>
     </string-array>
     <string-array name="timeEstimate">
-        <item>Select a time estimate</item>
+        <item>ᖃᖔ</item>
         <item>ᓇᒻᒪᓂᖃᖕᖏᑐᑦ</item>
         <item>ᙯᓕᕐᑐᖅ</item>
         <item>ᕿᑲᑲᓐᓇᖏᓐᓂᑎᓂ</item>
@@ -145,12 +145,14 @@
     <string name="current_time_estimate">ᒪᓐᓇ ᒥᑦᓴᐅᓵᒋᒍᑏᑦ ᐃᑲᐅᕐᓂᑎᒍᑦ</string>
     <string name="no_delivery_scheduled">ᒥᓇᕐᑕᐅᕕᑦᓴᐅᑉ ᓇᒻᒪᓯᕕᑦᓴᖓ</string>
     <string name="reports">ᑐᓴᕐᑎᓯᐅᑏᑦ</string>
-    <string name="usage_type">Usage Type</string>
-    <string name="disable">Disable Resident</string>
+    <string name="usage_type">ᐃᒣᖅᑖᖅ ᖁᕐᕕᓂᑯᐃᑦ</string>
+    <string name="disable">ᑕᕝᕙᓂᒥᐅᖅ ᐱᔪᓐᓇᓯᐊᖕᖏᑐᖅ</string>
     <string name="textview2" />
     <string name="textview3" />
     <string name="textview4" />
     <string name="textview5" />
+    <string name="DisableButton">ᑕᕝᕙᓂᒥᐅᖅ</string>
+    <string name="enable">ᐊᑏ</string>
 
 
 </resources>
