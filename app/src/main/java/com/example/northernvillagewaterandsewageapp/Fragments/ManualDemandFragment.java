@@ -20,7 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.northernvillagewaterandsewageapp.LoginActivity;
 import com.example.northernvillagewaterandsewageapp.R;
+import com.example.northernvillagewaterandsewageapp.SharedPreferenceHelper;
 
 import org.json.JSONArray;
 
@@ -31,6 +33,8 @@ public class ManualDemandFragment extends DialogFragment {
     protected EditText username;
     protected Button cancelButton;
     protected Button enterButton;
+    protected SharedPreferenceHelper sharedPreferenceHelper;
+    private String ResidentName;
 
     private RequestQueue mQueue;
 
@@ -46,6 +50,10 @@ public class ManualDemandFragment extends DialogFragment {
         cancelButton = view.findViewById(R.id.cancelManualDemandButton);
         enterButton = view.findViewById(R.id.enterButton);
 
+        sharedPreferenceHelper = new SharedPreferenceHelper(getContext());
+
+        ResidentName = sharedPreferenceHelper.getUserName(getString(R.string.user_name));
+        username.setText(ResidentName);
         mQueue = Volley.newRequestQueue(getActivity());
 
         //Gets the drop down menu
