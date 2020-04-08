@@ -11,10 +11,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="143dp"
-        android:layout_marginEnd="68dp"
-        android:entries="@array/timeEstimate" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:entries="@array/timeEstimate"
+        android:gravity="right"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/cancelDriverTimeEstimateButton"
@@ -24,9 +26,9 @@
         android:layout_alignStart="@+id/timeEstimatesSpinner"
         android:layout_alignEnd="@+id/timeEstimatesSpinner"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
         android:text="@string/cancel"
         android:textColor="@color/colorLightText" />
