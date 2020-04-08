@@ -159,5 +159,9 @@
     <string name="manager">Manager</string>
     <string name="resident">Resident</string>
     <string name="uima">Uima</string>
+    <string name="water_remaining_n1000_liters">water_remaining_n1000_liters</string>
+    <string name="waterremaining">Water Ramining</string>
+    <string name="deleverytype">Delivery Type</string>
+    <string name="deliveryestimate">Delivery Estimate</string>
 
 </resources>
