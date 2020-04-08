@@ -24,7 +24,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="35"
+        android:layout_weight="37"
         android:orientation="vertical">
 
         <TextView
@@ -53,7 +53,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="44.9"
+        android:layout_weight="43"
         android:orientation="vertical">
 
         <TextView
