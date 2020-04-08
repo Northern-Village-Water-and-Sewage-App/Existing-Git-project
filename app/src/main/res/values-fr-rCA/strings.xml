@@ -154,6 +154,10 @@
     <string name="textview5" />
     <string name="DisableButton">Disactive</string>
     <string name="enable">Active</string>
+    <string name="water_remaining_n1000_liters">Water Remaining: \n100 Liters</string>
+    <string name="waterremaining">Eau Restante</string>
+    <string name="deleverytype">Type</string>
+    <string name="deliveryestimate">Estimation de livraison</string>
 
 
 </resources>
