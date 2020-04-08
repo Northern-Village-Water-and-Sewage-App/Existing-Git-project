@@ -57,10 +57,10 @@ public class WorkList {
 
         int id = 0;
         if (TankType.equals("Water")) {
-            id = R.drawable.water_image2;
+            id = R.drawable.water_icon_latest;
         }
         else if (TankType.equals("Sewage")) {
-            id = R.drawable.sewage;
+            id = R.drawable.sewage_icon;
         }
 
 

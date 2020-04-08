@@ -40,16 +40,11 @@ public class DeliveryList {
     }
 
     public int getResourceID() {
-
         int id = 0;
-        if (Service.equals("Water")) {
-            id = R.drawable.water_image2;
-        }
-        else if (Service.equals("Sewage")) {
-            id = R.drawable.sewage;
-        }
-
-
+        if (Service.equals("Water"))
+            id = R.drawable.water_icon_latest;
+        else if (Service.equals("Sewage"))
+            id = R.drawable.sewage_icon;
         return id;
     }
 

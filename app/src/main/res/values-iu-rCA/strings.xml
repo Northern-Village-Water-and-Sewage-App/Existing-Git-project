@@ -153,6 +153,10 @@
     <string name="textview5" />
     <string name="DisableButton">ᑕᕝᕙᓂᒥᐅᖅ</string>
     <string name="enable">ᐊᑏ</string>
+    <string name="water_remaining_n1000_liters">ᖃᑦᓯᒧᑦ: \n100 Liters</string>
+    <string name="waterremaining">ᖃᑦᓯᒧᑦ</string>
+    <string name="deleverytype">ᐃᒣᖅᑖᖅ ᖁᕐᕕᓂᑯᐃᑦ</string>
+    <string name="deliveryestimate">ᖃᖔ</string>
 
     <string name="add_report">ᐃᓓᒍᑎᒃ ᑐᓴᕐᑎᓯᐅᑎᒃ</string>
     <string name="driver">ᐊᖁᑦᑎᒥᑦ</string>

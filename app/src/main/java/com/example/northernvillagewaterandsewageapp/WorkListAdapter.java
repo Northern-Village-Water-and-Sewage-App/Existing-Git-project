@@ -3,6 +3,7 @@ package com.example.northernvillagewaterandsewageapp;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +65,7 @@ public class WorkListAdapter extends ArrayAdapter<WorkList> {
 
         imageView.setImageResource(id);
 
+        imageView.setColorFilter(Color.rgb(26, 174, 243));
         return convertView;
     }
 }

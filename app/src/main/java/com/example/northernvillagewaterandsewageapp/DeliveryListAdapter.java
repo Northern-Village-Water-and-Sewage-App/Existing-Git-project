@@ -3,6 +3,7 @@ package com.example.northernvillagewaterandsewageapp;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.PointerIcon;
 import android.view.View;
@@ -57,7 +58,7 @@ import java.util.List;
             timeEstimateTv.setText(TimeEstimate);
 
             imageView.setImageResource(id);
-
+            imageView.setColorFilter(Color.rgb(26, 174, 243));
             return convertView;
         }
 }

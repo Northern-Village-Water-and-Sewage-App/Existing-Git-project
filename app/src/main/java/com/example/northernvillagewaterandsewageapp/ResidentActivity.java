@@ -159,7 +159,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
                         JSONObject user = response.getJSONObject(i);
                         deliveryEstimate = user.getString("estimate");
                         tankType = user.getString("tank_type");
-                        displayString.append("\nDelivery Type: \t\t\t\t\t{tankType}\nDelivery Estimate: \t\t\t{estimate}"
+                        displayString.append("\n" + getString(R.string.deleverytype) + ": \t\t\t\t\t{tankType}\n" + getString(R.string.deliveryestimate) + ": \t\t\t{estimate}"
                                 .replace("{tankType}", tankType).replace("{estimate}", deliveryEstimate));
                     }
                     deliveryEstimateTextView.setText(displayString.toString());
@@ -178,7 +178,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
     }
 
     protected void updateTank() {
-        textViewRemainingWater.setText("Water Remaining: \n{100} Liters".replace("{100}", String.valueOf(newWaterHeight * 10)));
+        textViewRemainingWater.setText(getString(R.string.waterremaining) + ": \n{100} Liters".replace("{100}", String.valueOf(newWaterHeight * 1)));
         progressBar.setProgress(newWaterHeightPercentage);
 
         // Color-wise indication for water level
