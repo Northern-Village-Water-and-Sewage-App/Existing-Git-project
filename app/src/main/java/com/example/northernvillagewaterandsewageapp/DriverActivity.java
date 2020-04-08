@@ -297,7 +297,7 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
                     {
                         JSONObject user = response.getJSONObject(i);
                         String temp = "";
-                        DeliveryList object = new DeliveryList(user.getString("username"), user.getString("estimate"), user.getString("tank_type"));
+                        DeliveryList object = new DeliveryList(user.getString("house_number"), user.getString("tank_type"), user.getString("estimate"));
                         deliveryLists.add(object);
                         worklistListInt.add(user.getInt("pk"));
                         //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
