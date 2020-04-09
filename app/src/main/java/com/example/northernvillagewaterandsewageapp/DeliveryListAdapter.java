@@ -55,7 +55,7 @@ import java.util.List;
             TextView timeEstimateTv = convertView.findViewById(R.id.driverListTV3);
             ImageView imageView = convertView.findViewById(R.id.imageViewDriver);
 
-            timeEstimateTv.setText(TimeStamp);
+            timeStampTv.setText(TimeStamp);
             houseNumTv.setText(HouseNum);
             serviceTv.setText(Service);
             timeEstimateTv.setText(TimeEstimate);
