@@ -91,7 +91,7 @@
     <string name="add">Ajouter</string>
     <string name="remove">Retirer</string>
     <string name="get_all_reports">Obtenez tous les rapports</string>
-    <string name="reports_by_company">Rapports par Entreprise</string>
+    <string name="reports_by_company">Par Entreprise</string>
     <string name="none">Aucune</string>
     <string name="on_the_way">En Route</string>
     <string name="before_break">avant la Pause</string>
