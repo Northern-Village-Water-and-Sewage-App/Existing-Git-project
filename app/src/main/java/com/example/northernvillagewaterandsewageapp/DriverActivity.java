@@ -64,91 +64,13 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
+        
         mQueue = Volley.newRequestQueue(this);
-        getDeliveryList(new VolleyCallBack() {
-            @Override
-            public void onSuccess() {
-                loadListView();
-            }
-        });
 
-        driverWorklistListView = findViewById(R.id.DriverWorklistListView);
-
-        fab_add_any = findViewById(R.id.floatingActionButtonAddAnyDriver);
-        fab_add_service = findViewById(R.id.floatingActionButtonAddServiceDriver);
-        fab_add_report = findViewById(R.id.floatingActionButtonAddReportDelivery);
-
-        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
-        FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
-        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
-        FabRAntiClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
-
-        tv_service = findViewById(R.id.textViewAddServiceDriver);
-        tv_report = findViewById(R.id.textViewAddReportDelivery);
-
-        fab_add_any.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isOpen){
-                    fab_add_service.startAnimation(FabClose);
-                    fab_add_report.startAnimation(FabClose);
-                    fab_add_any.startAnimation(FabRAntiClockwise);
-
-                    fab_add_service.setClickable(false);
-
-                    tv_service.startAnimation(FabClose);
-                    tv_report.startAnimation(FabClose);
-
-                    isOpen = false;
-                } else{
-                    fab_add_service.startAnimation(FabOpen);
-                    fab_add_report.startAnimation(FabOpen);
-                    fab_add_any.startAnimation(FabRClockwise);
-
-                    fab_add_service.setClickable(true);
-
-                    tv_service.startAnimation(FabOpen);
-                    tv_report.startAnimation(FabOpen);
-
-                    isOpen = true;
-                }
-            }
-        });
-
-        sideBar = findViewById(R.id.sideBarDriver);
-        NavigationView navigationView = findViewById(R.id.nav_view_driver);
-
-        navigationView.setNavigationItemSelectedListener(this);
-        toggle = new ActionBarDrawerToggle(this, sideBar, R.string.open, R.string.close);
-        sideBar.addDrawerListener(toggle);
-        toggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = headerView.findViewById(R.id.driverHeaderNameTV);
-        navUsername.setText("Hello");
-
-        setUpDriverUI();
-
-        loadListView();
-
+        connectJava();
+        connectedButtons();
     }
 
-    protected void setUpDriverUI()
-    {
-        fab_add_service.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                manualDemand();
-            }
-        });
-        fab_add_report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openReportFragment();
-            }
-        });
-    }
 
     // Function to make manual demand work
     protected void manualDemand(){
@@ -173,15 +95,12 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
     protected void loadListView(){
         final DeliveryListAdapter adapter = new DeliveryListAdapter(this, R.layout.custom_adapter_layout_driver, deliveryLists);
 
-        //ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, worklistListText);
         driverWorklistListView.setAdapter(adapter);
 
         //makes clicking on an item from the worklist pull up the manager time estimate fragment, with the information it needs to update the database
         driverWorklistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //need to pass other stuff here to make this work
-                // ************************
                 Bundle bundle = new Bundle();
                 bundle.putInt("pk",worklistListInt.get(position));
                 DriverTimeEstimateFragment driverTimeEstimateFragment = new DriverTimeEstimateFragment();
@@ -293,7 +212,6 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         deliveryLists = new ArrayList<>();
         String url = "http://54.201.85.48:32132/get_work_list/";
 
-        final DeliveryListAdapter adapter = new DeliveryListAdapter(this, R.layout.custom_adapter_layout_driver, deliveryLists);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -306,11 +224,8 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
                         DeliveryList object = new DeliveryList(user.getString("house_number"), user.getString("tank_type"), user.getString("estimate"));
                         deliveryLists.add(object);
                         worklistListInt.add(user.getInt("pk"));
-                        //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
                     }
                     callBack.onSuccess();
-                    adapter.addAll(deliveryLists);
-                    //driverWorklistListView.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -337,45 +252,79 @@ public class DriverActivity extends AppCompatActivity implements NavigationView.
         });
     }
 
-}
-            //    NOT NEEDED ANYMORE...
-    /*
-    protected void getList()//final VolleyCallBack callBack)
-    {
-        worklistListText = new ArrayList<String>();
-        worklistListInt = new ArrayList<Integer>();
-        String url = "http://54.201.85.48:32132/get_work_list/";
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+    protected void connectJava(){
+        driverWorklistListView = findViewById(R.id.DriverWorklistListView);
+
+        fab_add_any = findViewById(R.id.floatingActionButtonAddAnyDriver);
+        fab_add_service = findViewById(R.id.floatingActionButtonAddServiceDriver);
+        fab_add_report = findViewById(R.id.floatingActionButtonAddReportDelivery);
+
+        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
+        FabRAntiClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
+
+        tv_service = findViewById(R.id.textViewAddServiceDriver);
+        tv_report = findViewById(R.id.textViewAddReportDelivery);
+    }
+
+    protected void connectedButtons(){
+
+        fab_add_service.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(JSONArray response) {
-                try {
-                    worklistListText = new ArrayList<String>();
-                    worklistListInt = new ArrayList<Integer>();
-                    for(int i = 0; i < response.length(); i++)
-                    {
-                        JSONObject user = response.getJSONObject(i);
-                        String temp = "";
-                        temp+= "House Number: " + user.getString("house_number") + "\n";
-                        temp+= "Service: " + user.getString("tank_type") + "\n";
-                        temp+= "Time Estimate: " + user.getString("estimate") + "\n";
-                        worklistListText.add(temp);
-                        worklistListInt.add(user.getInt("pk"));
-                        //Toast.makeText(DriverActivity.this, worklistListText.get(i), Toast.LENGTH_LONG).show();
-                    }
-                    //callBack.onSuccess();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            public void onClick(View v) {
+                manualDemand();
+            }
+        });
+        fab_add_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openReportFragment();
+            }
+        });
+
+        fab_add_any.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isOpen){
+                    fab_add_service.startAnimation(FabClose);
+                    fab_add_report.startAnimation(FabClose);
+                    fab_add_any.startAnimation(FabRAntiClockwise);
+
+                    fab_add_service.setClickable(false);
+
+                    tv_service.startAnimation(FabClose);
+                    tv_report.startAnimation(FabClose);
+
+                    isOpen = false;
+                } else{
+                    fab_add_service.startAnimation(FabOpen);
+                    fab_add_report.startAnimation(FabOpen);
+                    fab_add_any.startAnimation(FabRClockwise);
+
+                    fab_add_service.setClickable(true);
+
+                    tv_service.startAnimation(FabOpen);
+                    tv_report.startAnimation(FabOpen);
+
+                    isOpen = true;
                 }
             }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        Toast.makeText(DriverActivity.this, "Failed: "+error.toString(), Toast.LENGTH_LONG).show();
-                    }
+        });
 
-                });
-        mQueue.add(request);
+        sideBar = findViewById(R.id.sideBarDriver);
+        NavigationView navigationView = findViewById(R.id.nav_view_driver);
 
-    }*/
+        navigationView.setNavigationItemSelectedListener(this);
+        toggle = new ActionBarDrawerToggle(this, sideBar, R.string.open, R.string.close);
+        sideBar.addDrawerListener(toggle);
+        toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.driverHeaderNameTV);
+        navUsername.setText("Hello");
+
+    }
+
+}
