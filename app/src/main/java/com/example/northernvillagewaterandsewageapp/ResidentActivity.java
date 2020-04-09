@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -148,6 +149,7 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         updateDelivery();
     }
 
+    //this is the message in the middle of the screen
     protected void updateDelivery() {
         String url = "http://54.201.85.48:32132/get_work_list_estimate_for_resident/{username}".replace("{username}", ResidentName);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -159,8 +161,8 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
                         JSONObject user = response.getJSONObject(i);
                         deliveryEstimate = user.getString("estimate");
                         tankType = user.getString("tank_type");
-                        displayString.append("\n" + getString(R.string.deleverytype) + ": \t\t\t\t\t{tankType}\n" + getString(R.string.deliveryestimate) + ": \t\t\t{estimate}"
-                                .replace("{tankType}", tankType).replace("{estimate}", deliveryEstimate));
+                        displayString.append("\n" + getString(R.string.deleverytype) + ": \t\t\t\t\t" + tankType + "\n" + getString(R.string.deliveryestimate) + ": \t\t\t{estimate}"
+                                .replace("{estimate}", deliveryEstimate));
                     }
                     deliveryEstimateTextView.setText(displayString.toString());
                 } catch (JSONException e) {
@@ -177,8 +179,9 @@ public class ResidentActivity extends AppCompatActivity implements NavigationVie
         mQueue.add(request);
     }
 
+    //makes the message for the delivery, this is the  one in the under the vertical bar, multiplying by 10 to make it seem more realistic
     protected void updateTank() {
-        textViewRemainingWater.setText(getString(R.string.waterremaining) + ": \n{100} Liters".replace("{100}", String.valueOf(newWaterHeight * 1)));
+        textViewRemainingWater.setText(getString(R.string.waterremaining) + ": \n{100} Liters".replace("{100}", String.valueOf(newWaterHeight * 10)));
         progressBar.setProgress(newWaterHeightPercentage);
 
         // Color-wise indication for water level
