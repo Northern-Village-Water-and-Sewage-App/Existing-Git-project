@@ -89,7 +89,7 @@
     <string name="add">ADD</string>
     <string name="remove">Remove</string>
     <string name="get_all_reports">Get all reports</string>
-    <string name="reports_by_company">Reports by company</string>
+    <string name="reports_by_company">By company</string>
     <string name="none">None</string>
     <string name="on_the_way">On the Way</string>
     <string name="before_break">Before Break</string>
