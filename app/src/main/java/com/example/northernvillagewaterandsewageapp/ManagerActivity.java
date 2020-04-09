@@ -76,130 +76,24 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
+
         mQueue = Volley.newRequestQueue(this);
-        getWorkList(new VolleyCallBack() {
+
+        //gets the worklists and loads it
+        /*getWorkList(new VolleyCallBack() {
             @Override
             public void onSuccess() {
                 loadWorkList();
             }
         });
 
+         */
 
+        connectJava();
 
-        fab_add_any = findViewById(R.id.floatingActionButtonAddAny);
-        fab_add_service = findViewById(R.id.floatingActionButtonAddService);
-        fab_add_driver = findViewById(R.id.floatingActionButtonAddDriver);
-        fab_add_resident = findViewById(R.id.floatingActionButtonAddResident);
-        fab_add_message = findViewById(R.id.floatingActionButtonAddMessage);
-
-        fab_add_service.setClickable(false);
-        fab_add_driver.setClickable(false);
-        fab_add_resident.setClickable(false);
-
-        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
-        FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
-        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
-        FabRAntiClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
-
-        tv_service = findViewById(R.id.textViewAddService);
-        tv_driver = findViewById(R.id.textViewAddDriver);
-        tv_resident = findViewById(R.id.textViewAddResident);
-        tv_message = findViewById(R.id.textViewAddMessage);
-
-        fab_add_message.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                putMessage();
-            }
-        });
-
-        fab_add_any.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isOpen) {
-                    fab_add_service.startAnimation(FabClose);
-                    fab_add_driver.startAnimation(FabClose);
-                    fab_add_resident.startAnimation(FabClose);
-                    fab_add_message.startAnimation(FabClose);
-                    fab_add_any.startAnimation(FabRAntiClockwise);
-
-                    fab_add_service.setClickable(false);
-                    fab_add_driver.setClickable(false);
-                    fab_add_resident.setClickable(false);
-
-                    tv_service.startAnimation(FabClose);
-                    tv_driver.startAnimation(FabClose);
-                    tv_resident.startAnimation(FabClose);
-                    tv_message.startAnimation(FabClose);
-
-                    isOpen = false;
-                } else {
-                    fab_add_service.startAnimation(FabOpen);
-                    fab_add_driver.startAnimation(FabOpen);
-                    fab_add_resident.startAnimation(FabOpen);
-                    fab_add_message.startAnimation(FabOpen);
-                    fab_add_any.startAnimation(FabRClockwise);
-
-                    fab_add_service.setClickable(true);
-                    fab_add_driver.setClickable(true);
-                    fab_add_resident.setClickable(true);
-
-                    tv_service.startAnimation(FabOpen);
-                    tv_driver.startAnimation(FabOpen);
-                    tv_resident.startAnimation(FabOpen);
-                    tv_message.startAnimation(FabOpen);
-
-                    isOpen = true;
-                }
-            }
-        });
-
-        fab_add_service.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                manualDemand();
-            }
-        });
-        fab_add_driver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addDriver();
-            }
-        });
-        fab_add_resident.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addResident();
-            }
-        });
-
-        sideBar = findViewById(R.id.sideBarManager);
-        NavigationView navigationView = findViewById(R.id.nav_view_manager);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        toggle = new ActionBarDrawerToggle(this, sideBar, R.string.open, R.string.close);
-        sideBar.addDrawerListener(toggle);
-        toggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = headerView.findViewById(R.id.managerHeaderNameTV);
-        navUsername.setText("Your Text Here");
-
-        setUpManagerUI();
-
-        loadWorkList(); // with custom adapter
-
+        setButtons();
     }
 
-    protected void setUpManagerUI() {
-        worklistListView = findViewById(R.id.WorklistListView);
-
-        //shows back button
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
 
     @Override
     protected void onResume() {
@@ -441,6 +335,120 @@ public class ManagerActivity extends AppCompatActivity implements NavigationView
             }
         });
 
+    }
+
+    protected void connectJava(){
+        fab_add_any = findViewById(R.id.floatingActionButtonAddAny);
+        fab_add_service = findViewById(R.id.floatingActionButtonAddService);
+        fab_add_driver = findViewById(R.id.floatingActionButtonAddDriver);
+        fab_add_resident = findViewById(R.id.floatingActionButtonAddResident);
+        fab_add_message = findViewById(R.id.floatingActionButtonAddMessage);
+
+        fab_add_service.setClickable(false);
+        fab_add_driver.setClickable(false);
+        fab_add_resident.setClickable(false);
+
+        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
+        FabRAntiClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
+
+        tv_service = findViewById(R.id.textViewAddService);
+        tv_driver = findViewById(R.id.textViewAddDriver);
+        tv_resident = findViewById(R.id.textViewAddResident);
+        tv_message = findViewById(R.id.textViewAddMessage);
+
+        sideBar = findViewById(R.id.sideBarManager);
+
+        worklistListView = findViewById(R.id.WorklistListView);
+
+
+
+    }
+
+    protected void setButtons(){
+        fab_add_message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                putMessage();
+            }
+        });
+
+        fab_add_any.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isOpen) {
+                    fab_add_service.startAnimation(FabClose);
+                    fab_add_driver.startAnimation(FabClose);
+                    fab_add_resident.startAnimation(FabClose);
+                    fab_add_message.startAnimation(FabClose);
+                    fab_add_any.startAnimation(FabRAntiClockwise);
+
+                    fab_add_service.setClickable(false);
+                    fab_add_driver.setClickable(false);
+                    fab_add_resident.setClickable(false);
+
+                    tv_service.startAnimation(FabClose);
+                    tv_driver.startAnimation(FabClose);
+                    tv_resident.startAnimation(FabClose);
+                    tv_message.startAnimation(FabClose);
+
+                    isOpen = false;
+                } else {
+                    fab_add_service.startAnimation(FabOpen);
+                    fab_add_driver.startAnimation(FabOpen);
+                    fab_add_resident.startAnimation(FabOpen);
+                    fab_add_message.startAnimation(FabOpen);
+                    fab_add_any.startAnimation(FabRClockwise);
+
+                    fab_add_service.setClickable(true);
+                    fab_add_driver.setClickable(true);
+                    fab_add_resident.setClickable(true);
+
+                    tv_service.startAnimation(FabOpen);
+                    tv_driver.startAnimation(FabOpen);
+                    tv_resident.startAnimation(FabOpen);
+                    tv_message.startAnimation(FabOpen);
+
+                    isOpen = true;
+                }
+            }
+        });
+
+        fab_add_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                manualDemand();
+            }
+        });
+        fab_add_driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addDriver();
+            }
+        });
+        fab_add_resident.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addResident();
+            }
+        });
+
+        //shows back button
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_manager);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        toggle = new ActionBarDrawerToggle(this, sideBar, R.string.open, R.string.close);
+        sideBar.addDrawerListener(toggle);
+        toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.managerHeaderNameTV);
+        navUsername.setText("Your Text Here");
     }
 
 }
