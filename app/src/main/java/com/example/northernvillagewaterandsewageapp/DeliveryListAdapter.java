@@ -41,18 +41,21 @@ import java.util.List;
             convertView = inflater.inflate(mResource, parent, false);
 
             // getting all the stuff
+            String TimeStamp = getItem(position).getTimeStamp();
             String HouseNum = getItem(position).getHouseNum();
             String Service = getItem(position).getService();
             String TimeEstimate = getItem(position).getTimeEstimate();
             int id = getItem(position).getResourceID();
 
-            DeliveryList deliveryList = new DeliveryList(HouseNum, Service, TimeEstimate);
+            DeliveryList deliveryList = new DeliveryList(TimeStamp, HouseNum, Service, TimeEstimate);
 
+            TextView timeStampTv = convertView.findViewById(R.id.driverListTV4);
             TextView houseNumTv = convertView.findViewById(R.id.driverListTV1);
             TextView serviceTv = convertView.findViewById(R.id.driverListTV2);
             TextView timeEstimateTv = convertView.findViewById(R.id.driverListTV3);
             ImageView imageView = convertView.findViewById(R.id.imageViewDriver);
 
+            timeEstimateTv.setText(TimeStamp);
             houseNumTv.setText(HouseNum);
             serviceTv.setText(Service);
             timeEstimateTv.setText(TimeEstimate);
